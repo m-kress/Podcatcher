@@ -257,7 +257,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="493"/>
         <source>Unable to stream podcast.</source>
-        <translation>Kan inte strömma podd.</translation>
+        <translation>Kan inte strömma podden.</translation>
     </message>
 </context>
 <context>
@@ -265,62 +265,62 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="106"/>
         <source>Unable to add subscription from %1 …</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte lägga till prenumeration från %1 ...</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="138"/>
         <source>Refreshing episodes...</source>
-        <translation type="unfinished">Uppdaterar avsnitt...</translation>
+        <translation>Uppdaterar avsnitt...</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="116"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prenumerarerar redan på &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="266"/>
         <source>No data received.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ingen data mottagen.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="293"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
-        <translation type="unfinished"></translation>
+        <translation>Poddflödet är inte giltigt. Kan inte lägga till prenumeration...</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="392"/>
         <source>Cannot refresh. Network error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="405"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="497"/>
         <source>Podcast episode download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Poddavsnittet kunde inte laddas ner.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="781"/>
         <source>gPodder.net authentication information required.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="812"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="855"/>
         <source>No subscriptions found from gPodder.net</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="859"/>
         <source>Getting subscriptions from gPodder.net...</source>
-        <translation type="unfinished"></translation>
+        <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>
 </context>
 <context>
@@ -333,12 +333,12 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="167"/>
         <source>Podcast episode not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Poddavsnittet kan inte hittas.</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="188"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tyvärr! Kunde inte spela upp den här podden.</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="290"/>
@@ -408,3 +408,4 @@
     </message>
 </context>
 </TS>
+
