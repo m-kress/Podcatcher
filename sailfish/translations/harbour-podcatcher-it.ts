@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="it_IT">
+<TS version="2.0" language="it_IT">
 <context>
     <name>About</name>
     <message>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="106"/>
         <source>Unable to add subscription from %1 …</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile iscriversi a &apos;%1&apos;...</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="138"/>
@@ -275,52 +275,52 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="116"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Già iscritto a &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="266"/>
         <source>No data received.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessun dato ricevuto.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="293"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed non valido. Impossibile iscriversi...</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="392"/>
         <source>Cannot refresh. Network error.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile aggiornare. Errore di rete.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="405"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed non valido. Impossibile scaricare episodi da &apos;%1&apos;.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="497"/>
         <source>Podcast episode download failed.</source>
-        <translation type="unfinished"></translation>
+        <translation>Scaricamento episodio non riuscito.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="781"/>
         <source>gPodder.net authentication information required.</source>
-        <translation type="unfinished"></translation>
+        <translation>Autenticazione a gPodder.net richiesta.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="812"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
-        <translation type="unfinished"></translation>
+        <translation>Credenziali gPodder.net non valide. Riprova.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="855"/>
         <source>No subscriptions found from gPodder.net</source>
-        <translation type="unfinished"></translation>
+        <translation>Nessuna iscrizione trovata su gPodder.net</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="859"/>
         <source>Getting subscriptions from gPodder.net...</source>
-        <translation type="unfinished"></translation>
+        <translation>Scaricamento iscrizioni da gPodder.net...</translation>
     </message>
 </context>
 <context>
@@ -333,12 +333,12 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="167"/>
         <source>Podcast episode not found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Episodio non trovato.</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="188"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
-        <translation type="unfinished"></translation>
+        <translation>Mi dispiace! Non è possibile avviare il lettore per questo podcast.</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="290"/>
