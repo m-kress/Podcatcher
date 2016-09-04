@@ -46,6 +46,7 @@ CONFIG += sailfishapp_i18n
 
 TRANSLATIONS += translations/harbour-podcatcher-de.ts \
                 translations/harbour-podcatcher-fr.ts \
+                translations/harbour-podcatcher-it.ts \
                 translations/harbour-podcatcher-sv.ts
 
 
