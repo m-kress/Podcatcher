@@ -89,6 +89,8 @@ Page {
                         "Translations<br>"+
                         "German: <b>Moritz Carmesin</b><br>"+
                         "French: <b>Quent-in</b><br>"+
+                        "Italian: <b>fravaccaro</b><br>"+
+                        "Swedish: <b>eson57</b><br>"+
                         "<BR><BR>" +
                         "Tested by<BR><b>Mats Sjöberg</B><BR>" +
                         "mats@sjoberg.fi<BR><BR>" +

@@ -103,7 +103,7 @@ void PodcatcherUI::addPodcast(QString rssUrl, QString logoUrl)
 
     m_pManager.requestPodcastChannel(QUrl(newPodcast), logoCache);
 
-    emit showInfoBanner("Fetching channel information...");
+    emit showInfoBanner(tr("Fetching channel information..."));
 }
 
 bool PodcatcherUI::isDownloading()
@@ -164,7 +164,7 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
         episode->setLastPlayed(QDateTime());
         episodesModel->refreshEpisode(episode);
 
-        emit showInfoBanner("Podcast episode not found.");
+        emit showInfoBanner(tr("Podcast episode not found."));
         return;
     }
 
@@ -185,7 +185,7 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
     }*/
 
     if (! QDesktopServices::openUrl(file)){
-         emit showInfoBanner("I am sorry! Could not launch audio player for this podcast.");
+         emit showInfoBanner(tr("I am sorry! Could not launch audio player for this podcast."));
     }
 }
 
@@ -287,7 +287,7 @@ void PodcatcherUI::onStreamingUrlResolved(QString streamUrl, QString streamTitle
             this, SLOT(onStreamingUrlResolved(QString, QString)));
 
     if (streamUrl.isEmpty()) {
-        emit showInfoBanner("Unable to stream podcast.");
+        emit showInfoBanner(tr("Unable to stream podcast."));
     } else {
         emit streamingUrlResolved(streamUrl, streamTitle);
     }

@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-podcatcher
 
-DEFINES += PODCATCHER_VERSION=1112
+DEFINES += PODCATCHER_VERSION=1114
 QT += sql xml concurrent
 
 CONFIG += sailfishapp

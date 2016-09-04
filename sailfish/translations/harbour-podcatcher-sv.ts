@@ -9,7 +9,7 @@
         <translation>Podcatcher för SailfishOS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/About.qml" line="117"/>
+        <location filename="../qml/pages/About.qml" line="119"/>
         <source>Licensed and distributed under the &lt;B&gt;GPLv3 license&lt;/B&gt;.&lt;BR&gt;&lt;center&gt;http://www.gnu.org/copyleft/gpl.html&lt;/center&gt;</source>
         <translation>Licensierad och distribuerad under &lt;B&gt;GPLv3-licens&lt;/B&gt;.&lt;BR&gt;&lt;center&gt;http://www.gnu.org/copyleft/gpl.html&lt;/center&gt;</translation>
     </message>
@@ -256,6 +256,92 @@
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="493"/>
+        <source>Unable to stream podcast.</source>
+        <translation>Kan inte strömma podd.</translation>
+    </message>
+</context>
+<context>
+    <name>PodcastManager</name>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="106"/>
+        <source>Unable to add subscription from %1 …</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="138"/>
+        <source>Refreshing episodes...</source>
+        <translation type="unfinished">Uppdaterar avsnitt...</translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="116"/>
+        <source>Already subscribed to &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="266"/>
+        <source>No data received.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="293"/>
+        <source>Podcast feed is not valid. Cannot add subscription...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="392"/>
+        <source>Cannot refresh. Network error.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="405"/>
+        <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="497"/>
+        <source>Podcast episode download failed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="781"/>
+        <source>gPodder.net authentication information required.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="812"/>
+        <source>gPodder.net credentials not accepted. Try again.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="855"/>
+        <source>No subscriptions found from gPodder.net</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastmanager.cpp" line="859"/>
+        <source>Getting subscriptions from gPodder.net...</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>PodcatcherUI</name>
+    <message>
+        <location filename="../src/podcatcherui.cpp" line="106"/>
+        <source>Fetching channel information...</source>
+        <translation>Hämtar kanalinformation...</translation>
+    </message>
+    <message>
+        <location filename="../src/podcatcherui.cpp" line="167"/>
+        <source>Podcast episode not found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcatcherui.cpp" line="188"/>
+        <source>I am sorry! Could not launch audio player for this podcast.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcatcherui.cpp" line="290"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podd.</translation>
     </message>

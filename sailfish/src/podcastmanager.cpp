@@ -103,7 +103,7 @@ void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QStrin
     if (!rssUrl.isValid()) {
         qWarning() << "Provided podcast channel URL is not valid.";
         QString faultyUrlSnippet = rssUrl.toString().left(10);
-        emit showInfoBanner("Unable to add subscription from "+ faultyUrlSnippet +"...");
+        emit showInfoBanner(tr("Unable to add subscription from %1 …").arg(faultyUrlSnippet));
         return;
     }
 
@@ -113,7 +113,7 @@ void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QStrin
     if (m_channelsModel->channelAlreadyExists(channel)) {
         qDebug() << "Channel is already in DB. Not doing anything.";
         delete channel;
-        emit showInfoBanner("Already subscribed to '" + channel->title() + "'.");
+        emit showInfoBanner(tr("Already subscribed to '%1'.").arg(channel->title()));
         return;
     }
 
@@ -135,7 +135,7 @@ void PodcastManager::refreshAllChannels()
 {
     qDebug() << "\n ********* Refresh episodes for all channels ******** \n";
 
-    emit showInfoBanner("Refreshing episodes...");
+    emit showInfoBanner(tr("Refreshing episodes..."));
 
     foreach(PodcastChannel *channel, m_channelsModel->channels()) {
         int channelid = channel->channelDbId();
@@ -262,7 +262,8 @@ void PodcastManager::onPodcastChannelCompleted()
     QByteArray data = reply->readAll();
     if (data.size() < 1) {
         qDebug() << "No data in the network reply. Aborting";
-        emit showInfoBanner("Unable to add subscription from that location");
+        //emit showInfoBanner(tr("Unable to add subscription from that location"));
+        emit showInfoBanner(tr("No data received."));
         return;
     }
 
@@ -289,7 +290,7 @@ void PodcastManager::onPodcastChannelCompleted()
     rssOk = PodcastRSSParser::populateChannelFromChannelXML(channel,
                                                             channel->xml());
     if (rssOk == false) {
-        emit showInfoBanner("Podcast feed is not valid. Cannot add subscription...");
+        emit showInfoBanner(tr("Podcast feed is not valid. Cannot add subscription..."));
         return;
     }
 
@@ -388,7 +389,7 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError error)
 {
     if (error != QNetworkReply::NoError) {
-        emit showInfoBanner("Cannot refresh. Network error.");
+        emit showInfoBanner(tr("Cannot refresh. Network error."));
     }
 }
 
@@ -401,7 +402,7 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
                                                              episodeXmlData);
 
     if (rssOk == false) {
-        emit showInfoBanner("Podcast feed invalid. Cannot download episodes for '" + channel->title() + "'.");
+        emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
         return false;
     }
 
@@ -493,7 +494,7 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
             this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
 
     if (m_isDownloading) {
-        emit showInfoBanner("Podcast episode download failed.");
+        emit showInfoBanner(tr("Podcast episode download failed."));
     }
 
     m_isDownloading = false;
@@ -777,7 +778,7 @@ void PodcastManager::fetchSubscriptionsFromGPodder(QString gpodderUsername, QStr
 
     if (gpodderUsername.isEmpty() ||
         gpodderPassword.isEmpty()) {
-        emit showInfoBanner("gPodder.net authentication information required.");
+        emit showInfoBanner(tr("gPodder.net authentication information required."));
         return;
     }
 
@@ -808,7 +809,7 @@ void PodcastManager::onGPodderAuthRequired(QNetworkReply *reply, QAuthenticator 
         qDebug() << "Could not authenticate user with gPodder.net.";
 
         // This means that we are here a second time and the credentials the user gave are not correct.
-        emit showInfoBanner("gPodder.net credentials not accepted. Try again.");
+        emit showInfoBanner(tr("gPodder.net credentials not accepted. Try again."));
 
         // Clean up the resources. This ends here...
         QNetworkAccessManager *qnam = reply->manager();
@@ -851,11 +852,11 @@ void PodcastManager::onGPodderRequestFinished()
 
     QList<QString> subscriptionUrls = PodcastRSSParser::parseGPodderSubscription(xml);
     if (subscriptionUrls.size() < 1) {
-        emit showInfoBanner("No subscriptions found from gPodder.net");
+        emit showInfoBanner(tr("No subscriptions found from gPodder.net"));
         return;
     }
 
-    emit showInfoBanner("Getting subscriptions from gPodder.net...");
+    emit showInfoBanner(tr("Getting subscriptions from gPodder.net..."));
 
     foreach(QString url, subscriptionUrls) {
         requestPodcastChannelFromGPodder(QUrl(url));
