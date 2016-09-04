@@ -247,7 +247,7 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
     QString downloadPath;
     downloadPath = PODCATCHER_PODCAST_DLDIR;
 
-    // Store downloaded podcasts in "$HOME/.sounds/podcasts"
+    // Store downloaded podcasts in "$HOME/Music/podcasts"
     QDir dirpath(downloadPath);
     if (!dirpath.exists()) {
         dirpath.mkpath(downloadPath);
@@ -264,7 +264,20 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
         return;
     }
 
-    file.write(reply->readAll());
+    try{
+        file.write(reply->readAll());
+    }
+    catch(std::bad_alloc& ba){
+        qDebug() << "File too large, write it piecewise";
+        std::vector<char> buffer(4096);
+        qint64 bytesRead;
+
+        while((bytesRead = reply->read(&buffer[0], buffer.size())) >0){
+            file.write(&buffer[0], bytesRead);
+        }
+    }
+
+    //
     file.close();
 
     QFileInfo fileInfo(file);
