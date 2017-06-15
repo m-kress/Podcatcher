@@ -143,6 +143,7 @@ private:
    MGConfItem *m_keepNumEpisodesConf;
    MGConfItem *m_autoDelUnplayedConf;
 
+
     QList<PodcastChannel *> m_cleanupChannels;
     QFutureWatcher<void> m_futureWatcher;
 

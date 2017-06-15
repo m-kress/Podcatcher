@@ -91,7 +91,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="70"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="71"/>
         <source>Published: </source>
         <translation>Veröffentlicht: </translation>
     </message>
@@ -261,6 +261,24 @@
     </message>
 </context>
 <context>
+    <name>PodcastEpisodesModel</name>
+    <message>
+        <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
+        <source>dd.MM.yyyy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <source>Last played: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <source>dd.MM.yyyy hh:mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PodcastManager</name>
     <message>
         <location filename="../src/podcastmanager.cpp" line="106"/>
@@ -326,22 +344,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="106"/>
+        <location filename="../src/podcatcherui.cpp" line="112"/>
         <source>Fetching channel information...</source>
         <translation>Lade Kanalinformationen …</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="167"/>
+        <location filename="../src/podcatcherui.cpp" line="173"/>
         <source>Podcast episode not found.</source>
         <translation>Podcastfolge nicht gefunden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="188"/>
+        <location filename="../src/podcatcherui.cpp" line="186"/>
+        <source>Mediaplayer program not found!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcatcherui.cpp" line="196"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Es tut mir leid. Der Audioplayer konnte nicht gestartet werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="290"/>
+        <location filename="../src/podcatcherui.cpp" line="299"/>
         <source>Unable to stream podcast.</source>
         <translatorcomment>Podcast konnte nicht gestreamt werden.</translatorcomment>
         <translation type="unfinished"></translation>
@@ -368,42 +391,67 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="58"/>
+        <location filename="../qml/pages/Settings.qml" line="65"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="63"/>
+        <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>Auto-download podcasts</source>
         <translation>Auto-Download der Podcasts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="64"/>
+        <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
         <translation>Soll Podcatcher automatisch neue Folgen herunterladen, wenn das Gerät mit einem WLAN berbunden ist.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="70"/>
+        <location filename="../qml/pages/Settings.qml" line="77"/>
         <source>Episodes to auto-download</source>
         <translation>Folgen automatisch herunterladen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="87"/>
+        <location filename="../qml/pages/Settings.qml" line="94"/>
         <source>Remove old episodes</source>
         <translation>Alte Folgen löschen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="71"/>
+        <location filename="../qml/pages/Settings.qml" line="78"/>
         <source>The number of podcast episodes that should be automatically downloaded.</source>
         <translation>Anzahl der automatisch heruntergeladenen Podcasts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="88"/>
+        <location filename="../qml/pages/Settings.qml" line="95"/>
         <source>Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.</source>
         <translation>Entferne heruntergeladene Folgen älter als die angegebene Anzahl an Tagen. 0 bedeutet keine zu entfernen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="106"/>
+        <location filename="../qml/pages/Settings.qml" line="112"/>
+        <source>Use mediaplayer </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="113"/>
+        <source>Which external program should be used for playing the downloaded podcasts?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="117"/>
+        <source>System Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="121"/>
+        <source>Jolla Mediaplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="125"/>
+        <source>Unplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="133"/>
         <source>Keep unplayed episodes</source>
         <translation>Behalte ungespiele Folgen</translation>
     </message>

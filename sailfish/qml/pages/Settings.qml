@@ -25,6 +25,7 @@ Dialog {
 
     property variant downloadNumbers: ['1', '5', '0'];
     property variant keepDays: ['5', '10', '0'];
+    property variant players: ['', '/usr/bin/jolla-mediaplayer', '/usr/bin/harbour-unplayer']
 
     ConfigurationValue{
         id:autoDownloadConf
@@ -47,6 +48,12 @@ Dialog {
     ConfigurationValue{
         id: keepUnplayedConf
         key: "/apps/ControlPanel/Podcatcher/keep_unplayed"
+        defaultValue: 0
+    }
+
+    ConfigurationValue{
+        id: mediaPlayerConf
+        key: "/apps/ControlPanel/Podcatcher/mediaplayer"
         defaultValue: 0
     }
 
@@ -100,6 +107,26 @@ Dialog {
     }
 
 
+    ComboBox{
+        id: mediaplayer
+        label: qsTr("Use mediaplayer ")
+        description: qsTr("Which external program should be used for playing the downloaded podcasts?")
+
+        menu: ContextMenu{
+            MenuItem{
+                text: qsTr("System Default")
+            }
+
+            MenuItem{
+                text: qsTr("Jolla Mediaplayer")
+            }
+
+            MenuItem{
+                text: qsTr("Unplayer")
+            }
+        }
+    }
+
 
     TextSwitch{
         id: keepUnplayed
@@ -112,13 +139,15 @@ onOpened: {
     autoDownloadNum.currentIndex = downloadNumbers.indexOf(autoDownloadNumConf.value)
     keepEpisodes.currentIndex = keepDays.indexOf(keepEpisodesConf.value)
     keepUnplayed.checked = keepUnplayedConf.value;
+    mediaplayer.currentIndex = players.indexOf(mediaPlayerConf.value)
 }
 
 onAccepted: {
     autoDownloadConf.value = autoDownload.checked;
     autoDownloadNumConf.value = autoDownloadNum.value;
     keepEpisodesConf.value = keepEpisodes.value;
-     keepUnplayedConf.value = keepUnplayed.checked;
+    keepUnplayedConf.value = keepUnplayed.checked;
+    mediaPlayerConf.value = players[mediaplayer.currentIndex];
 }
 
 

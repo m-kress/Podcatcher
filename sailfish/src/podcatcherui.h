@@ -23,6 +23,8 @@
 #include <sailfishapp.h>
 
 
+#include <MGConfItem>
+
 #include "podcastmanager.h"
 #include "podcastchannelsmodel.h"
 
@@ -68,6 +70,8 @@ private slots:
     void onStartStreaming(int channelId, int index);
     void onStreamingUrlResolved(QString streamUrl, QString streamTitle);
     void onAutoDownloadChanged(int channelId, bool autoDownload);
+    void onMediaPlayerChanged();
+
 
 private:
     PodcastManager m_pManager;
@@ -76,7 +80,10 @@ private:
     QMap<QString, QString> logoCache;
     QQuickView* view;
 
-     bool isDownloading();
+    MGConfItem *m_mediaPlayerConf;
+    QString m_mediaPlayerPath;
+
+    bool isDownloading();
 
 
 };

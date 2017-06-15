@@ -36,6 +36,12 @@ PodcatcherUI::PodcatcherUI()
 
     view->setSource(SailfishApp::pathTo("qml/Podcatcher.qml"));
 
+    m_mediaPlayerConf = new MGConfItem("/apps/ControlPanel/Podcatcher/mediaplayer", this);
+    m_mediaPlayerPath = m_mediaPlayerConf->value().toString();
+    qDebug() << "  * Mediaplayer:" << m_mediaPlayerPath;
+
+    connect(m_mediaPlayerConf, SIGNAL(valueChanged()),
+            this, SLOT(onMediaPlayerChanged()));
 
     modelFactory = PodcastEpisodesModelFactory::episodesFactory();
 
@@ -128,10 +134,10 @@ void PodcatcherUI::onShowChannel(QString channelId)
         channel->setDescription(newDesc);
     }
 
-   view->rootContext()->setContextProperty("channel", channel);
+    view->rootContext()->setContextProperty("channel", channel);
 
-   PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channel->channelDbId());   // FIXME: Do not expose DB id.
-   view->rootContext()->setContextProperty("episodesModel", episodesModel);
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channel->channelDbId());   // FIXME: Do not expose DB id.
+    view->rootContext()->setContextProperty("episodesModel", episodesModel);
 }
 
 
@@ -174,18 +180,21 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
 
     qDebug() << "Launching the music player for file" << file;
 
-    /*
-    ContentAction::Action launchPlayerAction;
-    launchPlayerAction = ContentAction::Action::defaultActionForFile(file);
-    if (!launchPlayerAction.isValid()) {
-        qDebug() << "Action for file is not valid!";
-        emit showInfoBanner("I am sorry! Could not launch audio player for this podcast.");
-    } else {
-        launchPlayerAction.trigger();
-    }*/
+    if (!m_mediaPlayerPath.isEmpty()){
+        QFile player(m_mediaPlayerPath);
+        if (!player.exists()){
+            emit showInfoBanner(tr("Mediaplayer program not found!"));
+            return;
+        }
 
-    if (! QDesktopServices::openUrl(file)){
-         emit showInfoBanner(tr("I am sorry! Could not launch audio player for this podcast."));
+        QProcess::startDetached(m_mediaPlayerPath, QStringList() << file.fileName());
+
+
+
+    }else{
+        if (! QDesktopServices::openUrl(file)){
+            emit showInfoBanner(tr("I am sorry! Could not launch audio player for this podcast."));
+        }
     }
 }
 
@@ -284,7 +293,7 @@ void PodcatcherUI::onStreamingUrlResolved(QString streamUrl, QString streamTitle
 {
     PodcastEpisode *episode = qobject_cast<PodcastEpisode *>(sender());
     disconnect(episode, SIGNAL(streamingUrlResolved(QString, QString)),
-            this, SLOT(onStreamingUrlResolved(QString, QString)));
+               this, SLOT(onStreamingUrlResolved(QString, QString)));
 
     if (streamUrl.isEmpty()) {
         emit showInfoBanner(tr("Unable to stream podcast."));
@@ -298,6 +307,11 @@ void PodcatcherUI::onAutoDownloadChanged(int channelId, bool autoDownload)
     PodcastChannel *channel = m_channelsModel->podcastChannelById(channelId);
     channel->setAutoDownloadOn(autoDownload);
     m_channelsModel->updateChannel(channel);
+}
+
+void PodcatcherUI::onMediaPlayerChanged(){
+    m_mediaPlayerPath = m_mediaPlayerConf->value().toString();
+    qDebug() << "Setting changed: Mediaplayer: " << m_mediaPlayerPath;
 }
 
 void PodcatcherUI::importFromGPodder(QString username, QString password)

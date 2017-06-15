@@ -91,7 +91,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="70"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="71"/>
         <source>Published: </source>
         <translation>Publicerad: </translation>
     </message>
@@ -261,6 +261,24 @@
     </message>
 </context>
 <context>
+    <name>PodcastEpisodesModel</name>
+    <message>
+        <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
+        <source>dd.MM.yyyy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <source>Last played: %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <source>dd.MM.yyyy hh:mm</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PodcastManager</name>
     <message>
         <location filename="../src/podcastmanager.cpp" line="106"/>
@@ -326,22 +344,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="106"/>
+        <location filename="../src/podcatcherui.cpp" line="112"/>
         <source>Fetching channel information...</source>
         <translation>Hämtar kanalinformation...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="167"/>
+        <location filename="../src/podcatcherui.cpp" line="173"/>
         <source>Podcast episode not found.</source>
         <translation>Poddavsnittet kan inte hittas.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="188"/>
+        <location filename="../src/podcatcherui.cpp" line="186"/>
+        <source>Mediaplayer program not found!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcatcherui.cpp" line="196"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Tyvärr! Kunde inte spela upp den här podden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="290"/>
+        <location filename="../src/podcatcherui.cpp" line="299"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podd.</translation>
     </message>
@@ -367,45 +390,69 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="58"/>
+        <location filename="../qml/pages/Settings.qml" line="65"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="63"/>
+        <location filename="../qml/pages/Settings.qml" line="70"/>
         <source>Auto-download podcasts</source>
         <translation>Ladda ner poddar automatiskt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="64"/>
+        <location filename="../qml/pages/Settings.qml" line="71"/>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
         <translation>Podcatcher laddar ner nya avsnitt automatiskt, när enheten är ansluten till WiFi.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="70"/>
+        <location filename="../qml/pages/Settings.qml" line="77"/>
         <source>Episodes to auto-download</source>
         <translation>Avsnitt att ladda ner automatiskt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="87"/>
+        <location filename="../qml/pages/Settings.qml" line="94"/>
         <source>Remove old episodes</source>
         <translation>Ta bort gamla avsnitt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="71"/>
+        <location filename="../qml/pages/Settings.qml" line="78"/>
         <source>The number of podcast episodes that should be automatically downloaded.</source>
         <translation>Antal poddavsnitt som skall laddas ner automatiskt.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="88"/>
+        <location filename="../qml/pages/Settings.qml" line="95"/>
         <source>Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.</source>
         <translation>Ta bort poddavsnitt som är äldre än det antal dagar som anges här (0 = Ta inte bort något).</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="106"/>
+        <location filename="../qml/pages/Settings.qml" line="112"/>
+        <source>Use mediaplayer </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="113"/>
+        <source>Which external program should be used for playing the downloaded podcasts?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="117"/>
+        <source>System Default</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="121"/>
+        <source>Jolla Mediaplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="125"/>
+        <source>Unplayer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="133"/>
         <source>Keep unplayed episodes</source>
         <translation>Spara ospelade avsnitt</translation>
     </message>
 </context>
 </TS>
-
