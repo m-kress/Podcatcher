@@ -219,43 +219,37 @@
 <context>
     <name>PodcastEpisodesList</name>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="37"/>
-        <source>Downloaded </source>
-        <translation>Heruntergeladen </translation>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="60"/>
+        <source>Downloaded %1 of total %2.</source>
+        <translation>%1 von %2 heruntergeladen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="49"/>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="54"/>
-        <source> of total </source>
-        <translation> von </translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="98"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="105"/>
         <source>Delete downloaded podcast</source>
         <translation>Heruntergeladenen Podcast löschen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="101"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="108"/>
         <source>Deleting</source>
         <translation>Lösche</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="109"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="116"/>
         <source>Start streaming the podcast</source>
         <translation>Streame Podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="205"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="212"/>
         <source>Queued</source>
         <translation>In der Warteschlange</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="304"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="311"/>
         <source>No media</source>
         <translation>Keine Medien</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="493"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="500"/>
         <source>Unable to stream podcast.</source>
         <translation>Kann Podcast nicht streamen.</translation>
     </message>

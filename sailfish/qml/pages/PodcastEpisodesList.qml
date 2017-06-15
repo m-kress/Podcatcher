@@ -34,26 +34,33 @@ Item {
         var downloaded_mbs = Math.round(downloadedStatus / 1024);  // 1MB = 1024kB
         var total_mbs = Math.round(totalDownloadStatus / 1024); // 1MB = 1024kB
 
-        var download_statusText = qsTr("Downloaded ");
+        var currSize;
 
         if (downloaded_mbs == 0) {
-            download_statusText += Math.round(downloadedStatus % 1024) + " kB";
+            currSize = Math.round(downloadedStatus % 1024) + " kB";
         } else {
-            download_statusText += (downloadedStatus / 1024).toFixed(1) + " MB";
+            currSize = (downloadedStatus / 1024).toFixed(1) + " MB";
         }
 
         var total;
+        var totalSize;
+
         if (total_mbs == 0) {
             total = Math.round(totalDownloadStatus % 1024);
             if (total > 0 ) {
-                download_statusText += qsTr(" of total ") + total + " kB";
+                totalSize =  total + " kB";
             }
         } else {
             total = Math.round(totalDownloadStatus / 1024);
             if (total > 0 ) {
-                download_statusText += qsTr(" of total ") + total + " MB";
+                totalSize =  total + " MB";
             }
         }
+
+        var download_statusText=qsTr("Downloaded %1 of total %2.");
+
+        download_statusText = download_statusText.arg(currSize);
+        download_statusText = download_statusText.arg(totalSize);
 
         return download_statusText;
     }
@@ -70,7 +77,7 @@ Item {
             id: podcastEpisodesList
             anchors.fill: podcastEpisodesInfoRect
             model: episodesModel
-            clip: true            
+            clip: true
             anchors.top:  podcastEpisodesInfoRect.top
             cacheBuffer: parent.height
 
