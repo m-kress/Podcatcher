@@ -1,6 +1,7 @@
 /**
  * This file is part of Podcatcher for Sailfish OS.
  * Author: Johan Paul (johan.paul@gmail.com)
+ *         Moritz Carmesin (carolus@carmesinus.de)
  *
  * Podcatcher for Sailfish OS is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -52,27 +53,33 @@ bool PodcastRSSParser::populateChannelFromChannelXML(PodcastChannel *channel, QB
 
     QDomNode channelNode = docElement.elementsByTagName("channel").at(0);    // Get the only channel element we have.
 
-    if(channelNode.isNull()) //maybe a youtube feed
-        return false;
+    if(!channelNode.isNull()){ // standard RSS
 
-    channel->setTitle(channelNode.firstChildElement("title").text());        // Find the title.
+        channel->setTitle(channelNode.firstChildElement("title").text());        // Find the title.
 
-    channel->setDescription(channelNode.firstChildElement("description").text());
+        channel->setDescription(channelNode.firstChildElement("description").text());
 
-    if (channel->logoUrl().isEmpty()) {
-        QDomNodeList nodeList = channelNode.toElement().elementsByTagName("image");
-        QDomNode imageNode = nodeList.at(0); // Find the logo.
-        QString url = imageNode.firstChildElement("url").text(); // And the url to it.
+        if (channel->logoUrl().isEmpty()) {
+            QDomNodeList nodeList = channelNode.toElement().elementsByTagName("image");
+            QDomNode imageNode = nodeList.at(0); // Find the logo.
+            QString url = imageNode.firstChildElement("url").text(); // And the url to it.
 
-        if (url.isEmpty()){
-            nodeList = channelNode.toElement().elementsByTagName("itunes:image");
-            imageNode = nodeList.at(0);
-            url = imageNode.toElement().attribute("href");
+            if (url.isEmpty()){
+                nodeList = channelNode.toElement().elementsByTagName("itunes:image");
+                imageNode = nodeList.at(0);
+                url = imageNode.toElement().attribute("href");
+            }
+
+            if (!url.isEmpty())
+                channel->setLogoUrl(url);
         }
+    }else{
+        if (docElement.tagName() != "feed")
+            return false; //no atom feed
 
-        if (!url.isEmpty())
-            channel->setLogoUrl(url);
-
+        channel->setTitle(docElement.firstChildElement("title").text());
+        channel->setDescription(docElement.firstChildElement("subtitle").text());
+        channel->setLogoUrl(docElement.firstChildElement("logo").text());
     }
 
     channel->dumpInfo();
@@ -96,44 +103,90 @@ bool PodcastRSSParser::populateEpisodesFromChannelXML(QList<PodcastEpisode *> *e
     QDomElement docElement = xmlDocument.documentElement();
 
     QDomNodeList channelNodes = docElement.elementsByTagName("item");  // Find all the "item nodes from the feed XML.
-    qDebug() << "I have" << channelNodes.size() << "episode elements";
 
-    for (uint i=0; i<channelNodes.length(); i++) {
-        QDomNode node = channelNodes.at(i);
+    if(channelNodes.length() > 0){ // RSS feed
 
-        if (isEmptyItem(node)) {
-            qWarning() << "Empty podcast item. Ignoring...";
-            continue;
+        qDebug() << "I have" << channelNodes.size() << "episode elements";
+
+        for (uint i=0; i<channelNodes.length(); i++) {
+            QDomNode node = channelNodes.at(i);
+
+            if (isEmptyItem(node)) {
+                qWarning() << "Empty podcast item. Ignoring...";
+                continue;
+            }
+
+            PodcastEpisode *episode = new PodcastEpisode;
+            QDateTime pubDate = parsePubDate(node);
+
+            if (!pubDate.isValid()) {
+                qWarning() << "Could not parse pubDate for podcast episode!";
+                delete episode;
+                continue;
+            } else {
+                episode->setPubTime(pubDate);
+            }
+
+            episode->setTitle(node.firstChildElement("title").text());
+            episode->setDescription(node.firstChildElement("description").text());
+
+            if (episode->description().isEmpty())
+                episode->setDescription(node.firstChildElement("content:encoded").text());
+
+            if (episode->description().isEmpty())
+                episode->setDescription(node.firstChildElement("itunes:summary").text());
+
+
+            episode->setDuration(node.firstChildElement("itunes:duration").text());
+
+            QDomNamedNodeMap attrMap = node.firstChildElement("enclosure").attributes();
+            episode->setDownloadLink(attrMap.namedItem("url").toAttr().value());
+            episode->setDownloadSize(attrMap.namedItem("length").toAttr().value().toInt());
+
+            episodes->append(episode);
         }
+    }else{
+        channelNodes = docElement.elementsByTagName("entry");
+        if(channelNodes.length() > 0){ // Atom feed
 
-        PodcastEpisode *episode = new PodcastEpisode;
-        QDateTime pubDate = parsePubDate(node);
+            qDebug() << "I have" << channelNodes.size() << "episode elements";
 
-        if (!pubDate.isValid()) {
-            qWarning() << "Could not parse pubDate for podcast episode!";
-            delete episode;
-            continue;
-        } else {
-            episode->setPubTime(pubDate);
+            for (uint i=0; i<channelNodes.length(); i++) {
+                QDomNode node = channelNodes.at(i);
+
+                if (isEmptyItem(node)) {
+                    qWarning() << "Empty podcast item. Ignoring...";
+                    continue;
+                }
+
+                PodcastEpisode *episode = new PodcastEpisode;
+                QDateTime pubDate = parsePubDate(node);
+
+                if (!pubDate.isValid()) {
+                    qWarning() << "Could not parse pubDate for podcast episode!";
+                    delete episode;
+                    continue;
+                } else {
+                    episode->setPubTime(pubDate);
+                }
+
+                episode->setTitle(node.firstChildElement("title").text());
+                episode->setDescription(node.firstChildElement("description").text());
+
+// TODO: WEB-Link Episodes
+
+
+//                episode->setDuration(node.firstChildElement("itunes:duration").text());
+
+//                QDomNamedNodeMap attrMap = node.firstChildElement("enclosure").attributes();
+//                episode->setDownloadLink(attrMap.namedItem("url").toAttr().value());
+//                episode->setDownloadSize(attrMap.namedItem("length").toAttr().value().toInt());
+
+
+
+                episodes->append(episode);
+            }
         }
-
-        episode->setTitle(node.firstChildElement("title").text());
-        episode->setDescription(node.firstChildElement("description").text());
-
-        if (episode->description().isEmpty())
-            episode->setDescription(node.firstChildElement("content:encoded").text());
-
-        if (episode->description().isEmpty())
-            episode->setDescription(node.firstChildElement("itunes:summary").text());
-
-
-        episode->setDuration(node.firstChildElement("itunes:duration").text());
-
-        QDomNamedNodeMap attrMap = node.firstChildElement("enclosure").attributes();
-        episode->setDownloadLink(attrMap.namedItem("url").toAttr().value());
-        episode->setDownloadSize(attrMap.namedItem("length").toAttr().value().toInt());
-
-        episodes->append(episode);
     }
 
     return true;
@@ -204,6 +257,9 @@ QDateTime PodcastRSSParser::parsePubDate(const QDomNode &node)
     // information as QDateTime cannot parse that. Create a QDateTime from this string
     // and store it in the ChannelEpisode.
     QString pubDateString = node.firstChildElement("pubDate").text();
+    if(pubDateString.isEmpty()){
+        pubDateString = node.firstChildElement("published").text();
+    }
     qDebug() << "Feed pubdate: " << pubDateString;
 
     // Some feeds use just "date". Let's go for that as well is we didn't find it in "pubDate".

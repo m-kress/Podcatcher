@@ -1,6 +1,7 @@
 /**
  * This file is part of Podcatcher for Sailfish OS.
  * Author: Johan Paul (johan.paul@gmail.com)
+ * Moritz Carmesin (carolus@carmesinus.de)
  *
  * Podcatcher for Sailfish OS is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

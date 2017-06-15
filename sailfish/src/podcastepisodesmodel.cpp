@@ -1,6 +1,7 @@
 /**
  * This file is part of Podcatcher for Sailfish OS.
  * Author: Johan Paul (johan.paul@gmail.com)
+ *         Moritz Carmesin
  *
  * Podcatcher for Sailfish OS is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -62,7 +63,7 @@ QVariant PodcastEpisodesModel::data(const QModelIndex &index, int role) const
         return episode->title();
         break;
     case PubRole:
-        return episode->pubTime().toString("dd.MM.yyyy");
+        return episode->pubTime().toString(tr("dd.MM.yyyy"));
         break;
     case DbidRole:
         return episode->dbid();
@@ -81,7 +82,7 @@ QVariant PodcastEpisodesModel::data(const QModelIndex &index, int role) const
         break;
     case LastTimePlayedRole:
         if (episode->episodeState() == "played") {
-            return QString("Last played: %1").arg(episode->lastPlayed().toString("dd.MM.yyyy hh:mm"));
+            return QString(tr("Last played: %1")).arg(episode->lastPlayed().toString(tr("dd.MM.yyyy hh:mm")));
         } else  {
             return QString();
         }
