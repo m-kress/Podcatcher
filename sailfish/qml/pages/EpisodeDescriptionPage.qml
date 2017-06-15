@@ -35,6 +35,7 @@ Page {
             id: episodesPageColumn
             //width:parent.width
             anchors.fill: parent
+            anchors.bottomMargin: Theme.paddingMedium
             spacing: Theme.paddingMedium
 
             PageHeader{
@@ -75,18 +76,21 @@ Page {
             }
 
             Separator{
+                id:sep
                 width: parent.width
             }
+
 
             SilicaFlickable {
                 id: episodeDescriptionFlickable
                 width: parent.width - 2*Theme.horizontalPageMargin
-                height: parent.height - podcastEpisodeRect.height
+                height: parent.height - mainPageTitle.height -  podcastEpisodeRect.height - 3*Theme.paddingMedium - sep.height
                 contentWidth: episodeDescription.width
                 contentHeight: episodeDescription.height + Theme.paddingMedium
                 clip: true
                 flickableDirection: Flickable.VerticalFlick
                 anchors.horizontalCenter: parent.horizontalCenter
+
 
                 Label {
                     id: episodeDescription
@@ -95,7 +99,8 @@ Page {
                     height: Text.paintedHeight
                     font.pixelSize: Theme.fontSizeSmall
                     anchors.top:  parent.top
-                    anchors.topMargin: 10
+                    anchors.topMargin: Theme.paddingMedium
+                    anchors.bottomMargin: Theme.paddingMedium
 
                     text: episodeDescriptionPage.episodeDescriptionText
 
