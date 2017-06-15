@@ -359,12 +359,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="196"/>
+        <location filename="../src/podcatcherui.cpp" line="198"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Tyvärr! Kunde inte spela upp den här podden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="299"/>
+        <location filename="../src/podcatcherui.cpp" line="301"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podd.</translation>
     </message>

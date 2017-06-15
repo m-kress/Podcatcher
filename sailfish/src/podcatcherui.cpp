@@ -178,7 +178,7 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
     episodesModel->refreshEpisode(episode);
     m_channelsModel->refreshChannel(channelId);
 
-    qDebug() << "Launching the music player for file" << file;
+    qDebug() << "Launching the music player for file" << file.fileName();
 
     if (!m_mediaPlayerPath.isEmpty()){
         QFile player(m_mediaPlayerPath);
@@ -187,8 +187,10 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
             return;
         }
 
-        QProcess::startDetached(m_mediaPlayerPath, QStringList() << file.fileName());
-
+        QString cmd = m_mediaPlayerPath + " " + file.fileName() + " &";
+        qDebug() << "Running "<< cmd;
+        //QProcess::startDetached(m_mediaPlayerPath + " " + file.fileName());
+        system(cmd.toLocal8Bit());
 
 
     }else{

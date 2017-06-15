@@ -106,7 +106,7 @@
     <message>
         <location filename="../qml/pages/ImportFromGPodder.qml" line="32"/>
         <source>Import</source>
-        <translation type="unfinished">Importieren</translation>
+        <translation>Importieren</translation>
     </message>
     <message>
         <location filename="../qml/pages/ImportFromGPodder.qml" line="40"/>
@@ -164,7 +164,7 @@
     <message>
         <location filename="../qml/pages/MainPage.qml" line="276"/>
         <source>Refreshing all subscriptions...</source>
-        <translation type="unfinished">Aktualisiere alle Abonnements…</translation>
+        <translation>Aktualisiere alle Abonnements…</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="298"/>
@@ -257,7 +257,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="493"/>
         <source>Unable to stream podcast.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kann Podcast nicht streamen.</translation>
     </message>
 </context>
 <context>
@@ -265,17 +265,17 @@
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
         <source>dd.MM.yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation>dd.MM.yyyy</translation>
     </message>
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
         <source>Last played: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Zuletzt gehört: %1</translation>
     </message>
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
         <source>dd.MM.yyyy hh:mm</source>
-        <translation type="unfinished"></translation>
+        <translation>dd.MM.yyyy hh:mm</translation>
     </message>
 </context>
 <context>
@@ -283,7 +283,7 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="106"/>
         <source>Unable to add subscription from %1 …</source>
-        <translation>Kann %1… nicht abonnieren.</translation>
+        <translation>Kann %1 nicht abonnieren.</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="138"/>
@@ -356,18 +356,17 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="186"/>
         <source>Mediaplayer program not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mediaplayer-App nicht gefunden!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="196"/>
+        <location filename="../src/podcatcherui.cpp" line="198"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Es tut mir leid. Der Audioplayer konnte nicht gestartet werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="299"/>
+        <location filename="../src/podcatcherui.cpp" line="301"/>
         <source>Unable to stream podcast.</source>
-        <translatorcomment>Podcast konnte nicht gestreamt werden.</translatorcomment>
-        <translation type="unfinished"></translation>
+        <translation>Podcast konnte nicht gestreamt werden.</translation>
     </message>
 </context>
 <context>
@@ -428,27 +427,27 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="112"/>
         <source>Use mediaplayer </source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendeter Mediaplayer</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="113"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Welcher Mediaplayer soll zum Abspielen der heruntergeladenen Downloads verwendet werden?</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="117"/>
         <source>System Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemstandard</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="121"/>
         <source>Jolla Mediaplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Jolla Mediaplayer</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="125"/>
         <source>Unplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Unplayer</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="133"/>
