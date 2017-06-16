@@ -221,7 +221,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="60"/>
         <source>Downloaded %1 of total %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 nerladdat, av totalt %2.</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="105"/>
@@ -259,17 +259,17 @@
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
         <source>dd.MM.yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation>yyyy-MM-dd</translation>
     </message>
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
         <source>Last played: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Senast spelad: %1</translation>
     </message>
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
         <source>dd.MM.yyyy hh:mm</source>
-        <translation type="unfinished"></translation>
+        <translation>yyyy-MM-dd hh:mm</translation>
     </message>
 </context>
 <context>
@@ -350,7 +350,7 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="186"/>
         <source>Mediaplayer program not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mediaspelaren kunde inte hittas!</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="198"/>
@@ -421,27 +421,27 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="112"/>
         <source>Use mediaplayer </source>
-        <translation type="unfinished"></translation>
+        <translation>Använd mediaspelaren </translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="113"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Vilket externt program skall användas för att spela upp de nerladdade poddarna?</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="117"/>
         <source>System Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Systemstandard</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="121"/>
         <source>Jolla Mediaplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Jolla Mediaspelare</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="125"/>
         <source>Unplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Unplayer</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="133"/>
