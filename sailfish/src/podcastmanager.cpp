@@ -175,6 +175,7 @@ void PodcastManager::refreshPodcastChannelEpisodes(PodcastChannel *channel, bool
     request.setRawHeader("User-Agent", "Podcatcher Podcast client");
     request.setUrl(rssUrl);
 
+
     QNetworkReply *reply = m_networkManager->get(request);
 
     insertChannelForNetworkReply(reply, channel);
@@ -376,6 +377,36 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
         qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
         return;
     }
+
+    qDebug() << "Status Code: " << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
+
+
+    QString redirectedUrl = redirectedRequest(reply);
+    if (!redirectedUrl.isEmpty()) {
+        // TODO: Update feed URL if permanent redirect
+        reply->deleteLater();
+
+        QNetworkRequest request;
+        request.setRawHeader("User-Agent", "Podcatcher Podcast client");
+        request.setUrl(redirectedUrl);
+
+
+        QNetworkReply *reply = m_networkManager->get(request);
+
+        insertChannelForNetworkReply(reply, channel);
+
+        connect(reply, SIGNAL(finished()),
+                this, SLOT(onPodcastEpisodesRequestCompleted()));
+
+        connect(reply, SIGNAL(error(QNetworkReply::NetworkError)),
+                this, SLOT(onPodcastEpisodesRequestError(QNetworkReply::NetworkError)));
+
+
+        return;
+    }
+
+
+
 
     if (reply != 0) {
         QByteArray episodeXmlData = reply->readAll();
