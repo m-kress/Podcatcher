@@ -79,7 +79,6 @@ Item {
             model: episodesModel
             clip: true
             anchors.top:  podcastEpisodesInfoRect.top
-            cacheBuffer: parent.height
 
             delegate: ListItem {
                 id: podcastItem
@@ -310,7 +309,7 @@ Item {
                     visible: false
                     text: qsTr("No media")
                     anchors.right: parent.right
-                    font.pointSize: Theme.fontSizeSmall
+                    font.pixelSize: Theme.fontSizeSmall
                     anchors.rightMargin: 5
                     anchors.verticalCenter: parent.verticalCenter
                     width: 170
