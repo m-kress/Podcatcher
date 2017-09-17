@@ -35,15 +35,13 @@ Page {
 
     SilicaFlickable{
         anchors.fill: parent
-        PullDownMenu {
 
+        PullDownMenu {
 
 
             MenuItem {
                 text: qsTr("Import podcasts from gPodder")
                 onClicked: {
-                    //pageStack.push(Qt.resolvedUrl("ImportFromGPodder.qml"))
-                    //importFromGPodderSheet.open();
                     pageStack.push(importFromGPodderComponent)
 
                 }
@@ -67,54 +65,27 @@ Page {
 
         }
 
-        BusyIndicator {
-            id: loadingIndicator
-            anchors.centerIn: parent
-            visible: (popularPodcastsModel.status == XmlListModel.Loading );
-            running: (popularPodcastsModel.status == XmlListModel.Loading );
-            opacity: 1.0
-            size: BusyIndicatorSize.Large
-        }
-
-        Item {
-            anchors.centerIn: parent;
-            width: parent.width
-            visible: (popularPodcastsModel.status == XmlListModel.Error);
-            Label {
-                anchors.centerIn: parent
-                text: qsTr("I am sorry!<BR><BR>")
-                font.pixelSize: 25
-                font.bold: true
-                width: parent.width
-                elide: Text.ElideRight
-            }
-
-            Label {
-                anchors.centerIn: parent
-                text: qsTr("Cannot get popular podcasts at this time.")
-                width: parent.width
-                elide: Text.ElideRight
-            }
-        }
-
-        PageHeader{
-            id: queryPageTitle
-            title: qsTr("Popular podcasts")
-        }
-
 
         SilicaGridView {
             id: popularPodcastsGrid
+            anchors.fill: parent
+            anchors.bottomMargin: Theme.paddingMedium
+
+
             model: popularPodcastsModel
-            cellWidth: (Screen.width-2*Theme.horizontalPageMargin)/3;
-            cellHeight: cellWidth+3*Theme.paddingSmall + 2*Theme.fontSizeTiny + Theme.fontSizeHuge
-            width: (cellWidth * 3) + 1
-            height: parent.height - queryPageTitle.height - Theme.paddingLarge
-            anchors.top: queryPageTitle.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
+            cellWidth: (Screen.width)/3;
+            cellHeight: cellWidth + 2*Theme.paddingMedium + 2*Theme.paddingSmall + 3*Theme.fontSizeTiny
+
             clip: true
 
+            header:             PageHeader{
+                id: queryPageTitle
+                title: qsTr("Popular podcasts")
+            }
+
+
             VerticalScrollDecorator{}
+
 
             delegate:
                 Item {
@@ -126,15 +97,19 @@ Page {
                     width: popularPodcastsGrid.cellWidth
                     height: popularPodcastsGrid.cellHeight
 
+
                     Rectangle {
                         id: popularItemId
                         border.width: 1
                         border.color: "black"
                         color: "black"
                         smooth: true
-                        width: parent.width-Theme.paddingLarge
-                        height: parent.height - subscribeButton.height-3*Theme.paddingSmall
-                        anchors.centerIn: loadedItem
+                        width: parent.width-2
+                        height: parent.height /*- subscribeButton.height*/-3*Theme.paddingSmall
+                        //anchors.centerIn: loadedItem
+                        anchors.top: parent.top
+                        anchors.topMargin: Theme.paddingMedium
+                        anchors.horizontalCenter: parent.Center
                         opacity: 0.2
 
                         BusyIndicator {
@@ -158,35 +133,46 @@ Page {
 
                         Label {
                             id: browseTitle
-                            text: title.substring(0, 25);
+                            text: title
                             anchors.top: popularLogoId.bottom;
                             anchors.horizontalCenter: parent.horizontalCenter
-                            anchors.topMargin: 5
+                            anchors.topMargin: Theme.paddingSmall
+                            height: 3*Theme.fontSizeTiny
+
 
                             font.pixelSize: Theme.fontSizeTiny
                             color: "black"
                             width: popularItemId.width - 2*Theme.paddingSmall
+                            elide:  TruncationMode.Elide
                             wrapMode: Text.WordWrap
                         }
 
-                    }
-                    Button {
-                        id: subscribeButton
-                        text: qsTr("Subscribe")
-                        anchors.horizontalCenter: popularItemId.horizontalCenter
-                        anchors.top: popularItemId.bottom
-                        anchors.topMargin: Theme.paddingSmall
-                        width: popularItemId.width
 
-
-                        opacity: 0.0
-
-                        onClicked: {
-                            console.log("Subscribe to podcast with url: " + url)
-                            mainPage.addPodcast(url, logoUrl);
-                            pageStack.pop();
+                        Rectangle{
+                            anchors.fill: popularLogoId
+                            color: "black"
+                            opacity: .3
                         }
+
+                        IconButton{
+
+                            id: subscribeButton
+                            anchors.centerIn: popularLogoId
+
+                            icon.source: "image://theme/icon-l-add"
+
+                            opacity: 0.0
+
+                            onClicked: {
+                                console.log("Subscribe to podcast with url: " + url)
+                                mainPage.addPodcast(url, logoUrl);
+                                pageStack.pop(mainPage);
+                            }
+                        }
+
+
                     }
+
                 }
 
                 states: [
@@ -214,6 +200,14 @@ Page {
                     }
                 }
             }
+
+            ViewPlaceholder{
+                enabled: (popularPodcastsModel.status == XmlListModel.Error);
+                text:  qsTr("I am sorry!<BR><BR>")
+                hintText: qsTr("Cannot get popular podcasts at this time.")
+            }
+
+
 
         }
 
@@ -246,7 +240,7 @@ Page {
                 id: addNewPodcastSheet
 
 
-               Column {
+                Column {
                     id: col
                     anchors.fill: parent
                     spacing: Theme.paddingMedium
@@ -281,7 +275,16 @@ Page {
             }
         }
 
+        BusyIndicator {
+            id: loadingIndicator
+            anchors.centerIn: parent
+            visible: (popularPodcastsModel.status == XmlListModel.Loading );
+            running: (popularPodcastsModel.status == XmlListModel.Loading );
+            opacity: 1.0
+            size: BusyIndicatorSize.Large
+        }
     }
-
 }
+
+
 
