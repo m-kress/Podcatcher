@@ -22,47 +22,42 @@
         <translation>Podcasts von gPodder importieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="53"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="51"/>
         <source>Add URL manually</source>
         <translation>URL manuell hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="60"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="58"/>
         <source>Search</source>
         <translation>Suchen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="85"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="206"/>
         <source>I am sorry!&lt;BR&gt;&lt;BR&gt;</source>
         <translation>Es tut mir Leid!&lt;BR&gt;&lt;BR&gt;</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="94"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="207"/>
         <source>Cannot get popular podcasts at this time.</source>
         <translation>Die populären Podcasts können zur Zeit nicht abgerufen werden.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="102"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="83"/>
         <source>Popular podcasts</source>
         <translation>Populäre Podcasts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="175"/>
-        <source>Subscribe</source>
-        <translation>Abonnieren</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="255"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="249"/>
         <source>Add new podcast</source>
         <translation>Neuen Podcast hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="256"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="250"/>
         <source>Add</source>
         <translation>Hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/BrowsePodcasts.qml" line="261"/>
+        <location filename="../qml/pages/BrowsePodcasts.qml" line="255"/>
         <source>Podcast RSS URL</source>
         <translation>Podcast RSS URL</translation>
     </message>
@@ -122,52 +117,52 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="71"/>
+        <location filename="../qml/pages/MainPage.qml" line="72"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="111"/>
+        <location filename="../qml/pages/MainPage.qml" line="112"/>
         <source>Mark all podcasts as played</source>
         <translation>Alle Podcasts als gespielt markieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="118"/>
+        <location filename="../qml/pages/MainPage.qml" line="119"/>
         <source>Remove subscription</source>
         <translation>Abonnement aufheben</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="120"/>
+        <location filename="../qml/pages/MainPage.qml" line="121"/>
         <source>Removing</source>
         <translation>Lösche</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="250"/>
+        <location filename="../qml/pages/MainPage.qml" line="251"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="258"/>
+        <location filename="../qml/pages/MainPage.qml" line="259"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="266"/>
+        <location filename="../qml/pages/MainPage.qml" line="267"/>
         <source>Add Podcast</source>
         <translation>Podcast hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="273"/>
+        <location filename="../qml/pages/MainPage.qml" line="277"/>
         <source>Refresh all subscriptions</source>
         <translation>Alle Abonnements aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="276"/>
+        <location filename="../qml/pages/MainPage.qml" line="280"/>
         <source>Refreshing all subscriptions...</source>
         <translation>Aktualisiere alle Abonnements…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="298"/>
+        <location filename="../qml/pages/MainPage.qml" line="302"/>
         <source>Fetching channel information...</source>
         <translation>Lade Kanalinformationen …</translation>
     </message>
@@ -224,32 +219,32 @@
         <translation>%1 von %2 heruntergeladen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="105"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="104"/>
         <source>Delete downloaded podcast</source>
         <translation>Heruntergeladenen Podcast löschen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="108"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="107"/>
         <source>Deleting</source>
         <translation>Lösche</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="116"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="115"/>
         <source>Start streaming the podcast</source>
         <translation>Streame Podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="212"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="211"/>
         <source>Queued</source>
         <translation>In der Warteschlange</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="311"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="310"/>
         <source>No media</source>
         <translation>Keine Medien</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="500"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="499"/>
         <source>Unable to stream podcast.</source>
         <translation>Kann Podcast nicht streamen.</translation>
     </message>
@@ -277,7 +272,7 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="106"/>
         <source>Unable to add subscription from %1 …</source>
-        <translation>Kann %1 nicht abonnieren.</translation>
+        <translation>Kann %1 nicht abonnieren…</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="138"/>
@@ -300,37 +295,37 @@
         <translation>Ungültiger Podcastfeed: kann nicht abonniert werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="422"/>
+        <location filename="../src/podcastmanager.cpp" line="423"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kann nicht aktualisieren. Netzwerkfehler.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="435"/>
+        <location filename="../src/podcastmanager.cpp" line="436"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Podcastfeed ungültig. Kann keine Folgen von &apos;%1&apos; herunterladen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="527"/>
+        <location filename="../src/podcastmanager.cpp" line="528"/>
         <source>Podcast episode download failed.</source>
         <translation>Download der Podcastfolge fehlgeschalgen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="811"/>
+        <location filename="../src/podcastmanager.cpp" line="812"/>
         <source>gPodder.net authentication information required.</source>
         <translation>gPodder.net-Zugangsdaten benötigt.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="842"/>
+        <location filename="../src/podcastmanager.cpp" line="843"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>gPodder.net-Zugansdaten nicht akzeptiert. Bitte erneut versuchen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="885"/>
+        <location filename="../src/podcastmanager.cpp" line="886"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Keine Abonnements bei gPodder.net gefunden.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="889"/>
+        <location filename="../src/podcastmanager.cpp" line="890"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Lade Abonnements von gPodder.net …</translation>
     </message>
@@ -366,85 +361,115 @@
 <context>
     <name>SearchPodcasts</name>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="46"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="35"/>
+        <source>Import podcasts from gPodder</source>
+        <translation>Podcasts von gPodder importieren</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="43"/>
+        <source>Add URL manually</source>
+        <translation>URL manuell hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="66"/>
         <source>No podcasts found.</source>
         <translation>Kein Podcast gefunden.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="64"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="84"/>
         <source>Search podcasts</source>
         <translation>Suche Podcasts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="69"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="89"/>
         <source>Keyword</source>
         <translation>Schlüsselwort</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="246"/>
+        <source>Add new podcast</source>
+        <translation>Neuen Podcast hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="247"/>
+        <source>Add</source>
+        <translation>Hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="252"/>
+        <source>Podcast RSS URL</source>
+        <translation>Podcast RSS URL</translation>
     </message>
 </context>
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="65"/>
+        <location filename="../qml/pages/Settings.qml" line="72"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="70"/>
+        <location filename="../qml/pages/Settings.qml" line="77"/>
         <source>Auto-download podcasts</source>
         <translation>Auto-Download der Podcasts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="71"/>
+        <location filename="../qml/pages/Settings.qml" line="78"/>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
         <translation>Soll Podcatcher automatisch neue Folgen herunterladen, wenn das Gerät mit einem WLAN berbunden ist.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="77"/>
+        <location filename="../qml/pages/Settings.qml" line="84"/>
         <source>Episodes to auto-download</source>
         <translation>Folgen automatisch herunterladen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="94"/>
+        <location filename="../qml/pages/Settings.qml" line="101"/>
         <source>Remove old episodes</source>
         <translation>Alte Folgen löschen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="78"/>
+        <location filename="../qml/pages/Settings.qml" line="85"/>
         <source>The number of podcast episodes that should be automatically downloaded.</source>
         <translation>Anzahl der automatisch heruntergeladenen Podcasts</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="95"/>
+        <location filename="../qml/pages/Settings.qml" line="102"/>
         <source>Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.</source>
         <translation>Entferne heruntergeladene Folgen älter als die angegebene Anzahl an Tagen. 0 bedeutet keine zu entfernen.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="112"/>
+        <location filename="../qml/pages/Settings.qml" line="124"/>
         <source>Use mediaplayer </source>
         <translation>Verwendeter Mediaplayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="113"/>
+        <location filename="../qml/pages/Settings.qml" line="125"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
         <translation>Welcher Mediaplayer soll zum Abspielen der heruntergeladenen Downloads verwendet werden?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="117"/>
+        <location filename="../qml/pages/Settings.qml" line="129"/>
         <source>System Default</source>
         <translation>Systemstandard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="121"/>
+        <location filename="../qml/pages/Settings.qml" line="133"/>
         <source>Jolla Mediaplayer</source>
         <translation>Jolla Mediaplayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="125"/>
+        <location filename="../qml/pages/Settings.qml" line="137"/>
         <source>Unplayer</source>
         <translation>Unplayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="133"/>
+        <location filename="../qml/pages/Settings.qml" line="147"/>
+        <source>Show popular podcasts page</source>
+        <translation>Beliebte Podcasts anzeigen</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="118"/>
         <source>Keep unplayed episodes</source>
         <translation>Behalte ungespiele Folgen</translation>
     </message>
