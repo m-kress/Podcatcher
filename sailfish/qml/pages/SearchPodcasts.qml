@@ -28,6 +28,26 @@ Page {
         //orientationLock: PageOrientation.LockPortrait
 
 
+        PullDownMenu {
+
+
+            MenuItem {
+                text: qsTr("Import podcasts from gPodder")
+                onClicked: {
+                    pageStack.push(importFromGPodderComponent)
+
+                }
+            }
+
+            MenuItem {
+                text: qsTr("Add URL manually")
+                onClicked: {
+                    pageStack.push(addNewPodcastComponent)
+                }
+            }
+        }
+
+
         BusyIndicator  {
             id: loadingIndicator
             anchors.centerIn: parent
@@ -202,5 +222,53 @@ Page {
                 }
             }
         ]
+    }
+
+    Component{
+        id: importFromGPodderComponent
+        ImportFromGPodder{
+
+        }
+    }
+
+    Component{
+        id: addNewPodcastComponent
+        Dialog {
+            id: addNewPodcastSheet
+
+
+            Column {
+                id: col
+                anchors.fill: parent
+                spacing: Theme.paddingMedium
+
+                DialogHeader{
+                    title: qsTr("Add new podcast")
+                    acceptText: qsTr("Add")
+                }
+
+                TextField {
+                    id: podcastUrl
+                    placeholderText: qsTr("Podcast RSS URL")
+                    width: parent.width
+
+                    Keys.onReturnPressed: {
+                        parent.focus = true;
+                    }
+                }
+            }
+
+            onStatusChanged: {
+                if (status == DialogStatus.Opening) {
+                    podcastUrl.text = ""
+                }
+
+            }
+
+            onAccepted: {
+                mainPage.addPodcast(podcastUrl.text, "");
+                pageStack.pop(mainPage);
+            }
+        }
     }
 }

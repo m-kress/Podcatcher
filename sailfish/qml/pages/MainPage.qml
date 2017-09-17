@@ -20,6 +20,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
+import  org.nemomobile.configuration 1.0
 
 Page {
     id: mainPage
@@ -265,7 +266,10 @@ Page {
             MenuItem {
                 text: qsTr("Add Podcast")
                 onClicked: {
-                    openFile("BrowsePodcasts.qml");
+                    if (showPopularConf.value)
+                        openFile("BrowsePodcasts.qml");
+                    else
+                        openFile("SearchPodcasts.qml");
                 }
             }
 
@@ -296,6 +300,13 @@ Page {
         id: fetchingChannelBanner
         timerEnabled: false
         text: qsTr("Fetching channel information...")
+    }
+
+
+    ConfigurationValue{
+        id: showPopularConf
+        key: "/apps/ControlPanel/Podcatcher/showPopular"
+        defaultValue: 0
     }
 
 }
