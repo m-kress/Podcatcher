@@ -36,6 +36,9 @@ PodcastEpisode::PodcastEpisode(QObject *parent) :
     m_hasBeenCanceled = false;
     m_currentDownload = 0;
     m_playFilename = "";
+
+    m_saveOnSDCOnf = new MGConfItem("/apps/ControlPanel/Podcatcher/saveOnSDCard", this);
+
 }
 
 void PodcastEpisode::setTitle(const QString &title)
@@ -245,13 +248,16 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
     }
 
     QString downloadPath;
-    downloadPath = PODCATCHER_PODCAST_DLDIR;
+    //downloadPath = PODCATCHER_PODCAST_DLDIR;
 
-    // Store downloaded podcasts in "$HOME/Music/podcasts"
+    downloadPath = getDownloadDir();
+
     QDir dirpath(downloadPath);
     if (!dirpath.exists()) {
         dirpath.mkpath(downloadPath);
     }
+
+    qDebug() << "Saving download at " << downloadPath;
 
     QString path = reply->url().path();
     QString filename = QFileInfo(path).fileName();
@@ -442,5 +448,36 @@ bool PodcastEpisode::isValidAudiofile(QNetworkReply *reply) const
     qDebug() << "No audio file found:" << reply->url();
 
     return false;
+}
+
+QString PodcastEpisode::getDownloadDir()
+{
+    if(!m_saveOnSDCOnf->value().toBool())
+        return PODCATCHER_PODCAST_DLDIR;
+    else {
+        QString path = "/media/sdcard/";
+        QDir dir(path);
+        QStringList lst = dir.entryList(QDir::Dirs);
+
+        QString sd;
+
+        foreach (QString s, lst) {
+            if (s.startsWith("."))
+                continue;
+
+            sd = s;
+            break;
+        }
+
+        if(sd.isEmpty()){ //no SD mounted
+            m_saveOnSDCOnf->set(false);
+            return PODCATCHER_PODCAST_DLDIR;
+        }
+
+        path += sd+"/podcasts/";
+
+        return path;
+
+    }
 }
 

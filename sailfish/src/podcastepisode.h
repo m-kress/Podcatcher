@@ -23,6 +23,9 @@
 #include <QDateTime>
 #include <QNetworkAccessManager>
 
+#include <MGConfItem>
+
+
 class PodcastEpisode : public QObject
 {
     Q_OBJECT
@@ -89,6 +92,8 @@ private slots:
 
 private:
     bool isValidAudiofile(QNetworkReply *reply) const;
+    QString getDownloadDir();
+
     //bool isOnlyWebsiteUrl() const;
 
     int m_dbid;
@@ -110,6 +115,8 @@ private:
 
     QNetworkAccessManager *m_streamResolverManager;
     int m_streamResolverTries;
+
+   MGConfItem *m_saveOnSDCOnf;
 };
 
 #endif // PODCASTEPISODE_H

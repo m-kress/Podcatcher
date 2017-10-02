@@ -404,72 +404,77 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="72"/>
+        <location filename="../qml/pages/Settings.qml" line="87"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="77"/>
+        <location filename="../qml/pages/Settings.qml" line="92"/>
         <source>Auto-download podcasts</source>
         <translation>Ladda ner poddar automatiskt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="78"/>
+        <location filename="../qml/pages/Settings.qml" line="93"/>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
         <translation>Podcatcher laddar ner nya avsnitt automatiskt, när enheten är ansluten till WiFi.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="84"/>
+        <location filename="../qml/pages/Settings.qml" line="99"/>
         <source>Episodes to auto-download</source>
         <translation>Avsnitt att ladda ner automatiskt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="101"/>
+        <location filename="../qml/pages/Settings.qml" line="116"/>
         <source>Remove old episodes</source>
         <translation>Ta bort gamla avsnitt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="85"/>
+        <location filename="../qml/pages/Settings.qml" line="100"/>
         <source>The number of podcast episodes that should be automatically downloaded.</source>
         <translation>Antal poddavsnitt som skall laddas ner automatiskt.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="102"/>
+        <location filename="../qml/pages/Settings.qml" line="117"/>
         <source>Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.</source>
         <translation>Ta bort poddavsnitt som är äldre än det antal dagar som anges här (0 = Ta inte bort något).</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="124"/>
+        <location filename="../qml/pages/Settings.qml" line="139"/>
+        <source>Save epsiodes on SD card</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="144"/>
         <source>Use mediaplayer </source>
         <translation>Använd mediaspelaren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="125"/>
+        <location filename="../qml/pages/Settings.qml" line="145"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
         <translation>Vilket externt program skall användas för att spela upp de nerladdade poddarna?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="129"/>
+        <location filename="../qml/pages/Settings.qml" line="149"/>
         <source>System Default</source>
         <translation>Systemstandard</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="133"/>
+        <location filename="../qml/pages/Settings.qml" line="153"/>
         <source>Jolla Mediaplayer</source>
         <translation>Jolla Mediaspelare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="137"/>
+        <location filename="../qml/pages/Settings.qml" line="157"/>
         <source>Unplayer</source>
         <translation>Unplayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="147"/>
+        <location filename="../qml/pages/Settings.qml" line="167"/>
         <source>Show popular podcasts page</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="118"/>
+        <location filename="../qml/pages/Settings.qml" line="133"/>
         <source>Keep unplayed episodes</source>
         <translation>Spara ospelade avsnitt</translation>
     </message>

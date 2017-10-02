@@ -64,87 +64,108 @@ Dialog {
         defaultValue: 0
     }
 
-    Column{
+    ConfigurationValue{
+        id: saveOnSDCardConf
+        key: "/apps/ControlPanel/Podcatcher/saveOnSDCard"
+        defaultValue: 0
+    }
+
+    SilicaFlickable{
         anchors.fill: parent
+        contentWidth: parent.width
+        contentHeight: col.height
 
-        DialogHeader{
-            id:header
-            title: qsTr("Settings")
-        }
+        VerticalScrollDecorator {}
 
-        TextSwitch{
-            id: autoDownload
-            text: qsTr("Auto-download podcasts")
-            description: qsTr("Should Podcatcher automatically download new episodes when the device is connected to the WiFi.")
-        }
+        Column{
+            id:col
+            width: parent.width
+            //anchors.fill: parent
 
-        ComboBox{
-            id: autoDownloadNum
+            DialogHeader{
+                id:header
+                title: qsTr("Settings")
+            }
 
-            label: qsTr("Episodes to auto-download")
-            description: qsTr("The number of podcast episodes that should be automatically downloaded.")
+            TextSwitch{
+                id: autoDownload
+                text: qsTr("Auto-download podcasts")
+                description: qsTr("Should Podcatcher automatically download new episodes when the device is connected to the WiFi.")
+            }
 
-            menu: ContextMenu{
-                Repeater{
-                    model: downloadNumbers
+            ComboBox{
+                id: autoDownloadNum
 
+                label: qsTr("Episodes to auto-download")
+                description: qsTr("The number of podcast episodes that should be automatically downloaded.")
+
+                menu: ContextMenu{
+                    Repeater{
+                        model: downloadNumbers
+
+                        MenuItem{
+                            text: modelData
+                        }
+
+                    }
+                }
+            }
+
+            ComboBox{
+                id: keepEpisodes
+                label: qsTr("Remove old episodes")
+                description: qsTr("Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.")
+
+                menu: ContextMenu{
+                    Repeater{
+                        model: keepDays
+
+                        MenuItem{
+                            text: modelData
+                        }
+
+                    }
+                }
+            }
+
+            TextSwitch{
+                id: keepUnplayed
+                text: qsTr("Keep unplayed episodes")
+            }
+
+
+            TextSwitch{
+                id: saveOnSD
+                text: qsTr("Save epsiodes on SD card")
+            }
+
+            ComboBox{
+                id: mediaplayer
+                label: qsTr("Use mediaplayer ")
+                description: qsTr("Which external program should be used for playing the downloaded podcasts?")
+
+                menu: ContextMenu{
                     MenuItem{
-                        text: modelData
+                        text: qsTr("System Default")
                     }
 
-                }
-            }
-        }
-
-        ComboBox{
-            id: keepEpisodes
-            label: qsTr("Remove old episodes")
-            description: qsTr("Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.")
-
-            menu: ContextMenu{
-                Repeater{
-                    model: keepDays
-
                     MenuItem{
-                        text: modelData
+                        text: qsTr("Jolla Mediaplayer")
                     }
 
+                    MenuItem{
+                        text: qsTr("Unplayer")
+                    }
                 }
             }
-        }
-
-        TextSwitch{
-            id: keepUnplayed
-            text: qsTr("Keep unplayed episodes")
-        }
 
 
-        ComboBox{
-            id: mediaplayer
-            label: qsTr("Use mediaplayer ")
-            description: qsTr("Which external program should be used for playing the downloaded podcasts?")
 
-            menu: ContextMenu{
-                MenuItem{
-                    text: qsTr("System Default")
-                }
 
-                MenuItem{
-                    text: qsTr("Jolla Mediaplayer")
-                }
-
-                MenuItem{
-                    text: qsTr("Unplayer")
-                }
+            TextSwitch{
+                id: showPopular
+                text: qsTr("Show popular podcasts page")
             }
-        }
-
-
-
-
-        TextSwitch{
-            id: showPopular
-            text: qsTr("Show popular podcasts page")
         }
     }
 
@@ -155,6 +176,7 @@ Dialog {
         keepUnplayed.checked = keepUnplayedConf.value;
         mediaplayer.currentIndex = players.indexOf(mediaPlayerConf.value)
         showPopular.checked = showPopularConf.value;
+        saveOnSD.checked = saveOnSDCardConf.value;
     }
 
     onAccepted: {
@@ -164,6 +186,7 @@ Dialog {
         keepUnplayedConf.value = keepUnplayed.checked;
         mediaPlayerConf.value = players[mediaplayer.currentIndex];
         showPopularConf.value = showPopular.checked;
+        saveOnSDCardConf.value = saveOnSD.checked;
     }
 
 
