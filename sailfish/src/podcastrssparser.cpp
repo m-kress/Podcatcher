@@ -300,6 +300,10 @@ QDateTime PodcastRSSParser::parsePubDate(const QDomNode &node)
                                  "yyyy-MM-dd");
     }
 
+    pubDate.setTimeSpec(Qt::UTC); // Interprete Time as UTC, since we do not parse the timezone
+
+    //FIXME: Add persing of timezone
+
     return pubDate;
 }
 
