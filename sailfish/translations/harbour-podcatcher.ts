@@ -295,37 +295,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="423"/>
+        <location filename="../src/podcastmanager.cpp" line="425"/>
         <source>Cannot refresh. Network error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="436"/>
+        <location filename="../src/podcastmanager.cpp" line="438"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="528"/>
+        <location filename="../src/podcastmanager.cpp" line="530"/>
         <source>Podcast episode download failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="812"/>
+        <location filename="../src/podcastmanager.cpp" line="814"/>
         <source>gPodder.net authentication information required.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="843"/>
+        <location filename="../src/podcastmanager.cpp" line="845"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="886"/>
+        <location filename="../src/podcastmanager.cpp" line="888"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="890"/>
+        <location filename="../src/podcastmanager.cpp" line="892"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation type="unfinished"></translation>
     </message>

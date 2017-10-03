@@ -414,7 +414,9 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
     }
     reply->deleteLater();
 
-    savePodcastEpisodes(channel);
+
+    QtConcurrent::run(this,&PodcastManager::savePodcastEpisodes, channel);
+    //savePodcastEpisodes(channel);
 }
 
 void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError error)
