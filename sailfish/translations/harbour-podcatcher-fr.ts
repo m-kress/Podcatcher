@@ -216,7 +216,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="60"/>
         <source>Downloaded %1 of total %2.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 téléchargés sur %2</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="104"/>
@@ -254,17 +254,17 @@
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
         <source>dd.MM.yyyy</source>
-        <translation type="unfinished"></translation>
+        <translation>dd/MM/yyyy</translation>
     </message>
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
         <source>Last played: %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Dernière écoute : %1</translation>
     </message>
     <message>
         <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
         <source>dd.MM.yyyy hh:mm</source>
-        <translation type="unfinished"></translation>
+        <translation>dd/MM/yyyy hh:mm</translation>
     </message>
 </context>
 <context>
@@ -345,7 +345,7 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="186"/>
         <source>Mediaplayer program not found!</source>
-        <translation type="unfinished"></translation>
+        <translation>Mediaplayer introuvable !</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="198"/>
@@ -441,37 +441,37 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="139"/>
         <source>Save epsiodes on SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Enregistrement sur la carte SD</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="144"/>
         <source>Use mediaplayer </source>
-        <translation type="unfinished"></translation>
+        <translation>Utiliser le lecteur média</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="145"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
-        <translation type="unfinished"></translation>
+        <translation>Quel programme externe utiliser pour les podcasts téléchargés ?</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="149"/>
         <source>System Default</source>
-        <translation type="unfinished"></translation>
+        <translation>Réglage système</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="153"/>
         <source>Jolla Mediaplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Jolla Mediaplayer</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="157"/>
         <source>Unplayer</source>
-        <translation type="unfinished"></translation>
+        <translation>Unplayer</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="167"/>
         <source>Show popular podcasts page</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher la page des podcasts populaires</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="133"/>
