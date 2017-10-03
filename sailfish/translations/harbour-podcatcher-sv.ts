@@ -441,7 +441,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="139"/>
         <source>Save epsiodes on SD card</source>
-        <translation type="unfinished"></translation>
+        <translation>Spara avsnitt på SD-kort</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="144"/>
@@ -471,7 +471,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="167"/>
         <source>Show popular podcasts page</source>
-        <translation type="unfinished"></translation>
+        <translation>Visa populära poddar</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="133"/>
