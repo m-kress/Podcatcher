@@ -135,7 +135,7 @@ void PodcastManager::refreshAllChannels()
 {
     qDebug() << "\n ********* Refresh episodes for all channels ******** \n";
 
-    emit showInfoBanner(tr("Refreshing episodes..."));
+    //emit showInfoBanner(tr("Refreshing episodes..."));
 
     foreach(PodcastChannel *channel, m_channelsModel->channels()) {
         int channelid = channel->channelDbId();
@@ -412,10 +412,9 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
         QByteArray episodeXmlData = reply->readAll();
         channel->setXml(episodeXmlData);
     }
+
     reply->deleteLater();
 
-
-    //QtConcurrent::run(this,&PodcastManager::savePodcastEpisodes, channel);
     savePodcastEpisodes(channel);
 }
 
@@ -431,13 +430,25 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
     QByteArray episodeXmlData = channel->xml();
     QList<PodcastEpisode *> *parsedEpisodes = new QList<PodcastEpisode *>();
     bool rssOk;
+
     rssOk = PodcastRSSParser::populateEpisodesFromChannelXML(parsedEpisodes,
                                                              episodeXmlData);
-
     if (rssOk == false) {
-        emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
-        return false;
-    }
+         emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
+         return false;
+     }
+
+//    QFuture<bool> f = QtConcurrent::run(PodcastRSSParser::populateEpisodesFromChannelXML,
+//                                        parsedEpisodes, episodeXmlData);
+
+//    //while(f.isRunning()){
+//        QCoreApplication::processEvents();
+//    //}
+
+//    if (!f.result()) {
+//        emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
+//        return false;
+//    }
 
     PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(channel->channelDbId());  // FIXME: Pass only channel to episodes model - not the DB id.
     episodeModel->addEpisodes(*parsedEpisodes);

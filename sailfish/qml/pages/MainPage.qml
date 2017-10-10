@@ -181,6 +181,15 @@ Page {
                         }
                     }
 
+                    /*ProgressBar{
+                        indeterminate: isRefreshing
+                        width: parent.width
+                        anchors.top: channelName.bottom
+                    }*/
+                    BusyIndicator{
+                        running: isRefreshing
+                        anchors.centerIn: unplayedNumber
+                    }
 
                     onClicked: {
                         appWindow.showChannel(channelId);
@@ -277,8 +286,8 @@ Page {
                 text: qsTr("Refresh all subscriptions")
                 onClicked: {
                     ui.refreshChannels();
-                    uiInfoBanner.text = qsTr("Refreshing all subscriptions...");
-                    uiInfoBanner.show();
+                    //uiInfoBanner.text = qsTr("Refreshing all subscriptions...");
+                    //uiInfoBanner.show();
                 }
             }
 

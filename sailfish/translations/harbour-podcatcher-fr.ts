@@ -137,32 +137,27 @@
         <translation>Suppression</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="251"/>
+        <location filename="../qml/pages/MainPage.qml" line="260"/>
         <source>About</source>
         <translation>À propos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="259"/>
+        <location filename="../qml/pages/MainPage.qml" line="268"/>
         <source>Settings</source>
         <translation>Paramètres</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="267"/>
+        <location filename="../qml/pages/MainPage.qml" line="276"/>
         <source>Add Podcast</source>
         <translation>Ajouter un podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="277"/>
+        <location filename="../qml/pages/MainPage.qml" line="286"/>
         <source>Refresh all subscriptions</source>
         <translation>Actualiser tous les abonnements</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="280"/>
-        <source>Refreshing all subscriptions...</source>
-        <translation>Actualisation des abonnements...</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MainPage.qml" line="302"/>
+        <location filename="../qml/pages/MainPage.qml" line="311"/>
         <source>Fetching channel information...</source>
         <translation>Obtention des informations sur la chaîne...</translation>
     </message>
@@ -275,11 +270,6 @@
         <translation>Impossible d&apos;ajouter l&apos;abonnement depuis %1 …</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="138"/>
-        <source>Refreshing episodes...</source>
-        <translation>Actualisation des épisodes...</translation>
-    </message>
-    <message>
         <location filename="../src/podcastmanager.cpp" line="116"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Vous êtes déjà abonné à &apos;%1&apos;.</translation>
@@ -295,37 +285,37 @@
         <translation>Le flux du poscast n&apos;est pas valide. Impossible d&apos;ajouter l&apos;abonnement...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="425"/>
+        <location filename="../src/podcastmanager.cpp" line="424"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Actualisation impossible. Problème de réseau.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="438"/>
+        <location filename="../src/podcastmanager.cpp" line="437"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Le flux du podcast est invalide. Impossible de télécharger les épisodes de &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="530"/>
+        <location filename="../src/podcastmanager.cpp" line="541"/>
         <source>Podcast episode download failed.</source>
         <translation>La récupération de l&apos;épisode a échoué.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="814"/>
+        <location filename="../src/podcastmanager.cpp" line="825"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Données d&apos;authentification pour gPodder.net nécessaires</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="845"/>
+        <location filename="../src/podcastmanager.cpp" line="856"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Identifiants gPodder.net refusés. Veuillez réessayer.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="888"/>
+        <location filename="../src/podcastmanager.cpp" line="899"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Aucun abonnement trouvé sur gPodder.net</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="892"/>
+        <location filename="../src/podcastmanager.cpp" line="903"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Obtention des abonnement depuis gPodder.net...</translation>
     </message>

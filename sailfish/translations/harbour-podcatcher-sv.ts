@@ -137,32 +137,27 @@
         <translation>Tar bort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="251"/>
+        <location filename="../qml/pages/MainPage.qml" line="260"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="259"/>
+        <location filename="../qml/pages/MainPage.qml" line="268"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="267"/>
+        <location filename="../qml/pages/MainPage.qml" line="276"/>
         <source>Add Podcast</source>
         <translation>Lägg till podd</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="277"/>
+        <location filename="../qml/pages/MainPage.qml" line="286"/>
         <source>Refresh all subscriptions</source>
         <translation>Uppdatera alla prenumerationer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="280"/>
-        <source>Refreshing all subscriptions...</source>
-        <translation>Uppdaterar alla prenumerationer...</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/MainPage.qml" line="302"/>
+        <location filename="../qml/pages/MainPage.qml" line="311"/>
         <source>Fetching channel information...</source>
         <translation>Hämtar kanalinformation...</translation>
     </message>
@@ -275,11 +270,6 @@
         <translation>Kan inte lägga till prenumeration från %1 ...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="138"/>
-        <source>Refreshing episodes...</source>
-        <translation>Uppdaterar avsnitt...</translation>
-    </message>
-    <message>
         <location filename="../src/podcastmanager.cpp" line="116"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Prenumerarerar redan på &apos;%1&apos;.</translation>
@@ -295,37 +285,37 @@
         <translation>Poddflödet är inte giltigt. Kan inte lägga till prenumeration...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="425"/>
+        <location filename="../src/podcastmanager.cpp" line="424"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="438"/>
+        <location filename="../src/podcastmanager.cpp" line="437"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="530"/>
+        <location filename="../src/podcastmanager.cpp" line="541"/>
         <source>Podcast episode download failed.</source>
         <translation>Poddavsnittet kunde inte laddas ner.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="814"/>
+        <location filename="../src/podcastmanager.cpp" line="825"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="845"/>
+        <location filename="../src/podcastmanager.cpp" line="856"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="888"/>
+        <location filename="../src/podcastmanager.cpp" line="899"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="892"/>
+        <location filename="../src/podcastmanager.cpp" line="903"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>

@@ -25,7 +25,10 @@
 #include <QMap>
 #include <QVariant>
 #include <QFutureWatcher>
+#include <QFutureSynchronizer>
 #include <QNetworkReply>
+
+#include <QCoreApplication>
 
 #include <MGConfItem>
 
@@ -146,6 +149,7 @@ private:
 
     QList<PodcastChannel *> m_cleanupChannels;
     QFutureWatcher<void> m_futureWatcher;
+
 
    bool m_autodownloadOnSettings;
    int m_autodownloadNumSettings;
