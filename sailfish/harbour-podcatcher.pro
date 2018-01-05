@@ -57,7 +57,6 @@ DISTFILES += \
     qml/EmptyPage.qml \
     qml/PodcatcherInfoBanner.qml \
     qml/pages/MainPage.qml \
-    qml/pages/EmptyChannelPage.qml \
     qml/pages/BrowsePodcasts.qml \
     qml/pages/PodcastEpisodes.qml \
     qml/pages/PodcastEpisodesChannelInfo.qml \

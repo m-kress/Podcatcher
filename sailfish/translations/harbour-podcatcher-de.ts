@@ -117,47 +117,57 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="72"/>
+        <location filename="../qml/pages/MainPage.qml" line="68"/>
+        <source>No podcast subscriptions yet</source>
+        <translation type="unfinished">Noch keine Podcasts abonniert</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="69"/>
+        <source>Why don&apos;t you add some...</source>
+        <translation type="unfinished">Warum nicht einen hinzufügen…</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="78"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="112"/>
+        <location filename="../qml/pages/MainPage.qml" line="118"/>
         <source>Mark all podcasts as played</source>
         <translation>Alle Podcasts als gespielt markieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="119"/>
+        <location filename="../qml/pages/MainPage.qml" line="125"/>
         <source>Remove subscription</source>
         <translation>Abonnement aufheben</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="121"/>
+        <location filename="../qml/pages/MainPage.qml" line="127"/>
         <source>Removing</source>
         <translation>Lösche</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="260"/>
+        <location filename="../qml/pages/MainPage.qml" line="266"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="268"/>
+        <location filename="../qml/pages/MainPage.qml" line="274"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="276"/>
+        <location filename="../qml/pages/MainPage.qml" line="282"/>
         <source>Add Podcast</source>
         <translation>Podcast hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="286"/>
+        <location filename="../qml/pages/MainPage.qml" line="292"/>
         <source>Refresh all subscriptions</source>
         <translation>Alle Abonnements aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="311"/>
+        <location filename="../qml/pages/MainPage.qml" line="317"/>
         <source>Fetching channel information...</source>
         <translation>Lade Kanalinformationen …</translation>
     </message>
@@ -290,7 +300,7 @@
         <translation>Kann nicht aktualisieren. Netzwerkfehler.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="437"/>
+        <location filename="../src/podcastmanager.cpp" line="448"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Podcastfeed ungültig. Kann keine Folgen von &apos;%1&apos; herunterladen.</translation>
     </message>

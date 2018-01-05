@@ -429,14 +429,11 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
 {
     QByteArray episodeXmlData = channel->xml();
     QList<PodcastEpisode *> *parsedEpisodes = new QList<PodcastEpisode *>();
+
     bool rssOk;
 
     rssOk = PodcastRSSParser::populateEpisodesFromChannelXML(parsedEpisodes,
                                                              episodeXmlData);
-    if (rssOk == false) {
-         emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
-         return false;
-     }
 
 //    QFuture<bool> f = QtConcurrent::run(PodcastRSSParser::populateEpisodesFromChannelXML,
 //                                        parsedEpisodes, episodeXmlData);
@@ -445,10 +442,13 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
 //        QCoreApplication::processEvents();
 //    //}
 
-//    if (!f.result()) {
-//        emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
-//        return false;
-//    }
+//    rssOk = f.result();
+
+    if (!rssOk) {
+         emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
+         return false;
+     }
+
 
     PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(channel->channelDbId());  // FIXME: Pass only channel to episodes model - not the DB id.
     episodeModel->addEpisodes(*parsedEpisodes);

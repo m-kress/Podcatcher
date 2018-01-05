@@ -117,47 +117,57 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="72"/>
+        <location filename="../qml/pages/MainPage.qml" line="68"/>
+        <source>No podcast subscriptions yet</source>
+        <translation type="unfinished">Inga poddprenumerationer ännu</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="69"/>
+        <source>Why don&apos;t you add some...</source>
+        <translation type="unfinished">Du kanske skulle lägga till någon...</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MainPage.qml" line="78"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="112"/>
+        <location filename="../qml/pages/MainPage.qml" line="118"/>
         <source>Mark all podcasts as played</source>
         <translation>Markera alla poddar som spelade</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="119"/>
+        <location filename="../qml/pages/MainPage.qml" line="125"/>
         <source>Remove subscription</source>
         <translation>Ta bort prenumerationen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="121"/>
+        <location filename="../qml/pages/MainPage.qml" line="127"/>
         <source>Removing</source>
         <translation>Tar bort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="260"/>
+        <location filename="../qml/pages/MainPage.qml" line="266"/>
         <source>About</source>
         <translation>Om</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="268"/>
+        <location filename="../qml/pages/MainPage.qml" line="274"/>
         <source>Settings</source>
         <translation>Inställningar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="276"/>
+        <location filename="../qml/pages/MainPage.qml" line="282"/>
         <source>Add Podcast</source>
         <translation>Lägg till podd</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="286"/>
+        <location filename="../qml/pages/MainPage.qml" line="292"/>
         <source>Refresh all subscriptions</source>
         <translation>Uppdatera alla prenumerationer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="311"/>
+        <location filename="../qml/pages/MainPage.qml" line="317"/>
         <source>Fetching channel information...</source>
         <translation>Hämtar kanalinformation...</translation>
     </message>
@@ -290,7 +300,7 @@
         <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="437"/>
+        <location filename="../src/podcastmanager.cpp" line="448"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>

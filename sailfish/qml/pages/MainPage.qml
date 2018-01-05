@@ -58,9 +58,15 @@ Page {
         anchors.fill: parent
 
 
-        EmptyChannelPage {
-            id: emptyText
-            visible: (podcastChannelsList.count == 0);
+//        EmptyChannelPage {
+//            id: emptyText
+//            visible: (podcastChannelsList.count == 0);
+//        }
+
+        ViewPlaceholder {
+            enabled: podcastChannelsList.count == 0
+            text: qsTr("No podcast subscriptions yet")
+            hintText: qsTr("Why don't you add some...")
         }
 
         Column {
