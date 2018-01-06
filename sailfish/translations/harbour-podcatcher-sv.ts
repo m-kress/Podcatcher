@@ -71,19 +71,6 @@
     </message>
 </context>
 <context>
-    <name>EmptyChannelPage</name>
-    <message>
-        <location filename="../qml/pages/EmptyChannelPage.qml" line="33"/>
-        <source>No podcast subscriptions yet</source>
-        <translation>Inga poddprenumerationer ännu</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/EmptyChannelPage.qml" line="42"/>
-        <source>Why don&apos;t you add some...</source>
-        <translation>Du kanske skulle lägga till någon...</translation>
-    </message>
-</context>
-<context>
     <name>EpisodeDescriptionPage</name>
     <message>
         <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="71"/>
@@ -285,47 +272,47 @@
         <translation>Prenumerarerar redan på &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="267"/>
+        <location filename="../src/podcastmanager.cpp" line="273"/>
         <source>No data received.</source>
         <translation>Ingen data mottagen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="294"/>
+        <location filename="../src/podcastmanager.cpp" line="300"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Poddflödet är inte giltigt. Kan inte lägga till prenumeration...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="424"/>
+        <location filename="../src/podcastmanager.cpp" line="436"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="448"/>
+        <location filename="../src/podcastmanager.cpp" line="460"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="541"/>
+        <location filename="../src/podcastmanager.cpp" line="553"/>
         <source>Podcast episode download failed.</source>
         <translation>Poddavsnittet kunde inte laddas ner.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="825"/>
+        <location filename="../src/podcastmanager.cpp" line="839"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="856"/>
+        <location filename="../src/podcastmanager.cpp" line="870"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="899"/>
+        <location filename="../src/podcastmanager.cpp" line="913"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="903"/>
+        <location filename="../src/podcastmanager.cpp" line="917"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>

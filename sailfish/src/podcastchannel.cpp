@@ -107,6 +107,14 @@ QByteArray PodcastChannel::xml() const
     return m_xml;
 }
 
+void PodcastChannel::addCredentials(PodcastEpisode* episode)
+{
+    QUrl channelUrl(url());
+    if(!channelUrl.userName().isEmpty()){
+        episode->setCredentails(channelUrl.userName(), channelUrl.password());
+    }
+}
+
 void PodcastChannel::setIsRefreshing(bool refreshing)
 {
     if (m_isRefreshing != refreshing) {

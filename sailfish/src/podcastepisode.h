@@ -57,6 +57,8 @@ public:
     void setLastPlayed(const QDateTime &lastPlayed);
     void setHasBeenCanceled(bool canceled);
 
+    void setCredentails(const QString& user, const  QString& password);
+
     int dbid() const;
     int channelid() const;
     QString title() const;
@@ -109,6 +111,9 @@ private:
     qint64 m_downloadSize;
     QDateTime m_lastPlayed;
     bool m_hasBeenCanceled;
+
+    QString m_user;
+    QString m_password;
 
     QNetworkAccessManager *m_dlNetworkManager;
     QNetworkReply *m_currentDownload;

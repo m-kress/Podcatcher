@@ -205,6 +205,11 @@ void PodcastEpisode::downloadEpisode()
         return;
     }
 
+    if(downloadUrl.userName().isEmpty()){
+        downloadUrl.setUserName(m_user);
+        downloadUrl.setPassword(m_password);
+    }
+
     QNetworkRequest request;
     request.setUrl(downloadUrl);
 
@@ -325,6 +330,12 @@ void PodcastEpisode::setHasBeenCanceled(bool canceled)
 
 }
 
+void PodcastEpisode::setCredentails(const QString &user, const QString &password)
+{
+    m_user = user;
+    m_password = password;
+}
+
 bool PodcastEpisode::hasBeenCanceled() const
 {
     return m_hasBeenCanceled;
@@ -386,6 +397,11 @@ void PodcastEpisode::getAudioUrl()
     m_streamResolverTries = 0;
     m_streamResolverManager = new QNetworkAccessManager(this);
     QNetworkRequest request;
+    QUrl url = this->downloadLink();
+    if(url.userName().isEmpty()){
+        url.setUserName(m_user);
+        url.setPassword(m_password);
+    }
     request.setUrl(this->downloadLink());
 
     QNetworkReply *reply = m_streamResolverManager->get(request);

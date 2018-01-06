@@ -20,6 +20,10 @@
 
 #include <QString>
 #include <QObject>
+#include <QUrl>
+
+
+#include "podcastepisode.h"
 
 class PodcastChannel : public QObject
 {
@@ -63,6 +67,8 @@ public:
 
 
     QByteArray xml() const;
+
+    void addCredentials(PodcastEpisode *episode);
 
     // Utility methods.
     void dumpInfo() const;

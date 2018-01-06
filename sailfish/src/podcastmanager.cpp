@@ -260,6 +260,12 @@ void PodcastManager::onPodcastChannelCompleted()
         return;
     }
 
+    if (reply->error() != QNetworkReply::NoError){
+        emit showInfoBanner(reply->errorString());
+        reply->deleteLater();
+        return;
+    }
+
     QByteArray data = reply->readAll();
     if (data.size() < 1) {
         qDebug() << "No data in the network reply. Aborting";
@@ -405,6 +411,12 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
         return;
     }
 
+
+    if (reply->error() != QNetworkReply::NoError){
+        emit showInfoBanner(reply->errorString());
+        reply->deleteLater();
+        return;
+    }
 
 
 
@@ -571,6 +583,8 @@ void PodcastManager::executeNextDownload()
 
         PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
         channel->setIsDownloading(true);
+
+        channel->addCredentials(episode);
 
         episode->setState(PodcastEpisode::DownloadingState);
         episode->setHasBeenCanceled(false);
