@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>gfx/Podcatcher_generic_podcast_cover.png</file>
         <file>gfx/gpodder-logo.png</file>
+        <file>icons/256x256/harbour-podcatcher.png</file>
     </qresource>
 </RCC>
