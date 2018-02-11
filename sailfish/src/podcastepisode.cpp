@@ -212,6 +212,8 @@ void PodcastEpisode::downloadEpisode()
 
     QNetworkRequest request;
     request.setUrl(downloadUrl);
+    request.setRawHeader("User-Agent", "Podcatcher Podcast client");
+    request.setRawHeader( "Accept" , "*/*" );
 
     m_currentDownload = m_dlNetworkManager->get(request);
 
@@ -246,6 +248,7 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
     // TODO: Proper way of handling downloads that are not audio or video formats.
 
     if (reply->error() != QNetworkReply::NoError) {
+        qDebug() << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
         qWarning() << "Download of podcast was not succesfull: " << reply->errorString();
         reply->deleteLater();
         emit podcastEpisodeDownloadFailed(this);
