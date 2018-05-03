@@ -1,4 +1,6 @@
-<!DOCTYPE TS><TS>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="ru">
 <context>
     <name>About</name>
     <message>
@@ -160,7 +162,7 @@
     <name>PodcastEpisodesChannelInfo</name>
     <message>
         <source>Auto-download</source>
-        <translation>Скачивать автоматически</translation>
+        <translation>Загружать автоматически</translation>
     </message>
 </context>
 <context>
@@ -276,7 +278,7 @@
     </message>
     <message>
         <source>Unable to stream podcast.</source>
-        <translation>Непосредственное воспроизведение невозможно.</translation>
+        <translation>Воспроизведение из сети невозможно.</translation>
     </message>
 </context>
 <context>
@@ -326,7 +328,7 @@
     </message>
     <message>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
-        <translation type="unfinished">Загружать ли новые выпуски автоматически при подключении к WiFi?</translation>
+        <translation>Загружать ли новые выпуски автоматически при подключении к WiFi?</translation>
     </message>
     <message>
         <source>Episodes to auto-download</source>
