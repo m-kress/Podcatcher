@@ -60,7 +60,7 @@
     <name>EpisodeDescriptionPage</name>
     <message>
         <source>Published: </source>
-        <translation type="unfinished">Опубликовано:</translation>
+        <translation>Опубликовано: </translation>
     </message>
 </context>
 <context>
