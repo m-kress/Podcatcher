@@ -40,7 +40,7 @@
     </message>
     <message>
         <source>Add new podcast</source>
-        <translation>Добавить новый подкаст</translation>
+        <translation>Новый подкаст</translation>
     </message>
     <message>
         <source>Add</source>
@@ -200,7 +200,7 @@
     <name>PodcastEpisodesModel</name>
     <message>
         <source>dd.MM.yyyy</source>
-        <translation>дд.ММ.ГГГГ</translation>
+        <translation>dd.MM.yyyy</translation>
     </message>
     <message>
         <source>Last played: %1</source>
@@ -297,7 +297,7 @@
     </message>
     <message>
         <source>Search podcasts</source>
-        <translation>Искать подкасты</translation>
+        <translation>Поиск подкастов</translation>
     </message>
     <message>
         <source>Keyword</source>
@@ -305,7 +305,7 @@
     </message>
     <message>
         <source>Add new podcast</source>
-        <translation>Добавить новый подкаст</translation>
+        <translation>Новый подкаст</translation>
     </message>
     <message>
         <source>Add</source>
