@@ -1,0 +1,6 @@
+# Add new changelog entries following the format below.
+# Add newest entries to the top of the list.
+# Separate entries from eachother with a blank line.
+
+* Sun Jul 15 2017 Moritz Carmesin <carolus@carmesinus.de> 1.1.23
+- added Spanish translation

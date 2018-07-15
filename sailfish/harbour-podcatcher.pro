@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-podcatcher
 
-DEFINES += PODCATCHER_VERSION=1120
+DEFINES += PODCATCHER_VERSION=1123
 QT += sql xml concurrent
 
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -37,7 +37,6 @@ SOURCES += src/Podcatcher.cpp \
 
 OTHER_FILES += qml/Podcatcher.qml \
     qml/cover/CoverPage.qml \
-    rpm/Podcatcher.changes.in \
     translations/*.ts
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
@@ -47,6 +46,7 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
 CONFIG += sailfishapp_i18n
 
 TRANSLATIONS += translations/harbour-podcatcher-de.ts \
+                translations/harbour-podcatcher-es.ts \
                 translations/harbour-podcatcher-fr.ts \
                 translations/harbour-podcatcher-it.ts \
                 translations/harbour-podcatcher-ru.ts \
@@ -72,7 +72,8 @@ DISTFILES += \
     harbour-podcatcher.desktop \
     rpm/harbour-podcatcher.spec \
     rpm/harbour-podcatcher.yaml \
-    qml/pages/InfoBanner.qml
+    qml/pages/InfoBanner.qml \
+    rpm/Podcatcher.changes
 
 HEADERS += \
     src/dbhelper.h \
