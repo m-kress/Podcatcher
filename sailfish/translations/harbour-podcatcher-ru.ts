@@ -195,6 +195,10 @@
         <source>Unable to stream podcast.</source>
         <translation>Воспроизведение из сети невозможно.</translation>
     </message>
+    <message>
+        <source>Mark as unplayed</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PodcastEpisodesModel</name>
@@ -213,10 +217,6 @@
 </context>
 <context>
     <name>PodcastManager</name>
-    <message>
-        <source>Unable to add subscription from %1 ?</source>
-        <translation>Невозможно добавить подписку с %1 ?</translation>
-    </message>
     <message>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Уже подписан на &apos;%1&apos;.</translation>
@@ -256,6 +256,10 @@
     <message>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Получение списка подписок от gPodder.net...</translation>
+    </message>
+    <message>
+        <source>Unable to add subscription from %1 …</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

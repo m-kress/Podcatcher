@@ -222,21 +222,26 @@
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="115"/>
+        <source>Mark as unplayed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="123"/>
         <source>Start streaming the podcast</source>
         <translation>Iniciar transmisión del podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="211"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="219"/>
         <source>Queued</source>
         <translation>En cola</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="310"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="318"/>
         <source>No media</source>
         <translation>No hay multimedia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="499"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="507"/>
         <source>Unable to stream podcast.</source>
         <translation>No es posible transmitir podcast.</translation>
     </message>
@@ -320,27 +325,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="112"/>
+        <location filename="../src/podcatcherui.cpp" line="115"/>
         <source>Fetching channel information...</source>
         <translation>Recopilando información del canal...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="173"/>
+        <location filename="../src/podcatcherui.cpp" line="176"/>
         <source>Podcast episode not found.</source>
         <translation>Episodio de podcast no encontrado.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="186"/>
+        <location filename="../src/podcatcherui.cpp" line="189"/>
         <source>Mediaplayer program not found!</source>
         <translation>¡Reproductor no encontrado!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="198"/>
+        <location filename="../src/podcatcherui.cpp" line="201"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>¡Lo siento! No es posible abrir el reproductor para este podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="301"/>
+        <location filename="../src/podcatcherui.cpp" line="313"/>
         <source>Unable to stream podcast.</source>
         <translation>No es posible transmitir podcast.</translation>
     </message>

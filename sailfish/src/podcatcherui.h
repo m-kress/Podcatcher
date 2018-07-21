@@ -67,6 +67,7 @@ private slots:
     void onDeleteChannel(QString channelId);
     void onAllListened(QString channelId);
     void onDeletePodcast(int channelId, int index);
+    void onMarkAsUnplayed(int channelId, int index);
     void onStartStreaming(int channelId, int index);
     void onStreamingUrlResolved(QString streamUrl, QString streamTitle);
     void onAutoDownloadChanged(int channelId, bool autoDownload);

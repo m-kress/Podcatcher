@@ -388,6 +388,12 @@ void PodcastEpisode::setAsPlayed()
     setLastPlayed(QDateTime::currentDateTime());
 }
 
+void PodcastEpisode::setAsUnplayed()
+{
+    setLastPlayed(QDateTime());
+    setState(EpisodeStates::DownloadedState);
+}
+
 
 
 /*bool PodcastEpisode::isOnlyWebsiteUrl() const

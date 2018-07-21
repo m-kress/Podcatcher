@@ -34,6 +34,7 @@ ApplicationWindow
     signal deleteChannel(string channelId)
     signal allListened(string channelId)
     signal deleteDownloaded(int channelId, int index)
+    signal markAsUnplayed(int channelId, int index)
     signal startStreaming(int channelId, int index)
     signal autoDownloadChanged(int channelId, bool autoDownload)
 

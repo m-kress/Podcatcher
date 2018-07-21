@@ -111,6 +111,14 @@ Item {
                                                    });
                         }
                     }
+                    MenuItem{
+                        text: qsTr("Mark as unplayed")
+                        visible: episodeState == "played"
+                        onClicked: {
+                            appWindow.markAsUnplayed(channelId,index);
+                        }
+                    }
+
                     MenuItem {
                         text: qsTr("Start streaming the podcast")
                         visible: (episodeState == "get")

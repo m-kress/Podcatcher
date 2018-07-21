@@ -80,6 +80,9 @@ PodcatcherUI::PodcatcherUI()
     connect(rootDeclarativeItem, SIGNAL(deleteDownloaded(int, int)),
             this, SLOT(onDeletePodcast(int, int)));
 
+    connect(rootDeclarativeItem, SIGNAL(markAsUnplayed(int, int)),
+            this, SLOT(onMarkAsUnplayed(int,int)));
+
     connect(rootDeclarativeItem, SIGNAL(startStreaming(int, int)),
             this, SLOT(onStartStreaming(int, int)));
 
@@ -268,6 +271,15 @@ void PodcatcherUI::onDeletePodcast(int channelId, int index)
     episode->deleteDownload();
     episodesModel->refreshEpisode(episode);
 
+    m_channelsModel->refreshChannel(channelId);
+}
+
+void PodcatcherUI::onMarkAsUnplayed(int channelId, int index)
+{
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastEpisode *episode = episodesModel->episode(index);
+
+    episode->setAsUnplayed();
     m_channelsModel->refreshChannel(channelId);
 }
 

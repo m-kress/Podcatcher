@@ -77,6 +77,7 @@ public:
     void cancelCurrentDownload();
     void deleteDownload();
     void setAsPlayed();
+    void setAsUnplayed();
 
 signals:
     void episodeChanged();
