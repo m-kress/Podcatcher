@@ -135,8 +135,7 @@ Item {
                     id: downloadedIndicator
                     width: 10
                     height: parent.height
-                    //color: "#9501C5"
-                    color: Theme.highlightBackgroundColor
+                    color: Theme.highlightColor
                     anchors.left: parent.left
                     visible: false
                 }
@@ -427,8 +426,7 @@ Item {
                         PropertyChanges {
                             target: downloadedIndicator
                             visible: true
-                            //color:  "#d8d8d9"
-                            color: Theme.highlightColor
+                            color: Theme.primaryColor
                         }
                         PropertyChanges {
                             target: playButton
