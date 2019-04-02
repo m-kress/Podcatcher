@@ -21,38 +21,42 @@ import Sailfish.Silica 1.0
 
 
 Item {
-Column{
+//Column{
     width: parent.width
-    height: parent.height
+    height: Math.max(channelLogo.height, channelDescription.height) + Theme.paddingMedium + autoDownloadSwitch.height
 
-    spacing: Theme.paddingMedium
-
-    Row{
-        width: parent.width
-        height: parent.height - autoDownloadSwitch.height - Theme.paddingMedium
-
-        spacing: Theme.paddingMedium
-
-        PodcastChannelLogo {
+    PodcastChannelLogo {
             id: channelLogo;
+            anchors.left: parent.left
+            anchors.leftMargin: 0
             channelLogo: channel.logo
-            width: 130
-            height: 130
+            width: parent.width/4
+            height: parent.width/4
+
         }
 
         Label {
             id: channelDescription
-            height: parent.height
-            width: parent.width- channelLogo.width - Theme.paddingMedium
+            //height: channelLogo.height
+            width: parent.width- channelLogo.width - Theme.paddingMedium - Theme.horizontalPageMargin
+            anchors.left: channelLogo.right
+            anchors.leftMargin:  Theme.paddingMedium
             text: channel.description
-            truncationMode: TruncationMode.Elide
-            font.pixelSize: Theme.fontSizeTiny
+            truncationMode: TruncationMode.None
+            font.pixelSize: Theme.fontSizeSmall
             wrapMode: Text.WordWrap
         }
-    }
+//    }
 
     TextSwitch{
         id: autoDownloadSwitch
+
+        anchors.top: (channelLogo.height>channelDescription.height)?channelLogo.bottom:channelDescription.bottom
+        anchors.topMargin: Theme.paddingSmall
+
+        width: parent.width
+
+
         text: qsTr("Auto-download")
         checked: channel.isAutoDownloadOn
 
@@ -61,5 +65,5 @@ Column{
         }
     }
 
-}
+//}
 }

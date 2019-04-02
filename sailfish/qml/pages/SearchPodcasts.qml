@@ -23,6 +23,9 @@ import QtQuick.XmlListModel 2.0
 
 Page {
     id: browsePage
+
+    allowedOrientations: Orientation.All
+
     SilicaFlickable{
         anchors.fill: parent
         //orientationLock: PageOrientation.LockPortrait
@@ -110,16 +113,17 @@ Page {
                 delegate:
                     ListItem {
                     id: searchItem
-                    contentHeight: Theme.itemSizeLarge
+                    contentHeight: Math.max(channelNameItem.height, channelLogo.height)
                     width: parent.width
+
 
                     Image {
                         id: channelLogo;
                         source: logo
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
-                        width: parent.height;
-                        height: parent.height;
+                        width:  parent.width/5;
+                        height: parent.width/5;
                         visible: status == Image.Ready
                     }
 
@@ -137,58 +141,64 @@ Page {
                         anchors.left: channelLogo.right
                         anchors.leftMargin: Theme.paddingMedium;
                         width: searchItem.width - channelLogo.width - Theme.paddingMedium
-                        height: parent.height
 
-                        Column {
-                            width: parent.width
-                            spacing: Theme.paddingSmall
+                        height: channelName.height + Theme.paddingSmall + channelUrl.height
 
-                            Row {
-                                width: parent.width
+                        //                        height: parent.height
 
-                                Label {
-                                    id: channelName;
-                                    text: title
-                                    //truncationMode: TruncationMode.Fade
-                                    wrapMode: Text.Wrap
-                                    verticalAlignment: Text.AlignVCenter
-                                    font.pixelSize: Theme.fontSizeMedium
-                                    color: channelNameItem.highlighted ? Theme.highlightColor : Theme.primaryColor
-                                    width: parent.width - subscribeButton.width
-                                    height: channelNameItem.height - channelUrl.height - Theme.paddingSmall
+                        //                        Column {
+                        //                            width: parent.width
+                        //                            spacing: Theme.paddingSmall
 
+                        //                            Row {
+                        //                                width: parent.width
 
-                                }
+                        Label {
+                            id: channelName;
+                            text: title
+                            //truncationMode: TruncationMode.Fade
+                            wrapMode: Text.Wrap
+                            verticalAlignment: Text.AlignVCenter
+                            font.pixelSize: Theme.fontSizeMedium
+                            color: channelNameItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                            width: parent.width - subscribeButton.width - Theme.paddingMedium
+                            //height: channelNameItem.height - channelUrl.height - Theme.paddingSmall
+                            height: Text.paintedHeight
 
-                                IconButton{
-
-                                    id: subscribeButton
-                                    anchors.leftMargin: Theme.paddingMedium
-                                    anchors.verticalCenter: parent.verticalCenter
-
-                                    icon.source: "image://theme/icon-m-add"
-
-                                    onClicked: {
-                                        console.log("Subscribe to podcast with url: " + url)
-                                        mainPage.addPodcast(url, logoUrl);
-                                        pageStack.pop(mainPage);
-                                    }
-                                }
-
-                            }
-
-                            Label {
-                                id: channelUrl;
-                                text: url
-                                font.pixelSize: Theme.fontSizeTiny
-                                color: channelNameItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
-                                width: parent.width
-                                truncationMode: TruncationMode.Elide
-                            }
 
                         }
+
+                        IconButton{
+
+                            id: subscribeButton
+                            anchors.leftMargin: Theme.paddingMedium
+                            anchors.left: channelName.right
+
+                            icon.source: "image://theme/icon-m-add"
+
+                            onClicked: {
+                                console.log("Subscribe to podcast with url: " + url)
+                                mainPage.addPodcast(url, logoUrl);
+                                pageStack.pop(mainPage);
+                            }
+                        }
+
+                        //                            }
+
+                        Label {
+                            id: channelUrl;
+                            anchors.top: channelName.bottom
+                            anchors.topMargin: Theme.paddingSmall
+                            text: url
+                            font.pixelSize: Theme.fontSizeTiny
+                            color: channelNameItem.highlighted ? Theme.highlightColor : Theme.secondaryColor
+                            width: parent.width
+                            truncationMode: TruncationMode.Elide
+                        }
+
                     }
                 }
+                //                }
 
                 XmlListModel {
                     id: searchPodcastsModel

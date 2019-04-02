@@ -22,7 +22,8 @@ import Sailfish.Silica 1.0
 Page {
 
     id: epDescPage
-    //orientationLock: PageOrientation.LockPortrait
+
+    allowedOrientations: Orientation.All
 
     property string episodeDescriptionText
     property string episodePublished

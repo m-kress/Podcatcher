@@ -22,7 +22,8 @@ import Sailfish.Silica 1.0
 Page {
     id: episodesPage
 
-    //    orientationLock: PageOrientation.LockPortrait
+    allowedOrientations: Orientation.All
+
     SilicaFlickable{
         anchors.fill: parent
         PullDownMenu{
@@ -93,8 +94,8 @@ Page {
 
             PodcastEpisodesChannelInfo {
                 id: episodeData
-                width: parent.width
-                height: 218
+                //width: parent.width
+                //height: 218
             }
 
 

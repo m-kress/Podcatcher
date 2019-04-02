@@ -25,6 +25,7 @@ import  org.nemomobile.configuration 1.0
 Page {
     id: mainPage
     //orientationLock: PageOrientation.LockPortrait
+    allowedOrientations:Orientation.All
 
     property string contextMenuChannelName;
     property int contextUnplayedEpisodes;
@@ -37,7 +38,7 @@ Page {
     function openFile(file) {
         var component = Qt.createComponent(Qt.resolvedUrl(file))
 
-        if (component.status == Component.Ready)
+        if (component.status === Component.Ready)
             pageStack.push(component);
         else
             console.log("Error loading component:", component.errorString());

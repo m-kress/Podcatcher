@@ -24,8 +24,7 @@ Page {
 
     property string version
 
-    //orientationLock: PageOrientation.LockPortrait
-
+    allowedOrientations: Orientation.All
 
     Component.onCompleted: {
 

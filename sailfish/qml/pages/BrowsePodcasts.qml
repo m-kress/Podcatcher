@@ -22,12 +22,13 @@ import QtQuick.XmlListModel 2.0
 
 Page {
     id: browsePage
-    //orientationLock: PageOrientation.LockPortrait
+
+    allowedOrientations: Orientation.All
 
     function openFile(file) {
         var component = Qt.createComponent(file)
 
-        if (component.status == Component.Ready)
+        if (component.status === Component.Ready)
             pageStack.push(component);
         else
             console.log("Error loading component:", component.errorString());

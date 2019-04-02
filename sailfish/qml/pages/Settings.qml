@@ -27,6 +27,8 @@ Dialog {
     property variant keepDays: ['5', '10', '0'];
     property variant players: ['', '/usr/bin/jolla-mediaplayer', '/usr/bin/harbour-unplayer']
 
+    allowedOrientations: Orientation.All
+
     ConfigurationValue{
         id:autoDownloadConf
         key: "/apps/ControlPanel/Podcatcher/autodownload"

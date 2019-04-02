@@ -22,6 +22,8 @@ import QtQuick.XmlListModel 2.0
 
 Dialog {
 
+    allowedOrientations: Orientation.All
+
     Column {
         anchors.fill: parent
         spacing: Theme.paddingMedium

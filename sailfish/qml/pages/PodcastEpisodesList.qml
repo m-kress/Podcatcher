@@ -174,6 +174,8 @@ Item {
 
                     width: podcastItem.width - downloadedIndicator.width - playButton.width - Theme.paddingMedium -2* Theme.horizontalPageMargin
                     height: Text.paintedHeight
+                    //height: 2.4*Theme.fontSizeSmall
+                    truncationMode: TuncationMode.Elide
                     wrapMode: Text.WordWrap
                 }
 
