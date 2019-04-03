@@ -200,7 +200,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesChannelInfo.qml" line="60"/>
         <source>Auto-download</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladda ner automatiskt</translation>
     </message>
 </context>
 <context>
@@ -223,7 +223,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="115"/>
         <source>Mark as unplayed</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera som ospelad</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="123"/>
@@ -355,42 +355,42 @@
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="38"/>
         <source>Import podcasts from gPodder</source>
-        <translation type="unfinished">Importera poddar från gPodder</translation>
+        <translation>Importera poddar från gPodder</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="46"/>
         <source>Add URL manually</source>
-        <translation type="unfinished">Lägg till URL manuellt</translation>
+        <translation>Lägg till URL manuellt</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="69"/>
         <source>No podcasts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Inga poddar hittades.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="87"/>
         <source>Search podcasts</source>
-        <translation type="unfinished"></translation>
+        <translation>Sök poddar</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="92"/>
         <source>Keyword</source>
-        <translation type="unfinished"></translation>
+        <translation>Nyckelord</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="256"/>
         <source>Add new podcast</source>
-        <translation type="unfinished">Lägg till ny podd</translation>
+        <translation>Lägg till ny podd</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="257"/>
         <source>Add</source>
-        <translation type="unfinished">Lägg till</translation>
+        <translation>Lägg till</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="262"/>
         <source>Podcast RSS URL</source>
-        <translation type="unfinished">URL för podd-RSS</translation>
+        <translation>Poddens RSS-adress</translation>
     </message>
 </context>
 <context>
@@ -438,7 +438,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="146"/>
         <source>Use mediaplayer </source>
-        <translation>Använd mediaspelaren</translation>
+        <translation>Använd mediaspelare </translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="147"/>
