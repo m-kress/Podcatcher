@@ -30,8 +30,8 @@ Item {
             anchors.left: parent.left
             anchors.leftMargin: 0
             channelLogo: channel.logo
-            width: parent.width/4
-            height: parent.width/4
+            width: Theme.itemSizeHuge
+            height: Theme.itemSizeHuge
 
         }
 
