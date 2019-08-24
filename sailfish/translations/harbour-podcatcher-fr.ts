@@ -106,12 +106,12 @@
     <message>
         <location filename="../qml/pages/MainPage.qml" line="69"/>
         <source>No podcast subscriptions yet</source>
-        <translation type="unfinished">Aucun abonnement aux podcasts pour l&apos;instant</translation>
+        <translation>Aucun abonnement aux podcasts pour l&apos;instant</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="70"/>
         <source>Why don&apos;t you add some...</source>
-        <translation type="unfinished">Pourquoi ne pas en ajouter ?</translation>
+        <translation>Pourquoi ne pas en ajouter ?</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="79"/>
@@ -200,7 +200,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesChannelInfo.qml" line="60"/>
         <source>Auto-download</source>
-        <translation type="unfinished"></translation>
+        <translation>Téléchargament auto</translation>
     </message>
 </context>
 <context>
@@ -223,7 +223,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="115"/>
         <source>Mark as unplayed</source>
-        <translation type="unfinished"></translation>
+        <translation>Marquer comme non écouté</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="123"/>
@@ -355,42 +355,42 @@
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="38"/>
         <source>Import podcasts from gPodder</source>
-        <translation type="unfinished">Importer des podcasts depuis gPodder</translation>
+        <translation>Importer des podcasts depuis gPodder</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="46"/>
         <source>Add URL manually</source>
-        <translation type="unfinished">Ajouter une URL manuellement</translation>
+        <translation>Ajouter une URL manuellement</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="69"/>
         <source>No podcasts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aucun podcast trouvé</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="87"/>
         <source>Search podcasts</source>
-        <translation type="unfinished"></translation>
+        <translation>Chercher des podcasts</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="92"/>
         <source>Keyword</source>
-        <translation type="unfinished"></translation>
+        <translation>Mot-clef</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="256"/>
         <source>Add new podcast</source>
-        <translation type="unfinished">Ajouter un nouveau podcast</translation>
+        <translation>Ajouter un nouveau podcast</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="257"/>
         <source>Add</source>
-        <translation type="unfinished">Ajouter</translation>
+        <translation>Ajouter</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="262"/>
         <source>Podcast RSS URL</source>
-        <translation type="unfinished">URL du flux RSS du podcast</translation>
+        <translation>URL du flux RSS du podcast</translation>
     </message>
 </context>
 <context>
