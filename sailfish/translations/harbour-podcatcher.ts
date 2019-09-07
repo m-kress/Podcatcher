@@ -65,7 +65,7 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="49"/>
+        <location filename="../qml/cover/CoverPage.qml" line="52"/>
         <source>Podcatcher</source>
         <translation type="unfinished"></translation>
     </message>
