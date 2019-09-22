@@ -69,6 +69,8 @@ DockedPanel {
     onOpenChanged: {
         if(open && timerEnabled)
             autoClose.start()
+        else if(!open && timerEnabled)
+            autoClose.stop()
     }
 }
 
