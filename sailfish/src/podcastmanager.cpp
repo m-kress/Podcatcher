@@ -112,15 +112,16 @@ void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QStrin
 
     if (m_channelsModel->channelAlreadyExists(channel)) {
         qDebug() << "Channel is already in DB. Not doing anything.";
-        delete channel;
         emit showInfoBanner(tr("Already subscribed to '%1'.").arg(channel->title()));
+        delete channel;
         return;
     }
 
     channelRequestMap.insert(rssUrl.toString(), channel);
 
     QNetworkRequest request;
-    request.setRawHeader("User-Agent", "Podcatcher Podcast client");
+    request.setRawHeader("User-Agent", "Podcatcher Sailfish Podcast client");
+    request.setRawHeader("Connection", "close");
     request.setUrl(rssUrl);
 
     QNetworkReply *reply = m_networkManager->get(request);
@@ -262,6 +263,7 @@ void PodcastManager::onPodcastChannelCompleted()
 
     if (reply->error() != QNetworkReply::NoError){
         emit showInfoBanner(reply->errorString());
+        qDebug() << "An error occured: " << reply->errorString();
         reply->deleteLater();
         return;
     }
