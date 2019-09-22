@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-podcatcher
 
-DEFINES += PODCATCHER_VERSION=1124
+DEFINES += PODCATCHER_VERSION=1125
 QT += sql xml concurrent
 
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -50,7 +50,8 @@ TRANSLATIONS += translations/harbour-podcatcher-de.ts \
                 translations/harbour-podcatcher-fr.ts \
                 translations/harbour-podcatcher-it.ts \
                 translations/harbour-podcatcher-ru.ts \
-                translations/harbour-podcatcher-sv.ts
+                translations/harbour-podcatcher-sv.ts \
+                translations/harbour-podcatcher-zh_CN.ts
 
 
 DISTFILES += \

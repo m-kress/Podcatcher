@@ -65,7 +65,7 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="52"/>
+        <location filename="../qml/cover/CoverPage.qml" line="45"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
@@ -272,52 +272,52 @@
         <translation>Kan inte lägga till prenumeration från %1 ...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="116"/>
+        <location filename="../src/podcastmanager.cpp" line="115"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Prenumerarerar redan på &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="273"/>
+        <location filename="../src/podcastmanager.cpp" line="275"/>
         <source>No data received.</source>
         <translation>Ingen data mottagen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="300"/>
+        <location filename="../src/podcastmanager.cpp" line="302"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Poddflödet är inte giltigt. Kan inte lägga till prenumeration...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="436"/>
+        <location filename="../src/podcastmanager.cpp" line="438"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="460"/>
+        <location filename="../src/podcastmanager.cpp" line="462"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="553"/>
+        <location filename="../src/podcastmanager.cpp" line="555"/>
         <source>Podcast episode download failed.</source>
         <translation>Poddavsnittet kunde inte laddas ner.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="839"/>
+        <location filename="../src/podcastmanager.cpp" line="841"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="870"/>
+        <location filename="../src/podcastmanager.cpp" line="872"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="913"/>
+        <location filename="../src/podcastmanager.cpp" line="915"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="917"/>
+        <location filename="../src/podcastmanager.cpp" line="919"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>
@@ -325,27 +325,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="115"/>
+        <location filename="../src/podcatcherui.cpp" line="121"/>
         <source>Fetching channel information...</source>
         <translation>Hämtar kanalinformation...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="176"/>
+        <location filename="../src/podcatcherui.cpp" line="182"/>
         <source>Podcast episode not found.</source>
         <translation>Poddavsnittet kan inte hittas.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="189"/>
+        <location filename="../src/podcatcherui.cpp" line="195"/>
         <source>Mediaplayer program not found!</source>
         <translation>Mediaspelaren kunde inte hittas!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="201"/>
+        <location filename="../src/podcatcherui.cpp" line="211"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Tyvärr! Kunde inte spela upp den här podden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="313"/>
+        <location filename="../src/podcatcherui.cpp" line="323"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podd.</translation>
     </message>
