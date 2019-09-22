@@ -278,18 +278,18 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
         return;
     }
 
-    try{
-        file.write(reply->readAll());
-    }
-    catch(std::bad_alloc& ba){
-        qDebug() << "File too large, write it piecewise";
+//    try{
+//        file.write(reply->readAll());
+//    }
+//    catch(std::bad_alloc& ba){
+//        qDebug() << "File too large, write it piecewise";
         std::vector<char> buffer(4096);
         qint64 bytesRead;
 
         while((bytesRead = reply->read(&buffer[0], buffer.size())) >0){
             file.write(&buffer[0], bytesRead);
         }
-    }
+//    }
 
     //
     file.close();
