@@ -95,6 +95,12 @@ PodcatcherUI::PodcatcherUI()
 
     view->show();
     qDebug() << "Paths:\n" << PODCATCHER_PATH <<"\n" << PODCATCHER_PODCAST_DLDIR;
+
+    QFile jollaMediaPlayer("/usr/bin/jolla-mediaplayer");
+    if (m_mediaPlayerPath.isEmpty() && !jollaMediaPlayer.exists()){
+        emit showInfoBanner("Jolla Mediaplayer not installed. Playback of the podcasts might not work.");
+    }
+
 }
 
 void PodcatcherUI::addPodcast(QString rssUrl, QString logoUrl)
@@ -197,6 +203,10 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
 
 
     }else{
+        QFile jollaMediaPlayer("/usr/bin/jolla-mediaplayer");
+        if (!jollaMediaPlayer.exists()){
+            emit showInfoBanner("Jolla Mediaplayer not installed. Playback of the episode might not work.");
+        }
         if (! QDesktopServices::openUrl(file)){
             emit showInfoBanner(tr("I am sorry! Could not launch audio player for this podcast."));
         }
