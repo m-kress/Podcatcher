@@ -175,7 +175,7 @@ Item {
                     width: podcastItem.width - downloadedIndicator.width - playButton.width - Theme.paddingMedium -2* Theme.horizontalPageMargin
                     height: Text.paintedHeight
                     //height: 2.4*Theme.fontSizeSmall
-                    truncationMode: TuncationMode.Elide
+                    truncationMode: TruncationMode.Elide
                     wrapMode: Text.WordWrap
                 }
 
@@ -510,8 +510,8 @@ Item {
                 console.log("Streaming " + streamUrl + streamUrl);
                 mainPage.audioStreamer.playStream(streamUrl, streamTitle);
 
-                if (episodesPage.pageStack.depth > 1)  {
-                    episodesPage.pageStack.pop();
+                if (pageStack.depth > 1)  {
+                    pageStack.pop();
                 }
             }
         }

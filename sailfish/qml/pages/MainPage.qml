@@ -57,6 +57,7 @@ Page {
 
         //contentHeight: mainPageColumn.height
         anchors.fill: parent
+        clip: audioStreamerUi.expanded
 
 
 //        EmptyChannelPage {
@@ -305,6 +306,7 @@ Page {
 
     AudioStreamer {
         id: audioStreamerUi
+        anchors.bottom: parent.bottom
     }
 
 

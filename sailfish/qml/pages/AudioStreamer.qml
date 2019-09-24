@@ -15,7 +15,7 @@
  * You should have received a copy of the GNU General Public License
  * along with Podcatcher for N9.  If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.0
+import QtQuick 2.2
 import QtMultimedia 5.0
 
 import Sailfish.Silica 1.0
@@ -28,18 +28,22 @@ DockedPanel {
 
     property string title
 
-    height: Theme.itemSizeExtraLarge + 2* Theme.paddingLarge
+
+    height: buttonGroup.height + 2* Theme.paddingLarge
+
     width: parent.width
 
-    state: ""
+    dock: Dock.Bottom
+    modal: false
+    open: false
 
     opacity: 1
+
     Rectangle{
         anchors.fill: parent
         color: Theme.highlightDimmerColor
         opacity: .9
     }
-
 
     function durationText(curPos) {
         var curPosSecs = Math.floor((parseInt(curPos) / 1000));
@@ -75,59 +79,82 @@ DockedPanel {
         return playtimeString;
     }
 
+
     Column {
         id: buttonGroup
-        spacing: Theme.paddingSmall
-        anchors.fill: parent
+        spacing: Theme.paddingMedium
+        width: parent.width
+        anchors.bottom: parent.bottom
         anchors.margins: Theme.paddingMedium
-
+        anchors.bottomMargin: Theme.paddingLarge
 
         Label {
             id: streamTitleLabel
             text: title
             width: parent.width //- durationLabel.width
+            height: Text.paintedHeight
             anchors.horizontalCenter: parent.horizontalCenter
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: Theme.fontSizeTiny
+            font.pixelSize: Theme.fontSizeSmall
+        }
+
+
+        Slider{
+            id: playbackPosition
+            width: parent.width
+            height: Theme.iconSizeMedium
+            minimumValue: 0
+            maximumValue: audioPlayer.duration
+            value: audioPlayer.position
+
+            onValueChanged: {
+                if(audioPlayer.playbackState == Audio.PlayingState){
+                    audioPlayer.seek(playbackPosition.value)
+                }
+            }
+
         }
 
         Row {
-            spacing: 100
+            spacing: Theme.paddingSmall
             anchors.horizontalCenter: parent.horizontalCenter
 
             IconButton {
-                id: rew
+                id: rewBtn
                 icon.source: "image://theme/icon-m-left?" + (pressed
                                                              ? Theme.highlightColor
                                                              : Theme.primaryColor)
                 onClicked: {
                     console.log("Setting audio position to " + audioPlayer.position - 10000 + "s")
-                    //audioPlayer.position = audioPlayer.position - 10000
                     audioPlayer.seek(audioPlayer.position - 10000);
                 }
+
+                enabled: audioPlayer.playbackState == Audio.PlayingState ||
+                         audioPlayer.playbackState == Audio.PausedState
             }
 
 
             IconButton {
-                id: play
+                id: playBtn
                 icon.source: "image://theme/icon-m-play?" + (pressed
                                                              ? Theme.highlightColor
                                                              : Theme.primaryColor)
+                enabled: audioPlayer.playbackState !== Audio.PlayingState
                 onClicked: {
-                    streamerItem.state = "playing";
                     audioPlayer.play();
                 }
             }
 
 
             IconButton {
-                id: pause
+                id: pauseBtn
                 icon.source: "image://theme/icon-m-pause?" + (pressed
                                                               ? Theme.highlightColor
                                                               : Theme.primaryColor)
+                enabled: audioPlayer.playbackState == Audio.PlayingState
+
                 onClicked: {
-                    streamerItem.state = "paused";
                     audioPlayer.pause();
                 }
             }
@@ -135,10 +162,15 @@ DockedPanel {
 
 
             IconButton {
-                id:ff
+                id:ffBtn
                 icon.source: "image://theme/icon-m-right?" + (pressed
                                                               ? Theme.highlightColor
                                                               : Theme.primaryColor)
+
+                enabled: audioPlayer.playbackState == Audio.PlayingState ||
+                         audioPlayer.playbackState == Audio.PausedState
+
+
                 onClicked: {
                     console.log("Setting audio position to " + audioPlayer.position + 10000 + "s")
                     //audioPlayer.position = audioPlayer.position + 10000
@@ -149,13 +181,16 @@ DockedPanel {
 
 
             IconButton {
-                id: stop
+                id: closeBtn
+
                 icon.source: "image://theme/icon-m-close?" + (pressed
                                                               ? Theme.highlightColor
                                                               : Theme.primaryColor)
+
+
                 onClicked: {
-                    streamerItem.state = "stopped";
                     audioPlayer.stop();
+                    hide();
                 }
             }
 
@@ -175,12 +210,8 @@ DockedPanel {
         audioPlayer.source = url;
         streamerItem.title = title;
         audioPlayer.play();
-        streamerItem.state = "playing";
     }
 
-    onStateChanged: {
-        console.log("State: " + state);
-    }
 
 
     Audio {
@@ -191,49 +222,10 @@ DockedPanel {
         }
 
         onStopped: {
-            stopStream(audioPlayer.source);
-            hide();
+            //stopStream(audioPlayer.source);
+            //hide();
         }
     }
 
-    states: [
-        State {
-            name: "playing"
-            PropertyChanges {
-                target: play
-                visible: false
-            }
-            PropertyChanges {
-                target: pause
-                visible: true
-            }
-            PropertyChanges {
-                target: buttonGroup
-                opacity: 1
-            }
-        },
-        State {
-            name: "paused"
-            PropertyChanges {
-                target: play
-                visible: true
-            }
-            PropertyChanges {
-                target: pause
-                visible: false
-            }
-            PropertyChanges {
-                target: buttonGroup
-                opacity: 1
-            }
-        },
-        State {
-            name: "stopped"
-            PropertyChanges {
-                target: play
-                visible: true
-            }
-        }
-    ]
 
 }

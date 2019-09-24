@@ -460,12 +460,15 @@ bool PodcastEpisode::isValidAudiofile(QNetworkReply *reply) const
 {
     QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
 
+    qDebug() << "Content-Type is "<<contentType;
+
     if (contentType == "audio/mpeg" ||
             contentType == "audio/mpeg3" ||
             contentType == "audio/ogg"   ||
             contentType == "audio/x-ogg"   ||
             contentType == "audio/aac"   ||
-            contentType  == "audio/x-m4a") {
+            contentType  == "audio/x-m4a" ||
+            contentType == "audio/mp4") {
         qDebug() << "Found audio URL to stream: " << reply->url();
         return true;
     }
