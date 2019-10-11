@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-podcatcher
 
-DEFINES += PODCATCHER_VERSION=1125
+DEFINES += PODCATCHER_VERSION=1910
 QT += sql xml concurrent
 
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -20,11 +20,12 @@ CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
 CONFIG += sailfishapp
 
 CONFIG += link_pkgconfig
-PKGCONFIG += sailfishapp mlite5
+PKGCONFIG += sailfishapp mlite5 taglib
 #PKGCONFIG += contentaction5
 
 SOURCES += src/Podcatcher.cpp \
     src/dbhelper.cpp \
+    src/mediametadataextractor.cpp \
     src/podcastchannel.cpp \
     src/podcastchannelsmodel.cpp \
     src/podcastepisode.cpp \
@@ -36,7 +37,7 @@ SOURCES += src/Podcatcher.cpp \
     src/podcatcherui.cpp
 
 OTHER_FILES += qml/Podcatcher.qml \
-    qml/cover/CoverPage.qml \
+    qml/cover/CoverPage.qml
     translations/*.ts
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 256x256
@@ -55,6 +56,7 @@ TRANSLATIONS += translations/harbour-podcatcher-de.ts \
 
 
 DISTFILES += \
+    qml/MediaKeys.qml \
     qml/Utils.js \
     qml/EmptyPage.qml \
     qml/PodcatcherInfoBanner.qml \
@@ -78,6 +80,7 @@ DISTFILES += \
 
 HEADERS += \
     src/dbhelper.h \
+    src/mediametadataextractor.h \
     src/podcastchannel.h \
     src/podcastchannelsmodel.h \
     src/podcastepisode.h \

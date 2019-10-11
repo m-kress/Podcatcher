@@ -25,7 +25,7 @@ Dialog {
 
     property variant downloadNumbers: ['1', '5', '0'];
     property variant keepDays: ['5', '10', '0'];
-    property variant players: ['', '/usr/bin/jolla-mediaplayer', '/usr/bin/harbour-unplayer']
+    property variant players: ['', '/usr/bin/jolla-mediaplayer', '/usr/bin/harbour-unplayer', 'internal']
 
     allowedOrientations: Orientation.All
 
@@ -157,6 +157,10 @@ Dialog {
 
                     MenuItem{
                         text: qsTr("Unplayer")
+                    }
+
+                    MenuItem{
+                        text: qsTr("Internal Player (Beta)")
                     }
                 }
             }

@@ -39,12 +39,17 @@ ApplicationWindow
     signal autoDownloadChanged(int channelId, bool autoDownload)
 
     initialPage: Component { MainPage { } }
+    //initialPage: player
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
     //allowedOrientations:Orientation.All
    // _defaultPageOrientations: Orientation.Portrait
 
     AudioPlayer{
         id: player
+    }
+
+    MediaKeys{
+
     }
 }
 

@@ -508,13 +508,22 @@ Item {
                 mainPahe.infoBanner.show();
             } else {
                 console.log("Streaming " + streamUrl + streamUrl);
-                mainPage.audioStreamer.playStream(streamUrl, streamTitle);
+                //mainPage.audioStreamer.playStream(streamUrl, streamTitle);
+                player.playStream(streamUrl, streamTitle);
 
-                if (pageStack.depth > 1)  {
-                    pageStack.pop();
-                }
+                pageStack.push(player);
             }
         }
+    }
+
+    Connections{
+        target: ui
+
+        onPlayFileWithInternalPlayer:{
+            player.playFile(fileName);
+            pageStack.push(player);
+        }
+
     }
 
 }

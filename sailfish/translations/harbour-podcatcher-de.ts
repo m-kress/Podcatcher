@@ -15,6 +15,19 @@
     </message>
 </context>
 <context>
+    <name>AudioPlayer</name>
+    <message>
+        <location filename="../qml/pages/AudioPlayer.qml" line="81"/>
+        <source>Player</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AudioPlayer.qml" line="259"/>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BrowsePodcasts</name>
     <message>
         <location filename="../qml/pages/BrowsePodcasts.qml" line="44"/>
@@ -104,57 +117,57 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="70"/>
+        <location filename="../qml/pages/MainPage.qml" line="76"/>
         <source>No podcast subscriptions yet</source>
         <translation type="unfinished">Noch keine Podcasts abonniert</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="71"/>
+        <location filename="../qml/pages/MainPage.qml" line="77"/>
         <source>Why don&apos;t you add some...</source>
         <translation type="unfinished">Warum nicht einen hinzufügen…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="80"/>
+        <location filename="../qml/pages/MainPage.qml" line="86"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="120"/>
+        <location filename="../qml/pages/MainPage.qml" line="126"/>
         <source>Mark all podcasts as played</source>
         <translation>Alle Podcasts als gespielt markieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="127"/>
+        <location filename="../qml/pages/MainPage.qml" line="133"/>
         <source>Remove subscription</source>
         <translation>Abonnement aufheben</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="129"/>
+        <location filename="../qml/pages/MainPage.qml" line="135"/>
         <source>Removing</source>
         <translation>Lösche</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="268"/>
+        <location filename="../qml/pages/MainPage.qml" line="276"/>
         <source>About</source>
         <translation>Über</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="276"/>
+        <location filename="../qml/pages/MainPage.qml" line="284"/>
         <source>Settings</source>
         <translation>Einstellungen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="284"/>
+        <location filename="../qml/pages/MainPage.qml" line="292"/>
         <source>Add Podcast</source>
         <translation>Podcast hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="294"/>
+        <location filename="../qml/pages/MainPage.qml" line="302"/>
         <source>Refresh all subscriptions</source>
         <translation>Alle Abonnements aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="320"/>
+        <location filename="../qml/pages/MainPage.qml" line="328"/>
         <source>Fetching channel information...</source>
         <translation>Lade Kanalinformationen …</translation>
     </message>
@@ -162,35 +175,35 @@
 <context>
     <name>PodcastEpisodes</name>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="32"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="34"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="75"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="38"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="40"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
         <source>Remove subscription</source>
         <translation>Abonnement aufheben</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="44"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="47"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="50"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="53"/>
         <source>Delete all downloaded podcasts</source>
         <translation>Alle Downloads löschen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="55"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="61"/>
         <source>Mark all podcasts as played</source>
         <translation>Alle Podcasts als gespielt markieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="63"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="69"/>
         <source>Refresh</source>
         <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="80"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="86"/>
         <source>Delete downloaded podcasts</source>
         <translation>Heruntergeladenen Podcast löschen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="135"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="141"/>
         <source>Refreshing episodes...</source>
         <translation>Aktualisiere Folgen…</translation>
     </message>
@@ -325,27 +338,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="121"/>
+        <location filename="../src/podcatcherui.cpp" line="134"/>
         <source>Fetching channel information...</source>
         <translation>Lade Kanalinformationen …</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="182"/>
+        <location filename="../src/podcatcherui.cpp" line="195"/>
         <source>Podcast episode not found.</source>
         <translation>Podcastfolge nicht gefunden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="195"/>
+        <location filename="../src/podcatcherui.cpp" line="208"/>
         <source>Mediaplayer program not found!</source>
         <translation>Mediaplayer-App nicht gefunden!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="211"/>
+        <location filename="../src/podcatcherui.cpp" line="224"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Es tut mir leid. Der Audioplayer konnte nicht gestartet werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="323"/>
+        <location filename="../src/podcatcherui.cpp" line="344"/>
         <source>Unable to stream podcast.</source>
         <translation>Podcast konnte nicht gestreamt werden.</translation>
     </message>
@@ -461,7 +474,12 @@
         <translation>Unplayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="169"/>
+        <location filename="../qml/pages/Settings.qml" line="163"/>
+        <source>Internal Player (Beta)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="173"/>
         <source>Show popular podcasts page</source>
         <translation>Beliebte Podcasts anzeigen</translation>
     </message>

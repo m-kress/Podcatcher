@@ -53,6 +53,12 @@ Page {
         ui.importFromGPodder(username, password);
     }
 
+    onStatusChanged:{
+        if(status ===PageStatus.Active && player.active){
+            pageStack.pushAttached(player);
+        }
+    }
+
     SilicaFlickable{
 
         //contentHeight: mainPageColumn.height
@@ -216,6 +222,8 @@ Page {
 
 
         }
+
+
 
 
         Connections {

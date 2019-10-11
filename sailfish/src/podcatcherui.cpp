@@ -18,7 +18,7 @@
 #include <QTimer>
 #include <QtQuick>
 #include <QtDebug>
-
+#include <QCryptographicHash>
 //#include <contentaction5/contentaction.h>
 
 
@@ -32,7 +32,20 @@ PodcatcherUI::PodcatcherUI()
     view = SailfishApp::createView();
     m_channelsModel = m_pManager.podcastChannelsModel();
     view->rootContext()->setContextProperty("channelsModel", m_channelsModel);
+
+    view->rootContext()->setContextProperty("mediaMetaDataExtractor", &m_mMDE);
+
+    m_chapterModel = new PodcastChapterModel(this);
+    m_chapterModel->setChapters(m_mMDE.chapters());
+
+    connect(&m_mMDE, SIGNAL(chaptersChanged(QList<PodcastChapter>*)),
+            m_chapterModel, SLOT(onChaptersChanged(QList<PodcastChapter>*)));
+
+    view->rootContext()->setContextProperty("chapterModel", m_chapterModel);
+
     view->rootContext()->setContextProperty("ui", this);
+
+    view->engine()->addImageProvider("coverArt", &m_mMDE.imageProvider);
 
     view->setSource(SailfishApp::pathTo("qml/Podcatcher.qml"));
 
@@ -189,7 +202,7 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
 
     qDebug() << "Launching the music player for file" << file.fileName();
 
-    if (!m_mediaPlayerPath.isEmpty()){
+    if (!m_mediaPlayerPath.isEmpty() && m_mediaPlayerPath != "internal"){
         QFile player(m_mediaPlayerPath);
         if (!player.exists()){
             emit showInfoBanner(tr("Mediaplayer program not found!"));
@@ -202,7 +215,7 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
         system(cmd.toLocal8Bit());
 
 
-    }else{
+    }else if (m_mediaPlayerPath.isEmpty()){
         QFile jollaMediaPlayer("/usr/bin/jolla-mediaplayer");
         if (!jollaMediaPlayer.exists()){
             emit showInfoBanner("Jolla Mediaplayer not installed. Playback of the episode might not work.");
@@ -210,6 +223,8 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
         if (! QDesktopServices::openUrl(file)){
             emit showInfoBanner(tr("I am sorry! Could not launch audio player for this podcast."));
         }
+    }else{
+        emit playFileWithInternalPlayer(episode->playFilename());
     }
 }
 
@@ -278,6 +293,12 @@ void PodcatcherUI::onDeletePodcast(int channelId, int index)
     PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
     PodcastEpisode *episode = episodesModel->episode(index);
     qDebug() << "Episode name:" << episode->title() << episode->playFilename();
+
+    QString hash = QCryptographicHash::hash(episode->playFilename().toLocal8Bit(), QCryptographicHash::Md5).toHex();
+    MGConfItem playerPosition("/apps/ControlPanel/Podcatcher/position/"+hash, this);
+    qDebug() << "Saved play position was " << playerPosition.value().toInt();
+    playerPosition.unset();
+
     episode->deleteDownload();
     episodesModel->refreshEpisode(episode);
 

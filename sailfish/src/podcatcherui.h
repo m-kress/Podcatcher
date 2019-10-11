@@ -22,11 +22,11 @@
 #include <QList>
 #include <sailfishapp.h>
 
-
 #include <MGConfItem>
 
 #include "podcastmanager.h"
 #include "podcastchannelsmodel.h"
+#include "mediametadataextractor.h"
 
 class PodcatcherUI : QObject
 {
@@ -51,6 +51,7 @@ signals:
     void downloadedBytesUpdated(int bytes);
     void downloadingPodcasts(bool downloading);
     void streamingUrlResolved(QString streamUrl, QString streamTitle);
+    void playFileWithInternalPlayer(QString fileName);
 
     void isDownloadingChanged(bool isDownloading);
 
@@ -76,7 +77,9 @@ private slots:
 
 private:
     PodcastManager m_pManager;
+    MediaMetaDataExtractor m_mMDE;
     PodcastChannelsModel *m_channelsModel;
+    PodcastChapterModel *m_chapterModel;
     PodcastEpisodesModelFactory *modelFactory;
     QMap<QString, QString> logoCache;
     QQuickView* view;

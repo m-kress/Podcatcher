@@ -24,6 +24,12 @@ Page {
 
     allowedOrientations: Orientation.All
 
+    onStatusChanged:{
+        if(status ===PageStatus.Active && player.active){
+            pageStack.pushAttached(player);
+        }
+    }
+
     SilicaFlickable{
         anchors.fill: parent
         PullDownMenu{

@@ -25,6 +25,13 @@
 
 #include <MGConfItem>
 
+struct PodcastChapter{
+    QString name;
+    QString description;
+    int start;
+    QString url;
+};
+
 
 class PodcastEpisode : public QObject
 {

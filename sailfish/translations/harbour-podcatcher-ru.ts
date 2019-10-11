@@ -13,6 +13,17 @@
     </message>
 </context>
 <context>
+    <name>AudioPlayer</name>
+    <message>
+        <source>Player</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>BrowsePodcasts</name>
     <message>
         <source>Import podcasts from gPodder</source>
@@ -381,6 +392,10 @@
     <message>
         <source>Keep unplayed episodes</source>
         <translation>Хранить непрослушанные выпуски</translation>
+    </message>
+    <message>
+        <source>Internal Player (Beta)</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
