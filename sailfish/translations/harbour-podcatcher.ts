@@ -358,7 +358,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="344"/>
+        <location filename="../src/podcatcherui.cpp" line="345"/>
         <source>Unable to stream podcast.</source>
         <translation type="unfinished"></translation>
     </message>

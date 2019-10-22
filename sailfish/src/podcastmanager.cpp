@@ -475,9 +475,9 @@ void PodcastManager::onPodcastEpisodesParsed()
 bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
 {
     QByteArray episodeXmlData = channel->xml();
-    QList<PodcastEpisode *> *parsedEpisodes;
 
-    parsedEpisodes = PodcastRSSParser::populateEpisodesFromChannelXML(episodeXmlData);
+//    QList<PodcastEpisode *> *parsedEpisodes;
+//    parsedEpisodes = PodcastRSSParser::populateEpisodesFromChannelXML(episodeXmlData);
 
 
     QFutureWatcher<QList<PodcastEpisode *>*> *watcher = new QFutureWatcher<QList<PodcastEpisode *>*>(this);

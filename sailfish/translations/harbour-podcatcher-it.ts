@@ -358,7 +358,7 @@
         <translation>Mi dispiace! Non è possibile avviare il lettore per questo podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="344"/>
+        <location filename="../src/podcatcherui.cpp" line="345"/>
         <source>Unable to stream podcast.</source>
         <translation>Streaming non possibile.</translation>
     </message>
