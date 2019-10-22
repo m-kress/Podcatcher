@@ -311,7 +311,8 @@ void PodcatcherUI::onMarkAsUnplayed(int channelId, int index)
     PodcastEpisode *episode = episodesModel->episode(index);
 
     episode->setAsUnplayed();
-    m_channelsModel->refreshChannel(channelId);
+    episodesModel->refreshEpisode(episode);
+    //m_channelsModel->refreshChannel(channelId);
 }
 
 void PodcatcherUI::deletePodcasts(int channelId)
