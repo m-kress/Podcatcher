@@ -340,6 +340,8 @@ void PodcastChapterModel::setChapters(QList<PodcastChapter> *chapters)
     if(chapters)
         qDebug() << "We found " << m_chapters->size() << "chapters.";
     endResetModel();
+
+    emit countChanged(m_chapters->count());
 }
 
 void PodcastChapterModel::onChaptersChanged(QList<PodcastChapter> *chapters)

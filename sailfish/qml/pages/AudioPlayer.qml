@@ -76,6 +76,11 @@ Page {
         return playtimeString;
     }
 
+    onStatusChanged:{
+        if(status ===PageStatus.Activating)
+            chapterPanel.hide(true);
+    }
+
     PageHeader{
         id: header
         title: qsTr("Player")
@@ -206,10 +211,10 @@ Page {
 
                 onClicked: {
                     chapterPanel.open?chapterPanel.hide():chapterPanel.show();
-                    console.log(channelsModel.columnCount())
+                    console.log(channelsModel.count)
                 }
 
-                visible: chapterModel.rowCount() > 0;
+                visible: chapterModel.count > 0;
             }
 
 
@@ -291,6 +296,7 @@ Page {
 
 
     onPlayStream: {
+        chapterPanel.hide(true);
         audioPlayer.source = url;
         playerPage.title = title;
         audioPlayer.play();
@@ -298,6 +304,9 @@ Page {
 
 
     onPlayFile: {
+
+        chapterPanel.hide(true);
+
         var hash = Qt.md5(fileName);
         lastPosition.key = "/apps/ControlPanel/Podcatcher/position/"+hash;
         console.log("Last position key: "+lastPosition.key)

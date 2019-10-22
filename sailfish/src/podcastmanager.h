@@ -102,6 +102,7 @@ private slots:
 
    void onPodcastEpisodesRequestCompleted();
    void onPodcastEpisodesRequestError(QNetworkReply::NetworkError error);
+   void onPodcastEpisodesParsed();
 
    void onPodcastEpisodeDownloaded(PodcastEpisode *episode);
    void onPodcastEpisodeDownloadFailed(PodcastEpisode* episode);
@@ -120,7 +121,9 @@ private:
    void executeNextDownload();
    QNetworkReply * downloadChannelLogo(QString logoUrl);
    void insertChannelForNetworkReply(QNetworkReply *reply, PodcastChannel *channel);
+   void insertChannelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>* > *watcher, PodcastChannel *channel);
    PodcastChannel * channelForNetworkReply(QNetworkReply *reply);
+   PodcastChannel * channelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>* > *watcher);
    bool savePodcastEpisodes(PodcastChannel *channel);
    void updateAutoDLSettingsFromCache();
 
@@ -132,7 +135,9 @@ private:
    QNetworkAccessManager *m_gpodderQNAM;
 
    QMap<QNetworkReply*, PodcastChannel *> m_channelNetworkRequestCache;
+   QMap<QFutureWatcher<QList<PodcastEpisode*>* >*, PodcastChannel *> m_channelFutureWatcherCache;
    QMap<int, PodcastChannel *> m_channelsCache;
+
 
    PodcastEpisodesModelFactory *m_episodeModelFactory;
    QMap<QString, PodcastChannel *> channelRequestMap;

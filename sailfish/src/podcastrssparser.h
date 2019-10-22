@@ -35,8 +35,7 @@ public:
     static bool populateChannelFromChannelXML(PodcastChannel *channel,
                                               QByteArray xmlReply);
 
-    static bool populateEpisodesFromChannelXML(QList<PodcastEpisode *> *episodes,
-                                               QByteArray xmlReply);
+    static  QList<PodcastEpisode *>* populateEpisodesFromChannelXML(QByteArray xmlReply);
 
     static bool isValidPodcastFeed(QByteArray xmlReply);
 

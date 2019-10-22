@@ -87,8 +87,9 @@ bool PodcastRSSParser::populateChannelFromChannelXML(PodcastChannel *channel, QB
     return true;
 }
 
-bool PodcastRSSParser::populateEpisodesFromChannelXML(QList<PodcastEpisode *> *episodes, QByteArray xmlReply)
+QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteArray xmlReply)
 {
+    QList<PodcastEpisode *> *episodes = new QList<PodcastEpisode *>();;
     qDebug() << "Parsing XML for episodes";
 
     if (xmlReply.size() < 10) {
@@ -97,7 +98,8 @@ bool PodcastRSSParser::populateEpisodesFromChannelXML(QList<PodcastEpisode *> *e
 
     QDomDocument xmlDocument;
     if (xmlDocument.setContent(xmlReply) == false) {        // Construct the XML document and parse it.
-        return false;
+        delete episodes;
+        return nullptr;
     }
 
     QDomElement docElement = xmlDocument.documentElement();
@@ -189,7 +191,7 @@ bool PodcastRSSParser::populateEpisodesFromChannelXML(QList<PodcastEpisode *> *e
         }
     }
 
-    return true;
+    return episodes;
 }
 
 bool PodcastRSSParser::isValidPodcastFeed(QByteArray xmlReply)

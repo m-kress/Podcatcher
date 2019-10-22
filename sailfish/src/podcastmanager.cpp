@@ -288,7 +288,7 @@ void PodcastManager::onPodcastChannelCompleted()
     channel->setXml(data);
     channelRequestMap.remove(reply->url().toString());
 
-/*    if (PodcastRSSParser::isValidPodcastFeed(data) == false) {
+    /*    if (PodcastRSSParser::isValidPodcastFeed(data) == false) {
         qDebug() << "Podcast feed is not valid! Not adding data to DB...";
         emit showInfoBanner("Podcast feed is not valid. Cannot add subscription...");
         return;
@@ -439,47 +439,56 @@ void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError e
     }
 }
 
+void PodcastManager::onPodcastEpisodesParsed()
+{
+    QList<PodcastEpisode*>* parsedEpisodes;
+
+
+    QFutureWatcher<QList<PodcastEpisode*>*>* watcher =  (QFutureWatcher<QList<PodcastEpisode*>*>*) sender();
+
+    parsedEpisodes = watcher->result();
+    PodcastChannel* channel = channelForFutureWatcher(watcher);
+
+    if (!parsedEpisodes) {
+        emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
+    }else{
+
+
+        PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(channel->channelDbId());  // FIXME: Pass only channel to episodes model - not the DB id.
+        episodeModel->addEpisodes(*parsedEpisodes);
+
+        qDebug() << "Downloading automatically new episodes:" << m_autodownloadOnSettings << " WiFi:" << PodcastManager::isConnectedToWiFi();
+
+        // Automatically download new episodes in the channel if
+        //  - If podcast channel has the auto-download enabled (which is controlled by the Podcatcher Settings too).
+        //  - We are connected to the WiFi
+        if (PodcastManager::isConnectedToWiFi() &&
+                channel->isAutoDownloadOn()) {
+            downloadNewEpisodes(episodeModel->channelId());
+        }
+    }
+    channel->setIsRefreshing(false);
+}
+
+
+
 bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
 {
     QByteArray episodeXmlData = channel->xml();
-    QList<PodcastEpisode *> *parsedEpisodes = new QList<PodcastEpisode *>();
+    QList<PodcastEpisode *> *parsedEpisodes;
 
-    bool rssOk;
-
-    rssOk = PodcastRSSParser::populateEpisodesFromChannelXML(parsedEpisodes,
-                                                             episodeXmlData);
-
-//    QFuture<bool> f = QtConcurrent::run(PodcastRSSParser::populateEpisodesFromChannelXML,
-//                                        parsedEpisodes, episodeXmlData);
-
-//    //while(f.isRunning()){
-//        QCoreApplication::processEvents();
-//    //}
-
-//    rssOk = f.result();
-
-    if (!rssOk) {
-         emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
-         return false;
-     }
+    parsedEpisodes = PodcastRSSParser::populateEpisodesFromChannelXML(episodeXmlData);
 
 
-    PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(channel->channelDbId());  // FIXME: Pass only channel to episodes model - not the DB id.
-    episodeModel->addEpisodes(*parsedEpisodes);
+    QFutureWatcher<QList<PodcastEpisode *>*> *watcher = new QFutureWatcher<QList<PodcastEpisode *>*>(this);
 
-    qDebug() << "Downloading automatically new episodes:" << m_autodownloadOnSettings << " WiFi:" << PodcastManager::isConnectedToWiFi();
+    watcher->setFuture(QtConcurrent::run(PodcastRSSParser::populateEpisodesFromChannelXML,episodeXmlData));
 
-    // Automatically download new episodes in the channel if
-    //  - If podcast channel has the auto-download enabled (which is controlled by the Podcatcher Settings too).
-    //  - We are connected to the WiFi
-    if (PodcastManager::isConnectedToWiFi() &&
-        channel->isAutoDownloadOn()) {
-        downloadNewEpisodes(episodeModel->channelId());
-    }
+    insertChannelForFutureWatcher(watcher,channel);
 
-    channel->setIsRefreshing(false);
-
+    QObject::connect(watcher,SIGNAL(finished()), this, SLOT(onPodcastEpisodesParsed()));
     return true;
+
 }
 
 void PodcastManager::downloadNewEpisodes(int channelId) {
@@ -516,10 +525,10 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
     qDebug() << "Download completed...";
 
     disconnect(episode, SIGNAL(podcastEpisodeDownloaded(PodcastEpisode*)),
-            this, SLOT(onPodcastEpisodeDownloaded(PodcastEpisode*)));
+               this, SLOT(onPodcastEpisodeDownloaded(PodcastEpisode*)));
 
     disconnect(episode, SIGNAL(podcastEpisodeDownloadFailed(PodcastEpisode*)),
-            this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
+               this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
 
     episode->setState(PodcastEpisode::DownloadedState);
 
@@ -546,10 +555,10 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
     qDebug() << "Download failed...";
 
     disconnect(episode, SIGNAL(podcastEpisodeDownloaded(PodcastEpisode*)),
-            this, SLOT(onPodcastEpisodeDownloaded(PodcastEpisode*)));
+               this, SLOT(onPodcastEpisodeDownloaded(PodcastEpisode*)));
 
     disconnect(episode, SIGNAL(podcastEpisodeDownloadFailed(PodcastEpisode*)),
-            this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
+               this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
 
     if (m_isDownloading) {
         emit showInfoBanner(tr("Podcast episode download failed."));
@@ -602,7 +611,7 @@ void PodcastManager::executeNextDownload()
 QString PodcastManager::redirectedRequest(QNetworkReply *reply)
 {
     QVariant possibleRedirectUrl =
-                     reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
+            reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
 
     if (possibleRedirectUrl.toUrl().isValid()) {
         QUrl redirectedUrl = QUrl::fromUserInput(possibleRedirectUrl.toString());
@@ -639,6 +648,19 @@ void PodcastManager::insertChannelForNetworkReply(QNetworkReply *reply, PodcastC
     m_channelNetworkRequestCache.insert(reply, channel);
 }
 
+void PodcastManager::insertChannelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>*> *watcher, PodcastChannel *channel)
+{
+    if (watcher == 0) {
+        qWarning() << "FutureWatcher is NULL. Inserting nothing.";
+    }
+
+    if (channel == 0) {
+        qWarning() << "Channel is NULL. Inserting nothing.";
+    }
+
+    m_channelFutureWatcherCache.insert(watcher, channel);
+}
+
 PodcastChannel * PodcastManager::channelForNetworkReply(QNetworkReply *reply)
 {
     PodcastChannel *channel = 0;
@@ -652,12 +674,35 @@ PodcastChannel * PodcastManager::channelForNetworkReply(QNetworkReply *reply)
     }
 
     if (!m_channelNetworkRequestCache.contains(reply)) {
-        qWarning() << "Podcast channel network cache does not contain network reply. Returning NULL nhannel!";
+        qWarning() << "Podcast channel network cache does not contain network reply. Returning NULL channel!";
         return channel;
     }
 
     channel = m_channelNetworkRequestCache.value(reply);
     m_channelNetworkRequestCache.remove(reply);
+
+    return channel;
+}
+
+PodcastChannel *PodcastManager::channelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>*> *watcher)
+{
+    PodcastChannel *channel = 0;
+    if (watcher == 0) {
+        return channel;
+    }
+
+    if (m_channelFutureWatcherCache.isEmpty()) {
+        qWarning() << "Podcast channel future cache is empty. Returning NULL channel!";
+        return channel;
+    }
+
+    if (!m_channelFutureWatcherCache.contains(watcher)) {
+        qWarning() << "Podcast channel future cache does not contain network reply. Returning NULL channel!";
+        return channel;
+    }
+
+    channel = m_channelFutureWatcherCache.value(watcher);
+    m_channelFutureWatcherCache.remove(watcher);
 
     return channel;
 }
@@ -837,7 +882,7 @@ void PodcastManager::updateAutoDLSettingsFromCache()
 void PodcastManager::fetchSubscriptionsFromGPodder(QString gpodderUsername, QString gpodderPassword) {
 
     if (gpodderUsername.isEmpty() ||
-        gpodderPassword.isEmpty()) {
+            gpodderPassword.isEmpty()) {
         emit showInfoBanner(tr("gPodder.net authentication information required."));
         return;
     }
@@ -864,7 +909,7 @@ void PodcastManager::onGPodderAuthRequired(QNetworkReply *reply, QAuthenticator 
     Q_UNUSED(reply);
 
     if (m_gpodderUsername.isEmpty() ||
-        m_gpodderPassword.isEmpty()) {
+            m_gpodderPassword.isEmpty()) {
 
         qDebug() << "Could not authenticate user with gPodder.net.";
 
@@ -874,9 +919,9 @@ void PodcastManager::onGPodderAuthRequired(QNetworkReply *reply, QAuthenticator 
         // Clean up the resources. This ends here...
         QNetworkAccessManager *qnam = reply->manager();
         disconnect(reply, SIGNAL(finished()), this,
-                          SLOT(onGPodderRequestFinished()));
+                   SLOT(onGPodderRequestFinished()));
         disconnect(qnam, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)), this,
-                               SLOT(onGPodderAuthRequired(QNetworkReply *, QAuthenticator *)));
+                   SLOT(onGPodderAuthRequired(QNetworkReply *, QAuthenticator *)));
 
         qnam->deleteLater();
         reply->close();
@@ -900,9 +945,9 @@ void PodcastManager::onGPodderRequestFinished()
     QNetworkAccessManager *gpodderQNAM = reply->manager();
 
     disconnect(reply, SIGNAL(finished()), this,
-                      SLOT(onGPodderRequestFinished()));
+               SLOT(onGPodderRequestFinished()));
     disconnect(gpodderQNAM, SIGNAL(authenticationRequired(QNetworkReply*,QAuthenticator*)), this,
-                           SLOT(onGPodderAuthRequired(QNetworkReply *, QAuthenticator *)));
+               SLOT(onGPodderAuthRequired(QNetworkReply *, QAuthenticator *)));
     QByteArray xml = reply->readAll();
 
     qDebug() << "Response from gpodder: " << xml;
