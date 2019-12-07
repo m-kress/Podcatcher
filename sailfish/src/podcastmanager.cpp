@@ -45,7 +45,7 @@ PodcastManager::PodcastManager(QObject *parent) :
     m_networkManager(new QNetworkAccessManager(this)),
     m_dlNetworkManager(new QNetworkAccessManager(this)),
     m_episodeModelFactory(PodcastEpisodesModelFactory::episodesFactory()),
-    m_isDownloading(false),
+    //m_isDownloading(false),
     m_autodownloadOnSettings(false),
     m_autodownloadNumSettings(1),
     m_keepNumEpisodesSettings(0),
@@ -55,7 +55,17 @@ PodcastManager::PodcastManager(QObject *parent) :
     connect(this, SIGNAL(podcastChannelReady(PodcastChannel*)),
             this, SLOT(savePodcastChannel(PodcastChannel*)));
 
+    connect(this,SIGNAL(podcastEpsiodeDownloadReady()),
+            this,SLOT(onPodcastEpisodeDownloadReady()));
 
+    connect(m_networkManager, SIGNAL(networkSessionConnected()),
+            this, SLOT(onSessionConnected()));
+
+    connect(m_networkManager, SIGNAL(networkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)),
+            this, SLOT(onNetworkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility)));
+
+    connect(m_networkManager, SIGNAL(finished(QNetworkReply*)),
+            this, SLOT(onRequestFinished(QNetworkReply*)));
 
     // Get the current settings values.
     qDebug() << "Current settings: ";
@@ -87,6 +97,8 @@ PodcastManager::PodcastManager(QObject *parent) :
 
 
     updateAutoDLSettingsFromCache();
+
+    qDebug() << "We are in Thread" << QThread::currentThreadId();
 }
 
 PodcastChannelsModel * PodcastManager::podcastChannelsModel() const
@@ -97,6 +109,8 @@ PodcastChannelsModel * PodcastManager::podcastChannelsModel() const
 void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QString, QString> &logoCache)
 {
     qDebug() << "Requesting Podcast channel" << rssUrl;
+    qDebug() << "Current Thread" << QThread::currentThread();
+    qDebug() << "PodcastManager thread" << this->thread();
 
     m_logoCache = logoCache;
 
@@ -129,7 +143,7 @@ void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QStrin
     connect(reply, SIGNAL(finished()),
             this, SLOT(onPodcastChannelCompleted()));
 
-    m_networkManager->get(request);
+    //m_networkManager->get(request);
 }
 
 void PodcastManager::refreshAllChannels()
@@ -211,7 +225,8 @@ void PodcastManager::downloadPodcast(PodcastEpisode *episode)
 
     m_episodeDownloadQueue.append(episode);
     episode->setState(PodcastEpisode::QueuedState);
-    executeNextDownload();
+    emit podcastEpsiodeDownloadReady();
+    //executeNextDownload();
 }
 
 void PodcastManager::cancelQueueingPodcast(PodcastEpisode *episode)
@@ -220,6 +235,12 @@ void PodcastManager::cancelQueueingPodcast(PodcastEpisode *episode)
 
     if (m_episodeDownloadQueue.contains(episode)) {
         m_episodeDownloadQueue.removeOne(episode);
+    } else {
+        qWarning() << "Canceled episode was not in the queue.";
+    }
+
+    if (m_currentEpisodeDownloads.contains(episode)) {
+        m_currentEpisodeDownloads.removeOne(episode);
     } else {
         qWarning() << "Canceled episode was not in the queue.";
     }
@@ -240,8 +261,13 @@ void PodcastManager::cancelDownloadPodcast(PodcastEpisode *episode)
     PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
     channel->setIsDownloading(false);
 
-    m_isDownloading = false;
-    executeNextDownload();
+    if(m_currentEpisodeDownloads.contains(episode)){
+        m_currentEpisodeDownloads.removeOne(episode);
+    }
+
+    emit downloadingPodcasts(isDownloading());
+    //m_isDownloading = false;
+    //executeNextDownload();
 }
 
 
@@ -252,6 +278,8 @@ void PodcastManager::cancelDownloadPodcast(PodcastEpisode *episode)
 void PodcastManager::onPodcastChannelCompleted()
 {
     qDebug() << "Podcast network request completed.";
+    qDebug() << "Current Thread" << QThread::currentThread();
+    qDebug() << "PodcastManager thread" << this->thread();
 
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     QString redirectedUrl = PodcastManager::redirectedRequest(reply);
@@ -269,10 +297,13 @@ void PodcastManager::onPodcastChannelCompleted()
     }
 
     QByteArray data = reply->readAll();
+    reply->close();
+
     if (data.size() < 1) {
         qDebug() << "No data in the network reply. Aborting";
         //emit showInfoBanner(tr("Unable to add subscription from that location"));
         emit showInfoBanner(tr("No data received."));
+        reply->deleteLater();
         return;
     }
 
@@ -287,6 +318,9 @@ void PodcastManager::onPodcastChannelCompleted()
 
     channel->setXml(data);
     channelRequestMap.remove(reply->url().toString());
+
+    reply->deleteLater();
+
 
     /*    if (PodcastRSSParser::isValidPodcastFeed(data) == false) {
         qDebug() << "Podcast feed is not valid! Not adding data to DB...";
@@ -312,8 +346,6 @@ void PodcastManager::onPodcastChannelCompleted()
     } else {
         emit podcastChannelReady(channel);
     }
-
-    reply->deleteLater();
 }
 
 void PodcastManager::onPodcastChannelLogoCompleted() {
@@ -323,6 +355,7 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
     if (reply == 0) {
         qWarning() << "Network reply is 0. Aborting.";
+        reply->deleteLater();
         return;
     }
 
@@ -341,6 +374,7 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
     if (reply->bytesAvailable() < 1) {
         qWarning() << "Got no data from the network request when downloading the logo";
         qDebug() << reply->errorString();
+        reply->deleteLater();
         return;
     }
 
@@ -358,7 +392,10 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
     QByteArray imageData = reply->readAll();
     QImage channelLogo = QImage::fromData(imageData);
 
-    QString filename = PODCATCHER_PATH + localFilename + ".jpg";
+    reply->close();
+
+    //QString filename = PODCATCHER_PATH + localFilename + ".jpg";
+    QString filename = PODCATCHER_PATH + localFilename + ".png";
     qDebug() << "Saving channel logo locally to: " << filename;
 
     if (channelLogo.isNull()) {
@@ -380,9 +417,13 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
 
+   QObject::connect(reply, SIGNAL(destroyed(QObject*)), this,
+                    SLOT(onDestroyingNetworkReply(QObject*)));
+
     PodcastChannel *channel = channelForNetworkReply(reply);
     if (channel == 0) {
         qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
+        reply->deleteLater();
         return;
     }
 
@@ -449,10 +490,16 @@ void PodcastManager::onPodcastEpisodesParsed()
     parsedEpisodes = watcher->result();
     PodcastChannel* channel = channelForFutureWatcher(watcher);
 
+    watcher->deleteLater();
+
     if (!parsedEpisodes) {
         emit showInfoBanner(tr("Podcast feed invalid. Cannot download episodes for '%1'.").arg(channel->title()));
     }else{
 
+
+//        for (PodcastEpisode* e: *parsedEpisodes){
+//            e->moveToThread(this->thread());
+//        }
 
         PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(channel->channelDbId());  // FIXME: Pass only channel to episodes model - not the DB id.
         episodeModel->addEpisodes(*parsedEpisodes);
@@ -470,6 +517,41 @@ void PodcastManager::onPodcastEpisodesParsed()
     channel->setIsRefreshing(false);
 }
 
+void PodcastManager::onPodcastEpisodeDownloadReady()
+{
+    while (!m_episodeDownloadQueue.isEmpty()) {
+        qApp->processEvents();
+        emit downloadingPodcasts(true);  // Notify the UI
+
+        //m_isDownloading = true;
+        PodcastEpisode *episode = m_episodeDownloadQueue.first();
+        m_episodeDownloadQueue.removeOne(episode);
+
+        qDebug() << "Starting a new download..." << episode->title();
+
+        connect(episode, SIGNAL(podcastEpisodeDownloaded(PodcastEpisode*)),
+                this, SLOT(onPodcastEpisodeDownloaded(PodcastEpisode*)));
+
+        connect(episode, SIGNAL(podcastEpisodeDownloadFailed(PodcastEpisode*)),
+                this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
+
+        PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
+        channel->setIsDownloading(true);
+
+        channel->addCredentials(episode);
+
+        episode->setState(PodcastEpisode::DownloadingState);
+        episode->setHasBeenCanceled(false);
+        //episode->setDownloadManager(m_dlNetworkManager);
+        //using same QNAM does not fix problem with hanging downloads
+        episode->setDownloadManager(m_networkManager);
+        episode->downloadEpisode();
+
+        m_currentEpisodeDownloads.append(episode);
+
+    }
+}
+
 
 
 bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
@@ -482,7 +564,7 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
 
     QFutureWatcher<QList<PodcastEpisode *>*> *watcher = new QFutureWatcher<QList<PodcastEpisode *>*>(this);
 
-    watcher->setFuture(QtConcurrent::run(PodcastRSSParser::populateEpisodesFromChannelXML,episodeXmlData));
+    watcher->setFuture(QtConcurrent::run(PodcastRSSParser::populateEpisodesFromChannelXML,episodeXmlData, channel));
 
     insertChannelForFutureWatcher(watcher,channel);
 
@@ -509,7 +591,8 @@ void PodcastManager::downloadNewEpisodes(int channelId) {
 
 void PodcastManager::savePodcastChannel(PodcastChannel *channel)
 {
-    channel->setAutoDownloadOn(m_autodownloadOnSettings);
+    //channel->setAutoDownloadOn(m_autodownloadOnSettings);
+    channel->setAutoDownloadOn(false);
 
     qDebug() << "Adding channel to DB:" << channel->title();
     m_channelsModel->addChannel(channel);
@@ -541,13 +624,19 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
 
     emit podcastEpisodeDownloaded(episode);
 
-    m_isDownloading = false;
+    //m_isDownloading = false;
 
-    if (m_episodeDownloadQueue.contains(episode)) {
-        m_episodeDownloadQueue.removeOne(episode);
+//    if (m_episodeDownloadQueue.contains(episode)) {
+//        m_episodeDownloadQueue.removeOne(episode);
+//    }
+
+    if (m_currentEpisodeDownloads.contains(episode)){
+        m_currentEpisodeDownloads.removeOne(episode);
     }
 
-    executeNextDownload();
+    emit downloadingPodcasts(isDownloading());
+
+    //executeNextDownload();
 }
 
 void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
@@ -560,53 +649,60 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
     disconnect(episode, SIGNAL(podcastEpisodeDownloadFailed(PodcastEpisode*)),
                this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
 
-    if (m_isDownloading) {
+    if (isDownloading()) {
         emit showInfoBanner(tr("Podcast episode download failed."));
     }
 
-    m_isDownloading = false;
+    //m_isDownloading = false;
     PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
     channel->setIsDownloading(false);
     episode->setState(PodcastEpisode::GetState);
 
-    if (m_episodeDownloadQueue.contains(episode)) {
-        m_episodeDownloadQueue.removeOne(episode);
+//    if (m_episodeDownloadQueue.contains(episode)) {
+//        m_episodeDownloadQueue.removeOne(episode);
+//    }
+
+    if (m_currentEpisodeDownloads.contains(episode)){
+        m_currentEpisodeDownloads.removeOne(episode);
     }
 
-    executeNextDownload();
+    emit downloadingPodcasts(isDownloading());
+    //executeNextDownload();
 }
 
-void PodcastManager::executeNextDownload()
-{
-    if (!m_isDownloading && !m_episodeDownloadQueue.isEmpty()) {
-        emit downloadingPodcasts(true);  // Notify the UI
+//void PodcastManager::executeNextDownload()
+//{
+//    if (!m_isDownloading && !m_episodeDownloadQueue.isEmpty()) {
+//        emit downloadingPodcasts(true);  // Notify the UI
 
-        m_isDownloading = true;
-        PodcastEpisode *episode = m_episodeDownloadQueue.first();
+//        m_isDownloading = true;
+//        PodcastEpisode *episode = m_episodeDownloadQueue.first();
 
-        qDebug() << "Starting a new download..." << episode->title();
+//        qDebug() << "Starting a new download..." << episode->title();
 
-        connect(episode, SIGNAL(podcastEpisodeDownloaded(PodcastEpisode*)),
-                this, SLOT(onPodcastEpisodeDownloaded(PodcastEpisode*)));
+//        connect(episode, SIGNAL(podcastEpisodeDownloaded(PodcastEpisode*)),
+//                this, SLOT(onPodcastEpisodeDownloaded(PodcastEpisode*)));
 
-        connect(episode, SIGNAL(podcastEpisodeDownloadFailed(PodcastEpisode*)),
-                this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
+//        connect(episode, SIGNAL(podcastEpisodeDownloadFailed(PodcastEpisode*)),
+//                this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
 
-        PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
-        channel->setIsDownloading(true);
+//        PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
+//        channel->setIsDownloading(true);
 
-        channel->addCredentials(episode);
+//        channel->addCredentials(episode);
 
-        episode->setState(PodcastEpisode::DownloadingState);
-        episode->setHasBeenCanceled(false);
-        episode->setDownloadManager(m_dlNetworkManager);
-        episode->downloadEpisode();
-    } else {
-        if (m_episodeDownloadQueue.isEmpty()) {
-            emit downloadingPodcasts(false); // Notify the UI
-        }
-    }
-}
+//        episode->setState(PodcastEpisode::DownloadingState);
+//        episode->setHasBeenCanceled(false);
+//        episode->setDownloadManager(m_dlNetworkManager);
+//        //using same NAM does not fix problem with hanging downloads
+//        //episode->setDownloadManager(m_networkManager);
+//        episode->downloadEpisode();
+//    } else {
+//        if (m_episodeDownloadQueue.isEmpty()) {
+//            emit downloadingPodcasts(false); // Notify the UI
+//        }
+//    }
+//}
 
 QString PodcastManager::redirectedRequest(QNetworkReply *reply)
 {
@@ -782,7 +878,8 @@ void PodcastManager::deleteAllDownloadedPodcasts(int channelId)
 
 bool PodcastManager::isDownloading()
 {
-    return m_isDownloading;
+    //return m_isDownloading;
+    return m_currentEpisodeDownloads.length() > 0;
 }
 
 void PodcastManager::onAutodownloadOnChanged()
@@ -939,6 +1036,29 @@ void PodcastManager::onGPodderAuthRequired(QNetworkReply *reply, QAuthenticator 
     m_gpodderPassword = "";
 }
 
+void PodcastManager::onDestroyingNetworkReply(QObject *obj)
+{
+    //QNetworkReply *reply = qobject_cast<QNetworkReply *>(obj);
+    qDebug() << "Destroying NetworkReply ";// << reply->url();
+}
+
+void PodcastManager::onSessionConnected()
+{
+    qDebug() << "Network Session connected";
+}
+
+void PodcastManager::onNetworkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility na)
+{
+    qDebug() << "Network Accessibility changed to" << na;
+}
+
+void PodcastManager::onRequestFinished(QNetworkReply *reply)
+{
+    qDebug() << "request finished:" << reply->url();
+}
+
+
+
 void PodcastManager::onGPodderRequestFinished()
 {
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
@@ -1002,7 +1122,7 @@ void PodcastManager::requestPodcastChannelFromGPodder(const QUrl &rssUrl)
     connect(reply, SIGNAL(finished()),
             this, SLOT(onPodcastChannelCompleted()));
 
-    m_networkManager->get(request);
+   // m_networkManager->get(request);
 }
 
 

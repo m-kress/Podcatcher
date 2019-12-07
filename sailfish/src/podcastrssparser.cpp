@@ -87,7 +87,7 @@ bool PodcastRSSParser::populateChannelFromChannelXML(PodcastChannel *channel, QB
     return true;
 }
 
-QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteArray xmlReply)
+QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteArray xmlReply, QObject *episodeParent)
 {
     QList<PodcastEpisode *> *episodes = new QList<PodcastEpisode *>();;
     qDebug() << "Parsing XML for episodes";
@@ -118,7 +118,8 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteA
                 continue;
             }
 
-            PodcastEpisode *episode = new PodcastEpisode;
+            PodcastEpisode *episode = new PodcastEpisode();
+            episode->moveToThread(episodeParent->thread());
             QDateTime pubDate = parsePubDate(node);
 
             if (!pubDate.isValid()) {
@@ -262,7 +263,7 @@ QDateTime PodcastRSSParser::parsePubDate(const QDomNode &node)
     if(pubDateString.isEmpty()){
         pubDateString = node.firstChildElement("published").text();
     }
-    qDebug() << "Feed pubdate: " << pubDateString;
+    //qDebug() << "Feed pubdate: " << pubDateString;
 
     // Some feeds use just "date". Let's go for that as well is we didn't find it in "pubDate".
     if (pubDateString.isEmpty()) {
@@ -319,7 +320,7 @@ QString PodcastRSSParser::trimPubDate(const QString &pubdate) {
         parsedString = parsedString.mid(pubdate.indexOf(',') + 2);
     }
 
-    qDebug() << "Trimmed feed URL: " << parsedString;
+    //qDebug() << "Trimmed feed URL: " << parsedString;
     return parsedString;
 }
 

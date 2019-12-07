@@ -20,6 +20,7 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 Cover{
+    id: coverpage
 
     transparent: true
 
@@ -83,9 +84,9 @@ Cover{
         }
 
         CoverAction {
-            iconSource: (appWindow.player.audioPlayer.playbackState === Audio.PlayingState)?
+            iconSource: (coverpage.parent.player.audioPlayer.playbackState === Audio.PlayingState)?
                             "image://theme/icon-cover-pause":"image://theme/icon-cover-play"
-            onTriggered: (appWindow.player.audioPlayer.playbackState === Audio.PlayingState)?
+            onTriggered: (coverpage.parent.player.audioPlayer.playbackState === Audio.PlayingState)?
                              appWindow.player.audioPlayer.pause(): appWindow.player.audioPlayer.play();
         }
     }

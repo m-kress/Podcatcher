@@ -78,7 +78,7 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="45"/>
+        <location filename="../qml/cover/CoverPage.qml" line="46"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
@@ -280,57 +280,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="106"/>
+        <location filename="../src/podcastmanager.cpp" line="120"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>No es posible añadir suscripción de %1 ...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="115"/>
+        <location filename="../src/podcastmanager.cpp" line="129"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Suscrito a &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="275"/>
+        <location filename="../src/podcastmanager.cpp" line="305"/>
         <source>No data received.</source>
         <translation>Datos no recibidos.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="302"/>
+        <location filename="../src/podcastmanager.cpp" line="336"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Fuente de podcast no válida. No es posible añadir suscripción...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="438"/>
+        <location filename="../src/podcastmanager.cpp" line="479"/>
         <source>Cannot refresh. Network error.</source>
         <translation>No es posible actualizar. Error de conexión.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="453"/>
+        <location filename="../src/podcastmanager.cpp" line="496"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Fuente de podcast no válida. No es posible descargar episodios de &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="564"/>
+        <location filename="../src/podcastmanager.cpp" line="653"/>
         <source>Podcast episode download failed.</source>
         <translation>Error al descargar episodio de podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="886"/>
+        <location filename="../src/podcastmanager.cpp" line="983"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Información de autenticación en gPodder.net requerida.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="917"/>
+        <location filename="../src/podcastmanager.cpp" line="1014"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Credenciales de gPodder.net no aceptadas. Inténtalo de nuevo.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="960"/>
+        <location filename="../src/podcastmanager.cpp" line="1080"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>No se han encontrado suscripciones en gPodder.net</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="964"/>
+        <location filename="../src/podcastmanager.cpp" line="1084"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Obteniendo suscripciones de gPodder.net...</translation>
     </message>
@@ -338,27 +338,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="134"/>
+        <location filename="../src/podcatcherui.cpp" line="137"/>
         <source>Fetching channel information...</source>
         <translation>Recopilando información del canal...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="195"/>
+        <location filename="../src/podcatcherui.cpp" line="198"/>
         <source>Podcast episode not found.</source>
         <translation>Episodio de podcast no encontrado.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="208"/>
+        <location filename="../src/podcatcherui.cpp" line="211"/>
         <source>Mediaplayer program not found!</source>
         <translation>¡Reproductor no encontrado!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="224"/>
+        <location filename="../src/podcatcherui.cpp" line="227"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>¡Lo siento! No es posible abrir el reproductor para este podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="345"/>
+        <location filename="../src/podcatcherui.cpp" line="348"/>
         <source>Unable to stream podcast.</source>
         <translation>No es posible transmitir podcast.</translation>
     </message>

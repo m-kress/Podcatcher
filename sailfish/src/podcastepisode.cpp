@@ -21,6 +21,7 @@
 #include <QVariant>
 
 #include <QtDebug>
+#include <QThread>
 
 #include "podcastglobals.h"
 #include "podcastepisode.h"
@@ -36,6 +37,8 @@ PodcastEpisode::PodcastEpisode(QObject *parent) :
     m_hasBeenCanceled = false;
     m_currentDownload = 0;
     m_playFilename = "";
+    m_user = "";
+    m_password = "";
 
     m_saveOnSDCOnf = new MGConfItem("/apps/ControlPanel/Podcatcher/saveOnSDCard", this);
 
@@ -192,12 +195,14 @@ int PodcastEpisode::channelid() const
 void PodcastEpisode::downloadEpisode()
 {
     qDebug() << "Downloading podcast:" << m_downloadLink;
-
+    qDebug() << "CurrentThread" << QThread::currentThread();
+    qDebug() << "Episode Thread" << this->thread();
     if (m_dlNetworkManager == 0) {
         qWarning() << "No QNetworkAccessManager specified for this episode. Cannot proceed.";
         return;
     }
 
+    qDebug() << "QNAM accessible: "<< m_dlNetworkManager->Accessible;
 
     QUrl downloadUrl(m_downloadLink);
     if (!downloadUrl.isValid()) {
@@ -213,23 +218,30 @@ void PodcastEpisode::downloadEpisode()
     QNetworkRequest request;
     request.setUrl(downloadUrl);
     request.setRawHeader("User-Agent", "Podcatcher Podcast client");
-    request.setRawHeader( "Accept" , "*/*" );
+    //request.setRawHeader( "Accept" , "*/*" );
+
+    //NetworkAccessManager* qnam = new QNetworkAccessManager(parent());
 
     m_currentDownload = m_dlNetworkManager->get(request);
+    //m_currentDownload = qnam->get(request);
 
     connect(m_currentDownload, SIGNAL(finished()),
             this, SLOT(onPodcastEpisodeDownloadCompleted()));
     connect(m_currentDownload, SIGNAL(downloadProgress(qint64,qint64)),
             this, SLOT(onDownloadProgress(qint64, qint64)));
 
+    connect(m_currentDownload,SIGNAL(error(QNetworkReply::NetworkError)),
+            this, SLOT(onDownloadError(QNetworkReply::NetworkError)));
+
+    connect(m_currentDownload, SIGNAL(metaDataChanged()),
+             this, SLOT(onMetaDataChanged()));
 }
 
 void PodcastEpisode::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 {
-    Q_UNUSED(bytesTotal)
-
     m_bytesDownloaded = bytesReceived;
     m_downloadSize = bytesTotal;
+    //qDebug() << "Download Progress in" <<title() << bytesReceived;
     emit episodeChanged();
 }
 
@@ -239,6 +251,7 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
 
     QString redirectedUrl = PodcastManager::redirectedRequest(reply);
     if (redirectedUrl.isEmpty() == false) {
+        qDebug() << "We have been redirected from "<<m_downloadLink <<" to " << redirectedUrl;
         m_downloadLink = redirectedUrl;
         reply->deleteLater();
         downloadEpisode();
@@ -454,6 +467,16 @@ void PodcastEpisode::onAudioUrlMetadataChanged()
     }
 
     reply->deleteLater();
+}
+
+void PodcastEpisode::onDownloadError(QNetworkReply::NetworkError err)
+{
+    qDebug() << "While downloading " << m_title << " occured " << err;
+}
+
+void PodcastEpisode::onMetaDataChanged()
+{
+    qDebug() << m_currentDownload->rawHeaderList();
 }
 
 bool PodcastEpisode::isValidAudiofile(QNetworkReply *reply) const

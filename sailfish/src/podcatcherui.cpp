@@ -118,6 +118,9 @@ PodcatcherUI::PodcatcherUI()
 
 void PodcatcherUI::addPodcast(QString rssUrl, QString logoUrl)
 {
+    qDebug() << "Current Thread" << QThread::currentThread();
+    qDebug() << "PodcatcherUI thread" << this->thread();
+
     if (!logoUrl.isEmpty()) {
         qDebug() << "Got logo from the subscription feed:" << logoUrl;
         logoCache.insert(rssUrl, logoUrl);

@@ -22,6 +22,7 @@
 #include <QString>
 #include <QDateTime>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
 
 #include <MGConfItem>
 
@@ -99,6 +100,8 @@ private slots:
     void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
     void onPodcastEpisodeDownloadCompleted();
     void onAudioUrlMetadataChanged();
+    void onDownloadError(QNetworkReply::NetworkError err);
+    void onMetaDataChanged();
 
 private:
     bool isValidAudiofile(QNetworkReply *reply) const;

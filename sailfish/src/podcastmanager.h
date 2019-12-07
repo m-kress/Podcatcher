@@ -83,6 +83,8 @@ signals:
     void podcastChannelReady(PodcastChannel *podcast);
     void podcastChannelSaved();
 
+    void podcastEpsiodeDownloadReady();
+
     void podcastEpisodesRefreshed(QUrl podcastUrl);
 
     void parseChannelFailed();
@@ -104,6 +106,8 @@ private slots:
    void onPodcastEpisodesRequestError(QNetworkReply::NetworkError error);
    void onPodcastEpisodesParsed();
 
+   void onPodcastEpisodeDownloadReady();
+
    void onPodcastEpisodeDownloaded(PodcastEpisode *episode);
    void onPodcastEpisodeDownloadFailed(PodcastEpisode* episode);
 
@@ -117,8 +121,13 @@ private slots:
    void onGPodderRequestFinished();
    void onGPodderAuthRequired(QNetworkReply *reply, QAuthenticator *auth);
 
+   void onDestroyingNetworkReply(QObject *obj);
+   void onSessionConnected();
+   void onNetworkAccessibleChanged(QNetworkAccessManager::NetworkAccessibility na);
+   void onRequestFinished(QNetworkReply* reply);
+
 private:
-   void executeNextDownload();
+   //void executeNextDownload();
    QNetworkReply * downloadChannelLogo(QString logoUrl);
    void insertChannelForNetworkReply(QNetworkReply *reply, PodcastChannel *channel);
    void insertChannelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>* > *watcher, PodcastChannel *channel);
@@ -143,7 +152,8 @@ private:
    QMap<QString, PodcastChannel *> channelRequestMap;
 
    QList<PodcastEpisode *> m_episodeDownloadQueue;
-   bool m_isDownloading;
+   QList<PodcastEpisode *> m_currentEpisodeDownloads;
+   //bool m_isDownloading;
    QMap<QString, QString> m_logoCache;
 
    MGConfItem *m_autoDlConf;
