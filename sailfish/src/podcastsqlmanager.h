@@ -48,6 +48,7 @@ public:
     void removeChannelFromDB(int channelId);
     void updateChannelAutoDownloadToDB(bool autoDownloadOn);
     void checkAndCreateAutoDownload(bool autoDownloadOn);
+    void checkAndCreateChannelSortation();
 
 signals:
 

@@ -36,7 +36,9 @@ class PodcastChannelsModel : public QAbstractListModel
         IsRefreshingRole,
         IsDownloadingRole,
         UnplayedEpisodesRole,
-        AutoDownloadOnRole
+        AutoDownloadOnRole,
+        SortByRole,
+        SortDescendingRole,
     };
 
 public:
@@ -62,6 +64,8 @@ public slots:
 
 private slots:
     void onChannelChanged();
+    void onSortByChanged(QString sortBy);
+    void onSortDescendingChanged(bool sortDescending);
 
 private:
     explicit PodcastChannelsModel(QObject *parent = 0);  // Do not let instantiation of this class...

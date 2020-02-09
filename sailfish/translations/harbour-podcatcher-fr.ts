@@ -92,6 +92,54 @@
     </message>
 </context>
 <context>
+    <name>EpisodesSortDialog</name>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="12"/>
+        <source>Sorting of the Episodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="20"/>
+        <source>Sort by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="24"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="27"/>
+        <source>publication date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="31"/>
+        <source>state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="35"/>
+        <source>title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="42"/>
+        <source>Sort order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="50"/>
+        <source>ascending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="46"/>
+        <source>descending</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImportFromGPodder</name>
     <message>
         <location filename="../qml/pages/ImportFromGPodder.qml" line="33"/>
@@ -175,35 +223,40 @@
 <context>
     <name>PodcastEpisodes</name>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="38"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="40"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="91"/>
         <source>Remove subscription</source>
         <translation>Supprimer l&apos;abonnement</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="50"/>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="53"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="56"/>
         <source>Delete all downloaded podcasts</source>
         <translation>Supprimer tous les podcasts téléchargés</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="61"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="64"/>
         <source>Mark all podcasts as played</source>
         <translation>Marquer tous les podcasts comme lus</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="69"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="72"/>
         <source>Refresh</source>
         <translation>Actualiser</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="86"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
+        <source>Sort Episodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="96"/>
         <source>Delete downloaded podcasts</source>
         <translation>Supprimer les podcasts téléchargés</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="141"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="151"/>
         <source>Refreshing episodes...</source>
         <translation>Actualisation des épisodes...</translation>
     </message>
@@ -224,37 +277,37 @@
         <translation>%1 téléchargés sur %2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="104"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="182"/>
         <source>Delete downloaded podcast</source>
         <translation>Supprimer le podcast téléchargé</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="107"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="185"/>
         <source>Deleting</source>
         <translation>Suppression</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="115"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="193"/>
         <source>Mark as unplayed</source>
         <translation>Marquer comme non écouté</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="123"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="201"/>
         <source>Start streaming the podcast</source>
         <translation>Débuter la lecture du podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="220"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="298"/>
         <source>Queued</source>
         <translation>Mis en attente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="319"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="397"/>
         <source>No media</source>
         <translation>Aucun média</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="507"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1025"/>
         <source>Unable to stream podcast.</source>
         <translation>Impossible de lire le podcast.</translation>
     </message>
@@ -262,17 +315,17 @@
 <context>
     <name>PodcastEpisodesModel</name>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="67"/>
         <source>dd.MM.yyyy</source>
         <translation>dd/MM/yyyy</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="89"/>
         <source>Last played: %1</source>
         <translation>Dernière écoute : %1</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="89"/>
         <source>dd.MM.yyyy hh:mm</source>
         <translation>dd/MM/yyyy hh:mm</translation>
     </message>

@@ -31,6 +31,8 @@ PodcastChannelsModel::PodcastChannelsModel(QObject *parent) :
     m_roles[IsDownloadingRole] = "isDownloading";
     m_roles[UnplayedEpisodesRole] = "unplayedEpisodes";
     m_roles[AutoDownloadOnRole] = "autoDownloadOn";
+    m_roles[SortByRole] = "sortBy";
+    m_roles[SortDescendingRole] = "sortDescending";
 
     //setRoleNames(roles);
 
@@ -41,6 +43,12 @@ PodcastChannelsModel::PodcastChannelsModel(QObject *parent) :
     foreach(PodcastChannel *channel, m_sqlmanager->channelsInDB()) {
         connect(channel, SIGNAL(channelChanged()),
                 this, SLOT(onChannelChanged()));
+
+        connect(channel, SIGNAL(sortByChanged(QString)),
+                this, SLOT(onSortByChanged(QString)));
+
+        connect(channel, SIGNAL(sortDescendingChanged(bool)),
+                this, SLOT(onSortDescendingChanged(bool)));
 
         m_channels << channel;
     }
@@ -90,6 +98,12 @@ QVariant PodcastChannelsModel::data(const QModelIndex &index, int role) const
 
     case AutoDownloadOnRole:
         return channel->isAutoDownloadOn();
+        break;
+    case SortByRole:
+        return channel->sortBy();
+        break;
+    case SortDescendingRole:
+        return channel->sortDescending();
         break;
     }
 
@@ -200,6 +214,26 @@ void PodcastChannelsModel::onChannelChanged()
         QModelIndex modelIndex = createIndex(channelIndex, 0);
         emit dataChanged(modelIndex, modelIndex);
     }
+}
+
+void PodcastChannelsModel::onSortByChanged(QString sortBy)
+{
+    PodcastChannel *channel  = qobject_cast<PodcastChannel *>(sender());
+    if (channel == 0) {
+        return;
+    }
+
+    m_sqlmanager->updateChannelInDB(channel);
+}
+
+void PodcastChannelsModel::onSortDescendingChanged(bool descending)
+{
+    PodcastChannel *channel  = qobject_cast<PodcastChannel *>(sender());
+    if (channel == 0) {
+        return;
+    }
+
+    m_sqlmanager->updateChannelInDB(channel);
 }
 
 void PodcastChannelsModel::setAutoDownloadToDB(bool autoDownload)

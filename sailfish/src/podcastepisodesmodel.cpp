@@ -38,6 +38,7 @@ PodcastEpisodesModel::PodcastEpisodesModel(int channelId, QObject *parent) :
     m_roles[TotalDownloadRole] = "totalDownloadSize";
     m_roles[AlreadyDownloaded] = "alreadyDownloadedSize";
     m_roles[LastTimePlayedRole] = "lastTimePlayed";
+    m_roles[PublishedTimestamp] = "timestamp";
     //setRoleNames(roles);
 
     m_sqlmanager = PodcastSQLManagerFactory::sqlmanager();
@@ -64,6 +65,9 @@ QVariant PodcastEpisodesModel::data(const QModelIndex &index, int role) const
         break;
     case PubRole:
         return episode->pubTime().toString(tr("dd.MM.yyyy"));
+        break;
+    case PublishedTimestamp:
+        return episode->pubTime().toTime_t();
         break;
     case DbidRole:
         return episode->dbid();

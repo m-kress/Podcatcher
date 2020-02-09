@@ -77,6 +77,45 @@
     </message>
 </context>
 <context>
+    <name>EpisodesSortDialog</name>
+    <message>
+        <source>Sorting of the Episodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>publication date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ascending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>descending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ImportFromGPodder</name>
     <message>
         <source>Import podcasts from gPodder.net</source>
@@ -167,6 +206,10 @@
     <message>
         <source>Refreshing episodes...</source>
         <translation>Получение списка новых выпусков...</translation>
+    </message>
+    <message>
+        <source>Sort Episodes</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

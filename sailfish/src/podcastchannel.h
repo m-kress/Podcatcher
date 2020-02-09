@@ -25,6 +25,7 @@
 
 #include "podcastepisode.h"
 
+
 class PodcastChannel : public QObject
 {
     Q_OBJECT
@@ -35,6 +36,8 @@ class PodcastChannel : public QObject
     Q_PROPERTY(bool isRefreshing READ isRefreshing WRITE setIsRefreshing)
     Q_PROPERTY(bool isDownloading READ isDownloading WRITE setIsDownloading NOTIFY downloadingChanged)
     Q_PROPERTY(bool isAutoDownloadOn READ isAutoDownloadOn WRITE setAutoDownloadOn NOTIFY autoDownloadOnChanged)
+    Q_PROPERTY(QString sortBy READ sortBy WRITE setSortBy NOTIFY sortByChanged)
+    Q_PROPERTY(bool sortDescending READ sortDescending WRITE setSortDescending NOTIFY sortDescendingChanged)
 
 public:
     explicit PodcastChannel(QObject *parent = 0);
@@ -75,12 +78,31 @@ public:
 
     bool operator<(const PodcastChannel &other) const;
 
+    enum SortField {
+        PUBLISHED, STATE, TITLE, DBID
+    };
+
+    QString sortBy() const;
+
+    bool sortDescending() const
+    {
+        return m_sortDescending;
+    }
+
 signals:
     void channelChanged();
     void downloadingChanged();
     void autoDownloadOnChanged();
 
+    void sortByChanged(QString sortBy);
+
+    void sortDescendingChanged(bool sortDescending);
+
 public slots:
+
+    void setSortBy(QString sortBy);
+
+    void setSortDescending(bool sortDescending);
 
 private:
     int     m_id;
@@ -89,6 +111,10 @@ private:
     QString m_logo;
     QString m_url;
     QString m_description;
+
+    SortField m_sortBy;
+    bool m_sortDescending;
+
     bool m_isRefreshing;
     bool m_isDownloading;
     int m_unplayedEpisodes;

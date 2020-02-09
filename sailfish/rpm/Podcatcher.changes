@@ -2,5 +2,8 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Sun Feb 2 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.2
+- added sorting of episodes
+
 * Sun Jul 15 2017 Moritz Carmesin <carolus@carmesinus.de> 1.1.23
 - added Spanish translation

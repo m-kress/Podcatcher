@@ -98,7 +98,7 @@ PodcastManager::PodcastManager(QObject *parent) :
 
     updateAutoDLSettingsFromCache();
 
-    qDebug() << "We are in Thread" << QThread::currentThreadId();
+    //qDebug() << "We are in Thread" << QThread::currentThreadId();
 }
 
 PodcastChannelsModel * PodcastManager::podcastChannelsModel() const

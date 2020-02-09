@@ -178,3 +178,52 @@ bool PodcastChannel::operator<(const PodcastChannel &other) const
 
 }
 
+QString PodcastChannel::sortBy() const
+{
+    switch (m_sortBy) {
+    case TITLE:
+        return "title";
+    case STATE:
+        return "state";
+    case DBID:
+        return "dbid";
+    case PUBLISHED:
+    default:
+        return "published";
+    }
+}
+
+void PodcastChannel::setSortBy(QString sortBy)
+{
+
+    SortField old = m_sortBy;
+
+    if (sortBy == "published")
+        m_sortBy = PUBLISHED;
+    else if (sortBy == "title") {
+        m_sortBy = TITLE;
+    }else if (sortBy == "state") {
+        m_sortBy = STATE;
+    }else if (sortBy == "dbid") {
+        m_sortBy = DBID;
+    }
+
+
+    if (m_sortBy == old)
+        return;
+
+    emit channelChanged();
+    emit sortByChanged(sortBy);
+
+}
+
+void PodcastChannel::setSortDescending(bool sortDescending)
+{
+    if (m_sortDescending == sortDescending)
+        return;
+
+    m_sortDescending = sortDescending;
+
+    emit channelChanged();
+    emit sortDescendingChanged(m_sortDescending);
+}

@@ -143,7 +143,7 @@ QList<PodcastChannel *> PodcastSQLManager::channelsInDB()
 
     q.prepare("SELECT id, title, description, logo, rssurl, "
               "(SELECT COUNT(id) FROM episodes WHERE episodes.channelid = channels.id AND episodes.lastPlayed = 0 AND episodes.playLocation <> ''), "
-              "autoDownloadOn "
+              "autoDownloadOn, sortby, sortdescending "
               "FROM channels ORDER BY channels.title");
 
     if (q.exec() == false) {
@@ -160,6 +160,8 @@ QList<PodcastChannel *> PodcastSQLManager::channelsInDB()
         channel->setUrl(q.value(4).toString());
         channel->setUnplayedEpisodes(q.value(5).toInt());
         channel->setAutoDownloadOn(q.value(6).toBool());
+        channel->setSortBy(q.value(7).toString());
+        channel->setSortDescending(q.value(8).toBool());
 
         channels.append(channel);
     }
@@ -177,7 +179,7 @@ PodcastChannel * PodcastSQLManager::channelInDB(int channelId, PodcastChannel *c
 
     q.prepare("SELECT title, description, logo, rssurl, "
               "(SELECT COUNT(id) FROM episodes WHERE episodes.channelid = channels.id AND episodes.lastPlayed = 0 AND episodes.playLocation <> ''), "
-              "autoDownloadOn "
+              "autoDownloadOn, sortby, sortdescending "
               "FROM channels WHERE channels.id = :id");
     q.bindValue(":id", channelId);
     q.exec();
@@ -197,6 +199,8 @@ PodcastChannel * PodcastSQLManager::channelInDB(int channelId, PodcastChannel *c
     channel->setUrl(q.value(3).toString());
     channel->setUnplayedEpisodes(q.value(4).toInt());
     channel->setAutoDownloadOn(q.value(5).toBool());
+    channel->setSortBy(q.value(6).toString());
+    channel->setSortDescending(q.value(7).toBool());
 
     return channel;
 }
@@ -373,7 +377,7 @@ bool PodcastSQLManager::updateChannelInDB(PodcastChannel *channel) {
     QSqlQuery q(m_connection);
     mutex.unlock();
 
-    q.prepare("UPDATE channels SET title=:title, description=:description, logo=:logo, rssurl=:rssurl, autoDownloadOn=:autoDownloadOn "
+    q.prepare("UPDATE channels SET title=:title, description=:description, logo=:logo, rssurl=:rssurl, autoDownloadOn=:autoDownloadOn, sortby=:sortBy, sortdescending=:sortDescending "
               "WHERE id=:id");
     q.bindValue(":title", channel->title());
     q.bindValue(":description", channel->description());
@@ -381,6 +385,8 @@ bool PodcastSQLManager::updateChannelInDB(PodcastChannel *channel) {
     q.bindValue(":rssurl", channel->url());
     q.bindValue(":autoDownloadOn", channel->isAutoDownloadOn());
     q.bindValue(":id", channel->channelDbId());
+    q.bindValue(":sortBy", channel->sortBy());
+    q.bindValue(":sortDescending", channel->sortDescending());
 
     if (!q.exec()) {
         qDebug() << "Last query: " << q.lastQuery();
@@ -490,6 +496,8 @@ void PodcastSQLManager::createTables()
                                       "title TEXT, "
                                       "description TEXT, "
                                       "logo TEXT, "
+                                      "sortby TEXT DEFAULT 'published',"
+                                      "sortdescending BOOLEAN DEFAULT true,"
                                       "autoDownloadOn BOOLEAN)");
 
         if (!m_connection.commit()) {
@@ -500,6 +508,9 @@ void PodcastSQLManager::createTables()
             qDebug() << q.lastError().text();
         }
 
+    }
+    else {
+        checkAndCreateChannelSortation();
     }
 
     // If database does not contain the table "episodes", so crate it.
@@ -530,6 +541,7 @@ void PodcastSQLManager::createTables()
             qDebug() << q.lastError().text();
         }
     }
+
 }
 
 void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
@@ -571,6 +583,35 @@ void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
     }
 
 
+}
+
+void PodcastSQLManager::checkAndCreateChannelSortation()
+{
+    QSqlQuery q(m_connection);
+
+    if (q.exec("SELECT sortby FROM channels") == false) {
+        qDebug() << "SQL: channels does not contain 'sortby'. Adding column.";
+
+        QSqlQuery q_create(m_connection);
+
+        // Column does not exist. Create it.
+        if (q_create.exec("ALTER TABLE channels ADD COLUMN sortby TEXT DEFAULT 'published' ") == false) {
+            qDebug()   << "SQL error: " <<  q_create.lastError().text();
+            qWarning() << "SQL query:"  <<  q_create.lastQuery();
+        }
+    }
+
+    if (q.exec("SELECT sortdescending FROM channels") == false) {
+        qDebug() << "SQL: channels does not contain 'sortdescending'. Adding column.";
+
+        QSqlQuery q_create(m_connection);
+
+        // Column does not exist. Create it.
+        if (q_create.exec("ALTER TABLE channels ADD COLUMN sortdescending BOOLEAN DEFAULT true ") == false) {
+            qDebug()   << "SQL error: " <<  q_create.lastError().text();
+            qWarning() << "SQL query:"  <<  q_create.lastQuery();
+        }
+    }
 }
 
 void PodcastSQLManager::updateChannelAutoDownloadToDB(bool autoDownloadOn)

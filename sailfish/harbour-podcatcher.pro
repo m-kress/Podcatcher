@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-podcatcher
 
-DEFINES += PODCATCHER_VERSION=1910
+DEFINES += PODCATCHER_VERSION=192
 QT += sql xml concurrent
 
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -60,6 +60,7 @@ DISTFILES += \
     qml/Utils.js \
     qml/EmptyPage.qml \
     qml/PodcatcherInfoBanner.qml \
+    qml/pages/EpisodesSortDialog.qml \
     qml/pages/MainPage.qml \
     qml/pages/BrowsePodcasts.qml \
     qml/pages/PodcastEpisodes.qml \

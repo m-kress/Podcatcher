@@ -37,7 +37,8 @@ public:
         StateRole,
         TotalDownloadRole,
         AlreadyDownloaded,
-        LastTimePlayedRole
+        LastTimePlayedRole,
+        PublishedTimestamp
     };
 
     PodcastEpisodesModel(int channelId, QObject *parent = 0);
