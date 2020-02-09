@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="zh_CN">
 <context>
     <name>About</name>
     <message>
@@ -12,6 +12,19 @@
         <location filename="../qml/pages/About.qml" line="118"/>
         <source>Licensed and distributed under the &lt;B&gt;GPLv3 license&lt;/B&gt;.&lt;BR&gt;&lt;center&gt;http://www.gnu.org/copyleft/gpl.html&lt;/center&gt;</source>
         <translation>软件使用 GPLv3 许可协议 http://www.gnu.org/copyleft/gpl.html&lt;/center&gt;</translation>
+    </message>
+</context>
+<context>
+    <name>AudioPlayer</name>
+    <message>
+        <location filename="../qml/pages/AudioPlayer.qml" line="86"/>
+        <source>Player</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AudioPlayer.qml" line="264"/>
+        <source>Chapters</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -65,7 +78,7 @@
 <context>
     <name>CoverPage</name>
     <message>
-        <location filename="../qml/cover/CoverPage.qml" line="52"/>
+        <location filename="../qml/cover/CoverPage.qml" line="46"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
@@ -76,6 +89,54 @@
         <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="72"/>
         <source>Published: </source>
         <translation>发现:</translation>
+    </message>
+</context>
+<context>
+    <name>EpisodesSortDialog</name>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="12"/>
+        <source>Sorting of the Episodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="20"/>
+        <source>Sort by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="24"/>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="27"/>
+        <source>publication date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="31"/>
+        <source>state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="35"/>
+        <source>title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="42"/>
+        <source>Sort order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="46"/>
+        <source>descending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/EpisodesSortDialog.qml" line="50"/>
+        <source>ascending</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -104,57 +165,57 @@
 <context>
     <name>MainPage</name>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="69"/>
+        <location filename="../qml/pages/MainPage.qml" line="76"/>
         <source>No podcast subscriptions yet</source>
         <translation>当前无订阅播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="70"/>
+        <location filename="../qml/pages/MainPage.qml" line="77"/>
         <source>Why don&apos;t you add some...</source>
         <translation>为何不添加一些……</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="79"/>
+        <location filename="../qml/pages/MainPage.qml" line="86"/>
         <source>Podcatcher</source>
         <translation>Podcatcher</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="119"/>
+        <location filename="../qml/pages/MainPage.qml" line="126"/>
         <source>Mark all podcasts as played</source>
         <translation>标记全部播客为已播放</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="126"/>
+        <location filename="../qml/pages/MainPage.qml" line="133"/>
         <source>Remove subscription</source>
         <translation>移除订阅</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="128"/>
+        <location filename="../qml/pages/MainPage.qml" line="135"/>
         <source>Removing</source>
         <translation>正在移出</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="267"/>
+        <location filename="../qml/pages/MainPage.qml" line="276"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="275"/>
+        <location filename="../qml/pages/MainPage.qml" line="284"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="283"/>
+        <location filename="../qml/pages/MainPage.qml" line="292"/>
         <source>Add Podcast</source>
         <translation>添加播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="293"/>
+        <location filename="../qml/pages/MainPage.qml" line="302"/>
         <source>Refresh all subscriptions</source>
         <translation>刷新全部订阅</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MainPage.qml" line="318"/>
+        <location filename="../qml/pages/MainPage.qml" line="328"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息……</translation>
     </message>
@@ -162,35 +223,40 @@
 <context>
     <name>PodcastEpisodes</name>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="32"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="34"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="75"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="91"/>
         <source>Remove subscription</source>
         <translation>移除订阅</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="44"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="47"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="53"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="56"/>
         <source>Delete all downloaded podcasts</source>
         <translation>删除全部下载的播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="55"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="64"/>
         <source>Mark all podcasts as played</source>
         <translation>标记所有播客为已播放</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="63"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="72"/>
         <source>Refresh</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="80"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
+        <source>Sort Episodes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="96"/>
         <source>Delete downloaded podcasts</source>
         <translation>删除下载的播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="135"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="151"/>
         <source>Refreshing episodes...</source>
         <translation>刷新全部剧集……</translation>
     </message>
@@ -211,37 +277,37 @@
         <translation>正在下载 %1 全部 %2 。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="104"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="182"/>
         <source>Delete downloaded podcast</source>
         <translation>删除下载的播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="107"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="185"/>
         <source>Deleting</source>
         <translation>正在删除</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="115"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="193"/>
         <source>Mark as unplayed</source>
         <translation>标记为未播放</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="123"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="201"/>
         <source>Start streaming the podcast</source>
         <translation>开始载入此播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="220"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="298"/>
         <source>Queued</source>
         <translation>排队</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="319"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="397"/>
         <source>No media</source>
         <translation>无媒体</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="507"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1025"/>
         <source>Unable to stream podcast.</source>
         <translation>无法载入播客。</translation>
     </message>
@@ -249,17 +315,17 @@
 <context>
     <name>PodcastEpisodesModel</name>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="67"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="89"/>
         <source>Last played: %1</source>
         <translation>上次播放: %1</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="85"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="89"/>
         <source>dd.MM.yyyy hh:mm</source>
         <translation>dd.MM.yyyy hh:mm</translation>
     </message>
@@ -267,57 +333,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="106"/>
+        <location filename="../src/podcastmanager.cpp" line="120"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>无法添加来自 %1 的订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="116"/>
+        <location filename="../src/podcastmanager.cpp" line="129"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="273"/>
+        <location filename="../src/podcastmanager.cpp" line="305"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="300"/>
+        <location filename="../src/podcastmanager.cpp" line="336"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="436"/>
+        <location filename="../src/podcastmanager.cpp" line="479"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="460"/>
+        <location filename="../src/podcastmanager.cpp" line="496"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="553"/>
+        <location filename="../src/podcastmanager.cpp" line="653"/>
         <source>Podcast episode download failed.</source>
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="839"/>
+        <location filename="../src/podcastmanager.cpp" line="983"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="870"/>
+        <location filename="../src/podcastmanager.cpp" line="1014"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="913"/>
+        <location filename="../src/podcastmanager.cpp" line="1080"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="917"/>
+        <location filename="../src/podcastmanager.cpp" line="1084"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅……</translation>
     </message>
@@ -325,27 +391,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="115"/>
+        <location filename="../src/podcatcherui.cpp" line="137"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息……</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="176"/>
+        <location filename="../src/podcatcherui.cpp" line="198"/>
         <source>Podcast episode not found.</source>
         <translation>没有找到播客剧集。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="189"/>
+        <location filename="../src/podcatcherui.cpp" line="211"/>
         <source>Mediaplayer program not found!</source>
         <translation>没有找到媒体播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="201"/>
+        <location filename="../src/podcatcherui.cpp" line="227"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
-        <translation>非常抱歉!无法从为播客打开音频播放器<。/translation>
+        <translation>非常抱歉!无法从为播客打开音频播放器</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="313"/>
+        <location filename="../src/podcatcherui.cpp" line="348"/>
         <source>Unable to stream podcast.</source>
         <translation>无法加载播客。</translation>
     </message>
@@ -461,7 +527,12 @@
         <translation>Unplayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="169"/>
+        <location filename="../qml/pages/Settings.qml" line="163"/>
+        <source>Internal Player (Beta)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="173"/>
         <source>Show popular podcasts page</source>
         <translation>显示流行的播客页</translation>
     </message>

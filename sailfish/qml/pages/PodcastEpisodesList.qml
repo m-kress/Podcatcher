@@ -92,7 +92,6 @@ Item {
         }
 
         onSortByChanged: {
-            items.setGroups(0, items.count, "unsorted");
 
             switch(sortBy){
 
@@ -109,7 +108,8 @@ Item {
                 compareFunction = sortedEpisodesModel.dbidLessThan;
             }
 
-             sortedEpisodesModel.sort(sortedEpisodesModel.compareFunction)
+            sortedEpisodesModel.items.setGroups(0, items.count, "unsorted");
+            sortedEpisodesModel.sort(compareFunction)
         }
 
 
@@ -597,7 +597,7 @@ Item {
                 flickable: podcastEpisodesList
             }
 
-           /* delegate: ListItem {
+            /* delegate: ListItem {
                 id: podcastItem
                 state: episodeState
                 contentHeight: episodeName.height + lastPlayed.height + Theme.paddingSmall + Theme.paddingMedium

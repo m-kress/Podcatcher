@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1">
+<TS version="2.1" language="de_DE">
 <context>
     <name>About</name>
     <message>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="264"/>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kapitel</translation>
     </message>
 </context>
 <context>

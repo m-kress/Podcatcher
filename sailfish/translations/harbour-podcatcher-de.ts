@@ -19,12 +19,12 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="86"/>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Player</translation>
     </message>
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="264"/>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapitel</translation>
     </message>
 </context>
 <context>
@@ -96,47 +96,47 @@
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="12"/>
         <source>Sorting of the Episodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortierung der Folgen</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="20"/>
         <source>Sort by</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortieren nach</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="24"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="27"/>
         <source>publication date</source>
-        <translation type="unfinished"></translation>
+        <translation>Veröffentlichungsdatum</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="31"/>
         <source>state</source>
-        <translation type="unfinished"></translation>
+        <translation>Status</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="35"/>
         <source>title</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="42"/>
         <source>Sort order</source>
-        <translation type="unfinished"></translation>
+        <translation>Reihenfolge</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="50"/>
         <source>ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>aufsteigend</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="46"/>
         <source>descending</source>
-        <translation type="unfinished"></translation>
+        <translation>absteigend</translation>
     </message>
 </context>
 <context>
@@ -167,12 +167,12 @@
     <message>
         <location filename="../qml/pages/MainPage.qml" line="76"/>
         <source>No podcast subscriptions yet</source>
-        <translation type="unfinished">Noch keine Podcasts abonniert</translation>
+        <translation>Noch keine Podcasts abonniert</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="77"/>
         <source>Why don&apos;t you add some...</source>
-        <translation type="unfinished">Warum nicht einen hinzufügen…</translation>
+        <translation>Warum nicht einen hinzufügen…</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="86"/>
@@ -248,7 +248,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
         <source>Sort Episodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Episoden sortiern</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="96"/>
@@ -266,7 +266,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesChannelInfo.qml" line="60"/>
         <source>Auto-download</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Download</translation>
     </message>
 </context>
 <context>
@@ -421,42 +421,42 @@
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="38"/>
         <source>Import podcasts from gPodder</source>
-        <translation type="unfinished">Podcasts von gPodder importieren</translation>
+        <translation>Podcasts von gPodder importieren</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="46"/>
         <source>Add URL manually</source>
-        <translation type="unfinished">URL manuell hinzufügen</translation>
+        <translation>URL manuell hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="69"/>
         <source>No podcasts found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Keine Podcasts gefunden.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="87"/>
         <source>Search podcasts</source>
-        <translation type="unfinished"></translation>
+        <translation>SUche Podcasts</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="92"/>
         <source>Keyword</source>
-        <translation type="unfinished"></translation>
+        <translation>Schlüsselwort</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="256"/>
         <source>Add new podcast</source>
-        <translation type="unfinished">Neuen Podcast hinzufügen</translation>
+        <translation>Neuen Podcast hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="257"/>
         <source>Add</source>
-        <translation type="unfinished">Hinzufügen</translation>
+        <translation>Hinzufügen</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="262"/>
         <source>Podcast RSS URL</source>
-        <translation type="unfinished">Podcast RSS URL</translation>
+        <translation>Podcast-RSS-URL</translation>
     </message>
 </context>
 <context>
@@ -529,7 +529,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="163"/>
         <source>Internal Player (Beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>Interner Player (Bata)</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="173"/>

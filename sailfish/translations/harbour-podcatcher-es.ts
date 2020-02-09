@@ -121,7 +121,7 @@
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="35"/>
         <source>title</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="42"/>
