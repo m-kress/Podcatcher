@@ -157,6 +157,7 @@ private:
    QMap<QString, QString> m_logoCache;
 
    MGConfItem *m_autoDlConf;
+   MGConfItem *m_autoSyncConf;
    MGConfItem *m_autoDlNumConf;
    MGConfItem *m_keepNumEpisodesConf;
    MGConfItem *m_autoDelUnplayedConf;
@@ -165,7 +166,7 @@ private:
     QList<PodcastChannel *> m_cleanupChannels;
     QFutureWatcher<void> m_futureWatcher;
 
-
+   bool m_autoSyncSettings;
    bool m_autodownloadOnSettings;
    int m_autodownloadNumSettings;
    int m_keepNumEpisodesSettings;

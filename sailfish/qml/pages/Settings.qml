@@ -30,6 +30,12 @@ Dialog {
     allowedOrientations: Orientation.All
 
     ConfigurationValue{
+        id:autoSyncConf
+        key: "/apps/ControlPanel/Podcatcher/autosync"
+        defaultValue: true
+    }
+
+    ConfigurationValue{
         id:autoDownloadConf
         key: "/apps/ControlPanel/Podcatcher/autodownload"
         defaultValue: true
@@ -87,6 +93,12 @@ Dialog {
             DialogHeader{
                 id:header
                 title: qsTr("Settings")
+            }
+
+            TextSwitch{
+                id: autoSync
+                text: qsTr("Sync feeds on startup")
+                description: qsTr("Download podcast feeds on startup. This may take some time.")
             }
 
             TextSwitch{
@@ -176,6 +188,7 @@ Dialog {
     }
 
     onOpened: {
+        autoSync.checked = autoSyncConf.value;
         autoDownload.checked = autoDownloadConf.value;
         autoDownloadNum.currentIndex = downloadNumbers.indexOf(autoDownloadNumConf.value)
         keepEpisodes.currentIndex = keepDays.indexOf(keepEpisodesConf.value)
@@ -186,6 +199,7 @@ Dialog {
     }
 
     onAccepted: {
+        autoSyncConf.value = autoSync.checked;
         autoDownloadConf.value = autoDownload.checked;
         autoDownloadNumConf.value = autoDownloadNum.value;
         keepEpisodesConf.value = keepEpisodes.value;

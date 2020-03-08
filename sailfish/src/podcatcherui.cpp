@@ -99,7 +99,14 @@ PodcatcherUI::PodcatcherUI()
     connect(rootDeclarativeItem, SIGNAL(startStreaming(int, int)),
             this, SLOT(onStartStreaming(int, int)));
 
-    m_pManager.refreshAllChannels();   // Refresh all feeds and download new episodes.
+    connect(rootDeclarativeItem, SIGNAL(refreshEpisodes(int)),
+            this, SLOT(onRefreshEpisodes(int)));
+
+    m_autoSyncConf = new MGConfItem("/apps/ControlPanel/Podcatcher/autosync", this);
+
+    if (m_autoSyncConf->value().toBool()){
+        m_pManager.refreshAllChannels();   // Refresh all feeds and download new episodes.
+    }
 
     QTimer::singleShot(10000, &m_pManager, SLOT(cleanupEpisodes()));
 

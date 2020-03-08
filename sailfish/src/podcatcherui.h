@@ -85,6 +85,7 @@ private:
     QQuickView* view;
 
     MGConfItem *m_mediaPlayerConf;
+    MGConfItem *m_autoSyncConf;
     QString m_mediaPlayerPath;
 
     bool isDownloading();

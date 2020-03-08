@@ -69,9 +69,13 @@ PodcastManager::PodcastManager(QObject *parent) :
 
     // Get the current settings values.
     qDebug() << "Current settings: ";
+    m_autoSyncConf = new MGConfItem("/apps/ControlPanel/Podcatcher/autosync", this);
+    m_autoSyncSettings = m_autoSyncConf->value().toBool();
+    qDebug() << "  * AutoSync on:" << m_autodownloadOnSettings;
+
     m_autoDlConf = new MGConfItem("/apps/ControlPanel/Podcatcher/autodownload", this);
     m_autodownloadOnSettings = m_autoDlConf->value().toBool();
-    qDebug() << "  * Autodownload: on" << m_autodownloadOnSettings;
+    qDebug() << "  * Autodownload on:" << m_autodownloadOnSettings;
 
     m_autoDlNumConf = new MGConfItem("/apps/ControlPanel/Podcatcher/autodownload_num", this);
     m_autodownloadNumSettings = m_autoDlNumConf->value().toInt();
@@ -478,6 +482,18 @@ void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError e
     if (error != QNetworkReply::NoError) {
         emit showInfoBanner(tr("Cannot refresh. Network error."));
     }
+
+
+    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+
+    PodcastChannel *channel = channelForNetworkReply(reply);
+    if (channel == 0) {
+        qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
+        reply->deleteLater();
+        return;
+    }
+
+    channel->setIsRefreshing(false);
 }
 
 void PodcastManager::onPodcastEpisodesParsed()
@@ -845,7 +861,8 @@ void PodcastManager::removePodcastChannel(int channelId)
      * Do not touch the episode anymore!
      */
     // Deleting locally cached channel logo.
-    PodcastChannel *channel = m_channelsCache.value(channelId);
+   //PodcastChannel *channel = m_channelsCache.value(channelId);
+    PodcastChannel *channel = podcastChannel(channelId);
     if (channel != NULL) {
         QUrl channelLogoUrl(channel->logo());
         QFile channelLogo(channelLogoUrl.toLocalFile());
