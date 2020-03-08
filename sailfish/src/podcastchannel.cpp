@@ -26,6 +26,8 @@ PodcastChannel::PodcastChannel(QObject *parent) :
     m_isDownloading = false;
     m_autoDownloadOn = false;
     m_unplayedEpisodes = 0;
+    m_sortDescending = true;
+    m_sortBy = PUBLISHED;
 }
 
 void PodcastChannel::setId(int id)
