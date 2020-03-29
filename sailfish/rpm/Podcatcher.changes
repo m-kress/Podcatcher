@@ -3,6 +3,7 @@
 # Separate entries from eachother with a blank line.
 
 * Sun Mar 29 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.3
+- Make sync on startup configureable
 - Bugfixes
 - Multiline title in audion player
 - truncate podcast channel description in episodes view
