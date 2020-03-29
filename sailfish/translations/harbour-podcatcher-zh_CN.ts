@@ -22,7 +22,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="264"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="265"/>
         <source>Chapters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -333,57 +333,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="120"/>
+        <location filename="../src/podcastmanager.cpp" line="124"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>无法添加来自 %1 的订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="129"/>
+        <location filename="../src/podcastmanager.cpp" line="133"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="305"/>
+        <location filename="../src/podcastmanager.cpp" line="309"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="336"/>
+        <location filename="../src/podcastmanager.cpp" line="340"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="479"/>
+        <location filename="../src/podcastmanager.cpp" line="483"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="496"/>
+        <location filename="../src/podcastmanager.cpp" line="512"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="653"/>
+        <location filename="../src/podcastmanager.cpp" line="669"/>
         <source>Podcast episode download failed.</source>
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="983"/>
+        <location filename="../src/podcastmanager.cpp" line="1000"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1014"/>
+        <location filename="../src/podcastmanager.cpp" line="1031"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1080"/>
+        <location filename="../src/podcastmanager.cpp" line="1097"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1084"/>
+        <location filename="../src/podcastmanager.cpp" line="1101"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅……</translation>
     </message>
@@ -391,27 +391,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="137"/>
+        <location filename="../src/podcatcherui.cpp" line="144"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息……</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="198"/>
+        <location filename="../src/podcatcherui.cpp" line="205"/>
         <source>Podcast episode not found.</source>
         <translation>没有找到播客剧集。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="211"/>
+        <location filename="../src/podcatcherui.cpp" line="218"/>
         <source>Mediaplayer program not found!</source>
         <translation>没有找到媒体播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="227"/>
+        <location filename="../src/podcatcherui.cpp" line="234"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>非常抱歉!无法从为播客打开音频播放器</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="348"/>
+        <location filename="../src/podcatcherui.cpp" line="355"/>
         <source>Unable to stream podcast.</source>
         <translation>无法加载播客。</translation>
     </message>
@@ -462,82 +462,92 @@
 <context>
     <name>Settings</name>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="89"/>
+        <location filename="../qml/pages/Settings.qml" line="95"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="94"/>
+        <location filename="../qml/pages/Settings.qml" line="106"/>
         <source>Auto-download podcasts</source>
         <translation>自动下载播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="95"/>
+        <location filename="../qml/pages/Settings.qml" line="107"/>
         <source>Should Podcatcher automatically download new episodes when the device is connected to the WiFi.</source>
         <translation>当设备连接到 WiFi 时，Podcatcher 会自动下载新剧集。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="101"/>
+        <location filename="../qml/pages/Settings.qml" line="113"/>
         <source>Episodes to auto-download</source>
         <translation>自动下载剧集</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="118"/>
+        <location filename="../qml/pages/Settings.qml" line="130"/>
         <source>Remove old episodes</source>
         <translation>移除旧剧集</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="102"/>
+        <location filename="../qml/pages/Settings.qml" line="114"/>
         <source>The number of podcast episodes that should be automatically downloaded.</source>
         <translation>将会自动下载播客剧集的编号。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="119"/>
+        <location filename="../qml/pages/Settings.qml" line="100"/>
+        <source>Sync feeds on startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="101"/>
+        <source>Download podcast feeds on startup. This may take some time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/Settings.qml" line="131"/>
         <source>Remove podcast episodes that are older than the number of days specified here. 0 means do not remove any.</source>
         <translation>移除指定天数之前的播客剧集。0表示请勿移除。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="141"/>
+        <location filename="../qml/pages/Settings.qml" line="153"/>
         <source>Save epsiodes on SD card</source>
         <translation>保存剧集到 SD 卡</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="146"/>
+        <location filename="../qml/pages/Settings.qml" line="158"/>
         <source>Use mediaplayer </source>
         <translation>使用媒体播放器</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="147"/>
+        <location filename="../qml/pages/Settings.qml" line="159"/>
         <source>Which external program should be used for playing the downloaded podcasts?</source>
         <translation>选择哪个软件来播放下载的播客?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="151"/>
+        <location filename="../qml/pages/Settings.qml" line="163"/>
         <source>System Default</source>
         <translation>系统默认</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="155"/>
+        <location filename="../qml/pages/Settings.qml" line="167"/>
         <source>Jolla Mediaplayer</source>
         <translation>Jolla 媒体</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="159"/>
+        <location filename="../qml/pages/Settings.qml" line="171"/>
         <source>Unplayer</source>
         <translation>Unplayer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="163"/>
+        <location filename="../qml/pages/Settings.qml" line="175"/>
         <source>Internal Player (Beta)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="173"/>
+        <location filename="../qml/pages/Settings.qml" line="185"/>
         <source>Show popular podcasts page</source>
         <translation>显示流行的播客页</translation>
     </message>
     <message>
-        <location filename="../qml/pages/Settings.qml" line="135"/>
+        <location filename="../qml/pages/Settings.qml" line="147"/>
         <source>Keep unplayed episodes</source>
         <translation>保留未播放的剧集</translation>
     </message>

@@ -440,5 +440,13 @@
         <source>Internal Player (Beta)</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Sync feeds on startup</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Download podcast feeds on startup. This may take some time.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 </TS>
