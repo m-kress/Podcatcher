@@ -37,12 +37,12 @@ Item {
 
         Label {
             id: channelDescription
-            //height: channelLogo.height
+            height: channelLogo.height
             width: parent.width- channelLogo.width - Theme.paddingMedium - Theme.horizontalPageMargin
             anchors.left: channelLogo.right
             anchors.leftMargin:  Theme.paddingMedium
             text: channel.description
-            truncationMode: TruncationMode.None
+            truncationMode: TruncationMode.Fade
             font.pixelSize: Theme.fontSizeSmall
             wrapMode: Text.WordWrap
         }
