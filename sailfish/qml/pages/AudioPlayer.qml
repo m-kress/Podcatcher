@@ -113,6 +113,7 @@ Page {
             width: parent.width //- durationLabel.width
             height: Text.paintedHeight
             anchors.horizontalCenter: parent.horizontalCenter
+            wrapMode:Text.WrapAtWordBoundaryOrAnywhere
             //elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
             font.pixelSize: Theme.fontSizeSmall
