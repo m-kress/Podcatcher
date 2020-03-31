@@ -269,6 +269,10 @@
         <source>Mark all espiodes as finished</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Auto-download</source>
+        <translation>Загружать автоматически</translation>
+    </message>
 </context>
 <context>
     <name>PodcastEpisodesList</name>
