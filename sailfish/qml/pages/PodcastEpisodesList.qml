@@ -225,18 +225,22 @@ Item {
                 visible: cancelButton.visible
                 Rectangle{
 
-                    anchors.fill: parent
+                    //anchors.fill: parent
+                    anchors.top: parent.top
+                    anchors.left: parent.left
+                    anchors.bottom: parent.bottom
+                    width: parent.width*(alreadyDownloadedSize/totalDownloadSize)
                     color: Theme.highlightBackgroundColor
                     opacity: 0.5
                 }
             }
 
-            OpacityRampEffect {
+            /*OpacityRampEffect {
                 sourceItem:downloadProgress
                 direction: OpacityRamp.LeftToRight
                 slope: 1000
                 offset: (alreadyDownloadedSize/totalDownloadSize)
-            }
+            }*/
 
 
             Label {

@@ -42,9 +42,9 @@ Item {
             anchors.left: channelLogo.right
             anchors.leftMargin:  Theme.paddingMedium
             text: channel.description
-            truncationMode: TruncationMode.Fade
             font.pixelSize: Theme.fontSizeSmall
             wrapMode: Text.WordWrap
+            truncationMode: TruncationMode.Fade
         }
 //    }
 
