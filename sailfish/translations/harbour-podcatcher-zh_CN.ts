@@ -297,17 +297,17 @@
         <translation>开始载入此播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="298"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="302"/>
         <source>Queued</source>
         <translation>排队</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="397"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="401"/>
         <source>No media</source>
         <translation>无媒体</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1025"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1029"/>
         <source>Unable to stream podcast.</source>
         <translation>无法载入播客。</translation>
     </message>
@@ -343,47 +343,47 @@
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="309"/>
+        <location filename="../src/podcastmanager.cpp" line="321"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="340"/>
+        <location filename="../src/podcastmanager.cpp" line="352"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="483"/>
+        <location filename="../src/podcastmanager.cpp" line="495"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="512"/>
+        <location filename="../src/podcastmanager.cpp" line="524"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="669"/>
+        <location filename="../src/podcastmanager.cpp" line="692"/>
         <source>Podcast episode download failed.</source>
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1000"/>
+        <location filename="../src/podcastmanager.cpp" line="1023"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1031"/>
+        <location filename="../src/podcastmanager.cpp" line="1054"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1097"/>
+        <location filename="../src/podcastmanager.cpp" line="1120"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1101"/>
+        <location filename="../src/podcastmanager.cpp" line="1124"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅……</translation>
     </message>
