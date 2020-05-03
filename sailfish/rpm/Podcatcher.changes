@@ -2,6 +2,9 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Wed Apr 8 2020
+- Fix downloading status of channels
+
 * Sun Mar 29 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.3
 - Make sync on startup configureable
 - Bugfixes
