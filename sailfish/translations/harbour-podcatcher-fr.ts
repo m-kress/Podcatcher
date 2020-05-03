@@ -225,7 +225,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="91"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="92"/>
         <source>Remove subscription</source>
         <translation>Supprimer l&apos;abonnement</translation>
     </message>
@@ -251,12 +251,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="96"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
         <source>Delete downloaded podcasts</source>
         <translation>Supprimer les podcasts téléchargés</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="151"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="152"/>
         <source>Refreshing episodes...</source>
         <translation>Actualisation des épisodes...</translation>
     </message>
@@ -277,37 +277,37 @@
         <translation>%1 téléchargés sur %2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="182"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="616"/>
         <source>Delete downloaded podcast</source>
         <translation>Supprimer le podcast téléchargé</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="185"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="619"/>
         <source>Deleting</source>
         <translation>Suppression</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="193"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="627"/>
         <source>Mark as unplayed</source>
         <translation>Marquer comme non écouté</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="201"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="635"/>
         <source>Start streaming the podcast</source>
         <translation>Débuter la lecture du podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="302"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="732"/>
         <source>Queued</source>
         <translation>Mis en attente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="401"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="831"/>
         <source>No media</source>
         <translation>Aucun média</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1029"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1019"/>
         <source>Unable to stream podcast.</source>
         <translation>Impossible de lire le podcast.</translation>
     </message>

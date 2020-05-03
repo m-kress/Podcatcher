@@ -67,7 +67,7 @@ Item {
 
 
 
-    DelegateModel{
+   /* DelegateModel{
         id: sortedEpisodesModel
 
         property string sortBy: channel.sortBy
@@ -235,12 +235,12 @@ Item {
                 }
             }
 
-            /*OpacityRampEffect {
-                sourceItem:downloadProgress
-                direction: OpacityRamp.LeftToRight
-                slope: 1000
-                offset: (alreadyDownloadedSize/totalDownloadSize)
-            }*/
+            //OpacityRampEffect {
+            //    sourceItem:downloadProgress
+            //    direction: OpacityRamp.LeftToRight
+            //    slope: 1000
+            //    offset: (alreadyDownloadedSize/totalDownloadSize)
+            //}
 
 
             Label {
@@ -405,16 +405,6 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 width: 170
             }
-
-            /* PodcastDownloadingProgress {
-                id: downloadProgress
-                anchors.right: parent.right
-                anchors.rightMargin: Theme.horizontalPageMargin
-                width: playButton.width
-                visible: false
-                anchors.verticalCenter: parent.verticalCenter
-            }*/
-
             states: [
                 State {
                     name: "get"
@@ -579,7 +569,8 @@ Item {
 
         }
 
-    }
+    }*/
+
 
     Rectangle {
         id: podcastEpisodesInfoRect
@@ -592,8 +583,8 @@ Item {
         SilicaListView {
             id: podcastEpisodesList
             anchors.fill: podcastEpisodesInfoRect
-            //model: episodesModel
-            model: sortedEpisodesModel
+            model: episodesModel
+            //model: sortedEpisodesModel
             clip: true
             anchors.top:  podcastEpisodesInfoRect.top
 
@@ -601,7 +592,7 @@ Item {
                 flickable: podcastEpisodesList
             }
 
-            /* delegate: ListItem {
+            delegate: ListItem {
                 id: podcastItem
                 state: episodeState
                 contentHeight: episodeName.height + lastPlayed.height + Theme.paddingSmall + Theme.paddingMedium
@@ -1017,7 +1008,6 @@ Item {
                 ]
 
             }
-        */
         }
     }
 

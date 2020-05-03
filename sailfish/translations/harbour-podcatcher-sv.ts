@@ -225,7 +225,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="91"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="92"/>
         <source>Remove subscription</source>
         <translation>Ta bort prenumeration</translation>
     </message>
@@ -251,12 +251,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="96"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
         <source>Delete downloaded podcasts</source>
         <translation>Ta bort nerladdade poddar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="151"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="152"/>
         <source>Refreshing episodes...</source>
         <translation>Uppdaterar avsnitt...</translation>
     </message>
@@ -277,37 +277,37 @@
         <translation>%1 nerladdat, av totalt %2.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="182"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="616"/>
         <source>Delete downloaded podcast</source>
         <translation>Ta bort nerladdade poddar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="185"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="619"/>
         <source>Deleting</source>
         <translation>Tar bort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="193"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="627"/>
         <source>Mark as unplayed</source>
         <translation>Markera som ospelad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="201"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="635"/>
         <source>Start streaming the podcast</source>
         <translation>Börja strömma podden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="302"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="732"/>
         <source>Queued</source>
         <translation>Köad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="401"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="831"/>
         <source>No media</source>
         <translation>Ingen media</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1029"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1019"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podden.</translation>
     </message>

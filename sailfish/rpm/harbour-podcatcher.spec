@@ -13,11 +13,11 @@ Name:       harbour-podcatcher
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Your mobile podcast client for Sailfish OS
-Version:    1.9.4
+Version:    1.9.5
 Release:    1
 Group:      Qt/Qt
 License:    GPLV3
-URL:        http://example.org/
+URL:        http://github.com/CarolusMagnus/Podcatcher
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-podcatcher.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
