@@ -84,10 +84,10 @@ Cover{
         }
 
         CoverAction {
-            iconSource: (coverpage.parent.player.audioPlayer.playbackState === Audio.PlayingState)?
+            iconSource: ( player.audioPlayer.playbackState === Audio.PlayingState)?
                             "image://theme/icon-cover-pause":"image://theme/icon-cover-play"
-            onTriggered: (coverpage.parent.player.audioPlayer.playbackState === Audio.PlayingState)?
-                             appWindow.player.audioPlayer.pause(): appWindow.player.audioPlayer.play();
+            onTriggered: (player.audioPlayer.playbackState === Audio.PlayingState)?
+                             player.audioPlayer.pause(): appWindow.player.audioPlayer.play();
         }
     }
 }
