@@ -263,11 +263,23 @@ void PodcastManager::cancelDownloadPodcast(PodcastEpisode *episode)
     }
 
     PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
-    channel->setIsDownloading(false);
+    //channel->setIsDownloading(false);
+
 
     if(m_currentEpisodeDownloads.contains(episode)){
         m_currentEpisodeDownloads.removeOne(episode);
     }
+
+    bool otherDownloadfromChannel = false;
+
+    for (PodcastEpisode* other : m_currentEpisodeDownloads) {
+        if (other->channelid() == episode->channelid()){
+            otherDownloadfromChannel = true;
+            break;
+        }
+    }
+
+    channel->setIsDownloading(otherDownloadfromChannel);
 
     emit downloadingPodcasts(isDownloading());
     //m_isDownloading = false;
@@ -558,9 +570,9 @@ void PodcastManager::onPodcastEpisodeDownloadReady()
 
         episode->setState(PodcastEpisode::DownloadingState);
         episode->setHasBeenCanceled(false);
-        //episode->setDownloadManager(m_dlNetworkManager);
+        episode->setDownloadManager(m_dlNetworkManager);
         //using same QNAM does not fix problem with hanging downloads
-        episode->setDownloadManager(m_networkManager);
+        //episode->setDownloadManager(m_networkManager);
         episode->downloadEpisode();
 
         m_currentEpisodeDownloads.append(episode);
@@ -635,8 +647,22 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
     episodeModel->refreshEpisode(episode);
     m_channelsModel->refreshChannel(episode->channelid());
 
+    if (m_currentEpisodeDownloads.contains(episode)){
+        m_currentEpisodeDownloads.removeOne(episode);
+    }
+
     PodcastChannel *channel = m_channelsModel->podcastChannelById(episode->channelid());
-    channel->setIsDownloading(false);
+
+    bool otherDownloadfromChannel = false;
+
+    for (PodcastEpisode* other : m_currentEpisodeDownloads) {
+        if (other->channelid() == episode->channelid()){
+            otherDownloadfromChannel = true;
+            break;
+        }
+    }
+
+    channel->setIsDownloading(otherDownloadfromChannel);
 
     emit podcastEpisodeDownloaded(episode);
 
@@ -646,9 +672,6 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
 //        m_episodeDownloadQueue.removeOne(episode);
 //    }
 
-    if (m_currentEpisodeDownloads.contains(episode)){
-        m_currentEpisodeDownloads.removeOne(episode);
-    }
 
     emit downloadingPodcasts(isDownloading());
 
