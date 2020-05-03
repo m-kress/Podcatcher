@@ -93,7 +93,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteA
     qDebug() << "Parsing XML for episodes";
 
     if (xmlReply.size() < 10) {
-        return false;
+        return nullptr;
     }
 
     QDomDocument xmlDocument;
