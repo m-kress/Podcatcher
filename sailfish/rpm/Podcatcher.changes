@@ -2,6 +2,10 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Thu May 28 2020
+- New parser for podcast feeds
+- use taglib 2 (no “illegal” system library anymore)
+
 * Sun May 3 2020
 - Disable Epsiodes sorting to prevent crashes while downloading
 

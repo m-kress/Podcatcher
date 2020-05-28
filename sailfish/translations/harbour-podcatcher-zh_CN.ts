@@ -333,57 +333,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="124"/>
+        <location filename="../src/podcastmanager.cpp" line="127"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>无法添加来自 %1 的订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="133"/>
+        <location filename="../src/podcastmanager.cpp" line="136"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="321"/>
+        <location filename="../src/podcastmanager.cpp" line="324"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="352"/>
+        <location filename="../src/podcastmanager.cpp" line="355"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="495"/>
+        <location filename="../src/podcastmanager.cpp" line="498"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="524"/>
+        <location filename="../src/podcastmanager.cpp" line="527"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="692"/>
+        <location filename="../src/podcastmanager.cpp" line="715"/>
         <source>Podcast episode download failed.</source>
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1023"/>
+        <location filename="../src/podcastmanager.cpp" line="1078"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1054"/>
+        <location filename="../src/podcastmanager.cpp" line="1109"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1120"/>
+        <location filename="../src/podcastmanager.cpp" line="1175"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1124"/>
+        <location filename="../src/podcastmanager.cpp" line="1179"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅……</translation>
     </message>
