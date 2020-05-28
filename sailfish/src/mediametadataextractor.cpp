@@ -119,7 +119,7 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
             if(!toc->isTopLevel())
                 continue;
 
-            qDebug() <<toc->elementID().toUInt() <<"entry Count" << toc->entryCount() << "toString "<<toc->toString().toCString(true);
+            qDebug() <<toc->elementID().toUInt32LE(0) <<"entry Count" << toc->entryCount() << "toString "<<toc->toString().toCString(true);
 
             chapterIDS = toc->childElements();
 
