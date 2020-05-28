@@ -34,9 +34,12 @@
 #include <QtConcurrentRun>
 #include <QFuture>
 
+#include <QElapsedTimer>
+
 #include "podcastmanager.h"
 #include "podcastsqlmanager.h"
 #include "podcastrssparser.h"
+#include "podcastrssparser2.h"
 #include "podcastglobals.h"
 
 PodcastManager::PodcastManager(QObject *parent) :
@@ -346,8 +349,8 @@ void PodcastManager::onPodcastChannelCompleted()
 */
 
     bool rssOk;
-    rssOk = PodcastRSSParser::populateChannelFromChannelXML(channel,
-                                                            channel->xml());
+    rssOk = PodcastRSSParser2::populateChannelFromChannelXML(channel,
+                                                             channel->xml());
     if (rssOk == false) {
         emit showInfoBanner(tr("Podcast feed is not valid. Cannot add subscription..."));
         return;
@@ -433,8 +436,8 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
 
-   QObject::connect(reply, SIGNAL(destroyed(QObject*)), this,
-                    SLOT(onDestroyingNetworkReply(QObject*)));
+    QObject::connect(reply, SIGNAL(destroyed(QObject*)), this,
+                     SLOT(onDestroyingNetworkReply(QObject*)));
 
     PodcastChannel *channel = channelForNetworkReply(reply);
     if (channel == 0) {
@@ -525,9 +528,9 @@ void PodcastManager::onPodcastEpisodesParsed()
     }else{
 
 
-//        for (PodcastEpisode* e: *parsedEpisodes){
-//            e->moveToThread(this->thread());
-//        }
+        //        for (PodcastEpisode* e: *parsedEpisodes){
+        //            e->moveToThread(this->thread());
+        //        }
 
         PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(channel->channelDbId());  // FIXME: Pass only channel to episodes model - not the DB id.
         episodeModel->addEpisodes(*parsedEpisodes);
@@ -586,17 +589,37 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
 {
     QByteArray episodeXmlData = channel->xml();
 
-//    QList<PodcastEpisode *> *parsedEpisodes;
-//    parsedEpisodes = PodcastRSSParser::populateEpisodesFromChannelXML(episodeXmlData);
+    //    QList<PodcastEpisode *> *parsedEpisodes;
+    //    parsedEpisodes = PodcastRSSParser::populateEpisodesFromChannelXML(episodeXmlData);
 
 
     QFutureWatcher<QList<PodcastEpisode *>*> *watcher = new QFutureWatcher<QList<PodcastEpisode *>*>(this);
 
-    watcher->setFuture(QtConcurrent::run(PodcastRSSParser::populateEpisodesFromChannelXML,episodeXmlData, channel));
+    watcher->setFuture(QtConcurrent::run(PodcastRSSParser2::populateEpisodesFromChannelXML,episodeXmlData, channel));
 
     insertChannelForFutureWatcher(watcher,channel);
 
     QObject::connect(watcher,SIGNAL(finished()), this, SLOT(onPodcastEpisodesParsed()));
+
+    /*
+    qDebug() << "Checking parser result for channel " << channel->title();
+
+    QElapsedTimer timer;
+    timer.start();
+
+    QList<PodcastEpisode *>* one = PodcastRSSParser::populateEpisodesFromChannelXML(episodeXmlData, channel);
+    int time1 = timer.elapsed();
+
+
+    timer.start();
+    QList<PodcastEpisode *>* two =  PodcastRSSParser2::populateEpisodesFromChannelXML(episodeXmlData, channel);
+    int time2 = timer.elapsed();
+
+    qDebug() << "The old parser needs "<<time1 << "µs, the new parser "<< time2 <<"µs.";
+
+    compareEpisodes(one, two);
+    */
+
     return true;
 
 }
@@ -668,9 +691,9 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
 
     //m_isDownloading = false;
 
-//    if (m_episodeDownloadQueue.contains(episode)) {
-//        m_episodeDownloadQueue.removeOne(episode);
-//    }
+    //    if (m_episodeDownloadQueue.contains(episode)) {
+    //        m_episodeDownloadQueue.removeOne(episode);
+    //    }
 
 
     emit downloadingPodcasts(isDownloading());
@@ -697,9 +720,9 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
     channel->setIsDownloading(false);
     episode->setState(PodcastEpisode::GetState);
 
-//    if (m_episodeDownloadQueue.contains(episode)) {
-//        m_episodeDownloadQueue.removeOne(episode);
-//    }
+    //    if (m_episodeDownloadQueue.contains(episode)) {
+    //        m_episodeDownloadQueue.removeOne(episode);
+    //    }
 
     if (m_currentEpisodeDownloads.contains(episode)){
         m_currentEpisodeDownloads.removeOne(episode);
@@ -884,7 +907,7 @@ void PodcastManager::removePodcastChannel(int channelId)
      * Do not touch the episode anymore!
      */
     // Deleting locally cached channel logo.
-   //PodcastChannel *channel = m_channelsCache.value(channelId);
+    //PodcastChannel *channel = m_channelsCache.value(channelId);
     PodcastChannel *channel = podcastChannel(channelId);
     if (channel != NULL) {
         QUrl channelLogoUrl(channel->logo());
@@ -1014,6 +1037,38 @@ void PodcastManager::updateAutoDLSettingsFromCache()
 
         lastKnownAutoDlOn = settings.value("autoDlOn").toBool();
     }
+}
+
+void PodcastManager::compareEpisodes(QList<PodcastEpisode *> *list1, QList<PodcastEpisode *> *list2)
+{
+    if(list1->length() != list2->length()){
+        qWarning() << "Episode list have not the same length!";
+    }
+
+    for (int i=1; i<std::min(list1->length(), list2->length()); i++){
+        PodcastEpisode* e1 = list1->at(i);
+        PodcastEpisode* e2 = list2->at(i);
+
+        qDebug() << "\nComparing Epsiode "<< e1->title() <<"\n";
+
+        if(e1->title() != e2->title()){
+            qWarning() << "Epsisodes have diffrent titles: "<< e1->title()<< "and"  << e2->title();
+        }
+
+        if(e1->downloadLink() != e2->downloadLink()){
+            qWarning() << "Epsisodes have diffrent links: "<< e1->downloadLink()<< e2->downloadLink();
+        }
+
+        if(e1->pubTime() != e2->pubTime()){
+            qWarning() << "Epsisodes have diffrent pubDates: "<< e1->pubTime() << "and" << e2->pubTime();
+        }
+
+        if(e1->description() != e2->description()){
+            qWarning() << "Epsisodes have diffrent descriptions: "<< e1->description() << "\nand\n"  << e2->description();
+        }
+
+    }
+
 }
 
 void PodcastManager::fetchSubscriptionsFromGPodder(QString gpodderUsername, QString gpodderPassword) {
@@ -1162,7 +1217,7 @@ void PodcastManager::requestPodcastChannelFromGPodder(const QUrl &rssUrl)
     connect(reply, SIGNAL(finished()),
             this, SLOT(onPodcastChannelCompleted()));
 
-   // m_networkManager->get(request);
+    // m_networkManager->get(request);
 }
 
 

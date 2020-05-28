@@ -15,41 +15,62 @@
  * You should have received a copy of the GNU General Public License
  * along with Podcatcher for Sailfish OS.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef PODCASTRSSPARSER_H
-#define PODCASTRSSPARSER_H
+#ifndef PODCASTRSSPARSER2_H
+#define PODCASTRSSPARSER2_H
 
 #include <QObject>
-
 
 #include "podcastchannel.h"
 #include "podcastepisode.h"
 
-class QDomNode;
-class QDomNodeList;
+
+class QXmlStreamReader;
+
 class PodcastRSSParser2 : public QObject
 {
     Q_OBJECT
 public:
-    explicit PodcastRSSParser2(QObject *parent = 0);
-
+    explicit PodcastRSSParser2(QObject *parent = nullptr);
+    
     static bool populateChannelFromChannelXML(PodcastChannel *channel, QByteArray xmlReply);
-
+    
     static  QList<PodcastEpisode *>* populateEpisodesFromChannelXML(QByteArray xmlReply, QObject* episodeParent);
-
+    
     static bool isValidPodcastFeed(QByteArray xmlReply);
-
+    
     static QList<QString> parseGPodderSubscription(QByteArray gpodderXml);
-
+    
 signals:
-
+    
 public slots:
-
+    
 private:
-    static QDateTime parsePubDate(const QDomNode &node);
-    static QString trimPubDate(const QString &pubdate);
-    static bool containsEnclosure(const QDomNodeList &itemNodes);
-    static bool isEmptyItem(const QDomNode &node);
+    static bool parseRSSChannel(PodcastChannel* channel, QXmlStreamReader & xml);
+    static  bool parseAtomChannel(PodcastChannel* channel, QXmlStreamReader & xml);
 
+    static bool parseRSSImage(PodcastChannel *channel, QXmlStreamReader &xml);
+    static bool parseAtomImage(PodcastChannel *channel, QXmlStreamReader &xml);
+
+    static  QList<PodcastEpisode *>* episodesFromRSS(QXmlStreamReader &xml, QObject* episodeParent);
+    static  QList<PodcastEpisode *>* episodesFromAtom(QXmlStreamReader &xml, QObject* episodeParent);
+    
+    static QDateTime parsePubDate(const QString &pubDate);
+    static QString trimPubDate(const QString &pubdate) {
+        QString parsedString = pubdate;
+
+        // Remove optional day field.
+        // Input is <pubDate>Wed, 6 Jul 2005 13:00:00 PDT</pubDate>
+        // So we remove the start with "Wed, "
+        if (parsedString.indexOf(',') > 0) {
+            parsedString = parsedString.mid(pubdate.indexOf(',') + 2);
+        }
+
+        //qDebug() << "Trimmed feed URL: " << parsedString;
+        return parsedString;
+    }
+    //    static bool containsEnclosure(const QDomNodeList &itemNodes);
+    //    static bool isEmptyItem(const QDomNode &node);
+    
 };
 
-#endif // PODCASTRSSPARSER_H
+#endif // PODCASTRSSPARSER2S_H

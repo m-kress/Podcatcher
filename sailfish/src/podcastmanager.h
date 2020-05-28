@@ -136,6 +136,8 @@ private:
    bool savePodcastEpisodes(PodcastChannel *channel);
    void updateAutoDLSettingsFromCache();
 
+   void compareEpisodes(QList<PodcastEpisode*>* list1, QList<PodcastEpisode*>* list2);
+
    PodcastChannelsModel *m_channelsModel;
 
    // We need multiple QNAMs to be able to do concurrent downloads.
