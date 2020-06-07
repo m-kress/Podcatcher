@@ -333,57 +333,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="124"/>
+        <location filename="../src/podcastmanager.cpp" line="127"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>No es posible añadir suscripción de %1 ...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="133"/>
+        <location filename="../src/podcastmanager.cpp" line="136"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Suscrito a &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="321"/>
+        <location filename="../src/podcastmanager.cpp" line="324"/>
         <source>No data received.</source>
         <translation>Datos no recibidos.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="352"/>
+        <location filename="../src/podcastmanager.cpp" line="355"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Fuente de podcast no válida. No es posible añadir suscripción...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="495"/>
+        <location filename="../src/podcastmanager.cpp" line="498"/>
         <source>Cannot refresh. Network error.</source>
         <translation>No es posible actualizar. Error de conexión.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="524"/>
+        <location filename="../src/podcastmanager.cpp" line="527"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Fuente de podcast no válida. No es posible descargar episodios de &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="692"/>
+        <location filename="../src/podcastmanager.cpp" line="715"/>
         <source>Podcast episode download failed.</source>
         <translation>Error al descargar episodio de podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1023"/>
+        <location filename="../src/podcastmanager.cpp" line="1078"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Información de autenticación en gPodder.net requerida.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1054"/>
+        <location filename="../src/podcastmanager.cpp" line="1109"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Credenciales de gPodder.net no aceptadas. Inténtalo de nuevo.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1120"/>
+        <location filename="../src/podcastmanager.cpp" line="1175"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>No se han encontrado suscripciones en gPodder.net</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1124"/>
+        <location filename="../src/podcastmanager.cpp" line="1179"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Obteniendo suscripciones de gPodder.net...</translation>
     </message>

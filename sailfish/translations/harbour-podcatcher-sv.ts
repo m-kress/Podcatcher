@@ -19,12 +19,12 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="86"/>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Spelare</translation>
     </message>
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="265"/>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapitel</translation>
     </message>
 </context>
 <context>
@@ -96,47 +96,47 @@
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="12"/>
         <source>Sorting of the Episodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortering av avsnitten</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="20"/>
         <source>Sort by</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortera efter</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="24"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="27"/>
         <source>publication date</source>
-        <translation type="unfinished"></translation>
+        <translation>publikationsdatum</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="31"/>
         <source>state</source>
-        <translation type="unfinished"></translation>
+        <translation>status</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="35"/>
         <source>title</source>
-        <translation type="unfinished"></translation>
+        <translation>titel</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="42"/>
         <source>Sort order</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorteringsordning</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="50"/>
         <source>ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>stigande</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="46"/>
         <source>descending</source>
-        <translation type="unfinished"></translation>
+        <translation>sjunkande</translation>
     </message>
 </context>
 <context>
@@ -248,7 +248,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
         <source>Sort Episodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortera avsnitt</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
@@ -333,57 +333,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="124"/>
+        <location filename="../src/podcastmanager.cpp" line="127"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>Kan inte lägga till prenumeration från %1 ...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="133"/>
+        <location filename="../src/podcastmanager.cpp" line="136"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>Prenumerarerar redan på &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="321"/>
+        <location filename="../src/podcastmanager.cpp" line="324"/>
         <source>No data received.</source>
         <translation>Ingen data mottagen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="352"/>
+        <location filename="../src/podcastmanager.cpp" line="355"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Poddflödet är inte giltigt. Kan inte lägga till prenumeration...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="495"/>
+        <location filename="../src/podcastmanager.cpp" line="498"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="524"/>
+        <location filename="../src/podcastmanager.cpp" line="527"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="692"/>
+        <location filename="../src/podcastmanager.cpp" line="715"/>
         <source>Podcast episode download failed.</source>
         <translation>Poddavsnittet kunde inte laddas ner.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1023"/>
+        <location filename="../src/podcastmanager.cpp" line="1078"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1054"/>
+        <location filename="../src/podcastmanager.cpp" line="1109"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1120"/>
+        <location filename="../src/podcastmanager.cpp" line="1175"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1124"/>
+        <location filename="../src/podcastmanager.cpp" line="1179"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>
@@ -494,12 +494,12 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="100"/>
         <source>Sync feeds on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Synkronisera flöden vid uppstart</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="101"/>
         <source>Download podcast feeds on startup. This may take some time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladda ner poddflöden vid programstart. Detta kan ta en stund.</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="131"/>
@@ -539,7 +539,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="175"/>
         <source>Internal Player (Beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>Intern spelare (Beta)</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="185"/>

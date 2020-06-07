@@ -1,10 +1,11 @@
 Podcatcher
 ==========
 
-The podcast client for your mobile phone. 
+The podcast client for Sailfish OS. 
 
 Licensed under the GPLv2 license. 
 
+**Contributions are welcome.**
 
 -- 
 Moritz Carmesin
