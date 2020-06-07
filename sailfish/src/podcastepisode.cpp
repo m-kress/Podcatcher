@@ -29,13 +29,13 @@
 
 PodcastEpisode::PodcastEpisode(QObject *parent) :
     QObject(parent),
-    m_dlNetworkManager(0)
+    m_dlNetworkManager(nullptr)
 {
     m_state = PodcastEpisode::GetState;
     m_bytesDownloaded = 0;
     m_lastPlayed = QDateTime();
     m_hasBeenCanceled = false;
-    m_currentDownload = 0;
+    m_currentDownload = nullptr;
     m_playFilename = "";
     m_user = "";
     m_password = "";
@@ -70,6 +70,7 @@ QString PodcastEpisode::downloadLink() const
 void PodcastEpisode::setDescription(const QString &desc)
 {
     m_description = desc;
+    m_description.replace("alt=\"\"",""); // remove empty alt tags as they break renderer in Label
 }
 
 QString PodcastEpisode::description() const
