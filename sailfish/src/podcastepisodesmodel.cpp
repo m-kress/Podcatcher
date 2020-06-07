@@ -139,6 +139,8 @@ void PodcastEpisodesModel::addEpisodes(QList<PodcastEpisode *> episodes)
             if (episode->pubTime() > dbsLatestEpisode) {
                 newEpisodesToAdd << episode;
             }
+        }else{
+            episode->deleteLater(); // Free unused episodes
         }
     }
 
