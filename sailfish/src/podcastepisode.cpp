@@ -158,15 +158,12 @@ QString PodcastEpisode::episodeState() const
     switch(m_state) {
     case DownloadedState:
         return QString("downloaded");
-        break;
     case QueuedState:
         return QString("queued");
-        break;
     case GetState:
     case CanceledState:
     default:
         return QString("get");
-        break;
     }
 }
 
@@ -198,7 +195,7 @@ void PodcastEpisode::downloadEpisode()
     qDebug() << "Downloading podcast:" << m_downloadLink;
     qDebug() << "CurrentThread" << QThread::currentThread();
     qDebug() << "Episode Thread" << this->thread();
-    if (m_dlNetworkManager == 0) {
+    if (m_dlNetworkManager == nullptr) {
         qWarning() << "No QNetworkAccessManager specified for this episode. Cannot proceed.";
         return;
     }
@@ -315,7 +312,7 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
 
     emit podcastEpisodeDownloaded(this);
     reply->deleteLater();
-    m_dlNetworkManager = 0;
+    m_dlNetworkManager = nullptr;
 }
 
 void PodcastEpisode::setDownloadManager(QNetworkAccessManager *qnam)
@@ -338,7 +335,8 @@ QDateTime PodcastEpisode::lastPlayed() const
 
 void PodcastEpisode::setHasBeenCanceled(bool canceled)
 {
-    canceled ? m_state = PodcastEpisode::CanceledState : m_state = m_state;
+    if(canceled)
+        m_state = PodcastEpisode::CanceledState;
 
     if (canceled != m_hasBeenCanceled) {
         m_hasBeenCanceled = canceled;
@@ -360,7 +358,7 @@ bool PodcastEpisode::hasBeenCanceled() const
 
 void PodcastEpisode::cancelCurrentDownload()
 {
-    if (m_currentDownload != 0 &&
+    if (m_currentDownload != nullptr &&
             m_state == DownloadingState) {
         qDebug() << "Canceling current episode download request...";
 

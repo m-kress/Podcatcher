@@ -186,7 +186,7 @@ void PodcastEpisodesModel::delEpisode(int index, PodcastEpisode *episode)
 
 PodcastEpisode * PodcastEpisodesModel::episode(int index)
 {
-    PodcastEpisode *episode = 0;
+    PodcastEpisode *episode = nullptr;
     if (index < 0 || index > m_episodes.count())
         return episode;
 
@@ -197,7 +197,7 @@ PodcastEpisode * PodcastEpisodesModel::episode(int index)
 void PodcastEpisodesModel::onEpisodeChanged()
 {
     PodcastEpisode *episode  = qobject_cast<PodcastEpisode *>(sender());
-    if (episode == 0) {
+    if (episode == nullptr) {
         return;
     }
 
