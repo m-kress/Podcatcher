@@ -3,7 +3,7 @@
 # Separate entries from eachother with a blank line.
 
 * Sun May 3 2020
-- Disable Epsiodes sorting to prevent crashes while downloading
+- Disable epsiodes sorting to prevent crashes while downloading
 
 * Wed Apr 8 2020
 - Fix downloading status of channels
