@@ -2,6 +2,9 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Sun Jun 21 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.8
+- Fix MPRIS (Broken since 3.2???)
+
 * Sun Jun 7 2020
 - Fix slider in audio player
 - Remove emtpy alt tag from episode description (render bug in Label)

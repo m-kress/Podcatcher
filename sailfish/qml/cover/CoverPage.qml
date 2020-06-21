@@ -83,12 +83,12 @@ Cover{
             onTriggered: ui.refreshChannels()
         }
 
-        CoverAction {
+        /*CoverAction {
             iconSource: ( player.audioPlayer.playbackState === Audio.PlayingState)?
                             "image://theme/icon-cover-pause":"image://theme/icon-cover-play"
             onTriggered: (player.audioPlayer.playbackState === Audio.PlayingState)?
                              player.audioPlayer.pause(): appWindow.player.audioPlayer.play();
-        }
+        }*/
     }
 }
 

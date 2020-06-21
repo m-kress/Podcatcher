@@ -15,8 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Podcatcher for N9.  If not, see <http://www.gnu.org/licenses/>.
  */
-import QtQuick 2.2
-import QtMultimedia 5.0
+import QtQuick 2.6
+import QtMultimedia 5.6
 
 import Sailfish.Silica 1.0
 import  org.nemomobile.configuration 1.0
@@ -207,8 +207,8 @@ Page {
                 id: chapBtn
 
                 icon.source: "image://theme/icon-m-events?" + (pressed
-                                                              ? Theme.highlightColor
-                                                              : Theme.primaryColor)
+                                                               ? Theme.highlightColor
+                                                               : Theme.primaryColor)
 
                 onClicked: {
                     chapterPanel.open?chapterPanel.hide():chapterPanel.show();
@@ -233,11 +233,11 @@ Page {
     DockedPanel{
         id:chapterPanel
 
-//        dock: Dock.Right
+        //        dock: Dock.Right
 
-//        width: parent.width/2
-//        height: cover.height
-//        anchors.top: cover.top
+        //        width: parent.width/2
+        //        height: cover.height
+        //        anchors.top: cover.top
 
         dock: Dock.Top
         width: parent.width
@@ -329,16 +329,19 @@ Page {
             //            }
 
             console.log("Chapters count: "+chapterModel.columnCount());
+            mpris.playbackStatus = Mpris.Playing
         }
 
         onPaused: {
             lastPosition.value = position
             console.log("remembering position: " + position)
+            mpris.playbackStatus = Mpris.Paused
         }
 
         onStopped: {
-//            lastPosition.value = position
-//            console.log("remembering position: " + position)
+            mpris.playbackStatus = Mpris.Stopped
+            //            lastPosition.value = position
+            //            console.log("remembering position: " + position)
         }
 
         onSourceChanged: {
@@ -347,8 +350,75 @@ Page {
             console.log("Last position: "+lastPosition.value);
             cover.source = '';
             cover.source = 'image://coverArt/cover';
+
+            var infos = mpris.metadata;
+            console.log("MPRIS metatada" + infos)
+            infos[Mpris.metadataToString(Mpris.Artist)] = [mediaMetaDataExtractor.artist]
+            infos[Mpris.metadataToString(Mpris.Title)] = mediaMetaDataExtractor.title
+            mpris.metadata = infos;
+
+            mpris.canSeek = audioPlayer.seekable
+
         }
     }
 
+    MprisPlayer {
+        id: mpris
+        serviceName: "podcatcher"
+
+        identity: "Podcatcher"
+        supportedUriSchemes: ["file"]
+        supportedMimeTypes: ["audio/x-wav", "audio/x-vorbis+ogg", "audio/mpeg", "audio/mp4a-latm", "audio/x-aiff"]
+        // Mpris2 Player Interface
+        canControl: true
+
+        canGoNext: audioPlayer.position !== audioPlayer.duration
+        canGoPrevious: audioPlayer.position !== 0
+        canPause: true
+        canPlay: true
+
+        canSeek: false
+        hasTrackList: false
+        playbackStatus: Mpris.Paused
+        loopStatus: Mpris.None
+        shuffle: false
+        volume: 1.0
+        onPauseRequested: {
+            console.log("MPRIS: Pause Requested");
+            audioPlayer.pause();
+        }
+
+        onPlayRequested: {
+            console.log("MPRIS: Play Requested");
+            audioPlayer.play()
+        }
+
+        onPlayPauseRequested:{ console.log("MPRIS: PlayPause Requested");
+            if (audioPlayer.playbackState===Audio.PlayingState)
+                audioPlayer.pause();
+            else
+                audioPlayer.play();
+        }
+        onStopRequested: {
+            console.log("MPRIS: Stop Requested")
+            audioPlayer.stop();
+        }
+        onNextRequested: {
+            audioPlayer.seek(audioPlayer.position + 10000);
+        }
+
+        onPreviousRequested: {
+            audioPlayer.seek(audioPlayer.position - 10000);
+        }
+
+        //metadata handling
+        function updateMetaData(){
+            var infos = mpris.metadata;
+
+            infos[Mpris.metadataToString(Mpris.Artist)] = [mediaMetaDataExtractor.artist]
+            infos[Mpris.metadataToString(Mpris.Title)] = mediaMetaDataExtractor.title
+            mpris.metadata = infos;
+        }
+    }
 
 }

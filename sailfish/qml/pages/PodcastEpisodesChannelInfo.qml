@@ -43,8 +43,8 @@ Item {
             anchors.leftMargin:  Theme.paddingMedium
             text: channel.description
             font.pixelSize: Theme.fontSizeSmall
-            wrapMode: Text.WordWrap
             truncationMode: TruncationMode.Fade
+            wrapMode: Text.WordWrap
         }
 //    }
 

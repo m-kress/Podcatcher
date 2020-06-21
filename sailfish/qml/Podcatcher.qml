@@ -44,13 +44,15 @@ ApplicationWindow
     //allowedOrientations:Orientation.All
    // _defaultPageOrientations: Orientation.Portrait
 
+    MediaKeys{
+
+    }
+
     AudioPlayer{
         id: player
     }
 
-    MediaKeys{
 
-    }
 }
 
 
