@@ -128,10 +128,10 @@ Page {
             width: parent.width
             //height: Theme.iconSizeMedium
             minimumValue: 0
-            maximumValue: audioPlayer.duration
+            maximumValue: audioPlayer.duration?audioPlayer.duration:1
             value: audioPlayer.position
-            enabled: audioPlayer.seekable
-            handleVisible: true
+            //enabled: audioPlayer.seekable
+            //handleVisible: true
 
 
             onPositionChanged: {

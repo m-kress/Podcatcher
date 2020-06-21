@@ -20,7 +20,7 @@
 #include "podcastsqlmanager.h"
 #include "podcastepisodesmodelfactory.h"
 
-PodcastEpisodesModelFactory * PodcastEpisodesModelFactory::instance = 0;
+PodcastEpisodesModelFactory * PodcastEpisodesModelFactory::instance = nullptr;
 
 PodcastEpisodesModelFactory::PodcastEpisodesModelFactory()
 {
@@ -31,7 +31,7 @@ PodcastEpisodesModel * PodcastEpisodesModelFactory::episodesModel(int channelId)
 {
 
     if (channelId < 1) {
-       return 0;
+       return nullptr;
     }
 
     // If the model is already fetched from the DB, just rturn it.
@@ -52,7 +52,7 @@ PodcastEpisodesModel * PodcastEpisodesModelFactory::episodesModel(int channelId)
 
 PodcastEpisodesModelFactory * PodcastEpisodesModelFactory::episodesFactory()
 {
-    if (instance == 0) {
+    if (instance == nullptr) {
         instance = new PodcastEpisodesModelFactory;
     }
     return instance;

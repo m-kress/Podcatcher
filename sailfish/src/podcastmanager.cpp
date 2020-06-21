@@ -165,7 +165,7 @@ void PodcastManager::refreshAllChannels()
 
         qDebug() << "Refreshing channel: " << channelid << channel->title();
 
-        if (channel == 0) {
+        if (channel == nullptr) {
             qWarning() << "Got NULL episode!";
             break;
         }
@@ -212,10 +212,10 @@ void PodcastManager::refreshPodcastChannelEpisodes(PodcastChannel *channel, bool
 
 PodcastChannel * PodcastManager::podcastChannel(int id)
 {
-    PodcastChannel *channel = NULL;
+    PodcastChannel *channel = nullptr;
     if (!m_channelsCache.contains(id)) {
         channel = m_channelsModel->podcastChannelById(id);
-        if (channel == 0) {
+        if (channel == nullptr) {
             return channel;
         }
         m_channelsCache.insert(id, channel);
@@ -372,7 +372,7 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
     qDebug() << "Podcast channel logo network request completed";
 
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
-    if (reply == 0) {
+    if (reply == nullptr) {
         qWarning() << "Network reply is 0. Aborting.";
         reply->deleteLater();
         return;
@@ -440,7 +440,7 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
                      SLOT(onDestroyingNetworkReply(QObject*)));
 
     PodcastChannel *channel = channelForNetworkReply(reply);
-    if (channel == 0) {
+    if (channel == nullptr) {
         qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
         reply->deleteLater();
         return;
@@ -482,7 +482,7 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 
 
 
-    if (reply != 0) {
+    if (reply != nullptr) {
         QByteArray episodeXmlData = reply->readAll();
         channel->setXml(episodeXmlData);
     }
@@ -502,7 +502,7 @@ void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError e
     QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
 
     PodcastChannel *channel = channelForNetworkReply(reply);
-    if (channel == 0) {
+    if (channel == nullptr) {
         qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
         reply->deleteLater();
         return;
@@ -795,11 +795,11 @@ QNetworkReply * PodcastManager::downloadChannelLogo(QString logoUrl)
 
 void PodcastManager::insertChannelForNetworkReply(QNetworkReply *reply, PodcastChannel *channel)
 {
-    if (reply == 0) {
+    if (reply == nullptr) {
         qWarning() << "Network reply is NULL. Inserting nothing.";
     }
 
-    if (channel == 0) {
+    if (channel == nullptr) {
         qWarning() << "Channel is NULL. Inserting nothing.";
     }
 
@@ -808,11 +808,11 @@ void PodcastManager::insertChannelForNetworkReply(QNetworkReply *reply, PodcastC
 
 void PodcastManager::insertChannelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>*> *watcher, PodcastChannel *channel)
 {
-    if (watcher == 0) {
+    if (watcher == nullptr) {
         qWarning() << "FutureWatcher is NULL. Inserting nothing.";
     }
 
-    if (channel == 0) {
+    if (channel == nullptr) {
         qWarning() << "Channel is NULL. Inserting nothing.";
     }
 
@@ -821,8 +821,8 @@ void PodcastManager::insertChannelForFutureWatcher(QFutureWatcher<QList<PodcastE
 
 PodcastChannel * PodcastManager::channelForNetworkReply(QNetworkReply *reply)
 {
-    PodcastChannel *channel = 0;
-    if (reply == 0) {
+    PodcastChannel *channel = nullptr;
+    if (reply == nullptr) {
         return channel;
     }
 
@@ -844,8 +844,8 @@ PodcastChannel * PodcastManager::channelForNetworkReply(QNetworkReply *reply)
 
 PodcastChannel *PodcastManager::channelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>*> *watcher)
 {
-    PodcastChannel *channel = 0;
-    if (watcher == 0) {
+    PodcastChannel *channel = nullptr;
+    if (watcher == nullptr) {
         return channel;
     }
 

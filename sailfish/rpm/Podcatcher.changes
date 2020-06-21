@@ -2,6 +2,11 @@
 # Add newest entries to the top of the list.
 # Separate entries from eachother with a blank line.
 
+* Sun Jun 7 2020
+- Fix slider in audio player
+- Remove emtpy alt tag from episode description (render bug in Label)
+- Fix memory leak
+
 * Thu May 28 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.6
 - New parser for podcast feeds
 - use taglib 2 (no “illegal” system library anymore)
