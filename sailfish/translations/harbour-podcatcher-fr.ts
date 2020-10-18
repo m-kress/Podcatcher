@@ -19,12 +19,12 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="86"/>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Lecteur</translation>
     </message>
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="265"/>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Chapitres</translation>
     </message>
 </context>
 <context>
@@ -96,47 +96,47 @@
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="12"/>
         <source>Sorting of the Episodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre des épisodes</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="20"/>
         <source>Sort by</source>
-        <translation type="unfinished"></translation>
+        <translation>Trier par</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="24"/>
         <source>ID</source>
-        <translation type="unfinished"></translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="27"/>
         <source>publication date</source>
-        <translation type="unfinished"></translation>
+        <translation>date de publication</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="31"/>
         <source>state</source>
-        <translation type="unfinished"></translation>
+        <translation>état</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="35"/>
         <source>title</source>
-        <translation type="unfinished"></translation>
+        <translation>titre</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="42"/>
         <source>Sort order</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordre de tri</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="50"/>
         <source>ascending</source>
-        <translation type="unfinished"></translation>
+        <translation>croissant</translation>
     </message>
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="46"/>
         <source>descending</source>
-        <translation type="unfinished"></translation>
+        <translation>décroissant</translation>
     </message>
 </context>
 <context>
@@ -248,7 +248,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
         <source>Sort Episodes</source>
-        <translation type="unfinished"></translation>
+        <translation>Trier les épisodes</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
@@ -266,7 +266,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesChannelInfo.qml" line="60"/>
         <source>Auto-download</source>
-        <translation>Téléchargament auto</translation>
+        <translation>Téléchargement auto</translation>
     </message>
 </context>
 <context>
@@ -494,12 +494,12 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="100"/>
         <source>Sync feeds on startup</source>
-        <translation type="unfinished"></translation>
+        <translation>Synchroniser les flux au lancement</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="101"/>
         <source>Download podcast feeds on startup. This may take some time.</source>
-        <translation type="unfinished"></translation>
+        <translation>Télécharger les podcasts au lancement. Cela peut prendre un certain temps.</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="131"/>
@@ -539,7 +539,7 @@
     <message>
         <location filename="../qml/pages/Settings.qml" line="175"/>
         <source>Internal Player (Beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>Lecteur Interner (Beta)</translation>
     </message>
     <message>
         <location filename="../qml/pages/Settings.qml" line="185"/>
