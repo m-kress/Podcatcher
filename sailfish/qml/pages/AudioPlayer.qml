@@ -298,6 +298,7 @@ Page {
 
     onPlayStream: {
         chapterPanel.hide(true);
+        audioPlayer.pause();
         audioPlayer.source = url;
         playerPage.title = title;
         audioPlayer.play();
@@ -352,7 +353,6 @@ Page {
             cover.source = 'image://coverArt/cover';
 
             var infos = mpris.metadata;
-            console.log("MPRIS metatada" + infos)
             infos[Mpris.metadataToString(Mpris.Artist)] = [mediaMetaDataExtractor.artist]
             infos[Mpris.metadataToString(Mpris.Title)] = mediaMetaDataExtractor.title
             mpris.metadata = infos;

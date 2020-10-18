@@ -1,6 +1,6 @@
-# Add new changelog entries following the format below.
-# Add newest entries to the top of the list.
-# Separate entries from eachother with a blank line.
+* Sun Oct 12 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.9
+- Fix remembering latest position in audio file, when switching to other source
+- Updated French and Chinese  translations (@slumslayer and @dashinfantry)
 
 * Sun Jun 21 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.8
 - Fix MPRIS (Broken since 3.2???)
