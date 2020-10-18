@@ -136,7 +136,7 @@
     <message>
         <location filename="../qml/pages/EpisodesSortDialog.qml" line="50"/>
         <source>ascending</source>
-        <translation><降序/translation>
+        <translation>降序</translation>
     </message>
 </context>
 <context>
