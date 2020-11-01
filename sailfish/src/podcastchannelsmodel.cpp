@@ -216,7 +216,7 @@ void PodcastChannelsModel::onChannelChanged()
     }
 }
 
-void PodcastChannelsModel::onSortByChanged(const QString& sortBy)
+void PodcastChannelsModel::onSortByChanged(const QString& /*sortBy*/)
 {
     auto *channel  = qobject_cast<PodcastChannel *>(sender());
     if (channel == nullptr) {

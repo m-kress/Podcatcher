@@ -123,7 +123,7 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
 
             chapterIDS = toc->childElements();
 
-            for (int i = 0; i < toc->entryCount(); i++){
+            for (uint i = 0; i < toc->entryCount(); i++){
                 ByteVector& child = toc->childElements()[i];
                 QString childName = QString::fromLocal8Bit(child.data(), child.size());
                 qDebug() <<childName;
@@ -132,7 +132,7 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
 
 
 
-        for (int i = 0; i<chapterIDS.size(); i++){
+        for (uint i = 0; i<chapterIDS.size(); i++){
             ID3v2::ChapterFrame* cf = ID3v2::ChapterFrame::findByElementID(tag,chapterIDS[i]);
 
             qDebug() <<cf->toString().toCString();

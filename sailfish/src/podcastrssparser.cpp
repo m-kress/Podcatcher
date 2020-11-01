@@ -154,7 +154,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(const 
 
             qDebug() << "I have" << channelNodes.size() << "episode elements";
 
-            for (uint i=0; i<channelNodes.length(); i++) {
+            for (int i=0; i<channelNodes.length(); i++) {
                 QDomNode node = channelNodes.at(i);
 
                 if (isEmptyItem(node)) {
@@ -212,7 +212,7 @@ bool PodcastRSSParser::isValidPodcastFeed(const QByteArray& xmlReply)
 
     QDomNodeList itemNodes = docElement.elementsByTagName("item");  // Find all the "item nodes from the feed XML.
 
-    for (uint i=0; i<itemNodes.length(); i++) {
+    for (int i=0; i<itemNodes.length(); i++) {
         QDomNode node = itemNodes.at(i);
 
         if (isEmptyItem(node)) {

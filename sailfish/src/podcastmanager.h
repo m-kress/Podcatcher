@@ -168,15 +168,16 @@ private:
     QList<PodcastChannel *> m_cleanupChannels;
     QFutureWatcher<void> m_futureWatcher;
 
-   bool m_autoSyncSettings;
-   bool m_autodownloadOnSettings;
-   bool m_autoDelUnplayedSettings;
-
    int m_autodownloadNumSettings;
    int m_keepNumEpisodesSettings;
 
    QString m_gpodderUsername;
    QString m_gpodderPassword;
+
+   bool m_autoSyncSettings;
+   bool m_autodownloadOnSettings;
+   bool m_autoDelUnplayedSettings;
+
 };
 
 #endif // PODCASTMANAGER_H

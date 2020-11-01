@@ -10,9 +10,9 @@
 #include <cstdlib>
 #include <unistd.h>
 
-void handler(int sig) {
+[[ noreturn ]] void handler(int sig) {
   void *array[100];
-  size_t size;
+  int size;
 
   // get void*'s for all entries on the stack
   size = backtrace(array, 100);
