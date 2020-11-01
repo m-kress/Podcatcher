@@ -444,17 +444,17 @@
         <translation>Schlüsselwort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="256"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="259"/>
         <source>Add new podcast</source>
         <translation>Neuen Podcast hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="257"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="260"/>
         <source>Add</source>
         <translation>Hinzufügen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="262"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="265"/>
         <source>Podcast RSS URL</source>
         <translation>Podcast-RSS-URL</translation>
     </message>

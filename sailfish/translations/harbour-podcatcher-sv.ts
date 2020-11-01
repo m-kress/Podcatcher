@@ -444,17 +444,17 @@
         <translation>Nyckelord</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="256"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="259"/>
         <source>Add new podcast</source>
         <translation>Lägg till ny podd</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="257"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="260"/>
         <source>Add</source>
         <translation>Lägg till</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="262"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="265"/>
         <source>Podcast RSS URL</source>
         <translation>Poddens RSS-adress</translation>
     </message>

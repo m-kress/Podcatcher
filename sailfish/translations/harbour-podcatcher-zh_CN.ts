@@ -444,17 +444,17 @@
         <translation>关键词</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="256"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="259"/>
         <source>Add new podcast</source>
         <translation>添加新播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="257"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="260"/>
         <source>Add</source>
         <translation>添加</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SearchPodcasts.qml" line="262"/>
+        <location filename="../qml/pages/SearchPodcasts.qml" line="265"/>
         <source>Podcast RSS URL</source>
         <translation>播客 RSS URL</translation>
     </message>

@@ -98,6 +98,9 @@ Page {
                     searchPodcastsModel.source = "http://gpodder.net/search.xml?q=\"" + searchWord.text+"\"";
 
                 }
+
+                EnterKey.enabled: text.length > 0
+                EnterKey.iconSource: "image://theme/icon-m-search"
             }
 
             SilicaListView {
