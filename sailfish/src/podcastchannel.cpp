@@ -17,6 +17,7 @@
  */
 #include <QtDebug>
 
+#include <utility>
 #include "podcastchannel.h"
 
 PodcastChannel::PodcastChannel(QObject *parent) :
@@ -28,6 +29,7 @@ PodcastChannel::PodcastChannel(QObject *parent) :
     m_unplayedEpisodes = 0;
     m_sortDescending = true;
     m_sortBy = PUBLISHED;
+    m_id = -1;
 }
 
 void PodcastChannel::setId(int id)
@@ -101,7 +103,7 @@ QString PodcastChannel::description() const
 
 void PodcastChannel::setXml(QByteArray xml)
 {
-    m_xml = xml;
+    m_xml = std::move(xml);
 }
 
 QByteArray PodcastChannel::xml() const
@@ -172,11 +174,7 @@ bool PodcastChannel::isAutoDownloadOn() const {
 
 bool PodcastChannel::operator<(const PodcastChannel &other) const
 {
-    if (m_title < other.title() ) {
-        return true;
-    } else  {
-        return false;
-    }
+    return m_title < other.title();
 
 }
 
@@ -195,7 +193,7 @@ QString PodcastChannel::sortBy() const
     }
 }
 
-void PodcastChannel::setSortBy(QString sortBy)
+void PodcastChannel::setSortBy(const QString& sortBy)
 {
 
     SortField old = m_sortBy;

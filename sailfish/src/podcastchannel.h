@@ -40,7 +40,7 @@ class PodcastChannel : public QObject
     Q_PROPERTY(bool sortDescending READ sortDescending WRITE setSortDescending NOTIFY sortDescendingChanged)
 
 public:
-    explicit PodcastChannel(QObject *parent = 0);
+    explicit PodcastChannel(QObject *parent = nullptr);
 
     // Property setters.
     void setId(int id);
@@ -100,7 +100,7 @@ signals:
 
 public slots:
 
-    void setSortBy(QString sortBy);
+    void setSortBy(const QString &sortBy);
 
     void setSortDescending(bool sortDescending);
 
@@ -114,11 +114,11 @@ private:
 
     SortField m_sortBy;
     bool m_sortDescending;
-
     bool m_isRefreshing;
     bool m_isDownloading;
-    int m_unplayedEpisodes;
     bool m_autoDownloadOn;
+
+    int m_unplayedEpisodes;
 
     QByteArray m_xml;
 };

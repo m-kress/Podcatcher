@@ -96,10 +96,10 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
         ID3v2::Tag * tag = mf.ID3v2Tag();
         ID3v2::FrameList fl = tag->frameListMap()["APIC"];
 
-        ID3v2::FrameList::ConstIterator it= fl.begin();
+        auto it= fl.begin();
         for(; it != fl.end() ; it++)
         {
-            ID3v2::AttachedPictureFrame * pictureFrame = static_cast<ID3v2::AttachedPictureFrame *> (*it);
+            auto * pictureFrame = dynamic_cast<ID3v2::AttachedPictureFrame *> (*it);
             qDebug() <<"MIME type of frame "<< pictureFrame->mimeType().toCString();
             if(pictureFrame->type() == ID3v2::AttachedPictureFrame::Type::Media ||
                     pictureFrame->type() == ID3v2::AttachedPictureFrame::Type::FrontCover){
@@ -113,8 +113,8 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
 
         ByteVectorList chapterIDS;
 
-        for (ID3v2::FrameList::ConstIterator it= fl.begin();it != fl.end() ; it++){
-            ID3v2::TableOfContentsFrame* toc = static_cast< ID3v2::TableOfContentsFrame*> (*it);
+        for (auto & it : fl){
+            auto* toc = dynamic_cast< ID3v2::TableOfContentsFrame*> (it);
 
             if(!toc->isTopLevel())
                 continue;
@@ -143,7 +143,7 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
             ID3v2::FrameList efl = cf->embeddedFrameListMap()["TIT2"];
 
             if(!efl.isEmpty()){
-                ID3v2::TextIdentificationFrame* titleFrame = static_cast<ID3v2::TextIdentificationFrame*>(efl.front());
+                auto* titleFrame = dynamic_cast<ID3v2::TextIdentificationFrame*>(efl.front());
                 qDebug() << titleFrame->fieldList().toString("|").toCString(true);
                 chap.name = titleFrame->fieldList().toString("|").toCString(true);
             }
@@ -299,9 +299,8 @@ int PodcastChapterModel::rowCount(const QModelIndex &parent) const
         qDebug() <<"Chapter count" <<m_chapters->count();
         return m_chapters->count();
     }
-    else {
+
         return 0;
-    }
 }
 
 QVariant PodcastChapterModel::data(const QModelIndex &index, int role) const

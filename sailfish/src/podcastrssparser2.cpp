@@ -31,7 +31,7 @@ PodcastRSSParser2::PodcastRSSParser2(QObject *parent) :
 }
 
 
-bool PodcastRSSParser2::populateChannelFromChannelXML(PodcastChannel *channel, QByteArray xmlReply)
+bool PodcastRSSParser2::populateChannelFromChannelXML(PodcastChannel *channel, const QByteArray& xmlReply)
 {
     qDebug() << "Parsing XML for channel URL" << channel->url();
 
@@ -69,7 +69,7 @@ bool PodcastRSSParser2::populateChannelFromChannelXML(PodcastChannel *channel, Q
 }
 
 
-QList<PodcastEpisode *>* PodcastRSSParser2::populateEpisodesFromChannelXML(QByteArray xmlReply, QObject *episodeParent)
+QList<PodcastEpisode *>* PodcastRSSParser2::populateEpisodesFromChannelXML(const QByteArray& xmlReply, QObject *episodeParent)
 {
     qDebug() << "Parsing XML for episodes";
 
@@ -97,7 +97,7 @@ QList<PodcastEpisode *>* PodcastRSSParser2::populateEpisodesFromChannelXML(QByte
 }
 
 
-bool PodcastRSSParser2::isValidPodcastFeed(QByteArray xmlReply)
+bool PodcastRSSParser2::isValidPodcastFeed(const QByteArray& xmlReply)
 {
     qDebug() << "Checking is podcast feed is valid.";
     if (xmlReply.size() < 10) {
@@ -202,13 +202,13 @@ bool PodcastRSSParser2::parseAtomChannel(PodcastChannel *channel, QXmlStreamRead
 
 QList<PodcastEpisode *> *PodcastRSSParser2::episodesFromRSS(QXmlStreamReader& xml, QObject *episodeParent)
 {
-    QList<PodcastEpisode *> *episodes = new QList<PodcastEpisode *>();
+    auto *episodes = new QList<PodcastEpisode *>();
 
     while (xml.readNextStartElement()){
         //qDebug()<<"Next element in channel is a "<< xml.name();
         if (xml.name() == "item"){
             bool empty = true;
-            PodcastEpisode *episode = new PodcastEpisode();
+            auto *episode = new PodcastEpisode();
             episode->moveToThread(episodeParent->thread());
 
             QString desc = "";
@@ -278,11 +278,11 @@ QList<PodcastEpisode *> *PodcastRSSParser2::episodesFromRSS(QXmlStreamReader& xm
 
 QList<PodcastEpisode *> *PodcastRSSParser2::episodesFromAtom(QXmlStreamReader &xml, QObject *episodeParent)
 {
-    QList<PodcastEpisode *> *episodes = new QList<PodcastEpisode *>();
+    auto *episodes = new QList<PodcastEpisode *>();
 
     while( xml.readNextStartElement()){
         if (xml.name() == "entry"){
-            PodcastEpisode *episode = new PodcastEpisode();
+            auto *episode = new PodcastEpisode();
             episode->moveToThread(episodeParent->thread());
 
             QString desc = "";

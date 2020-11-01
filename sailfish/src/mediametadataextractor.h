@@ -56,7 +56,7 @@ public:
 
 protected:
      QHash<int, QByteArray> m_roleNames;
-     QList<PodcastChapter>* m_chapters;
+     QList<PodcastChapter>* m_chapters{};
 
 public slots:
      void onChaptersChanged(QList<PodcastChapter>* chapters);

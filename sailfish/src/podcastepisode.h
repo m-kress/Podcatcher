@@ -29,7 +29,7 @@
 struct PodcastChapter{
     QString name;
     QString description;
-    int start;
+    int start{};
     QString url;
 };
 
@@ -47,7 +47,7 @@ public:
         PlayedState
     };
 
-    explicit PodcastEpisode(QObject *parent = 0);
+    explicit PodcastEpisode(QObject *parent = nullptr);
 
     void downloadEpisode();
 
@@ -109,8 +109,8 @@ private:
 
     //bool isOnlyWebsiteUrl() const;
 
-    int m_dbid;
-    int m_channelid;
+    int m_dbid{};
+    int m_channelid{};
     QString m_title;
     QString m_downloadLink;
     QString m_playFilename;
@@ -119,18 +119,18 @@ private:
     QString m_duration;
     EpisodeStates m_state;
     qint64 m_bytesDownloaded;
-    qint64 m_downloadSize;
+    qint64 m_downloadSize{};
     QDateTime m_lastPlayed;
     bool m_hasBeenCanceled;
 
     QString m_user;
     QString m_password;
 
-    QNetworkAccessManager *m_dlNetworkManager;
+    QNetworkAccessManager *m_dlNetworkManager {nullptr};
     QNetworkReply *m_currentDownload;
 
-    QNetworkAccessManager *m_streamResolverManager;
-    int m_streamResolverTries;
+    QNetworkAccessManager *m_streamResolverManager{};
+    int m_streamResolverTries{};
 
    MGConfItem *m_saveOnSDCOnf;
 };

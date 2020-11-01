@@ -34,13 +34,13 @@ PodcastEpisodesModel * PodcastEpisodesModelFactory::episodesModel(int channelId)
        return nullptr;
     }
 
-    // If the model is already fetched from the DB, just rturn it.
+    // If the model is already fetched from the DB, just return it.
     // Otherwise fetch data from DB an create the model.
     if (m_modelCache.contains(channelId)) {
         return m_modelCache.value(channelId);
     }
 
-    PodcastEpisodesModel *model = new PodcastEpisodesModel(channelId);
+    auto *model = new PodcastEpisodesModel(channelId);
     QList<PodcastEpisode *> episodes = m_sqlmanager->episodesInDB(channelId);
     model->addEpisodes(episodes);
 

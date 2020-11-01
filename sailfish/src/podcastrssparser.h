@@ -30,15 +30,15 @@ class PodcastRSSParser : public QObject
 {
     Q_OBJECT
 public:
-    explicit PodcastRSSParser(QObject *parent = 0);
+    explicit PodcastRSSParser(QObject *parent = nullptr);
 
-    static bool populateChannelFromChannelXML(PodcastChannel *channel, QByteArray xmlReply);
+    static bool populateChannelFromChannelXML(PodcastChannel *channel, const QByteArray &xmlReply);
 
-    static  QList<PodcastEpisode *>* populateEpisodesFromChannelXML(QByteArray xmlReply, QObject* episodeParent);
+    static  QList<PodcastEpisode *>* populateEpisodesFromChannelXML(const QByteArray &xmlReply, QObject* episodeParent);
 
-    static bool isValidPodcastFeed(QByteArray xmlReply);
+    static bool isValidPodcastFeed(const QByteArray &xmlReply);
 
-    static QList<QString> parseGPodderSubscription(QByteArray gpodderXml);
+    static QList<QString> parseGPodderSubscription(const QByteArray &gpodderXml);
 
 signals:
 

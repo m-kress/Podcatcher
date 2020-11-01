@@ -144,7 +144,7 @@ bool PodcastChannelsModel::addChannel(PodcastChannel *channel)
 
 bool PodcastChannelsModel::removeChannel(PodcastChannel *channel)
 {
-    if (channel == NULL) {
+    if (channel == nullptr) {
         qWarning() << "Channel is NULL.";
         return false;
     }
@@ -186,13 +186,13 @@ PodcastChannel * PodcastChannelsModel::podcastChannelById(int id)
         }
     }
 
-    return 0;
+    return nullptr;
 }
 
 void PodcastChannelsModel::refreshChannel(int id)
 {
     PodcastChannel *channel = podcastChannelById(id);
-    if (channel == 0) {
+    if (channel == nullptr) {
         qWarning() << "Could not refresh PodcastChannel. Got NULL!";
         return;
     }
@@ -204,8 +204,8 @@ void PodcastChannelsModel::refreshChannel(int id)
 void PodcastChannelsModel::onChannelChanged()
 {
     qDebug() << "Podcast channel changed. Refreshing from SQL to UI...";
-    PodcastChannel *channel  = qobject_cast<PodcastChannel *>(sender());
-    if (channel == 0) {
+    auto *channel  = qobject_cast<PodcastChannel *>(sender());
+    if (channel == nullptr) {
         return;
     }
 
@@ -216,10 +216,10 @@ void PodcastChannelsModel::onChannelChanged()
     }
 }
 
-void PodcastChannelsModel::onSortByChanged(QString sortBy)
+void PodcastChannelsModel::onSortByChanged(const QString& sortBy)
 {
-    PodcastChannel *channel  = qobject_cast<PodcastChannel *>(sender());
-    if (channel == 0) {
+    auto *channel  = qobject_cast<PodcastChannel *>(sender());
+    if (channel == nullptr) {
         return;
     }
 
@@ -228,8 +228,8 @@ void PodcastChannelsModel::onSortByChanged(QString sortBy)
 
 void PodcastChannelsModel::onSortDescendingChanged(bool descending)
 {
-    PodcastChannel *channel  = qobject_cast<PodcastChannel *>(sender());
-    if (channel == 0) {
+    auto *channel  = qobject_cast<PodcastChannel *>(sender());
+    if (channel == nullptr) {
         return;
     }
 

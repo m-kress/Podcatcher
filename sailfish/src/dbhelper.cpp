@@ -22,13 +22,12 @@
 #include "dbhelper.h"
 
 DBHelper::DBHelper()
-{
-}
+= default;
 
 void DBHelper::createAutoDownloadFieldChannels()
 {
 
-    MGConfItem *autoDlConf      = new MGConfItem("/apps/ControlPanel/Podcatcher/autodownload", NULL);
+    MGConfItem *autoDlConf      = new MGConfItem("/apps/ControlPanel/Podcatcher/autodownload", nullptr);
     bool autodownloadOnSettings = autoDlConf->value().toBool();
     delete autoDlConf;
 

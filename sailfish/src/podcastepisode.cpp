@@ -28,8 +28,7 @@
 #include "podcastmanager.h"
 
 PodcastEpisode::PodcastEpisode(QObject *parent) :
-    QObject(parent),
-    m_dlNetworkManager(nullptr)
+    QObject(parent)
 {
     m_state = PodcastEpisode::GetState;
     m_bytesDownloaded = 0;
@@ -245,10 +244,10 @@ void PodcastEpisode::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
 
 void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
 {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
 
     QString redirectedUrl = PodcastManager::redirectedRequest(reply);
-    if (redirectedUrl.isEmpty() == false) {
+    if (!redirectedUrl.isEmpty()) {
         qDebug() << "We have been redirected from "<<m_downloadLink <<" to " << redirectedUrl;
         m_downloadLink = redirectedUrl;
         reply->deleteLater();
@@ -283,9 +282,7 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
 
     QFile file(downloadPath + filename);
     if (!file.open(QIODevice::WriteOnly)) {
-        fprintf(stderr, "Could not open %s for writing: %s\n",
-                qPrintable(filename),
-                qPrintable(file.errorString()));
+        qWarning() << "Could not open" << filename <<  "for writing:" << file.errorString();
         return;
     }
 
@@ -433,7 +430,7 @@ void PodcastEpisode::getAudioUrl()
 
 void PodcastEpisode::onAudioUrlMetadataChanged()
 {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
 
     if (m_streamResolverTries >= 5) {
         qDebug() << "Did not find a proper audio URL to stream! Giving up after " << m_streamResolverTries << " tries.";

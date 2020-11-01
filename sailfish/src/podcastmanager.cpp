@@ -128,7 +128,7 @@ void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QStrin
         return;
     }
 
-    PodcastChannel *channel = new PodcastChannel(this);
+    auto *channel = new PodcastChannel(this);
     channel->setUrl(rssUrl.toString());
 
     if (m_channelsModel->channelAlreadyExists(channel)) {
@@ -300,7 +300,7 @@ void PodcastManager::onPodcastChannelCompleted()
     qDebug() << "Current Thread" << QThread::currentThread();
     qDebug() << "PodcastManager thread" << this->thread();
 
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
     QString redirectedUrl = PodcastManager::redirectedRequest(reply);
     if (!redirectedUrl.isEmpty()) {
         requestPodcastChannel(QUrl(redirectedUrl));
@@ -351,7 +351,7 @@ void PodcastManager::onPodcastChannelCompleted()
     bool rssOk;
     rssOk = PodcastRSSParser2::populateChannelFromChannelXML(channel,
                                                              channel->xml());
-    if (rssOk == false) {
+    if (!rssOk) {
         emit showInfoBanner(tr("Podcast feed is not valid. Cannot add subscription..."));
         return;
     }
@@ -371,7 +371,7 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
 
     qDebug() << "Podcast channel logo network request completed";
 
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
     if (reply == nullptr) {
         qWarning() << "Network reply is 0. Aborting.";
         reply->deleteLater();
@@ -434,7 +434,7 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 {
     qDebug() << "Podcast channel refresh finished";
 
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
 
     QObject::connect(reply, SIGNAL(destroyed(QObject*)), this,
                      SLOT(onDestroyingNetworkReply(QObject*)));
@@ -499,7 +499,7 @@ void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError e
     }
 
 
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
 
     PodcastChannel *channel = channelForNetworkReply(reply);
     if (channel == nullptr) {
@@ -516,7 +516,7 @@ void PodcastManager::onPodcastEpisodesParsed()
     QList<PodcastEpisode*>* parsedEpisodes;
 
 
-    QFutureWatcher<QList<PodcastEpisode*>*>* watcher =  (QFutureWatcher<QList<PodcastEpisode*>*>*) sender();
+    auto* watcher =  dynamic_cast<QFutureWatcher<QList<PodcastEpisode*>*>*>(sender());
 
     parsedEpisodes = watcher->result();
     PodcastChannel* channel = channelForFutureWatcher(watcher);
@@ -593,7 +593,7 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
     //    parsedEpisodes = PodcastRSSParser::populateEpisodesFromChannelXML(episodeXmlData);
 
 
-    QFutureWatcher<QList<PodcastEpisode *>*> *watcher = new QFutureWatcher<QList<PodcastEpisode *>*>(this);
+    auto *watcher = new QFutureWatcher<QList<PodcastEpisode *>*>(this);
 
     watcher->setFuture(QtConcurrent::run(PodcastRSSParser2::populateEpisodesFromChannelXML,episodeXmlData, channel));
 
@@ -780,7 +780,7 @@ QString PodcastManager::redirectedRequest(QNetworkReply *reply)
     return QString();
 }
 
-QNetworkReply * PodcastManager::downloadChannelLogo(QString logoUrl)
+QNetworkReply * PodcastManager::downloadChannelLogo(const QString& logoUrl)
 {
     QNetworkRequest r;
     r.setUrl(QUrl(logoUrl));
@@ -909,7 +909,7 @@ void PodcastManager::removePodcastChannel(int channelId)
     // Deleting locally cached channel logo.
     //PodcastChannel *channel = m_channelsCache.value(channelId);
     PodcastChannel *channel = podcastChannel(channelId);
-    if (channel != NULL) {
+    if (channel != nullptr) {
         QUrl channelLogoUrl(channel->logo());
         QFile channelLogo(channelLogoUrl.toLocalFile());
         if (!channelLogo.remove()) {
@@ -1071,7 +1071,7 @@ void PodcastManager::compareEpisodes(QList<PodcastEpisode *> *list1, QList<Podca
 
 }
 
-void PodcastManager::fetchSubscriptionsFromGPodder(QString gpodderUsername, QString gpodderPassword) {
+void PodcastManager::fetchSubscriptionsFromGPodder(const QString& gpodderUsername, const QString& gpodderPassword) {
 
     if (gpodderUsername.isEmpty() ||
             gpodderPassword.isEmpty()) {
@@ -1131,7 +1131,7 @@ void PodcastManager::onGPodderAuthRequired(QNetworkReply *reply, QAuthenticator 
     m_gpodderPassword = "";
 }
 
-void PodcastManager::onDestroyingNetworkReply(QObject *obj)
+void PodcastManager::onDestroyingNetworkReply(QObject * /*obj*/)
 {
     //QNetworkReply *reply = qobject_cast<QNetworkReply *>(obj);
     qDebug() << "Destroying NetworkReply ";// << reply->url();
@@ -1156,7 +1156,7 @@ void PodcastManager::onRequestFinished(QNetworkReply *reply)
 
 void PodcastManager::onGPodderRequestFinished()
 {
-    QNetworkReply *reply = qobject_cast<QNetworkReply *>(sender());
+    auto *reply = qobject_cast<QNetworkReply *>(sender());
     QNetworkAccessManager *gpodderQNAM = reply->manager();
 
     disconnect(reply, SIGNAL(finished()), this,
@@ -1171,7 +1171,7 @@ void PodcastManager::onGPodderRequestFinished()
     gpodderQNAM->deleteLater();
 
     QList<QString> subscriptionUrls = PodcastRSSParser::parseGPodderSubscription(xml);
-    if (subscriptionUrls.size() < 1) {
+    if (subscriptionUrls.empty()) {
         emit showInfoBanner(tr("No subscriptions found from gPodder.net"));
         return;
     }
@@ -1193,7 +1193,7 @@ void PodcastManager::requestPodcastChannelFromGPodder(const QUrl &rssUrl)
         return;
     }
 
-    PodcastChannel *channel = new PodcastChannel(this);
+    auto *channel = new PodcastChannel(this);
     channel->setUrl(rssUrl.toString());
 
     if (m_channelsModel->channelAlreadyExists(channel)) {

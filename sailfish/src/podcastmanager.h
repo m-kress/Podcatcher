@@ -44,7 +44,7 @@ class PodcastManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit PodcastManager(QObject *parent = 0);
+    explicit PodcastManager(QObject *parent = nullptr);
 
     PodcastChannelsModel* podcastChannelsModel() const;
 
@@ -59,7 +59,7 @@ public:
      */
     void requestPodcastChannel(const QUrl &rssUrl, const QMap<QString, QString> &logoCache = QMap<QString, QString>());
 
-    void fetchSubscriptionsFromGPodder(QString username, QString password);
+    void fetchSubscriptionsFromGPodder(const QString &username, const QString &password);
     void requestPodcastChannelFromGPodder(const QUrl &rssUrl);
 
     void refreshPodcastChannelEpisodes(PodcastChannel *channel, bool forceNetworkUpdate = false);
@@ -128,7 +128,7 @@ private slots:
 
 private:
    //void executeNextDownload();
-   QNetworkReply * downloadChannelLogo(QString logoUrl);
+   QNetworkReply * downloadChannelLogo(const QString &logoUrl);
    void insertChannelForNetworkReply(QNetworkReply *reply, PodcastChannel *channel);
    void insertChannelForFutureWatcher(QFutureWatcher<QList<PodcastEpisode*>* > *watcher, PodcastChannel *channel);
    PodcastChannel * channelForNetworkReply(QNetworkReply *reply);
@@ -143,7 +143,7 @@ private:
    // We need multiple QNAMs to be able to do concurrent downloads.
    QNetworkAccessManager *m_networkManager;
    QNetworkAccessManager *m_dlNetworkManager;  // Share this between all the episodes;
-   QNetworkAccessManager *m_gpodderQNAM;
+   QNetworkAccessManager *m_gpodderQNAM {};
 
    QMap<QNetworkReply*, PodcastChannel *> m_channelNetworkRequestCache;
    QMap<QFutureWatcher<QList<PodcastEpisode*>* >*, PodcastChannel *> m_channelFutureWatcherCache;
@@ -170,9 +170,10 @@ private:
 
    bool m_autoSyncSettings;
    bool m_autodownloadOnSettings;
+   bool m_autoDelUnplayedSettings;
+
    int m_autodownloadNumSettings;
    int m_keepNumEpisodesSettings;
-   bool m_autoDelUnplayedSettings;
 
    QString m_gpodderUsername;
    QString m_gpodderPassword;

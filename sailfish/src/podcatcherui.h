@@ -34,13 +34,13 @@ class PodcatcherUI : QObject
 public:
     explicit PodcatcherUI();
 
-    Q_INVOKABLE void addPodcast(QString rssUrl, QString logoUrl = QString());
+    Q_INVOKABLE void addPodcast(const QString &rssUrl, const QString &logoUrl = QString());
     Q_INVOKABLE void deletePodcasts(int channelId);
     //Q_INVOKABLE bool isDownloading();
     Q_INVOKABLE bool isLiteVersion();
     Q_INVOKABLE void refreshChannels();
     Q_INVOKABLE QString versionString();
-    Q_INVOKABLE void importFromGPodder(QString username, QString password);
+    Q_INVOKABLE void importFromGPodder(const QString &username, const QString &password);
 
     Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY isDownloadingChanged)
 
@@ -58,19 +58,19 @@ signals:
 public slots:
 
 private slots:
-    void onShowChannel(QString channelId);
+    void onShowChannel(const QString &channelId);
     void onRefreshEpisodes(int channelId);
     void onDownloadPodcast(int channelId, int index);
     void onPlayPodcast(int channelId, int index);
     void onDownloadingPodcast(bool isDownloading);
     void onCancelDownload(int channelId, int index);
     void onCancelQueueing(int channelId, int index);
-    void onDeleteChannel(QString channelId);
-    void onAllListened(QString channelId);
+    void onDeleteChannel(const QString &channelId);
+    void onAllListened(const QString &channelId);
     void onDeletePodcast(int channelId, int index);
     void onMarkAsUnplayed(int channelId, int index);
     void onStartStreaming(int channelId, int index);
-    void onStreamingUrlResolved(QString streamUrl, QString streamTitle);
+    void onStreamingUrlResolved(const QString &streamUrl, const QString &streamTitle);
     void onAutoDownloadChanged(int channelId, bool autoDownload);
     void onMediaPlayerChanged();
 

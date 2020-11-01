@@ -41,7 +41,7 @@ public:
         PublishedTimestamp
     };
 
-    PodcastEpisodesModel(int channelId, QObject *parent = 0);
+    PodcastEpisodesModel(int channelId, QObject *parent = nullptr);
     ~PodcastEpisodesModel();
 
     void setChannelId(int id);
@@ -51,7 +51,7 @@ public:
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
     void addEpisode(PodcastEpisode *episode);
-    void addEpisodes(QList<PodcastEpisode *> episode);
+    void addEpisodes(const QList<PodcastEpisode *> &episode);
 
     void delEpisode(PodcastEpisode *episode);
     void delEpisode(int index, PodcastEpisode *episode);

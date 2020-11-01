@@ -26,14 +26,13 @@
 #include "podcastglobals.h"
 #include "podcastsqlmanager.h"
 
-PodcastSQLManager* PodcastSQLManagerFactory::m_instance = 0;
+PodcastSQLManager* PodcastSQLManagerFactory::m_instance = nullptr;
 PodcastSQLManagerFactory::PodcastSQLManagerFactory()
-{
-}
+= default;
 
 PodcastSQLManager* PodcastSQLManagerFactory::sqlmanager() {
     // Database connection is already open, so just return it.
-    if (m_instance == 0) {
+    if (m_instance == nullptr) {
         m_instance = new PodcastSQLManager;
     }
     return m_instance;
@@ -66,7 +65,7 @@ PodcastSQLManager::PodcastSQLManager(QObject *parent) :
 
 int PodcastSQLManager::podcastChannelToDB(PodcastChannel *channel)
 {
-    if (channel == 0) {
+    if (channel == nullptr) {
         return 0;
     }
 
@@ -146,13 +145,13 @@ QList<PodcastChannel *> PodcastSQLManager::channelsInDB()
               "autoDownloadOn, sortby, sortdescending "
               "FROM channels ORDER BY channels.title");
 
-    if (q.exec() == false) {
+    if (!q.exec()) {
         qWarning() << "SQL error:" << q.lastError();
         qWarning() << "Last query: " << q.lastQuery();
     }
 
     while (q.next()) {
-        PodcastChannel *channel = new PodcastChannel;
+        auto *channel = new PodcastChannel;
         channel->setId(q.value(0).toInt());
         channel->setTitle(q.value(1).toString());
         channel->setDescription(q.value(2).toString());
@@ -186,10 +185,10 @@ PodcastChannel * PodcastSQLManager::channelInDB(int channelId, PodcastChannel *c
     if (!q.next()) {
         qWarning() << "SQL error: " << q.lastError();
         qWarning() << "Last query:" << q.lastQuery();
-        return 0;
+        return nullptr;
     }
 
-    if (channel == 0) {
+    if (channel == nullptr) {
         channel = new PodcastChannel;
     }
     channel->setId(channelId);
@@ -207,9 +206,9 @@ PodcastChannel * PodcastSQLManager::channelInDB(int channelId, PodcastChannel *c
 
 
 
-int PodcastSQLManager::podcastEpisodesToDB(QList<PodcastEpisode *> parsedEpisodes, int channelid)
+int PodcastSQLManager::podcastEpisodesToDB(QList<PodcastEpisode *> parsedEpisodes, int channel_id)
 {
-    qDebug() << "Got" << parsedEpisodes.length() << "episodes for channel" << channelid;
+    qDebug() << "Got" << parsedEpisodes.length() << "episodes for channel" << channel_id;
 
     mutex.lock();
     if (!m_connection.isOpen()) {
@@ -225,7 +224,7 @@ int PodcastSQLManager::podcastEpisodesToDB(QList<PodcastEpisode *> parsedEpisode
         q.prepare("INSERT INTO episodes (title, channelid, downloadLink, playLocation, description, published, duration, downloadSize, lastPlayed, hasBeenCanceled) VALUES "
                   "(:title, :channelid, :downloadLink, :playLocation, :description, :published, :duration, :downloadSize, :lastPlayed, :hasBeenCanceled)");
         q.bindValue(":title", episode->title());
-        q.bindValue(":channelid", channelid);
+        q.bindValue(":channelid", channel_id);
         q.bindValue(":downloadLink", episode->downloadLink());
         q.bindValue(":playLocation", episode->playFilename());
         q.bindValue(":description", episode->description());
@@ -250,9 +249,9 @@ int PodcastSQLManager::podcastEpisodesToDB(QList<PodcastEpisode *> parsedEpisode
     return q.numRowsAffected();
 }
 
-bool PodcastSQLManager::podcastEpisodeToDB(PodcastEpisode *episode, int channelid)
+bool PodcastSQLManager::podcastEpisodeToDB(PodcastEpisode *episode, int channel_id)
 {
-    if (episode == 0) {
+    if (episode == nullptr) {
         return false;
     }
 
@@ -267,7 +266,7 @@ bool PodcastSQLManager::podcastEpisodeToDB(PodcastEpisode *episode, int channeli
     q.prepare("INSERT INTO episodes(title, channelid, downloadLink, playLocation, description, published, duration, downloadSize, lastPlayed, hasBeenCanceled) VALUES "
               "(:title, :channelid, :downloadLink, :playLocation, :description, :published, :duration, :downloadSize, :lastPlayed, :hasBeenCanceled)");
     q.bindValue(":title", episode->title());
-    q.bindValue(":channelid", channelid);
+    q.bindValue(":channelid", channel_id);
     q.bindValue(":downloadLink", episode->downloadLink());
     q.bindValue(":playLocation", episode->playFilename());
     q.bindValue(":description", episode->description());
@@ -316,17 +315,17 @@ QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(int channelId)
     }
 
     while (q.next()) {
-        PodcastEpisode *episode = new PodcastEpisode;
+        auto *episode = new PodcastEpisode;
         episode->setDbId(q.value(0).toInt());
         episode->setTitle(q.value(1).toString());
         episode->setDownloadLink(q.value(2).toString());
         episode->setPlayFilename(q.value(3).toString());
         episode->setDescription(q.value(4).toString());
-        episode->setPubTime(QDateTime::fromTime_t(q.value(5).toInt()));
+        episode->setPubTime(QDateTime::fromTime_t(q.value(5).toUInt()));
         episode->setDuration(q.value(6).toString());
         episode->setDownloadSize(q.value(7).toInt());
         if (q.value(9).toInt() > 0) {
-            episode->setLastPlayed(QDateTime::fromTime_t(q.value(9).toInt()));
+            episode->setLastPlayed(QDateTime::fromTime_t(q.value(9).toUInt()));
         }
         episode->setHasBeenCanceled(q.value(10).toBool());
 
@@ -548,13 +547,13 @@ void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
 {
     QSqlQuery q(m_connection);
 
-    if (q.exec("SELECT autoDownloadOn FROM channels") == false) {
+    if (!q.exec("SELECT autoDownloadOn FROM channels")) {
         qDebug() << "SQL: channels does not contain 'autoDownloadOn'. Adding column.";
 
         QSqlQuery q_create(m_connection);
 
         // Column does not exist. Create it.
-        if (q_create.exec("ALTER TABLE channels ADD COLUMN autoDownloadOn BOOLEAN") == false) {
+        if (!q_create.exec("ALTER TABLE channels ADD COLUMN autoDownloadOn BOOLEAN")) {
             qDebug()   << "SQL error: " <<  q_create.lastError().text();
             qWarning() << "SQL query:"  <<  q_create.lastQuery();
         }
@@ -568,7 +567,7 @@ void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
         break;
     }
 
-    if (foundAutoDownloads == false) {
+    if (!foundAutoDownloads) {
         qDebug() << "SQL: No auto dowload values in DB. Setting defaults (from Settings).";
 
         q.clear();
@@ -576,7 +575,7 @@ void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
         q.prepare("UPDATE channels SET autoDownloadOn=:autoDownloadOn");
         q.bindValue(":autoDownloadOn", autoDownload);
 
-        if (q.exec() == false) {
+        if (!q.exec()) {
             qDebug()   << "SQL error: " <<  q.lastError().text();
             qWarning() << "SQL query:"  <<  q.lastQuery();
         }
@@ -589,25 +588,25 @@ void PodcastSQLManager::checkAndCreateChannelSortation()
 {
     QSqlQuery q(m_connection);
 
-    if (q.exec("SELECT sortby FROM channels") == false) {
+    if (!q.exec("SELECT sortby FROM channels")) {
         qDebug() << "SQL: channels does not contain 'sortby'. Adding column.";
 
         QSqlQuery q_create(m_connection);
 
         // Column does not exist. Create it.
-        if (q_create.exec("ALTER TABLE channels ADD COLUMN sortby TEXT DEFAULT 'published' ") == false) {
+        if (!q_create.exec("ALTER TABLE channels ADD COLUMN sortby TEXT DEFAULT 'published' ")) {
             qDebug()   << "SQL error: " <<  q_create.lastError().text();
             qWarning() << "SQL query:"  <<  q_create.lastQuery();
         }
     }
 
-    if (q.exec("SELECT sortdescending FROM channels") == false) {
+    if (!q.exec("SELECT sortdescending FROM channels")) {
         qDebug() << "SQL: channels does not contain 'sortdescending'. Adding column.";
 
         QSqlQuery q_create(m_connection);
 
         // Column does not exist. Create it.
-        if (q_create.exec("ALTER TABLE channels ADD COLUMN sortdescending BOOLEAN DEFAULT true ") == false) {
+        if (!q_create.exec("ALTER TABLE channels ADD COLUMN sortdescending BOOLEAN DEFAULT true ")) {
             qDebug()   << "SQL error: " <<  q_create.lastError().text();
             qWarning() << "SQL query:"  <<  q_create.lastQuery();
         }
@@ -620,7 +619,7 @@ void PodcastSQLManager::updateChannelAutoDownloadToDB(bool autoDownloadOn)
 
     q.prepare("UPDATE channels SET autoDownloadOn=:autoDownload");
     q.bindValue(":autoDownload", autoDownloadOn);
-    if (q.exec() == false) {
+    if (!q.exec()) {
         qDebug()   << "SQL error: " <<  q.lastError().text();
         qWarning() << "SQL query:"  <<  q.lastQuery();
     }

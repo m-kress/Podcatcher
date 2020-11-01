@@ -31,11 +31,11 @@ PodcastRSSParser::PodcastRSSParser(QObject *parent) :
 {
 }
 
-bool PodcastRSSParser::populateChannelFromChannelXML(PodcastChannel *channel, QByteArray xmlReply)
+bool PodcastRSSParser::populateChannelFromChannelXML(PodcastChannel *channel, const QByteArray& xmlReply)
 {
     qDebug() << "Parsing XML for channel URL" << channel->url();
 
-    if (channel == 0) {
+    if (channel == nullptr) {
         return false;
     }
 
@@ -44,7 +44,7 @@ bool PodcastRSSParser::populateChannelFromChannelXML(PodcastChannel *channel, QB
     }
 
     QDomDocument xmlDocument;
-    if (xmlDocument.setContent(xmlReply) == false) {        // Construct the XML document and parse it.
+    if (!xmlDocument.setContent(xmlReply)) {        // Construct the XML document and parse it.
         qWarning() << "Could not parse channel XML content! Data: " << QString(xmlDocument.toByteArray());
         return false;
     }
@@ -87,9 +87,9 @@ bool PodcastRSSParser::populateChannelFromChannelXML(PodcastChannel *channel, QB
     return true;
 }
 
-QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteArray xmlReply, QObject *episodeParent)
+QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(const QByteArray& xmlReply, QObject *episodeParent)
 {
-    QList<PodcastEpisode *> *episodes = new QList<PodcastEpisode *>();;
+    auto *episodes = new QList<PodcastEpisode *>();;
     qDebug() << "Parsing XML for episodes";
 
     if (xmlReply.size() < 10) {
@@ -97,7 +97,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteA
     }
 
     QDomDocument xmlDocument;
-    if (xmlDocument.setContent(xmlReply) == false) {        // Construct the XML document and parse it.
+    if (!xmlDocument.setContent(xmlReply)) {        // Construct the XML document and parse it.
         delete episodes;
         return nullptr;
     }
@@ -110,7 +110,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteA
 
         qDebug() << "I have" << channelNodes.size() << "episode elements";
 
-        for (uint i=0; i<channelNodes.length(); i++) {
+        for (int i=0; i<channelNodes.length(); i++) {
             QDomNode node = channelNodes.at(i);
 
             if (isEmptyItem(node)) {
@@ -118,7 +118,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteA
                 continue;
             }
 
-            PodcastEpisode *episode = new PodcastEpisode();
+            auto *episode = new PodcastEpisode();
             episode->moveToThread(episodeParent->thread());
             QDateTime pubDate = parsePubDate(node);
 
@@ -162,7 +162,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteA
                     continue;
                 }
 
-                PodcastEpisode *episode = new PodcastEpisode;
+                auto *episode = new PodcastEpisode;
                 QDateTime pubDate = parsePubDate(node);
 
                 if (!pubDate.isValid()) {
@@ -195,7 +195,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(QByteA
     return episodes;
 }
 
-bool PodcastRSSParser::isValidPodcastFeed(QByteArray xmlReply)
+bool PodcastRSSParser::isValidPodcastFeed(const QByteArray& xmlReply)
 {
     qDebug() << "Checking is podcast feed is valid.";
     if (xmlReply.size() < 10) {
@@ -204,7 +204,7 @@ bool PodcastRSSParser::isValidPodcastFeed(QByteArray xmlReply)
     }
 
     QDomDocument xmlDocument;
-    if (xmlDocument.setContent(xmlReply) == false) {        // Construct the XML document and parse it.
+    if (!xmlDocument.setContent(xmlReply)) {        // Construct the XML document and parse it.
         return false;
     }
 
@@ -335,9 +335,9 @@ bool PodcastRSSParser::containsEnclosure(const QDomNodeList &itemNodes) {
     return true;
 }
 
-QList<QString> PodcastRSSParser::parseGPodderSubscription(QByteArray gpodderXml) {
+QList<QString> PodcastRSSParser::parseGPodderSubscription(const QByteArray& gpodderXml) {
     QDomDocument xmlDocument;
-    if (xmlDocument.setContent(gpodderXml) == false) {
+    if (!xmlDocument.setContent(gpodderXml)) {
         qDebug() << "Could not parse gPodder.net response to get subscriptions.";
         return QList<QString>();
     }
@@ -345,7 +345,7 @@ QList<QString> PodcastRSSParser::parseGPodderSubscription(QByteArray gpodderXml)
     QList<QString> subscriptions;
     QDomElement docElement = xmlDocument.documentElement();
     QDomNodeList channelNodes = docElement.elementsByTagName("podcast");  // Get all the "podcast" nodes..
-    for (uint i=0; i<channelNodes.length(); i++) {
+    for (int i=0; i<channelNodes.length(); i++) {
         QDomNode node = channelNodes.at(i);
 
         QDomElement subscriptionUrl = node.firstChildElement("url");

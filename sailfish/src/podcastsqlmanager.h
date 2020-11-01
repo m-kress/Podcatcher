@@ -31,7 +31,7 @@ class PodcastSQLManager : public QObject
     Q_OBJECT
 public:
     QList<PodcastChannel *> channelsInDB();
-    PodcastChannel* channelInDB(int channelId, PodcastChannel *channel = 0);
+    PodcastChannel* channelInDB(int channelId, PodcastChannel *channel = nullptr);
 
     QList<PodcastEpisode *> episodesInDB(int channelId);
 
@@ -55,7 +55,7 @@ signals:
 public slots:
 
 private:
-    PodcastSQLManager(QObject *parent = 0);
+    PodcastSQLManager(QObject *parent = nullptr);
     void createTables();
 
     QSqlDatabase m_connection;

@@ -315,17 +315,17 @@
 <context>
     <name>PodcastEpisodesModel</name>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="67"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
         <source>dd.MM.yyyy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="89"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="88"/>
         <source>Last played: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="89"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="88"/>
         <source>dd.MM.yyyy hh:mm</source>
         <translation type="unfinished"></translation>
     </message>

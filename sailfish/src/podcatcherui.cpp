@@ -123,7 +123,7 @@ PodcatcherUI::PodcatcherUI()
 
 }
 
-void PodcatcherUI::addPodcast(QString rssUrl, QString logoUrl)
+void PodcatcherUI::addPodcast(const QString& rssUrl, const QString& logoUrl)
 {
     qDebug() << "Current Thread" << QThread::currentThread();
     qDebug() << "PodcatcherUI thread" << this->thread();
@@ -149,12 +149,12 @@ bool PodcatcherUI::isDownloading()
     return m_pManager.isDownloading();
 }
 
-void PodcatcherUI::onShowChannel(QString channelId)
+void PodcatcherUI::onShowChannel(const QString& channelId)
 {
     qDebug() << "Opening channel" << channelId;
 
     PodcastChannel *channel = m_pManager.podcastChannel(channelId.toInt());
-    if (channel == 0) {
+    if (channel == nullptr) {
         qWarning() << "Got NULL channel pointer!";
         return;
     }
@@ -183,7 +183,7 @@ void PodcatcherUI::onDownloadPodcast(int channelId, int index)
 void PodcatcherUI::onPlayPodcast(int channelId, int index)
 {
     PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
-    if (episodesModel == 0) {
+    if (episodesModel == nullptr) {
         qWarning() << "Could not get episodes model. Cannot play episode.";
         return;
     }
@@ -248,7 +248,7 @@ void PodcatcherUI::onRefreshEpisodes(int channelId)
 {
     PodcastChannel *channel = m_pManager.podcastChannel(channelId);
     qDebug() << "Refreshing channel: " << channelId << channel->title();
-    if (channel == 0) {
+    if (channel == nullptr) {
         qWarning() << "Got NULL episode!";
         return;
     }
@@ -275,14 +275,14 @@ void PodcatcherUI::onCancelDownload(int channelId, int index)
     episodesModel->refreshEpisode(episode);
 }
 
-void PodcatcherUI::onDeleteChannel(QString channelId)
+void PodcatcherUI::onDeleteChannel(const QString& channelId)
 {
     qDebug() << "Yep, lets delete the channel and some episodes from channel" << channelId;
     m_pManager.removePodcastChannel(channelId.toInt());
 
 }
 
-void PodcatcherUI::onAllListened(QString channelId)
+void PodcatcherUI::onAllListened(const QString& channelId)
 {
     qDebug() << "Yep, mark all listened on channel: " << channelId;
 
@@ -345,9 +345,9 @@ void PodcatcherUI::onStartStreaming(int channelId, int index)
     episode->getAudioUrl();
 }
 
-void PodcatcherUI::onStreamingUrlResolved(QString streamUrl, QString streamTitle)
+void PodcatcherUI::onStreamingUrlResolved(const QString& streamUrl, const QString& streamTitle)
 {
-    PodcastEpisode *episode = qobject_cast<PodcastEpisode *>(sender());
+    auto *episode = qobject_cast<PodcastEpisode *>(sender());
     disconnect(episode, SIGNAL(streamingUrlResolved(QString, QString)),
                this, SLOT(onStreamingUrlResolved(QString, QString)));
 
@@ -370,7 +370,7 @@ void PodcatcherUI::onMediaPlayerChanged(){
     qDebug() << "Setting changed: Mediaplayer: " << m_mediaPlayerPath;
 }
 
-void PodcatcherUI::importFromGPodder(QString username, QString password)
+void PodcatcherUI::importFromGPodder(const QString& username, const QString& password)
 {
     m_pManager.fetchSubscriptionsFromGPodder(username, password);
 }

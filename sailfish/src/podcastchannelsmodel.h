@@ -64,11 +64,11 @@ public slots:
 
 private slots:
     void onChannelChanged();
-    void onSortByChanged(QString sortBy);
+    void onSortByChanged(const QString &sortBy);
     void onSortDescendingChanged(bool sortDescending);
 
 private:
-    explicit PodcastChannelsModel(QObject *parent = 0);  // Do not let instantiation of this class...
+    explicit PodcastChannelsModel(QObject *parent = nullptr);  // Do not let instantiation of this class...
     QList<PodcastChannel *> m_channels;
     PodcastSQLManager *m_sqlmanager;
     QHash<int, QByteArray> m_roles;

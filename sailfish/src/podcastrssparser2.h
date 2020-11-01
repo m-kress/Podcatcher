@@ -32,11 +32,11 @@ class PodcastRSSParser2 : public QObject
 public:
     explicit PodcastRSSParser2(QObject *parent = nullptr);
     
-    static bool populateChannelFromChannelXML(PodcastChannel *channel, QByteArray xmlReply);
+    static bool populateChannelFromChannelXML(PodcastChannel *channel, const QByteArray &xmlReply);
     
-    static  QList<PodcastEpisode *>* populateEpisodesFromChannelXML(QByteArray xmlReply, QObject* episodeParent);
+    static  QList<PodcastEpisode *>* populateEpisodesFromChannelXML(const QByteArray &xmlReply, QObject* episodeParent);
     
-    static bool isValidPodcastFeed(QByteArray xmlReply);
+    static bool isValidPodcastFeed(const QByteArray &xmlReply);
     
     static QList<QString> parseGPodderSubscription(QByteArray gpodderXml);
     

@@ -44,8 +44,7 @@ PodcastEpisodesModel::PodcastEpisodesModel(int channelId, QObject *parent) :
     m_sqlmanager = PodcastSQLManagerFactory::sqlmanager();
 }
 
-PodcastEpisodesModel::~PodcastEpisodesModel() {
-}
+PodcastEpisodesModel::~PodcastEpisodesModel() = default;
 
 int PodcastEpisodesModel::rowCount(const QModelIndex &) const
 {
@@ -103,7 +102,7 @@ void PodcastEpisodesModel::addEpisode(PodcastEpisode *episode)
     addEpisodes(episodes);
 }
 
-void PodcastEpisodesModel::addEpisodes(QList<PodcastEpisode *> episodes)
+void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
 {
     if (episodes.isEmpty()) {
         return;
@@ -196,7 +195,7 @@ PodcastEpisode * PodcastEpisodesModel::episode(int index)
 
 void PodcastEpisodesModel::onEpisodeChanged()
 {
-    PodcastEpisode *episode  = qobject_cast<PodcastEpisode *>(sender());
+    auto *episode  = qobject_cast<PodcastEpisode *>(sender());
     if (episode == nullptr) {
         return;
     }
@@ -224,7 +223,7 @@ QList<PodcastEpisode *> PodcastEpisodesModel::undownloadedEpisodes(int max)
         PodcastEpisode *episode = m_episodes.at(i);
         if (!episode->downloadLink().isEmpty() &&
             episode->playFilename().isEmpty() &&
-            episode->hasBeenCanceled() == false) {
+            !episode->hasBeenCanceled()) {
             episodes << episode;
         }
     }
@@ -279,8 +278,7 @@ QList<PodcastEpisode *> PodcastEpisodesModel::unplayedEpisodes()
         return episodes;
     }
 
-    for (int i=0; i<m_episodes.length(); i++) {
-        PodcastEpisode *episode = m_episodes.at(i);
+    for (auto episode : m_episodes) {
         if (!episode->playFilename().isEmpty() &&
             episode->episodeState() == "downloaded") {
             episodes << episode;

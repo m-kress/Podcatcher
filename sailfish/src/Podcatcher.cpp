@@ -6,8 +6,8 @@
 
 
 #include <execinfo.h>
-#include <signal.h>
-#include <stdlib.h>
+#include <csignal>
+#include <cstdlib>
 #include <unistd.h>
 
 void handler(int sig) {
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
     QGuiApplication* app = SailfishApp::application(argc,argv);
 
-    PodcatcherUI* ui = new PodcatcherUI();
+    auto* ui = new PodcatcherUI();
 
 
     return app->exec();
