@@ -18,6 +18,7 @@
  */
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import QtWebKit 3.0
 
 Page {
 
@@ -28,6 +29,25 @@ Page {
     property string episodeDescriptionText
     property string episodePublished
     property string episodeName
+
+    function findAllMethods(obj) {
+        return Object.getOwnPropertyNames(obj).filter(function(property) {
+            return typeof obj[property] == "function";
+        });
+    }
+
+    function all_properties(obj)
+    {
+     return Object.getOwnPropertyNames(obj);
+    }
+
+    onEpisodeDescriptionTextChanged: {
+        console.log("Loading html: "+episodeDescriptionText);
+        episodeDescription.loadHtml(episodeDescriptionText);
+        console.log(findAllMethods(episodeDescription._webPage));
+        console.log(all_properties(episodeDescription._webPage));
+    }
+
 
     SilicaFlickable{
         anchors.fill: parent
@@ -82,7 +102,7 @@ Page {
             }
 
 
-            SilicaFlickable {
+            /*SilicaFlickable {
                 id: episodeDescriptionFlickable
                 width: parent.width - 2*Theme.horizontalPageMargin
                 height: parent.height - mainPageTitle.height -  podcastEpisodeRect.height - 3*Theme.paddingMedium - sep.height
@@ -91,9 +111,40 @@ Page {
                 clip: true
                 flickableDirection: Flickable.VerticalFlick
                 anchors.horizontalCenter: parent.horizontalCenter
+*/
+
+               SilicaWebView {
+                    id: episodeDescription
+
+                    width: parent.width /*- 2*Theme.horizontalPageMargin*/
+                    height: parent.height - mainPageTitle.height -  podcastEpisodeRect.height - 3*Theme.paddingMedium - sep.height
 
 
-                Label {
+                    onNavigationRequested: {
+                        console.log(request.url);
+                        if (request.url != "about:blank"){
+                            request.action = WebView.IgnoreRequest;
+                            Qt.openUrlExternally(request.url);
+                        }
+                    }
+
+                    //wrapMode: Text.WordWrap
+                    //width: parent.width
+                    //height: Text.paintedHeight
+                    //font.pixelSize: Theme.fontSizeSmall
+                    //anchors.top:  parent.top
+                   // anchors.topMargin: Theme.paddingMedium
+                    //anchors.bottomMargin: Theme.paddingMedium
+
+                    //text: episodeDescriptionPage.episodeDescriptionText
+
+                   /* onLinkActivated: {
+                        Qt.openUrlExternally(link);
+
+                    }*/
+                //}
+
+                /*Label {
                     id: episodeDescription
                     wrapMode: Text.WordWrap
                     width: parent.width
@@ -109,7 +160,7 @@ Page {
                         Qt.openUrlExternally(link);
 
                     }
-                }
+                }*/
 
             VerticalScrollDecorator{
             }
