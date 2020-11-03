@@ -24,7 +24,7 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="265"/>
         <source>Chapters</source>
-        <translation>Kapitel</translation>
+        <translation type="unfinished">Kapitel</translation>
     </message>
 </context>
 <context>
@@ -86,9 +86,9 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="72"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="92"/>
         <source>Published: </source>
-        <translation>Publicerad: </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -277,37 +277,37 @@
         <translation>%1 nerladdat, av totalt %2.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="616"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="110"/>
         <source>Delete downloaded podcast</source>
         <translation>Ta bort nerladdade poddar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="619"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="113"/>
         <source>Deleting</source>
         <translation>Tar bort</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="627"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="121"/>
         <source>Mark as unplayed</source>
         <translation>Markera som ospelad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="635"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="129"/>
         <source>Start streaming the podcast</source>
         <translation>Börja strömma podden</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="732"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="226"/>
         <source>Queued</source>
         <translation>Köad</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="831"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="325"/>
         <source>No media</source>
         <translation>Ingen media</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1019"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="513"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podden.</translation>
     </message>
@@ -315,17 +315,17 @@
 <context>
     <name>PodcastEpisodesModel</name>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="78"/>
         <source>dd.MM.yyyy</source>
         <translation>yyyy-MM-dd</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="88"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="100"/>
         <source>Last played: %1</source>
         <translation>Senast spelad: %1</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="88"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="100"/>
         <source>dd.MM.yyyy hh:mm</source>
         <translation>yyyy-MM-dd hh:mm</translation>
     </message>
@@ -343,47 +343,47 @@
         <translation>Prenumerarerar redan på &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="324"/>
+        <location filename="../src/podcastmanager.cpp" line="322"/>
         <source>No data received.</source>
         <translation>Ingen data mottagen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="355"/>
+        <location filename="../src/podcastmanager.cpp" line="353"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Poddflödet är inte giltigt. Kan inte lägga till prenumeration...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="498"/>
+        <location filename="../src/podcastmanager.cpp" line="496"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="527"/>
+        <location filename="../src/podcastmanager.cpp" line="525"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="715"/>
+        <location filename="../src/podcastmanager.cpp" line="713"/>
         <source>Podcast episode download failed.</source>
         <translation>Poddavsnittet kunde inte laddas ner.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1078"/>
+        <location filename="../src/podcastmanager.cpp" line="1070"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1109"/>
+        <location filename="../src/podcastmanager.cpp" line="1101"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1175"/>
+        <location filename="../src/podcastmanager.cpp" line="1167"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1179"/>
+        <location filename="../src/podcastmanager.cpp" line="1171"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>
@@ -396,22 +396,22 @@
         <translation>Hämtar kanalinformation...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="205"/>
+        <location filename="../src/podcatcherui.cpp" line="220"/>
         <source>Podcast episode not found.</source>
         <translation>Poddavsnittet kan inte hittas.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="218"/>
+        <location filename="../src/podcatcherui.cpp" line="233"/>
         <source>Mediaplayer program not found!</source>
         <translation>Mediaspelaren kunde inte hittas!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="234"/>
+        <location filename="../src/podcatcherui.cpp" line="249"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Tyvärr! Kunde inte spela upp den här podden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="355"/>
+        <location filename="../src/podcatcherui.cpp" line="424"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podd.</translation>
     </message>

@@ -68,7 +68,7 @@ private slots:
     void onSortDescendingChanged(bool sortDescending);
 
 private:
-    explicit PodcastChannelsModel(QObject *parent = nullptr);  // Do not let instantiation of this class...
+    explicit PodcastChannelsModel(QObject *parent = nullptr);  // Do not allow instantiation of this class...
     QList<PodcastChannel *> m_channels;
     PodcastSQLManager *m_sqlmanager;
     QHash<int, QByteArray> m_roles;

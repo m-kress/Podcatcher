@@ -179,14 +179,26 @@ QString PodcastEpisode::playFilename() const
     return m_playFilename;
 }
 
-void PodcastEpisode::setChannelId(int id)
+
+void PodcastEpisode::setChannel(PodcastChannel* channel)
 {
-    m_channelid = id;
+    m_channel = channel;
 }
+
 
 int PodcastEpisode::channelid() const
 {
-    return m_channelid;
+    if(m_channel)
+        return m_channel->channelDbId();
+    else {
+        qWarning() << "Channel not set!";
+        return -1;
+    }
+}
+
+PodcastChannel *PodcastEpisode::channel()
+{
+    return m_channel;
 }
 
 void PodcastEpisode::downloadEpisode()

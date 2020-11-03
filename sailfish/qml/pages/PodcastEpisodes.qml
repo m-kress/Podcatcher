@@ -80,7 +80,7 @@ Page {
             MenuItem{
                 text: qsTr("Sort Episodes")
                 onClicked: pageStack.push(Qt.resolvedUrl("EpisodesSortDialog.qml"))
-                enabled: false
+                enabled: true
             }
 
         }

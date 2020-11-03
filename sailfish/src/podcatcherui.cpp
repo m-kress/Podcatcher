@@ -153,11 +153,12 @@ void PodcatcherUI::onShowChannel(const QString& channelId)
 {
     qDebug() << "Opening channel" << channelId;
 
-    PodcastChannel *channel = m_pManager.podcastChannel(channelId.toInt());
-    if (channel == nullptr) {
-        qWarning() << "Got NULL channel pointer!";
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId.toInt());
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
         return;
     }
+
     if (channel->description().length() > 270) {
         QString oldDesc = channel->description();
         oldDesc.truncate(270);
@@ -168,21 +169,35 @@ void PodcatcherUI::onShowChannel(const QString& channelId)
 
     view->rootContext()->setContextProperty("channel", channel);
 
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channel->channelDbId());   // FIXME: Do not expose DB id.
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
+    // Sort when the episodes page is shown. We do not sort when the downloading state etc. of an episode has changed
+    episodesModel->sortEpisodes();
     view->rootContext()->setContextProperty("episodesModel", episodesModel);
 }
 
 
 void PodcatcherUI::onDownloadPodcast(int channelId, int index)
 {
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     PodcastEpisode *episode = episodesModel->episode(index);
     m_pManager.downloadPodcast(episode);
 }
 
 void PodcatcherUI::onPlayPodcast(int channelId, int index)
 {
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     if (episodesModel == nullptr) {
         qWarning() << "Could not get episodes model. Cannot play episode.";
         return;
@@ -246,7 +261,12 @@ void PodcatcherUI::onDownloadingPodcast(bool _isDownloading)
 
 void PodcatcherUI::onRefreshEpisodes(int channelId)
 {
-    PodcastChannel *channel = m_pManager.podcastChannel(channelId);
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
     qDebug() << "Refreshing channel: " << channelId << channel->title();
     if (channel == nullptr) {
         qWarning() << "Got NULL episode!";
@@ -257,8 +277,15 @@ void PodcatcherUI::onRefreshEpisodes(int channelId)
 
 void PodcatcherUI::onCancelQueueing(int channelId, int index)
 {
+
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
     qDebug() << "Cancel queueing at " << channelId << index;
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     PodcastEpisode *episode = episodesModel->episode(index);
     episode->setState(PodcastEpisode::GetState);
 
@@ -269,7 +296,13 @@ void PodcatcherUI::onCancelQueueing(int channelId, int index)
 
 void PodcatcherUI::onCancelDownload(int channelId, int index)
 {
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     PodcastEpisode *episode = episodesModel->episode(index);
     m_pManager.cancelDownloadPodcast(episode);
     episodesModel->refreshEpisode(episode);
@@ -277,16 +310,28 @@ void PodcatcherUI::onCancelDownload(int channelId, int index)
 
 void PodcatcherUI::onDeleteChannel(const QString& channelId)
 {
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId.toInt());
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
     qDebug() << "Yep, lets delete the channel and some episodes from channel" << channelId;
-    m_pManager.removePodcastChannel(channelId.toInt());
+    m_pManager.removePodcastChannel(*channel);
 
 }
 
 void PodcatcherUI::onAllListened(const QString& channelId)
 {
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId.toInt());
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
     qDebug() << "Yep, mark all listened on channel: " << channelId;
 
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId.toInt());
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     QList<PodcastEpisode *> unplayed = episodesModel->unplayedEpisodes();
     foreach(PodcastEpisode *episode, unplayed) {
         episode->setAsPlayed();
@@ -300,7 +345,13 @@ void PodcatcherUI::onDeletePodcast(int channelId, int index)
 {
     qDebug() << "Deleting the locally downloaded podcast:" << channelId << index;
 
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     PodcastEpisode *episode = episodesModel->episode(index);
     qDebug() << "Episode name:" << episode->title() << episode->playFilename();
 
@@ -317,7 +368,13 @@ void PodcatcherUI::onDeletePodcast(int channelId, int index)
 
 void PodcatcherUI::onMarkAsUnplayed(int channelId, int index)
 {
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     PodcastEpisode *episode = episodesModel->episode(index);
 
     episode->setAsUnplayed();
@@ -327,7 +384,13 @@ void PodcatcherUI::onMarkAsUnplayed(int channelId, int index)
 
 void PodcatcherUI::deletePodcasts(int channelId)
 {
-    m_pManager.deleteAllDownloadedPodcasts(channelId);
+    PodcastChannel * channel = m_pManager.podcastChannel(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    m_pManager.deleteAllDownloadedPodcasts(*channel);
     m_channelsModel->refreshChannel(channelId);
 }
 
@@ -335,7 +398,13 @@ void PodcatcherUI::onStartStreaming(int channelId, int index)
 {
     qDebug() << "Requested streaming of epsiode:" << channelId << index;
 
-    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(channelId);
+    PodcastChannel * channel = m_pManager.podcastChannel(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
     PodcastEpisode *episode = episodesModel->episode(index);
 
     connect(episode, SIGNAL(streamingUrlResolved(QString, QString)),
@@ -360,7 +429,11 @@ void PodcatcherUI::onStreamingUrlResolved(const QString& streamUrl, const QStrin
 
 void PodcatcherUI::onAutoDownloadChanged(int channelId, bool autoDownload)
 {
-    PodcastChannel *channel = m_channelsModel->podcastChannelById(channelId);
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
     channel->setAutoDownloadOn(autoDownload);
     m_channelsModel->updateChannel(channel);
 }

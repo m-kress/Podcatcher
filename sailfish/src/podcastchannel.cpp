@@ -188,15 +188,16 @@ QString PodcastChannel::sortBy() const
     case DBID:
         return "dbid";
     case PUBLISHED:
-    default:
         return "published";
     }
+
+    return "???";
 }
 
 void PodcastChannel::setSortBy(const QString& sortBy)
 {
 
-    SortField old = m_sortBy;
+    PodcastChannelSortField old = m_sortBy;
 
     if (sortBy == "published")
         m_sortBy = PUBLISHED;

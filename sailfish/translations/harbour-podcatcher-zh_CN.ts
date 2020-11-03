@@ -86,9 +86,9 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="72"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="92"/>
         <source>Published: </source>
-        <translation>发现:</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -277,37 +277,37 @@
         <translation>正在下载 %1 全部 %2 。</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="616"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="110"/>
         <source>Delete downloaded podcast</source>
         <translation>删除下载的播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="619"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="113"/>
         <source>Deleting</source>
         <translation>正在删除</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="627"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="121"/>
         <source>Mark as unplayed</source>
         <translation>标记为未播放</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="635"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="129"/>
         <source>Start streaming the podcast</source>
         <translation>开始载入此播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="732"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="226"/>
         <source>Queued</source>
         <translation>排队</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="831"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="325"/>
         <source>No media</source>
         <translation>无媒体</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="1019"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="513"/>
         <source>Unable to stream podcast.</source>
         <translation>无法载入播客。</translation>
     </message>
@@ -315,17 +315,17 @@
 <context>
     <name>PodcastEpisodesModel</name>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="66"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="78"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="88"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="100"/>
         <source>Last played: %1</source>
         <translation>上次播放: %1</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="88"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="100"/>
         <source>dd.MM.yyyy hh:mm</source>
         <translation>dd.MM.yyyy hh:mm</translation>
     </message>
@@ -343,47 +343,47 @@
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="324"/>
+        <location filename="../src/podcastmanager.cpp" line="322"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="355"/>
+        <location filename="../src/podcastmanager.cpp" line="353"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="498"/>
+        <location filename="../src/podcastmanager.cpp" line="496"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新……</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="527"/>
+        <location filename="../src/podcastmanager.cpp" line="525"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="715"/>
+        <location filename="../src/podcastmanager.cpp" line="713"/>
         <source>Podcast episode download failed.</source>
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1078"/>
+        <location filename="../src/podcastmanager.cpp" line="1070"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1109"/>
+        <location filename="../src/podcastmanager.cpp" line="1101"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1175"/>
+        <location filename="../src/podcastmanager.cpp" line="1167"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1179"/>
+        <location filename="../src/podcastmanager.cpp" line="1171"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅……</translation>
     </message>
@@ -396,22 +396,22 @@
         <translation>正在获取频道信息……</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="205"/>
+        <location filename="../src/podcatcherui.cpp" line="220"/>
         <source>Podcast episode not found.</source>
         <translation>没有找到播客剧集。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="218"/>
+        <location filename="../src/podcatcherui.cpp" line="233"/>
         <source>Mediaplayer program not found!</source>
         <translation>没有找到媒体播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="234"/>
+        <location filename="../src/podcatcherui.cpp" line="249"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>非常抱歉!无法从为播客打开音频播放器</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="355"/>
+        <location filename="../src/podcatcherui.cpp" line="424"/>
         <source>Unable to stream podcast.</source>
         <translation>无法加载播客。</translation>
     </message>

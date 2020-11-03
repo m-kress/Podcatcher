@@ -41,11 +41,10 @@ public:
         PublishedTimestamp
     };
 
-    PodcastEpisodesModel(int channelId, QObject *parent = nullptr);
+    PodcastEpisodesModel(PodcastChannel& channel, QObject *parent = nullptr);
     ~PodcastEpisodesModel();
 
-    void setChannelId(int id);
-    int channelId();
+    PodcastChannel &channel();
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
@@ -71,6 +70,8 @@ public:
     void removeAll();
     QHash<int, QByteArray> roleNames() const;
 
+   Q_INVOKABLE void sortEpisodes();
+
 signals:
     void episodeBeingDeleted(PodcastEpisode *episode);
 
@@ -78,13 +79,18 @@ public slots:
 
 private slots:
     void onEpisodeChanged();
+    void onSortByChanged(const QString &);
+    void onSortDescendingChanged(bool sortDescending);
 
 private:
     PodcastSQLManager      *m_sqlmanager;
     QList<PodcastEpisode *> m_episodes;
-    int m_channelId;
+    /*int m_channelId;*/
+    PodcastChannel& m_channel;
     QDateTime               m_latestEpisodeTimestamp;
     QHash<int, QByteArray>  m_roles;
+
+
 
 };
 

@@ -49,9 +49,9 @@ PodcastManager::PodcastManager(QObject *parent) :
     m_dlNetworkManager(new QNetworkAccessManager(this)),
     m_episodeModelFactory(PodcastEpisodesModelFactory::episodesFactory()),
     //m_isDownloading(false),
-    m_autodownloadOnSettings(false),
     m_autodownloadNumSettings(1),
     m_keepNumEpisodesSettings(0),
+    m_autodownloadOnSettings(false),
     m_autoDelUnplayedSettings(false)
 {
 
@@ -149,8 +149,6 @@ void PodcastManager::requestPodcastChannel(const QUrl &rssUrl, const QMap<QStrin
 
     connect(reply, SIGNAL(finished()),
             this, SLOT(onPodcastChannelCompleted()));
-
-    //m_networkManager->get(request);
 }
 
 void PodcastManager::refreshAllChannels()
@@ -532,7 +530,7 @@ void PodcastManager::onPodcastEpisodesParsed()
         //            e->moveToThread(this->thread());
         //        }
 
-        PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(channel->channelDbId());  // FIXME: Pass only channel to episodes model - not the DB id.
+        PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(*channel);  // FIXME: Pass only channel to episodes model - not the DB id.
         episodeModel->addEpisodes(*parsedEpisodes);
 
         qDebug() << "Downloading automatically new episodes:" << m_autodownloadOnSettings << " WiFi:" << PodcastManager::isConnectedToWiFi();
@@ -542,7 +540,7 @@ void PodcastManager::onPodcastEpisodesParsed()
         //  - We are connected to the WiFi
         if (PodcastManager::isConnectedToWiFi() &&
                 channel->isAutoDownloadOn()) {
-            downloadNewEpisodes(episodeModel->channelId());
+            downloadNewEpisodes(episodeModel->channel());
         }
     }
     channel->setIsRefreshing(false);
@@ -624,10 +622,10 @@ bool PodcastManager::savePodcastEpisodes(PodcastChannel *channel)
 
 }
 
-void PodcastManager::downloadNewEpisodes(int channelId) {
-    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(channelId);
+void PodcastManager::downloadNewEpisodes(PodcastChannel& channel) {
+    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(channel);
 
-    qDebug() << "Downloading new episodes for channel: " << channelId;
+    qDebug() << "Downloading new episodes for channel: " << channel.channelDbId();
 
     // If the settings value for "get number of episodes" == 0, then we fetch "all episodes". So set 999.
     // Otherwise use the number as specified in the settings.
@@ -666,7 +664,7 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
 
     episode->setState(PodcastEpisode::DownloadedState);
 
-    PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(episode->channelid());
+    PodcastEpisodesModel *episodeModel = m_episodeModelFactory->episodesModel(*episode->channel());
     episodeModel->refreshEpisode(episode);
     m_channelsModel->refreshChannel(episode->channelid());
 
@@ -880,13 +878,13 @@ bool PodcastManager::isConnectedToWiFi()
     return false;
 }
 
-void PodcastManager::removePodcastChannel(int channelId)
+void PodcastManager::removePodcastChannel(PodcastChannel& channel)
 {
     /**
      * Delete episode data.
      */
     // Fetch model from model factory - then delete it from the factory's cache.
-    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(channelId);
+    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(channel);
     QList<PodcastEpisode *> episodes = episodesModel->episodes();
 
     // Se if any episodes are being downloaded from this channel. Remove them from queue.
@@ -898,7 +896,7 @@ void PodcastManager::removePodcastChannel(int channelId)
     }
 
     // This will also call episodes->deleteDownload(); for all episodes in the model.
-    m_episodeModelFactory->removeFromCache(channelId);
+    m_episodeModelFactory->removeFromCache(channel);
     episodesModel->removeAll();
     delete episodesModel;
 
@@ -907,28 +905,30 @@ void PodcastManager::removePodcastChannel(int channelId)
      * Do not touch the episode anymore!
      */
     // Deleting locally cached channel logo.
-    //PodcastChannel *channel = m_channelsCache.value(channelId);
-    PodcastChannel *channel = podcastChannel(channelId);
-    if (channel != nullptr) {
-        QUrl channelLogoUrl(channel->logo());
-        QFile channelLogo(channelLogoUrl.toLocalFile());
-        if (!channelLogo.remove()) {
-            QFileInfo fi(channelLogo);
-            qWarning() << "Could not remove cached logo for channel:" << channel->title() << fi.absoluteFilePath();
-        }
+
+    QUrl channelLogoUrl(channel.logo());
+    QFile channelLogo(channelLogoUrl.toLocalFile());
+    if (!channelLogo.remove()) {
+        QFileInfo fi(channelLogo);
+        qWarning() << "Could not remove cached logo for channel:" << channel.title() << fi.absoluteFilePath();
     }
 
-    // Finally remove the channel from the model and the cache.
-    m_channelsModel->removeChannel(channel);
-    m_channelsCache.remove(channelId);
 
+    // Finally remove the channel from the model and the cache.
+    m_channelsModel->removeChannel(&channel);
+
+    m_channelsCache.remove(channel.channelDbId());
+
+   /*
     // Finally delete the memory reserved for the channel
     delete channel;
+    */
+
 }
 
-void PodcastManager::deleteAllDownloadedPodcasts(int channelId)
+void PodcastManager::deleteAllDownloadedPodcasts(PodcastChannel& channel)
 {
-    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(channelId);
+    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(channel);
     QList<PodcastEpisode *> episodes = episodesModel->episodes();
 
     foreach(PodcastEpisode *episode, episodes) {
@@ -991,7 +991,7 @@ void PodcastManager::cleanupEpisodes()
         return;
     }
 
-    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel((m_cleanupChannels.takeLast())->channelDbId());
+    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(*m_cleanupChannels.takeLast());
 
     QFuture<void> future = QtConcurrent::run(episodesModel,
                                              &PodcastEpisodesModel::cleanOldEpisodes,
@@ -1010,7 +1010,7 @@ void PodcastManager::onCleanupEpisodeModelFinished()
         return;
     }
 
-    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel((m_cleanupChannels.takeLast())->channelDbId());
+    PodcastEpisodesModel *episodesModel = m_episodeModelFactory->episodesModel(*(m_cleanupChannels.takeLast()));
 
     QFuture<void> future = QtConcurrent::run(episodesModel,
                                              &PodcastEpisodesModel::cleanOldEpisodes,

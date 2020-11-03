@@ -34,8 +34,6 @@ PodcastChannelsModel::PodcastChannelsModel(QObject *parent) :
     m_roles[SortByRole] = "sortBy";
     m_roles[SortDescendingRole] = "sortDescending";
 
-    //setRoleNames(roles);
-
     DBHelper dbhelper;
     dbhelper.createAutoDownloadFieldChannels();
 
@@ -70,41 +68,33 @@ QVariant PodcastChannelsModel::data(const QModelIndex &index, int role) const
     switch(role) {
     case ChannelIdRole:
         return channel->channelDbId();   // FIXME: Do not expose this.
-        break;
 
     case TitleRole:
         return channel->title();
-        break;
 
     case DescriptionRole:
         return channel->description();
-        break;
 
     case LogoRole:
         return channel->logo();
-        break;
 
     case IsRefreshingRole:
         return channel->isRefreshing();
-        break;
 
     case IsDownloadingRole:
         return channel->isDownloading();
-        break;
 
     case UnplayedEpisodesRole:
         return channel->unplayedEpisodes();
-        break;
 
     case AutoDownloadOnRole:
         return channel->isAutoDownloadOn();
-        break;
+
     case SortByRole:
         return channel->sortBy();
-        break;
+
     case SortDescendingRole:
         return channel->sortDescending();
-        break;
     }
 
     return QVariant();
@@ -120,6 +110,7 @@ bool channelsLessThan(const PodcastChannel *c1, const PodcastChannel *c2)
 {
     return *c1 < *c2;
 }
+
 bool PodcastChannelsModel::addChannel(PodcastChannel *channel)
 {
      if (m_sqlmanager->podcastChannelToDB(channel) > 0) {
@@ -191,6 +182,7 @@ PodcastChannel * PodcastChannelsModel::podcastChannelById(int id)
 
 void PodcastChannelsModel::refreshChannel(int id)
 {
+
     PodcastChannel *channel = podcastChannelById(id);
     if (channel == nullptr) {
         qWarning() << "Could not refresh PodcastChannel. Got NULL!";
@@ -226,7 +218,7 @@ void PodcastChannelsModel::onSortByChanged(const QString& /*sortBy*/)
     m_sqlmanager->updateChannelInDB(channel);
 }
 
-void PodcastChannelsModel::onSortDescendingChanged(bool descending)
+void PodcastChannelsModel::onSortDescendingChanged(bool /*descending*/)
 {
     auto *channel  = qobject_cast<PodcastChannel *>(sender());
     if (channel == nullptr) {

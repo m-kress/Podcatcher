@@ -28,9 +28,9 @@ class PodcastEpisodesModelFactory
 {
 public:
     static PodcastEpisodesModelFactory* episodesFactory();
-    PodcastEpisodesModel * episodesModel(int channelId);
+    PodcastEpisodesModel * episodesModel(PodcastChannel &channel);
 
-    void removeFromCache(int channelId);
+    void removeFromCache(PodcastChannel &channel);
 
 private:
     PodcastEpisodesModelFactory();

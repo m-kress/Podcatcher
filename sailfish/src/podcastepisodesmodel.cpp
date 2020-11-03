@@ -26,9 +26,9 @@
 #include "podcastmanager.h"
 #include "podcastepisodesmodel.h"
 
-PodcastEpisodesModel::PodcastEpisodesModel(int channelId, QObject *parent) :
+PodcastEpisodesModel::PodcastEpisodesModel(PodcastChannel &channel, QObject *parent) :
     QAbstractListModel(parent),
-    m_channelId(channelId)
+    m_channel(channel)
 {
     m_roles[DbidRole] = "dbid";
     m_roles[TitleRole] = "title";
@@ -42,6 +42,18 @@ PodcastEpisodesModel::PodcastEpisodesModel(int channelId, QObject *parent) :
     //setRoleNames(roles);
 
     m_sqlmanager = PodcastSQLManagerFactory::sqlmanager();
+
+    connect(&m_channel, SIGNAL(sortByChanged(QString)),
+            this, SLOT(onSortByChanged(QString)));
+
+    connect(&m_channel,  SIGNAL(sortDescendingChanged(bool)),
+            this, SLOT(onSortDescendingChanged(bool)));
+
+}
+
+PodcastChannel& PodcastEpisodesModel::channel()
+{
+    return m_channel;
 }
 
 PodcastEpisodesModel::~PodcastEpisodesModel() = default;
@@ -61,34 +73,35 @@ QVariant PodcastEpisodesModel::data(const QModelIndex &index, int role) const
     switch(role) {
     case TitleRole:
         return episode->title();
-        break;
+
     case PubRole:
         return episode->pubTime().toString(tr("dd.MM.yyyy"));
-        break;
+
     case PublishedTimestamp:
         return episode->pubTime().toTime_t();
-        break;
+
     case DbidRole:
         return episode->dbid();
-        break;
+
     case DescriptionRole:
         return episode->description();
-        break;
+
     case StateRole:
         return episode->episodeState();
-        break;
+
     case TotalDownloadRole:
         return episode->downloadSize();
-        break;
+
     case AlreadyDownloaded:
         return episode->alreadyDownloaded();
-        break;
+
     case LastTimePlayedRole:
         if (episode->episodeState() == "played") {
             return QString(tr("Last played: %1")).arg(episode->lastPlayed().toString(tr("dd.MM.yyyy hh:mm")));
         } else  {
             return QString();
         }
+
     default:
         return QVariant();
     }
@@ -100,6 +113,8 @@ void PodcastEpisodesModel::addEpisode(PodcastEpisode *episode)
     QList<PodcastEpisode *> episodes;
     episodes << episode;
     addEpisodes(episodes);
+
+    sortEpisodes();
 }
 
 void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
@@ -115,7 +130,7 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
         modelsLatestEpisode = m_episodes.at(0)->pubTime();
     }
 
-    QDateTime dbsLatestEpisode = m_sqlmanager->latestEpisodeTimestampInDB(m_channelId);
+    QDateTime dbsLatestEpisode = m_sqlmanager->latestEpisodeTimestampInDB(m_channel.channelDbId());
     PodcastEpisode *episode;
     QList<PodcastEpisode *> newEpisodesToAdd;
 
@@ -129,8 +144,8 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
             beginInsertRows(QModelIndex(), 0, 0);
             m_episodes.prepend(episode);                    // Since we took that last item from the new episodes model, we add this item first to the view.
             endInsertRows();                                // When we do this for new episodes not yet in the model, all new episodes (episode->pubTime() > modelsLatestEpisode)
-                                                            // ends up on top of the list. Note that the QModelIndex is also updated accordingly.
-            episode->setChannelId(m_channelId);
+            // ends up on top of the list. Note that the QModelIndex is also updated accordingly.
+            episode->setChannel(&m_channel);
 
             connect(episode, SIGNAL(episodeChanged()),
                     this, SLOT(onEpisodeChanged()));
@@ -146,11 +161,13 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
     if (!newEpisodesToAdd.isEmpty()) {
         qDebug() << "Adding new episodes to DB: " << newEpisodesToAdd.size();
         m_sqlmanager->podcastEpisodesToDB(newEpisodesToAdd,
-                                          m_channelId);
-        m_latestEpisodeTimestamp = m_sqlmanager->latestEpisodeTimestampInDB(m_channelId);
+                                          m_channel.channelDbId());
+        m_latestEpisodeTimestamp = m_sqlmanager->latestEpisodeTimestampInDB(m_channel.channelDbId());
     } else {
         qDebug() << "No new episodes to be added to the DB.";
     }
+
+    sortEpisodes();
 
 }
 
@@ -207,6 +224,50 @@ void PodcastEpisodesModel::onEpisodeChanged()
     }
 }
 
+void PodcastEpisodesModel::onSortDescendingChanged(bool /*descending*/)
+{
+    sortEpisodes();
+}
+
+void PodcastEpisodesModel::sortEpisodes()
+{
+    bool descending = m_channel.sortDescending();
+    QString sortBy = m_channel.sortBy();
+    qDebug() << "Sording Episodes by" << sortBy << "descending " <<descending;
+
+    emit beginResetModel();
+
+    QStringList states = {"undownloadable","get", "queued", "downloading","downloaded", "played"};
+
+    auto cmp = [=]  (const PodcastEpisode* a, const PodcastEpisode* b){
+        if (sortBy == "title"){
+            return descending? (a->title() < b->title()) : (a->title() > b->title());
+        }else if (sortBy == "dbid") {
+            return descending? (a->dbid() < b->dbid()) : (a->dbid() > b->dbid());
+        } else if (sortBy == "state"){
+            int stateA = states.indexOf(a->episodeState());
+            int stateB = states.indexOf(b->episodeState());
+            if (stateA != stateB){
+                return descending? (stateA < stateB) : (stateA > stateB);
+            }
+        }/*if (sortBy == "published")*/
+
+        return descending? (a->pubTime() < b->pubTime()) : (a->pubTime() > b->pubTime());
+
+    };
+
+    std::sort(m_episodes.begin(), m_episodes.end(), cmp);
+
+    emit endResetModel();
+}
+
+
+
+void PodcastEpisodesModel::onSortByChanged(const QString& /*sortBy*/)
+{
+    sortEpisodes();
+}
+
 QList<PodcastEpisode *> PodcastEpisodesModel::undownloadedEpisodes(int max)
 {
     QList<PodcastEpisode *> episodes;
@@ -222,8 +283,8 @@ QList<PodcastEpisode *> PodcastEpisodesModel::undownloadedEpisodes(int max)
     for (int i=0; i<max; i++) {
         PodcastEpisode *episode = m_episodes.at(i);
         if (!episode->downloadLink().isEmpty() &&
-            episode->playFilename().isEmpty() &&
-            !episode->hasBeenCanceled()) {
+                episode->playFilename().isEmpty() &&
+                !episode->hasBeenCanceled()) {
             episodes << episode;
         }
     }
@@ -233,18 +294,9 @@ QList<PodcastEpisode *> PodcastEpisodesModel::undownloadedEpisodes(int max)
 
 void PodcastEpisodesModel::refreshModel()
 {
-   //  PodcastEpisode *latestEpisode = m_episodes.at(0);
+    //  PodcastEpisode *latestEpisode = m_episodes.at(0);
 }
 
-void PodcastEpisodesModel::setChannelId(int id)
-{
-    m_channelId = id;
-}
-
-int PodcastEpisodesModel::channelId()
-{
-    return m_channelId;
-}
 
 void PodcastEpisodesModel::refreshEpisode(PodcastEpisode *episode)
 {
@@ -280,7 +332,7 @@ QList<PodcastEpisode *> PodcastEpisodesModel::unplayedEpisodes()
 
     for (auto episode : m_episodes) {
         if (!episode->playFilename().isEmpty() &&
-            episode->episodeState() == "downloaded") {
+                episode->episodeState() == "downloaded") {
             episodes << episode;
         }
     }
@@ -309,7 +361,7 @@ void PodcastEpisodesModel::cleanOldEpisodes(int keepNumEpisodes, bool keepUnplay
             // and that the last played is not set, then we know we have an unplayed and
             // downloaded episode that we want to keep.
             if (!episode->playFilename().isEmpty() &&
-                !episode->lastPlayed().isValid()) {
+                    !episode->lastPlayed().isValid()) {
                 continue;
             }
         }

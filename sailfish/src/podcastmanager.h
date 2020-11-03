@@ -64,15 +64,15 @@ public:
 
     void refreshPodcastChannelEpisodes(PodcastChannel *channel, bool forceNetworkUpdate = false);
     void refreshAllChannels();
-    void downloadNewEpisodes(int channelId);
+    void downloadNewEpisodes(PodcastChannel &channel);
 
     PodcastChannel* podcastChannel(int channelId);
-    void removePodcastChannel(int channelId);
+    void removePodcastChannel(PodcastChannel &channel);
 
     void downloadPodcast(PodcastEpisode *episode);
     void cancelDownloadPodcast(PodcastEpisode *episode);
     void cancelQueueingPodcast(PodcastEpisode *episode);
-    void deleteAllDownloadedPodcasts(int channelId);
+    void deleteAllDownloadedPodcasts(PodcastChannel &channel);
     bool isDownloading();
 
     static QString redirectedRequest(QNetworkReply *reply);

@@ -26,6 +26,7 @@
 #include "podcastchannel.h"
 #include "podcastepisode.h"
 
+
 class PodcastSQLManager : public QObject
 {
     Q_OBJECT
@@ -33,7 +34,7 @@ public:
     QList<PodcastChannel *> channelsInDB();
     PodcastChannel* channelInDB(int channelId, PodcastChannel *channel = nullptr);
 
-    QList<PodcastEpisode *> episodesInDB(int channelId);
+    QList<PodcastEpisode *> episodesInDB(PodcastChannel* channel);
 
     int podcastChannelToDB(PodcastChannel *channel);
     bool isChannelInDB(PodcastChannel *channel);

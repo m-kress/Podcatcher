@@ -26,12 +26,18 @@
 
 #include <MGConfItem>
 
+class PodcastEpisode;
+
+#include "podcastchannel.h"
+
 struct PodcastChapter{
     QString name;
     QString description;
     int start{};
     QString url;
 };
+
+class PodcastChannel;
 
 
 class PodcastEpisode : public QObject
@@ -52,7 +58,7 @@ public:
     void downloadEpisode();
 
     void setDbId(int id);
-    void setChannelId(int id);
+    void setChannel(PodcastChannel* channel);
     void setTitle(const QString &title);
     void setDownloadLink(const QString &downloadLink);
     void setPlayFilename(const QString &playFilename);
@@ -69,6 +75,9 @@ public:
 
     int dbid() const;
     int channelid() const;
+
+    PodcastChannel* channel();
+
     QString title() const;
     QString downloadLink() const;
     QString playFilename() const;
@@ -110,7 +119,7 @@ private:
     //bool isOnlyWebsiteUrl() const;
 
     int m_dbid{};
-    int m_channelid{};
+    PodcastChannel* m_channel{};
     QString m_title;
     QString m_downloadLink;
     QString m_playFilename;

@@ -26,6 +26,7 @@
 #include "podcastglobals.h"
 #include "podcastsqlmanager.h"
 
+
 PodcastSQLManager* PodcastSQLManagerFactory::m_instance = nullptr;
 PodcastSQLManagerFactory::PodcastSQLManagerFactory()
 = default;
@@ -294,7 +295,7 @@ bool PodcastSQLManager::podcastEpisodeToDB(PodcastEpisode *episode, int channel_
     return true;
 }
 
-QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(int channelId)
+QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(PodcastChannel* channel)
 {
     mutex.lock();
     QSqlQuery q(m_connection);
@@ -302,11 +303,14 @@ QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(int channelId)
 
     QList<PodcastEpisode *> episodes;
 
+    int channelId = channel->channelDbId()? channel->channelDbId():-1;
+
     qDebug() << "Returning Podcast episodes from DB for channel:" << channelId;
 
     q.prepare("SELECT id, title, downloadLink, playLocation, description, published, duration, downloadSize, channelid, lastPlayed, hasBeenCanceled "
               "FROM episodes WHERE episodes.channelid = :chanId ORDER BY episodes.published DESC");
     q.bindValue(":chanId", channelId);
+
 
     if (!q.exec()) {
         qWarning() << "Fetching episodes, SQL error: " << q.lastError();
@@ -330,7 +334,7 @@ QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(int channelId)
         episode->setHasBeenCanceled(q.value(10).toBool());
 
         // Since we requested channels for this channel, we might as well be sure the value is what we requested as parameter.
-        episode->setChannelId(channelId);
+        episode->setChannel(channel);
 
         episodes.append(episode);
     }
@@ -351,7 +355,7 @@ QDateTime PodcastSQLManager::latestEpisodeTimestampInDB(int channelId)
 
     if (q.exec()) {
         q.next();
-        int timestamp = q.value(0).toInt();
+        uint timestamp = q.value(0).toUInt();
         latestDate = QDateTime::fromTime_t(timestamp);
 
         qDebug() << "Got latest episode timestamp: " << latestDate;

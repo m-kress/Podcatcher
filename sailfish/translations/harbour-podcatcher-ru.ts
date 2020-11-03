@@ -16,7 +16,7 @@
     <name>AudioPlayer</name>
     <message>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <source>Chapters</source>
@@ -73,7 +73,7 @@
     <name>EpisodeDescriptionPage</name>
     <message>
         <source>Published: </source>
-        <translation>Опубликовано: </translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

@@ -22,9 +22,13 @@
 #include <QObject>
 #include <QUrl>
 
-
 #include "podcastepisode.h"
 
+
+
+enum PodcastChannelSortField {
+    PUBLISHED, STATE, TITLE, DBID
+};
 
 class PodcastChannel : public QObject
 {
@@ -78,10 +82,6 @@ public:
 
     bool operator<(const PodcastChannel &other) const;
 
-    enum SortField {
-        PUBLISHED, STATE, TITLE, DBID
-    };
-
     QString sortBy() const;
 
     bool sortDescending() const
@@ -112,7 +112,7 @@ private:
     QString m_url;
     QString m_description;
 
-    SortField m_sortBy;
+    PodcastChannelSortField m_sortBy;
     bool m_sortDescending;
     bool m_isRefreshing;
     bool m_isDownloading;
