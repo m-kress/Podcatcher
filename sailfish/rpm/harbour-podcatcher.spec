@@ -8,12 +8,8 @@ Name:       harbour-podcatcher
 # >> macros
 # << macros
 
-%{!?qtc_qmake:%define qtc_qmake %qmake}
-%{!?qtc_qmake5:%define qtc_qmake5 %qmake5}
-%{!?qtc_make:%define qtc_make make}
-%{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Your mobile podcast client for Sailfish OS
-Version:    1.9.9
+Version:    1.9.10
 Release:    1
 Group:      Qt/Qt
 License:    GPLV3
@@ -41,9 +37,9 @@ Your mobile podcast client for Jolla SailfishOS.\nPodcatcher for SailfishOS is y
 # >> build pre
 # << build pre
 
-%qtc_qmake5 
+%qmake5 
 
-%qtc_make %{?_smp_mflags}
+make %{?_smp_mflags}
 
 # >> build post
 # << build post
