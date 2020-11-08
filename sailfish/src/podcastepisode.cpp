@@ -69,7 +69,6 @@ QString PodcastEpisode::downloadLink() const
 void PodcastEpisode::setDescription(const QString &desc)
 {
     m_description = desc;
-    m_description.replace("alt=\"\"",""); // remove empty alt tags as they break renderer in Label
 }
 
 QString PodcastEpisode::description() const
