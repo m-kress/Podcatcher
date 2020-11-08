@@ -241,18 +241,18 @@ void PodcastEpisodesModel::sortEpisodes()
 
     auto cmp = [=]  (const PodcastEpisode* a, const PodcastEpisode* b){
         if (sortBy == "title"){
-            return descending? (a->title() < b->title()) : (a->title() > b->title());
+            return descending? (a->title() > b->title()) : (a->title() < b->title());
         }else if (sortBy == "dbid") {
-            return descending? (a->dbid() < b->dbid()) : (a->dbid() > b->dbid());
+            return descending? (a->dbid() > b->dbid()) : (a->dbid() < b->dbid());
         } else if (sortBy == "state"){
             int stateA = states.indexOf(a->episodeState());
             int stateB = states.indexOf(b->episodeState());
             if (stateA != stateB){
-                return descending? (stateA < stateB) : (stateA > stateB);
+                return descending? (stateA > stateB) : (stateA < stateB);
             }
         }/*if (sortBy == "published")*/
 
-        return descending? (a->pubTime() < b->pubTime()) : (a->pubTime() > b->pubTime());
+        return descending? (a->pubTime() > b->pubTime()) : (a->pubTime() < b->pubTime());
 
     };
 
