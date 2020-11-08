@@ -235,7 +235,7 @@ void PodcastEpisodesModel::sortEpisodes()
     QString sortBy = m_channel.sortBy();
     qDebug() << "Sording Episodes by" << sortBy << "descending " <<descending;
 
-    emit beginResetModel();
+    emit layoutAboutToBeChanged();
 
     QStringList states = {"undownloadable","get", "queued", "downloading","downloaded", "played"};
 
@@ -258,7 +258,7 @@ void PodcastEpisodesModel::sortEpisodes()
 
     std::sort(m_episodes.begin(), m_episodes.end(), cmp);
 
-    emit endResetModel();
+    emit layoutChanged();
 }
 
 

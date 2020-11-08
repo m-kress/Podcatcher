@@ -86,7 +86,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="92"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="103"/>
         <source>Published: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -368,22 +368,22 @@
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1070"/>
+        <location filename="../src/podcastmanager.cpp" line="1078"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1101"/>
+        <location filename="../src/podcastmanager.cpp" line="1109"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1167"/>
+        <location filename="../src/podcastmanager.cpp" line="1175"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1171"/>
+        <location filename="../src/podcastmanager.cpp" line="1179"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅……</translation>
     </message>

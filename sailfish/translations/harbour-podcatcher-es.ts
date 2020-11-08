@@ -86,7 +86,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="92"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="103"/>
         <source>Published: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -368,22 +368,22 @@
         <translation>Error al descargar episodio de podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1070"/>
+        <location filename="../src/podcastmanager.cpp" line="1078"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Información de autenticación en gPodder.net requerida.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1101"/>
+        <location filename="../src/podcastmanager.cpp" line="1109"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Credenciales de gPodder.net no aceptadas. Inténtalo de nuevo.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1167"/>
+        <location filename="../src/podcastmanager.cpp" line="1175"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>No se han encontrado suscripciones en gPodder.net</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1171"/>
+        <location filename="../src/podcastmanager.cpp" line="1179"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Obteniendo suscripciones de gPodder.net...</translation>
     </message>

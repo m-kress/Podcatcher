@@ -1,4 +1,0 @@
-#ifndef PODCASTTYPES_H
-#define PODCASTTYPES_H
-
-#endif // PODCASTTYPES_H
