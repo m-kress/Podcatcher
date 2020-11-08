@@ -1,3 +1,7 @@
+*Sun Nov  08 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.10
+- Reimplemented sortation of episodes
+- WebView for epsiode descriptions
+
 * Sun Oct 12 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.9
 - Fix remembering latest position in audio file, when switching to other source
 - Updated French and Chinese  translations (@slumslayer and @dashinfantry)
