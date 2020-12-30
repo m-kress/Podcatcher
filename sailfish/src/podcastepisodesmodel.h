@@ -72,6 +72,8 @@ public:
 
    Q_INVOKABLE void sortEpisodes();
 
+    void sortEpisodes(QList<PodcastEpisode *> &episodes, const QString &sortBy, bool descending);
+
 signals:
     void episodeBeingDeleted(PodcastEpisode *episode);
 

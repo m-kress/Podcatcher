@@ -1,6 +1,9 @@
-*Sun Nov  08 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.10
+* Wed Dec 30 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.11
+- Fix insertion of new episodes
+
+* Sun Nov 08 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.10
 - Reimplemented sortation of episodes
-- WebView for epsiode descriptions
+- WebView for episode descriptions
 
 * Sun Oct 12 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.9
 - Fix remembering latest position in audio file, when switching to other source

@@ -123,12 +123,19 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
         return;
     }
 
+    QList<PodcastEpisode *>sortedEpisodes = m_episodes;
+
+    if (!(m_channel.sortBy() == "published" && m_channel.sortDescending())){
+        sortEpisodes(sortedEpisodes, "published", true);
+     }
+
     QDateTime modelsLatestEpisode;
     if (m_episodes.isEmpty()) {
         modelsLatestEpisode = QDateTime();
     } else {
-        modelsLatestEpisode = m_episodes.at(0)->pubTime();
+        modelsLatestEpisode = sortedEpisodes.first()->pubTime();
     }
+
 
     QDateTime dbsLatestEpisode = m_sqlmanager->latestEpisodeTimestampInDB(m_channel.channelDbId());
     PodcastEpisode *episode;
@@ -141,9 +148,10 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
     for(int i=episodes.size()-1; i>=0; i--) {
         episode = episodes.at(i);                           // Take the last episode in the new model.
         if (episode->pubTime() > modelsLatestEpisode) {     // If this episodes has a more recent timestamp, add to model.            qDebug() << "Adding to UI...";
-            beginInsertRows(QModelIndex(), 0, 0);
-            m_episodes.prepend(episode);                    // Since we took that last item from the new episodes model, we add this item first to the view.
-            endInsertRows();                                // When we do this for new episodes not yet in the model, all new episodes (episode->pubTime() > modelsLatestEpisode)
+            sortedEpisodes.prepend(episode);
+            //beginInsertRows(QModelIndex(), 0, 0);
+            //m_episodes.prepend(episode);                    // Since we took that last item from the new episodes model, we add this item first to the view.
+            //endInsertRows();                                // When we do this for new episodes not yet in the model, all new episodes (episode->pubTime() > modelsLatestEpisode)
             // ends up on top of the list. Note that the QModelIndex is also updated accordingly.
             episode->setChannel(&m_channel);
 
@@ -167,7 +175,10 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
         qDebug() << "No new episodes to be added to the DB.";
     }
 
-    sortEpisodes();
+    beginResetModel();
+    m_episodes = sortedEpisodes;
+    sortEpisodes(m_episodes, m_channel.sortBy(), m_channel.sortDescending());
+    endResetModel();
 
 }
 
@@ -229,14 +240,8 @@ void PodcastEpisodesModel::onSortDescendingChanged(bool /*descending*/)
     sortEpisodes();
 }
 
-void PodcastEpisodesModel::sortEpisodes()
+void PodcastEpisodesModel::sortEpisodes(QList<PodcastEpisode*>& episodes, const QString& sortBy, bool descending)
 {
-    bool descending = m_channel.sortDescending();
-    QString sortBy = m_channel.sortBy();
-    qDebug() << "Sording Episodes by" << sortBy << "descending " <<descending;
-
-    emit layoutAboutToBeChanged();
-
     QStringList states = {"undownloadable","get", "queued", "downloading","downloaded", "played"};
 
     auto cmp = [=]  (const PodcastEpisode* a, const PodcastEpisode* b){
@@ -256,7 +261,18 @@ void PodcastEpisodesModel::sortEpisodes()
 
     };
 
-    std::sort(m_episodes.begin(), m_episodes.end(), cmp);
+    std::sort(episodes.begin(), episodes.end(), cmp);
+}
+
+void PodcastEpisodesModel::sortEpisodes()
+{
+    bool descending = m_channel.sortDescending();
+    QString sortBy = m_channel.sortBy();
+    qDebug() << "Sording Episodes by" << sortBy << "descending " <<descending;
+
+    emit layoutAboutToBeChanged();
+
+    sortEpisodes(m_episodes, sortBy, descending);
 
     emit layoutChanged();
 }
