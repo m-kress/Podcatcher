@@ -88,7 +88,7 @@
     <message>
         <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="103"/>
         <source>Published: </source>
-        <translation type="unfinished"></translation>
+        <translation>发行:</translation>
     </message>
 </context>
 <context>
@@ -172,7 +172,7 @@
     <message>
         <location filename="../qml/pages/MainPage.qml" line="77"/>
         <source>Why don&apos;t you add some...</source>
-        <translation>为何不添加一些……</translation>
+        <translation>为何不添加一些…</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="86"/>
@@ -192,7 +192,7 @@
     <message>
         <location filename="../qml/pages/MainPage.qml" line="135"/>
         <source>Removing</source>
-        <translation>正在移出</translation>
+        <translation>正在移除</translation>
     </message>
     <message>
         <location filename="../qml/pages/MainPage.qml" line="276"/>
@@ -217,7 +217,7 @@
     <message>
         <location filename="../qml/pages/MainPage.qml" line="328"/>
         <source>Fetching channel information...</source>
-        <translation>正在获取频道信息……</translation>
+        <translation>正在获取频道信息…</translation>
     </message>
 </context>
 <context>
@@ -258,7 +258,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="152"/>
         <source>Refreshing episodes...</source>
-        <translation>刷新全部剧集……</translation>
+        <translation>刷新全部剧集…</translation>
     </message>
 </context>
 <context>
@@ -350,12 +350,12 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="353"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
-        <translation>播客订阅无效，无法添加订阅……</translation>
+        <translation>播客订阅无效，无法添加订阅…</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="496"/>
         <source>Cannot refresh. Network error.</source>
-        <translation>网络错误，无法刷新……</translation>
+        <translation>网络错误，无法刷新…</translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="525"/>
@@ -385,7 +385,7 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="1179"/>
         <source>Getting subscriptions from gPodder.net...</source>
-        <translation>正在从 gPodder.net 获取订阅……</translation>
+        <translation>正在从 gPodder.net 获取订阅…</translation>
     </message>
 </context>
 <context>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="144"/>
         <source>Fetching channel information...</source>
-        <translation>正在获取频道信息……</translation>
+        <translation>正在获取频道信息…</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="220"/>
@@ -408,7 +408,7 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="249"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
-        <translation>非常抱歉!无法从为播客打开音频播放器</translation>
+        <translation>非常抱歉!无法为播客打开音频播放器。</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="424"/>
