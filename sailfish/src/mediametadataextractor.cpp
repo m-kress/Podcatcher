@@ -106,6 +106,9 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
                 if(m_cover.loadFromData((const uchar*) pictureFrame->picture().data(), pictureFrame->picture().size()))
                     break;
             }
+            if (m_cover.isNull() && pictureFrame->type() == ID3v2::AttachedPictureFrame::Type::Other){
+                m_cover.loadFromData((const uchar*) pictureFrame->picture().data(), pictureFrame->picture().size());
+            }
 
         }
 
