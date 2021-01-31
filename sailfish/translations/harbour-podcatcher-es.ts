@@ -353,37 +353,37 @@
         <translation>Fuente de podcast no válida. No es posible añadir suscripción...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="496"/>
+        <location filename="../src/podcastmanager.cpp" line="497"/>
         <source>Cannot refresh. Network error.</source>
         <translation>No es posible actualizar. Error de conexión.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="525"/>
+        <location filename="../src/podcastmanager.cpp" line="526"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Fuente de podcast no válida. No es posible descargar episodios de &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="713"/>
+        <location filename="../src/podcastmanager.cpp" line="714"/>
         <source>Podcast episode download failed.</source>
         <translation>Error al descargar episodio de podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1078"/>
+        <location filename="../src/podcastmanager.cpp" line="1079"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Información de autenticación en gPodder.net requerida.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1109"/>
+        <location filename="../src/podcastmanager.cpp" line="1110"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Credenciales de gPodder.net no aceptadas. Inténtalo de nuevo.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1175"/>
+        <location filename="../src/podcastmanager.cpp" line="1176"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>No se han encontrado suscripciones en gPodder.net</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1179"/>
+        <location filename="../src/podcastmanager.cpp" line="1180"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Obteniendo suscripciones de gPodder.net...</translation>
     </message>

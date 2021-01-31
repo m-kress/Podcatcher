@@ -353,37 +353,37 @@
         <translation>播客订阅无效，无法添加订阅…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="496"/>
+        <location filename="../src/podcastmanager.cpp" line="497"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="525"/>
+        <location filename="../src/podcastmanager.cpp" line="526"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="713"/>
+        <location filename="../src/podcastmanager.cpp" line="714"/>
         <source>Podcast episode download failed.</source>
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1078"/>
+        <location filename="../src/podcastmanager.cpp" line="1079"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1109"/>
+        <location filename="../src/podcastmanager.cpp" line="1110"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1175"/>
+        <location filename="../src/podcastmanager.cpp" line="1176"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1179"/>
+        <location filename="../src/podcastmanager.cpp" line="1180"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅…</translation>
     </message>
