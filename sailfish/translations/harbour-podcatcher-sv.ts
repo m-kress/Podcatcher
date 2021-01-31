@@ -24,7 +24,7 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="265"/>
         <source>Chapters</source>
-        <translation type="unfinished">Kapitel</translation>
+        <translation>Kapitel</translation>
     </message>
 </context>
 <context>
@@ -88,7 +88,7 @@
     <message>
         <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="103"/>
         <source>Published: </source>
-        <translation type="unfinished"></translation>
+        <translation>Publicerad: </translation>
     </message>
 </context>
 <context>
