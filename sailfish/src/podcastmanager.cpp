@@ -390,6 +390,7 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
 
     if (reply->bytesAvailable() < 1) {
         qWarning() << "Got no data from the network request when downloading the logo";
+        emit showInfoBanner(reply->errorString());
         qDebug() << reply->errorString();
         reply->deleteLater();
         return;
