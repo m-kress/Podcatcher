@@ -23,6 +23,7 @@ CONFIG += link_pkgconfig
 PKGCONFIG += sailfishapp mlite5
 #PKGCONFIG +=taglib
 #PKGCONFIG += contentaction5
+QMAKE_CXXFLAGS += -std=c++17
 
 
 DEFINES += MAKE_TAGLIB_LIB

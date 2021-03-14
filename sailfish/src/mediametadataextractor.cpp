@@ -96,9 +96,8 @@ void MediaMetaDataExtractor::inspectMP3(const QString& url)
         ID3v2::Tag * tag = mf.ID3v2Tag();
         ID3v2::FrameList fl = tag->frameListMap()["APIC"];
 
-        auto it= fl.begin();
-        for(; it != fl.end() ; it++)
-        {
+
+        for (auto it = fl.begin(); it != fl.end() ; it++)        {
             auto * pictureFrame = dynamic_cast<ID3v2::AttachedPictureFrame *> (*it);
             qDebug() <<"MIME type of frame "<< pictureFrame->mimeType().toCString();
             if(pictureFrame->type() == ID3v2::AttachedPictureFrame::Type::Media ||
@@ -175,6 +174,7 @@ void MediaMetaDataExtractor::inspectM4A(const QString &url)
         return;
 
     MP4::Tag* tag = mf.tag();
+    qDebug() << tag->toString().toCString();
     MP4::ItemListMap itemsListMap = tag->itemListMap();
     MP4::Item coverItem = itemsListMap["covr"];
     MP4::CoverArtList coverArtList = coverItem.toCoverArtList();
@@ -182,6 +182,7 @@ void MediaMetaDataExtractor::inspectM4A(const QString &url)
         MP4::CoverArt coverArt = coverArtList.front();
         m_cover.loadFromData((const uchar *) coverArt.data().data(),coverArt.data().size());
     }
+
 
     //    for (auto it =itemsListMap.begin(); it !=itemsListMap.end(); it++){
     //        qDebug()<< it->first.toCString(true) << ": " <<  it->second.toStringList().toString('|').toCString(true);

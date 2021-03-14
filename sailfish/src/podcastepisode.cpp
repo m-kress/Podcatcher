@@ -519,7 +519,7 @@ QString PodcastEpisode::getDownloadDir()
 
         QString sd;
 
-        foreach (QString s, lst) {
+        foreach (const QString& s, lst) {
             if (s.startsWith("."))
                 continue;
 

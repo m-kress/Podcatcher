@@ -315,17 +315,17 @@
 <context>
     <name>PodcastEpisodesModel</name>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="78"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="79"/>
         <source>dd.MM.yyyy</source>
         <translation>yyyy-MM-dd</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="100"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="101"/>
         <source>Last played: %1</source>
         <translation>Senast spelad: %1</translation>
     </message>
     <message>
-        <location filename="../src/podcastepisodesmodel.cpp" line="100"/>
+        <location filename="../src/podcastepisodesmodel.cpp" line="101"/>
         <source>dd.MM.yyyy hh:mm</source>
         <translation>yyyy-MM-dd hh:mm</translation>
     </message>

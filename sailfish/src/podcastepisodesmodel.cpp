@@ -19,6 +19,7 @@
 #include <QHash>
 #include <QVariant>
 #include <QDateTime>
+#include <utility>
 
 
 #include <QtDebug>
@@ -346,7 +347,7 @@ QList<PodcastEpisode *> PodcastEpisodesModel::unplayedEpisodes()
         return episodes;
     }
 
-    for (auto episode : m_episodes) {
+    for (auto episode : std::as_const(m_episodes)) {
         if (!episode->playFilename().isEmpty() &&
                 episode->episodeState() == "downloaded") {
             episodes << episode;

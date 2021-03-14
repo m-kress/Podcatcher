@@ -93,6 +93,7 @@ QList<PodcastEpisode *>* PodcastRSSParser::populateEpisodesFromChannelXML(const 
     qDebug() << "Parsing XML for episodes";
 
     if (xmlReply.size() < 10) {
+        delete episodes;
         return nullptr;
     }
 

@@ -273,7 +273,7 @@ void PodcastManager::cancelDownloadPodcast(PodcastEpisode *episode)
 
     bool otherDownloadfromChannel = false;
 
-    for (PodcastEpisode* other : m_currentEpisodeDownloads) {
+    for (PodcastEpisode* other : std::as_const(m_currentEpisodeDownloads)) {
         if (other->channelid() == episode->channelid()){
             otherDownloadfromChannel = true;
             break;
@@ -372,7 +372,7 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
     auto *reply = qobject_cast<QNetworkReply *>(sender());
     if (reply == nullptr) {
         qWarning() << "Network reply is 0. Aborting.";
-        reply->deleteLater();
+        //reply->deleteLater();
         return;
     }
 
@@ -677,7 +677,7 @@ void PodcastManager::onPodcastEpisodeDownloaded(PodcastEpisode *episode)
 
     bool otherDownloadfromChannel = false;
 
-    for (PodcastEpisode* other : m_currentEpisodeDownloads) {
+    for (PodcastEpisode* other : std::as_const(m_currentEpisodeDownloads)) {
         if (other->channelid() == episode->channelid()){
             otherDownloadfromChannel = true;
             break;
@@ -1035,8 +1035,6 @@ void PodcastManager::updateAutoDLSettingsFromCache()
             onAutodownloadOnChanged();
             settings.setValue("autoDlOn", m_autodownloadOnSettings);
         }
-
-        lastKnownAutoDlOn = settings.value("autoDlOn").toBool();
     }
 }
 
@@ -1179,7 +1177,7 @@ void PodcastManager::onGPodderRequestFinished()
 
     emit showInfoBanner(tr("Getting subscriptions from gPodder.net..."));
 
-    foreach(QString url, subscriptionUrls) {
+    foreach(const QString& url, subscriptionUrls) {
         requestPodcastChannelFromGPodder(QUrl(url));
     }
 
