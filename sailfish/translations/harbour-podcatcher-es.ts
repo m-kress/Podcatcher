@@ -368,22 +368,22 @@
         <translation>Error al descargar episodio de podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1079"/>
+        <location filename="../src/podcastmanager.cpp" line="1077"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Información de autenticación en gPodder.net requerida.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1110"/>
+        <location filename="../src/podcastmanager.cpp" line="1108"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Credenciales de gPodder.net no aceptadas. Inténtalo de nuevo.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1176"/>
+        <location filename="../src/podcastmanager.cpp" line="1174"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>No se han encontrado suscripciones en gPodder.net</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1180"/>
+        <location filename="../src/podcastmanager.cpp" line="1178"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Obteniendo suscripciones de gPodder.net...</translation>
     </message>

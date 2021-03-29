@@ -128,7 +128,7 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
 
     if (!(m_channel.sortBy() == "published" && m_channel.sortDescending())){
         sortEpisodes(sortedEpisodes, "published", true);
-     }
+    }
 
     QDateTime modelsLatestEpisode;
     if (m_episodes.isEmpty()) {
@@ -243,6 +243,9 @@ void PodcastEpisodesModel::onSortDescendingChanged(bool /*descending*/)
 
 void PodcastEpisodesModel::sortEpisodes(QList<PodcastEpisode*>& episodes, const QString& sortBy, bool descending)
 {
+   if(episodes.isEmpty())
+       return;
+
     QStringList states = {"undownloadable","get", "queued", "downloading","downloaded", "played"};
 
     auto cmp = [=]  (const PodcastEpisode* a, const PodcastEpisode* b){
@@ -293,17 +296,19 @@ QList<PodcastEpisode *> PodcastEpisodesModel::undownloadedEpisodes(int max)
         return episodes;
     }
 
-    if (max > m_episodes.length()) {
-        max = m_episodes.length();
-    }
-
-    for (int i=0; i<max; i++) {
+    for (int i=0; i<m_episodes.length(); i++) {
         PodcastEpisode *episode = m_episodes.at(i);
         if (!episode->downloadLink().isEmpty() &&
                 episode->playFilename().isEmpty() &&
                 !episode->hasBeenCanceled()) {
             episodes << episode;
         }
+    }
+
+    sortEpisodes(episodes,"published", true);
+
+    while(episodes.length() > max){
+        episodes.takeLast();
     }
 
     return episodes;
