@@ -61,7 +61,7 @@ public:
     void setXml(QByteArray xml);
 
     // Property getters.
-    int channelDbId();
+    int channelDbId() const;
     QString title() const;
     QString logoUrl() const;
     QString logo() const;

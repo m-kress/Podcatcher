@@ -37,7 +37,7 @@ void PodcastChannel::setId(int id)
     m_id = id;
 }
 
-int PodcastChannel::channelDbId()
+int PodcastChannel::channelDbId() const
 {
     return m_id;
 }
