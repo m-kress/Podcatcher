@@ -1,4 +1,5 @@
 * Mon Mar 29 2021 Moritz Carmesin <carolus@carmesinus.de> 1.9.11
+- Fix enormous memory consumption by channel logos
 - Fix downloadung new episodes when not sorted by date
 
 * Wed Dec 30 2020 Moritz Carmesin <carolus@carmesinus.de> 1.9.11

@@ -243,8 +243,8 @@ void PodcastEpisodesModel::onSortDescendingChanged(bool /*descending*/)
 
 void PodcastEpisodesModel::sortEpisodes(QList<PodcastEpisode*>& episodes, const QString& sortBy, bool descending)
 {
-   if(episodes.isEmpty())
-       return;
+    if(episodes.isEmpty())
+        return;
 
     QStringList states = {"undownloadable","get", "queued", "downloading","downloaded", "played"};
 
@@ -296,12 +296,27 @@ QList<PodcastEpisode *> PodcastEpisodesModel::undownloadedEpisodes(int max)
         return episodes;
     }
 
+    QDateTime lastCancelledTime = QDateTime();
+
     for (int i=0; i<m_episodes.length(); i++) {
         PodcastEpisode *episode = m_episodes.at(i);
+
+        if (episode->hasBeenCanceled() && ((lastCancelledTime.isValid() && episode->pubTime() > lastCancelledTime) ||
+                                           !lastCancelledTime.isValid())){
+            lastCancelledTime = episode->pubTime();
+        }
+
         if (!episode->downloadLink().isEmpty() &&
                 episode->playFilename().isEmpty() &&
                 !episode->hasBeenCanceled()) {
             episodes << episode;
+        }
+    }
+
+    for (int i=0; i< episodes.length(); i++){
+        if (episodes.at(i)->pubTime() < lastCancelledTime){
+            episodes.removeAt(i);
+            i--;
         }
     }
 
