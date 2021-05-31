@@ -34,6 +34,7 @@ Page {
     property bool playing : audioPlayer.playbackState === Audio.PlayingState
     property bool paused: audioPlayer.playbackState === Audio.PausedState
     property bool active: paused || playing
+    property bool waitForSeeking: false
 
 
     ConfigurationValue{
@@ -99,7 +100,7 @@ Page {
         Image {
             id: cover
 
-            width: parent.width+2*Theme.paddingMedium
+            width: parent.width/*+2*Theme.paddingMedium*/
             height: width
             anchors.horizontalCenter: parent.horizontalCenter
             visible: true
@@ -313,11 +314,19 @@ Page {
         lastPosition.key = "/apps/ControlPanel/Podcatcher/position/"+hash;
         console.log("Last position key: "+lastPosition.key)
 
-        audioPlayer.source = fileName;
-        audioPlayer.seek(lastPosition.value);
-        audioPlayer.play()
-    }
 
+        audioPlayer.source = fileName;
+
+        if(lastPosition.value >0 && !audioPlayer.seekable){
+            console.log("Seeking not yet possible!");
+            waitForSeeking = true;
+            audioPlayer.muted = true;
+            audioPlayer.play();
+        }else{
+            audioPlayer.seek(lastPosition.value);
+            audioPlayer.play();
+        }
+    }
 
     Audio {
         id: audioPlayer
@@ -325,24 +334,24 @@ Page {
         onPlaying: {
             console.log("Ok, we started playing...");
             console.log("Current position: "+position)
-            //            for (var m in audioPlayer.metaData){
-            //                console.log(m+': '+audioPlayer.metaData[m]);
-            //            }
-
-            console.log("Chapters count: "+chapterModel.columnCount());
+            console.log("Total duration" + duration)
             mpris.playbackStatus = Mpris.Playing
         }
 
         onPaused: {
-            lastPosition.value = position
-            console.log("remembering position: " + position)
+            if(!waitForSeeking && seekable){
+                lastPosition.value = position
+                console.log("remembering position: " + position)
+            }
             mpris.playbackStatus = Mpris.Paused
         }
 
         onStopped: {
             mpris.playbackStatus = Mpris.Stopped
-            //            lastPosition.value = position
-            //            console.log("remembering position: " + position)
+
+            /*
+            We cannot save the position since it is already cleared
+            */
         }
 
         onSourceChanged: {
@@ -359,6 +368,25 @@ Page {
 
             mpris.canSeek = audioPlayer.seekable
 
+        }
+
+        onStatusChanged: {
+            var statusNames= ["NoMedia", "Loading", "Loaded", "Buffering", "Stalled", "Buffered", "EndOfMedia", "InvalidMedia", "UnknownStatus"];
+            console.log("Status changed: "+ statusNames[status])
+            console.log("Playback position: "+ position);
+        }
+
+
+        onSeekableChanged: {
+            if (waitForSeeking){
+            console.log("Stop muted playback, since we now know the durations and can seek.")
+            audioPlayer.pause();
+            audioPlayer.muted=false;
+            waitForSeeking = false;
+
+            audioPlayer.seek(lastPosition.value);
+            audioPlayer.play();
+            }
         }
     }
 
