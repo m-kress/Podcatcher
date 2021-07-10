@@ -77,11 +77,13 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
             }
 
+            /*
             MenuItem{
                 text: qsTr("Sort Episodes")
                 onClicked: pageStack.push(Qt.resolvedUrl("EpisodesSortDialog.qml"))
                 enabled: true
             }
+            */
 
         }
 
