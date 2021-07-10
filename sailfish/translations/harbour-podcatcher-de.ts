@@ -491,7 +491,7 @@
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="87"/>
         <source>Search podcasts</source>
-        <translation type="unfinished">Suche Podcasts</translation>
+        <translation>Suche Podcasts</translation>
     </message>
     <message>
         <location filename="../qml/pages/SearchPodcasts.qml" line="92"/>
@@ -612,12 +612,12 @@
     <message>
         <location filename="../qml/pages/URLEditDialog.qml" line="7"/>
         <source>Edit feed URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed-URL bearbeiten</translation>
     </message>
     <message>
         <location filename="../qml/pages/URLEditDialog.qml" line="17"/>
         <source>feed URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed-URL</translation>
     </message>
 </context>
 </TS>
