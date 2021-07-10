@@ -1,3 +1,9 @@
+* Sat 10 Jul 2021 Moritz Carmesin <carolus@carmesinus.de> 1.9.13
+- UI changes (mainly channel details and config)
+
+* Mon May 31 2021 Moritz Carmesin <carolus@carmesinus.de> 1.9.12
+- Fix playback resumption if file is not seekable at the beginning
+
 * Mon Mar 29 2021 Moritz Carmesin <carolus@carmesinus.de> 1.9.11
 - Fix enormous memory consumption by channel logos
 - Fix downloadung new episodes when not sorted by date
