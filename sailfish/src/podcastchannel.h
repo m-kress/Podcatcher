@@ -42,6 +42,8 @@ class PodcastChannel : public QObject
     Q_PROPERTY(bool isAutoDownloadOn READ isAutoDownloadOn WRITE setAutoDownloadOn NOTIFY autoDownloadOnChanged)
     Q_PROPERTY(QString sortBy READ sortBy WRITE setSortBy NOTIFY sortByChanged)
     Q_PROPERTY(bool sortDescending READ sortDescending WRITE setSortDescending NOTIFY sortDescendingChanged)
+    Q_PROPERTY(QString url READ url NOTIFY urlChanged)
+
 
 public:
     explicit PodcastChannel(QObject *parent = nullptr);
@@ -57,6 +59,8 @@ public:
     void setIsDownloading(bool downloading);
     void setUnplayedEpisodes(int unplayed);
     void setAutoDownloadOn(bool autoDownloadOn);
+    void trialFailed();
+    void trialSucceeded();
 
     void setXml(QByteArray xml);
 
@@ -71,11 +75,14 @@ public:
     bool isDownloading() const;
     int unplayedEpisodes() const;
     bool isAutoDownloadOn() const;
+    QString trialURL() const;
 
 
     QByteArray xml() const;
 
     void addCredentials(PodcastEpisode *episode);
+
+    void setTrialUrl(const QString& url);
 
     // Utility methods.
     void dumpInfo() const;
@@ -97,6 +104,7 @@ signals:
     void sortByChanged(QString sortBy);
 
     void sortDescendingChanged(bool sortDescending);
+    void urlChanged(const QString url);
 
 public slots:
 
@@ -111,6 +119,8 @@ private:
     QString m_logo;
     QString m_url;
     QString m_description;
+    QString m_trialURL;
+    bool m_trialURLFailed;
 
     PodcastChannelSortField m_sortBy;
     bool m_sortDescending;

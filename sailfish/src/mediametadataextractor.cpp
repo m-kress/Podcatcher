@@ -300,7 +300,7 @@ PodcastChapterModel::PodcastChapterModel(QObject *parent):
 int PodcastChapterModel::rowCount(const QModelIndex &parent) const
 {
     if(m_chapters){
-        qDebug() <<"Chapter count" <<m_chapters->count();
+        //qDebug() << "Chapter count" <<m_chapters->count();
         return m_chapters->count();
     }
 

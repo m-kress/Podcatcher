@@ -62,7 +62,7 @@ public:
     void fetchSubscriptionsFromGPodder(const QString &username, const QString &password);
     void requestPodcastChannelFromGPodder(const QUrl &rssUrl);
 
-    void refreshPodcastChannelEpisodes(PodcastChannel *channel, bool forceNetworkUpdate = false);
+    void refreshPodcastChannelEpisodes(PodcastChannel *channel, bool forceNetworkUpdate = false, bool trial = false);
     void refreshAllChannels();
     void downloadNewEpisodes(PodcastChannel &channel);
 

@@ -20,50 +20,53 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 
-Item {
-//Column{
-    width: parent.width
-    height: Math.max(channelLogo.height, channelDescription.height) + Theme.paddingMedium + autoDownloadSwitch.height
+BackgroundItem{
 
-    PodcastChannelLogo {
-            id: channelLogo;
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-            channelLogo: channel.logo
-            width: Theme.itemSizeHuge
-            height: Theme.itemSizeHuge
-
-        }
-
-        Label {
-            id: channelDescription
-            height: channelLogo.height
-            width: parent.width- channelLogo.width - Theme.paddingMedium - Theme.horizontalPageMargin
-            anchors.left: channelLogo.right
-            anchors.leftMargin:  Theme.paddingMedium
-            text: channel.description
-            font.pixelSize: Theme.fontSizeSmall
-            wrapMode: Text.WordWrap
-            truncationMode: TruncationMode.Fade
-        }
-//    }
-
-    TextSwitch{
-        id: autoDownloadSwitch
-
-        anchors.top: (channelLogo.height>channelDescription.height)?channelLogo.bottom:channelDescription.bottom
-        anchors.topMargin: Theme.paddingSmall
-
-        width: parent.width
-
-
-        text: qsTr("Auto-download")
-        checked: channel.isAutoDownloadOn
-
-        onCheckedChanged: {
-            appWindow.autoDownloadChanged(channel.channelId, checked);
-        }
+    function openChannelSettings(){
+        channelDetailsPage.channelDescriptionText = channel.description
+        channelDetailsPage.channelName = channel.title
+        appWindow.pageStack.push(channelDetailsPage);
     }
 
-//}
+    width: parent.width
+    height: channelLogo.height
+
+    ChannelDetailsPage{
+        id: channelDetailsPage
+    }
+
+    PodcastChannelLogo {
+        id: channelLogo;
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        channelLogo: channel.logo
+        height: Theme.itemSizeExtraLarge
+        width: height
+    }
+    Label {
+        id: channelDescription
+        height: channelLogo.height
+        width: parent.width- channelLogo.width - Theme.paddingMedium - btnMore.width // mTheme.horizontalPageMargin
+        anchors.left: channelLogo.right
+        anchors.leftMargin:  Theme.paddingMedium
+        text: channel.description
+        font.pixelSize: Theme.fontSizeSmall
+        wrapMode: Text.WordWrap
+        truncationMode: TruncationMode.Fade
+    }
+
+    IconButton{
+        id: btnMore
+        icon.source: "image://theme/icon-m-right"
+
+        anchors.bottom: channelLogo.bottom
+        anchors.topMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+
+        onClicked: openChannelSettings()
+    }
+
+
+    onClicked: openChannelSettings()
 }

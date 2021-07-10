@@ -17,12 +17,12 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="86"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="87"/>
         <source>Player</source>
         <translation>播放器</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="265"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="266"/>
         <source>Chapters</source>
         <translation>集</translation>
     </message>
@@ -76,6 +76,69 @@
     </message>
 </context>
 <context>
+    <name>ChannelDetailsPage</name>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="103"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="111"/>
+        <source>Auto-download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="120"/>
+        <source>Sortation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="125"/>
+        <source>Sort by</source>
+        <translation type="unfinished">分类方式</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="129"/>
+        <source>ID</source>
+        <translation type="unfinished">ID</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="132"/>
+        <source>publication date</source>
+        <translation type="unfinished">出品日期</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="136"/>
+        <source>state</source>
+        <translation type="unfinished">国家</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="140"/>
+        <source>title</source>
+        <translation type="unfinished">标题</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="151"/>
+        <source>Sort order</source>
+        <translation type="unfinished">分类顺序</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="155"/>
+        <source>descending</source>
+        <translation type="unfinished">升序</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="159"/>
+        <source>ascending</source>
+        <translation type="unfinished">降序</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="170"/>
+        <source>Feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="46"/>
@@ -86,7 +149,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="103"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="104"/>
         <source>Published: </source>
         <translation>发行:</translation>
     </message>
@@ -262,14 +325,6 @@
     </message>
 </context>
 <context>
-    <name>PodcastEpisodesChannelInfo</name>
-    <message>
-        <location filename="../qml/pages/PodcastEpisodesChannelInfo.qml" line="60"/>
-        <source>Auto-download</source>
-        <translation>自动下载</translation>
-    </message>
-</context>
-<context>
     <name>PodcastEpisodesList</name>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="60"/>
@@ -297,17 +352,17 @@
         <translation>开始载入此播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="226"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="227"/>
         <source>Queued</source>
         <translation>排队</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="325"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="340"/>
         <source>No media</source>
         <translation>无媒体</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="513"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="528"/>
         <source>Unable to stream podcast.</source>
         <translation>无法载入播客。</translation>
     </message>
@@ -343,47 +398,47 @@
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="322"/>
+        <location filename="../src/podcastmanager.cpp" line="330"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="353"/>
+        <location filename="../src/podcastmanager.cpp" line="361"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="497"/>
+        <location filename="../src/podcastmanager.cpp" line="522"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="526"/>
+        <location filename="../src/podcastmanager.cpp" line="555"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="714"/>
+        <location filename="../src/podcastmanager.cpp" line="743"/>
         <source>Podcast episode download failed.</source>
         <translation>播客剧集下载失败。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1077"/>
+        <location filename="../src/podcastmanager.cpp" line="1108"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1108"/>
+        <location filename="../src/podcastmanager.cpp" line="1139"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1174"/>
+        <location filename="../src/podcastmanager.cpp" line="1205"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1178"/>
+        <location filename="../src/podcastmanager.cpp" line="1209"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅…</translation>
     </message>
@@ -391,27 +446,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="144"/>
+        <location filename="../src/podcatcherui.cpp" line="150"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息…</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="220"/>
+        <location filename="../src/podcatcherui.cpp" line="226"/>
         <source>Podcast episode not found.</source>
         <translation>没有找到播客剧集。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="233"/>
+        <location filename="../src/podcatcherui.cpp" line="239"/>
         <source>Mediaplayer program not found!</source>
         <translation>没有找到媒体播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="249"/>
+        <location filename="../src/podcatcherui.cpp" line="255"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>非常抱歉!无法为播客打开音频播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="424"/>
+        <location filename="../src/podcatcherui.cpp" line="449"/>
         <source>Unable to stream podcast.</source>
         <translation>无法加载播客。</translation>
     </message>
@@ -550,6 +605,19 @@
         <location filename="../qml/pages/Settings.qml" line="147"/>
         <source>Keep unplayed episodes</source>
         <translation>保留未播放的剧集</translation>
+    </message>
+</context>
+<context>
+    <name>URLEditDialog</name>
+    <message>
+        <location filename="../qml/pages/URLEditDialog.qml" line="7"/>
+        <source>Edit feed URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/URLEditDialog.qml" line="17"/>
+        <source>feed URL</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

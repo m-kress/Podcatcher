@@ -41,103 +41,108 @@ Page {
         }
 </style>";
 
+    /*
     function findAllMethods(obj) {
         return Object.getOwnPropertyNames(obj).filter(function(property) {
             return typeof obj[property] == "function";
         });
         }
 
-            function all_properties(obj)
-            {
-                return Object.getOwnPropertyNames(obj);
+     function all_properties(obj){
+        return Object.getOwnPropertyNames(obj);
+     }
+     */
+
+    onEpisodeDescriptionTextChanged: {
+        console.log("Loading html: "+episodeDescriptionText);
+        episodeDescription.loadHtml(style + episodeDescriptionText);
+        //console.log(findAllMethods(episodeDescription._webPage));
+        //console.log(all_properties(episodeDescription._webPage));
+    }
+
+
+    SilicaFlickable{
+        anchors.fill: parent
+
+        Column {
+            id: episodesPageColumn
+            //width:parent.width
+            anchors.fill: parent
+            anchors.bottomMargin: Theme.paddingMedium
+            spacing: Theme.paddingMedium
+
+            PageHeader{
+                id: mainPageTitle
+                title: episodeDescriptionPage.episodeName
+                wrapMode: Text.WordWrap
             }
 
-                onEpisodeDescriptionTextChanged: {
-                    console.log("Loading html: "+episodeDescriptionText);
-                    episodeDescription.loadHtml(style + episodeDescriptionText);
-                    //console.log(findAllMethods(episodeDescription._webPage));
-                    //console.log(all_properties(episodeDescription._webPage));
+            Rectangle {
+                id: podcastEpisodeRect
+                smooth: true
+                color:  "transparent"
+                width: parent.width
+                height: channelLogo.height + 2*Theme.paddingMedium
+
+
+                PodcastChannelLogo{
+                    id: channelLogo
+                    channelLogo: channel.logo
+                    anchors.left: podcastEpisodeRect.left
+                    anchors.top: podcastEpisodeRect.top
+                    anchors.leftMargin: Theme.horizontalPageMargin
+                    anchors.topMargin: Theme.paddingMedium
+                    width: 130
+                    height: 130
                 }
 
+                Label {
+                    id: channelPublished
+                    anchors.left: channelLogo.right
+                    anchors.leftMargin: Theme.paddingLarge
+                    anchors.bottom: channelLogo.bottom
+                    text: qsTr("Published: ") + episodeDescriptionPage.episodePublished
+                    font.pixelSize: Theme.fontSizeSmall
+                    width: episodeDescriptionPage.width - channelLogo.width - 2*Theme.horizontalPageMargin - Theme.paddingMedium
+                }
 
-                SilicaFlickable{
-                    anchors.fill: parent
+            }
 
-                    Column {
-                        id: episodesPageColumn
-                        //width:parent.width
-                        anchors.fill: parent
-                        anchors.bottomMargin: Theme.paddingMedium
-                        spacing: Theme.paddingMedium
-
-                        PageHeader{
-                            id: mainPageTitle
-                            title: episodeDescriptionPage.episodeName
-                            wrapMode: Text.WordWrap
-                        }
-
-                        Rectangle {
-                            id: podcastEpisodeRect
-                            smooth: true
-                            color:  "transparent"
-                            width: parent.width
-                            height: channelLogo.height + 2*Theme.paddingMedium
+            Separator{
+                id:sep
+                width: parent.width
+            }
 
 
-                            PodcastChannelLogo{
-                                id: channelLogo
-                                channelLogo: channel.logo
-                                anchors.left: podcastEpisodeRect.left
-                                anchors.top: podcastEpisodeRect.top
-                                anchors.leftMargin: Theme.horizontalPageMargin
-                                anchors.topMargin: Theme.paddingMedium
-                                width: 130
-                                height: 130
-                            }
+            SilicaWebView {
+                id: episodeDescription
 
-                            Label {
-                                id: channelPublished
-                                anchors.left: channelLogo.right
-                                anchors.leftMargin: Theme.paddingLarge
-                                anchors.bottom: channelLogo.bottom
-                                text: qsTr("Published: ") + episodeDescriptionPage.episodePublished
-                                font.pixelSize: Theme.fontSizeSmall
-                                width: episodeDescriptionPage.width - channelLogo.width - 2*Theme.horizontalPageMargin - Theme.paddingMedium
-                            }
-
-                        }
-
-                        Separator{
-                            id:sep
-                            width: parent.width
-                        }
+                width: parent.width /* - 2*Theme.horizontalPageMargin*/
+                height: parent.height - mainPageTitle.height -  podcastEpisodeRect.height - 3*Theme.paddingMedium - sep.height
 
 
-                        SilicaWebView {
-                            id: episodeDescription
-
-                            width: parent.width /* - 2*Theme.horizontalPageMargin*/
-                            height: parent.height - mainPageTitle.height -  podcastEpisodeRect.height - 3*Theme.paddingMedium - sep.height
-
-
-                            onNavigationRequested: {
-                                console.log(request.url);
-                                if (request.url != "about:blank"){
-                                    request.action = WebView.IgnoreRequest;
-                                    Qt.openUrlExternally(request.url);
-                                }
-                            }
-
-                            experimental.transparentBackground: true
-                            experimental.preferences.defaultFontSize: Theme.fontSizeSmall
-                            experimental.preferences.standardFontFamily: Theme.fontFamily
-
-                            VerticalScrollDecorator{
-                            }
-
-                        }
-
+                onNavigationRequested: {
+                    console.log(request.navigationType);
+                    console.log(request.url);
+                    if (request.url != "about:blank"){
+                        request.action = WebView.IgnoreRequest;
+                        Qt.openUrlExternally(request.url);
+                    }else{
+                        request.action = WebView.AcceptRequest;
                     }
                 }
 
+                experimental.transparentBackground: true
+                experimental.preferences.defaultFontSize: Theme.fontSizeSmall
+                experimental.preferences.standardFontFamily: Theme.fontFamily
+                experimental.preferences.javascriptEnabled: false
+
+                VerticalScrollDecorator{
+                }
+
             }
+
+        }
+    }
+
+}

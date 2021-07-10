@@ -113,7 +113,7 @@ Page {
                 visible: (podcastChannelsList.count > 0);
                 spacing: 1
                 width: parent.width
-                height: parent.height - mainPageTitle.height/* - audioStreamerUi.height*/ - Theme.paddingMedium
+                height: parent.height - mainPageTitle.height
                 clip: true
 
                 delegate: ListItem {

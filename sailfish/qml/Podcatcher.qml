@@ -37,6 +37,7 @@ ApplicationWindow
     signal markAsUnplayed(int channelId, int index)
     signal startStreaming(int channelId, int index)
     signal autoDownloadChanged(int channelId, bool autoDownload)
+    signal addToPlayList(int channelId, int index)
 
     initialPage: Component { MainPage { } }
     //initialPage: player

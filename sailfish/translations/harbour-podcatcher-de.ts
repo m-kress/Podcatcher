@@ -17,12 +17,12 @@
 <context>
     <name>AudioPlayer</name>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="86"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="87"/>
         <source>Player</source>
         <translation>Player</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="265"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="266"/>
         <source>Chapters</source>
         <translation>Kapitel</translation>
     </message>
@@ -76,6 +76,69 @@
     </message>
 </context>
 <context>
+    <name>ChannelDetailsPage</name>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="103"/>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="111"/>
+        <source>Auto-download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="120"/>
+        <source>Sortation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="125"/>
+        <source>Sort by</source>
+        <translation type="unfinished">Sortieren nach</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="129"/>
+        <source>ID</source>
+        <translation type="unfinished">ID</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="132"/>
+        <source>publication date</source>
+        <translation type="unfinished">Veröffentlichungsdatum</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="136"/>
+        <source>state</source>
+        <translation type="unfinished">Status</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="140"/>
+        <source>title</source>
+        <translation type="unfinished">Titel</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="151"/>
+        <source>Sort order</source>
+        <translation type="unfinished">Reihenfolge</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="155"/>
+        <source>descending</source>
+        <translation type="unfinished">absteigend</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="159"/>
+        <source>ascending</source>
+        <translation type="unfinished">aufsteigend</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="170"/>
+        <source>Feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <location filename="../qml/cover/CoverPage.qml" line="46"/>
@@ -86,7 +149,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="103"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="104"/>
         <source>Published: </source>
         <translation type="unfinished"></translation>
     </message>
@@ -262,14 +325,6 @@
     </message>
 </context>
 <context>
-    <name>PodcastEpisodesChannelInfo</name>
-    <message>
-        <location filename="../qml/pages/PodcastEpisodesChannelInfo.qml" line="60"/>
-        <source>Auto-download</source>
-        <translation>Auto-Download</translation>
-    </message>
-</context>
-<context>
     <name>PodcastEpisodesList</name>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="60"/>
@@ -297,17 +352,17 @@
         <translation>Streame Podcast</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="226"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="227"/>
         <source>Queued</source>
         <translation>In der Warteschlange</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="325"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="340"/>
         <source>No media</source>
         <translation>Keine Medien</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="513"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="528"/>
         <source>Unable to stream podcast.</source>
         <translation>Kann Podcast nicht streamen.</translation>
     </message>
@@ -343,47 +398,47 @@
         <translation>&apos;%1&apos; ist schon abonniert.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="322"/>
+        <location filename="../src/podcastmanager.cpp" line="330"/>
         <source>No data received.</source>
         <translation>Keine Daten empfangen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="353"/>
+        <location filename="../src/podcastmanager.cpp" line="361"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Ungültiger Podcastfeed: kann nicht abonniert werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="497"/>
+        <location filename="../src/podcastmanager.cpp" line="522"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kann nicht aktualisieren. Netzwerkfehler.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="526"/>
+        <location filename="../src/podcastmanager.cpp" line="555"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Podcastfeed ungültig. Kann keine Folgen von &apos;%1&apos; herunterladen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="714"/>
+        <location filename="../src/podcastmanager.cpp" line="743"/>
         <source>Podcast episode download failed.</source>
         <translation>Download der Podcastfolge fehlgeschalgen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1077"/>
+        <location filename="../src/podcastmanager.cpp" line="1108"/>
         <source>gPodder.net authentication information required.</source>
         <translation>gPodder.net-Zugangsdaten benötigt.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1108"/>
+        <location filename="../src/podcastmanager.cpp" line="1139"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>gPodder.net-Zugansdaten nicht akzeptiert. Bitte erneut versuchen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1174"/>
+        <location filename="../src/podcastmanager.cpp" line="1205"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Keine Abonnements bei gPodder.net gefunden.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1178"/>
+        <location filename="../src/podcastmanager.cpp" line="1209"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Lade Abonnements von gPodder.net …</translation>
     </message>
@@ -391,27 +446,27 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="144"/>
+        <location filename="../src/podcatcherui.cpp" line="150"/>
         <source>Fetching channel information...</source>
         <translation>Lade Kanalinformationen …</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="220"/>
+        <location filename="../src/podcatcherui.cpp" line="226"/>
         <source>Podcast episode not found.</source>
         <translation>Podcastfolge nicht gefunden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="233"/>
+        <location filename="../src/podcatcherui.cpp" line="239"/>
         <source>Mediaplayer program not found!</source>
         <translation>Mediaplayer-App nicht gefunden!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="249"/>
+        <location filename="../src/podcatcherui.cpp" line="255"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Es tut mir leid. Der Audioplayer konnte nicht gestartet werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="424"/>
+        <location filename="../src/podcatcherui.cpp" line="449"/>
         <source>Unable to stream podcast.</source>
         <translation>Podcast konnte nicht gestreamt werden.</translation>
     </message>
@@ -550,6 +605,19 @@
         <location filename="../qml/pages/Settings.qml" line="147"/>
         <source>Keep unplayed episodes</source>
         <translation>Behalte ungespiele Folgen</translation>
+    </message>
+</context>
+<context>
+    <name>URLEditDialog</name>
+    <message>
+        <location filename="../qml/pages/URLEditDialog.qml" line="7"/>
+        <source>Edit feed URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/URLEditDialog.qml" line="17"/>
+        <source>feed URL</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

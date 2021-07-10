@@ -172,9 +172,9 @@ void PodcastManager::refreshAllChannels()
 }
 
 
-void PodcastManager::refreshPodcastChannelEpisodes(PodcastChannel *channel, bool forceNetwork)
+void PodcastManager::refreshPodcastChannelEpisodes(PodcastChannel *channel, bool forceNetwork, bool trial)
 {
-    qDebug() << "Requesting Podcast channel episodes" << channel->url();
+
     if (!forceNetwork) {
         // No need to fetch from the net anything.
         savePodcastEpisodes(channel);
@@ -185,8 +185,16 @@ void PodcastManager::refreshPodcastChannelEpisodes(PodcastChannel *channel, bool
 
     qDebug() << "Forced to get new episode data from the network.";
 
-    QUrl rssUrl(channel->url());
+    QUrl rssUrl(trial? channel->trialURL(): channel->url());
+
+        qDebug() << "Requesting Podcast channel episodes" << rssUrl.toString();
+
     if (!rssUrl.isValid()) {
+
+        if (trial){
+            channel->trialFailed();
+        }
+
         qWarning() << "Provided podcast channel URL is not valid.";
         return;
     }
@@ -447,6 +455,8 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 
     qDebug() << "Status Code: " << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
 
+    bool trial = reply->url() == channel->trialURL();
+
 
     QString redirectedUrl = redirectedRequest(reply);
     if (!redirectedUrl.isEmpty()) {
@@ -456,6 +466,10 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
         QNetworkRequest request;
         request.setRawHeader("User-Agent", "Podcatcher Podcast client");
         request.setUrl(redirectedUrl);
+
+        if (trial){
+            channel->setTrialUrl(redirectedUrl);
+        }
 
 
         QNetworkReply *reply = m_networkManager->get(request);
@@ -475,6 +489,9 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 
     if (reply->error() != QNetworkReply::NoError){
         emit showInfoBanner(reply->errorString());
+        if(trial){
+            channel->trialFailed();
+        }
         reply->deleteLater();
         return;
     }
@@ -488,7 +505,15 @@ void PodcastManager::onPodcastEpisodesRequestCompleted()
 
     reply->deleteLater();
 
-    savePodcastEpisodes(channel);
+    if(trial){
+        if(PodcastRSSParser2::isValidPodcastFeed(channel->xml())){
+        channel->trialSucceeded();}
+        else{
+            channel->trialFailed();
+        }
+    }
+
+     savePodcastEpisodes(channel);
 }
 
 void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError error)
@@ -505,6 +530,10 @@ void PodcastManager::onPodcastEpisodesRequestError(QNetworkReply::NetworkError e
         qWarning() << "Podcast channel from reply is NULL! Doing nothing.";
         reply->deleteLater();
         return;
+    }
+
+    if (reply->url() == channel->trialURL()){
+        channel->trialFailed();
     }
 
     channel->setIsRefreshing(false);
@@ -920,7 +949,7 @@ void PodcastManager::removePodcastChannel(PodcastChannel& channel)
 
     m_channelsCache.remove(channel.channelDbId());
 
-   /*
+    /*
     // Finally delete the memory reserved for the channel
     delete channel;
     */
@@ -945,6 +974,8 @@ bool PodcastManager::isDownloading()
     //return m_isDownloading;
     return m_currentEpisodeDownloads.length() > 0;
 }
+
+
 
 void PodcastManager::onAutodownloadOnChanged()
 {

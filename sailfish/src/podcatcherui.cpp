@@ -81,6 +81,10 @@ PodcatcherUI::PodcatcherUI()
     connect(rootDeclarativeItem, SIGNAL(playPodcast(int, int)),
             this, SLOT(onPlayPodcast(int, int)));
 
+
+    connect(rootDeclarativeItem, SIGNAL(addToPlayList(int, int)),
+            this, SLOT(onAddToPlayList(int, int)));
+
     connect(rootDeclarativeItem, SIGNAL(cancelDownload(int, int)),
             this, SLOT(onCancelDownload(int, int)));
 
@@ -120,6 +124,8 @@ PodcatcherUI::PodcatcherUI()
     if (m_mediaPlayerPath.isEmpty() && !jollaMediaPlayer.exists()){
         emit showInfoBanner("Jolla Mediaplayer not installed. Playback of the podcasts might not work.");
     }
+
+    m_playlist = new PodcastPlaylist(this);
 
 }
 
@@ -251,6 +257,25 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
     }else{
         emit playFileWithInternalPlayer(episode->playFilename());
     }
+}
+
+void PodcatcherUI::onAddToPlayList(int channelId, int index)
+{
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
+    if (episodesModel == nullptr) {
+        qWarning() << "Could not get episodes model. Cannot add episode to playlist.";
+        return;
+    }
+
+    PodcastEpisode *episode = episodesModel->episode(index);
+
+    m_playlist->addEpisode(episode);
 }
 
 void PodcatcherUI::onDownloadingPodcast(bool _isDownloading)
@@ -447,6 +472,20 @@ void PodcatcherUI::importFromGPodder(const QString& username, const QString& pas
 {
     m_pManager.fetchSubscriptionsFromGPodder(username, password);
 }
+
+void PodcatcherUI::changeFeedURLIfValid(int channelId, const QString &url)
+{
+    PodcastChannel * channel = m_pManager.podcastChannel(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    channel->setTrialUrl(url);
+    m_pManager.refreshPodcastChannelEpisodes(channel, true, true);
+}
+
+
 
 bool PodcatcherUI::isLiteVersion()
 {

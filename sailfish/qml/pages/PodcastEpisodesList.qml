@@ -72,7 +72,7 @@ Item {
         smooth: true
         color: "transparent"
         width: parent.width
-        height:  parent.height -Theme.paddingMedium
+        height:  parent.height
 
         SilicaListView {
             id: podcastEpisodesList
@@ -176,9 +176,10 @@ Item {
                     anchors{
                         left: parent.left
                         leftMargin: Theme.horizontalPageMargin
+                        right: playButton.left // playlistAddButton.left
                     }
 
-                    width: podcastItem.width - downloadedIndicator.width - playButton.width - Theme.paddingMedium -2* Theme.horizontalPageMargin
+                    width: podcastItem.width - downloadedIndicator.width - playButton.width /*-playlistAddButton.width*/ - Theme.paddingMedium -2* Theme.horizontalPageMargin
                     height: Text.paintedHeight
                     //height: 2.4*Theme.fontSizeSmall
                     truncationMode: TruncationMode.Elide
@@ -303,6 +304,20 @@ Item {
                     }
                 }
 
+/*
+                IconButton {
+                    id: playlistAddButton
+                    icon.source: "image://theme/icon-m-add"
+                    anchors.right: playButton.left
+                    anchors.rightMargin: Theme.horizontalPageMargin
+                    anchors.verticalCenter: parent.verticalCenter
+                    visible: playButton.visible
+
+                    onClicked: {
+                        appWindow.addToPlayList(channelId, index);  // Channel id = which model to use, index = row in the model.
+                    }
+                }
+*/
 
                 IconButton {
                     id: webButton

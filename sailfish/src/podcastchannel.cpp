@@ -119,6 +119,13 @@ void PodcastChannel::addCredentials(PodcastEpisode* episode)
     }
 }
 
+void PodcastChannel::setTrialUrl(const QString &url)
+{
+    qDebug() << "Setting Trial URL to" << url;
+    m_trialURL = url;
+    m_trialURLFailed = false;
+}
+
 void PodcastChannel::setIsRefreshing(bool refreshing)
 {
     if (m_isRefreshing != refreshing) {
@@ -166,9 +173,20 @@ void PodcastChannel::setAutoDownloadOn(bool autoDownloadOn) {
     }
 }
 
+void PodcastChannel::trialFailed()
+{
+    qWarning() << "Test with URL " << m_trialURL << "failed!";
+    m_trialURLFailed = true;
+}
+
 bool PodcastChannel::isAutoDownloadOn() const {
     qDebug() << "Channel autodownload: " << m_autoDownloadOn;
     return m_autoDownloadOn;
+}
+
+QString PodcastChannel::trialURL() const
+{
+    return m_trialURL;
 }
 
 
@@ -227,4 +245,12 @@ void PodcastChannel::setSortDescending(bool sortDescending)
 
     emit channelChanged();
     emit sortDescendingChanged(m_sortDescending);
+}
+
+void PodcastChannel::trialSucceeded()
+{
+    qDebug() << "Test with URL " << m_trialURL << "succeed! Updating channel URL from " << m_url << "to" << m_trialURL;
+    m_url = m_trialURL;
+    m_trialURL = "";
+    emit urlChanged(m_url);
 }

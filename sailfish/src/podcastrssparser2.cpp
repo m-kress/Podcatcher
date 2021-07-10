@@ -99,7 +99,7 @@ QList<PodcastEpisode *>* PodcastRSSParser2::populateEpisodesFromChannelXML(const
 
 bool PodcastRSSParser2::isValidPodcastFeed(const QByteArray& xmlReply)
 {
-    qDebug() << "Checking is podcast feed is valid.";
+    qDebug() << "Checking if podcast feed is valid.";
     if (xmlReply.size() < 10) {
         qDebug() << "Not valid!";
         return false;
@@ -110,11 +110,20 @@ bool PodcastRSSParser2::isValidPodcastFeed(const QByteArray& xmlReply)
 
     bool itemWithEnclosureFound = false;
 
+    if (xml.readNextStartElement()){
+        qDebug() << "Feed root element: " << xml.name();
+    }else{
+        return false;
+    }
+
     if (xml.readNextStartElement())
     {
         if (!(xml.name()== "channel" || xml.name() == "feed" ))
             return false;
 
+        else
+            return true;
+        /*
         while (xml.readNextStartElement()){
             if (xml.name() == "item"){
                 while (!itemWithEnclosureFound && xml.readNextStartElement()){
@@ -145,6 +154,7 @@ bool PodcastRSSParser2::isValidPodcastFeed(const QByteArray& xmlReply)
         }
 
         return itemWithEnclosureFound;
+        */
     }
 
 

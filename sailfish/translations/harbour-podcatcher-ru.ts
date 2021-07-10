@@ -63,6 +63,57 @@
     </message>
 </context>
 <context>
+    <name>ChannelDetailsPage</name>
+    <message>
+        <source>Download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Auto-download</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sortation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort by</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ID</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>publication date</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>state</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>title</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sort order</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>descending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ascending</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>CoverPage</name>
     <message>
         <source>Podcatcher</source>
@@ -210,13 +261,6 @@
     <message>
         <source>Sort Episodes</source>
         <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>PodcastEpisodesChannelInfo</name>
-    <message>
-        <source>Auto-download</source>
-        <translation>Загружать автоматически</translation>
     </message>
 </context>
 <context>
@@ -446,6 +490,17 @@
     </message>
     <message>
         <source>Download podcast feeds on startup. This may take some time.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>URLEditDialog</name>
+    <message>
+        <source>feed URL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Edit feed URL</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -27,6 +27,7 @@
 #include "podcastmanager.h"
 #include "podcastchannelsmodel.h"
 #include "mediametadataextractor.h"
+#include "podcastplaylist.h"
 
 class PodcatcherUI : QObject
 {
@@ -41,6 +42,7 @@ public:
     Q_INVOKABLE void refreshChannels();
     Q_INVOKABLE QString versionString();
     Q_INVOKABLE void importFromGPodder(const QString &username, const QString &password);
+    Q_INVOKABLE void changeFeedURLIfValid(int channelId, const QString& url);
 
     Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY isDownloadingChanged)
 
@@ -62,6 +64,7 @@ private slots:
     void onRefreshEpisodes(int channelId);
     void onDownloadPodcast(int channelId, int index);
     void onPlayPodcast(int channelId, int index);
+    void onAddToPlayList(int channelId, int index);
     void onDownloadingPodcast(bool isDownloading);
     void onCancelDownload(int channelId, int index);
     void onCancelQueueing(int channelId, int index);
@@ -81,6 +84,8 @@ private:
     PodcastChannelsModel *m_channelsModel;
     PodcastChapterModel *m_chapterModel;
     PodcastEpisodesModelFactory *modelFactory;
+    PodcastPlaylist* m_playlist;
+
     QMap<QString, QString> logoCache;
     QQuickView* view;
 
