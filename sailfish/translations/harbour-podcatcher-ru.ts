@@ -258,10 +258,6 @@
         <source>Refreshing episodes...</source>
         <translation>Получение списка новых выпусков...</translation>
     </message>
-    <message>
-        <source>Sort Episodes</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>PodcastEpisodesList</name>

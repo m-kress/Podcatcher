@@ -171,8 +171,10 @@ Page {
             }
 
             Row{
-                width: parent.width
+                width: parent.width-Theme.horizontalPageMargin
                 height: txURL.height
+                x: Theme.horizontalPageMargin
+
                 LinkedLabel{
                     id: txURL
                    // label: qsTr("URL")

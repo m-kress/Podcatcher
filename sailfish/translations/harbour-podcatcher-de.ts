@@ -85,27 +85,27 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="111"/>
         <source>Auto-download</source>
-        <translation type="unfinished"></translation>
+        <translation>Auto-Download</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="120"/>
         <source>Sortation</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortierung</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="125"/>
         <source>Sort by</source>
-        <translation type="unfinished">Sortieren nach</translation>
+        <translation>Sortieren nach</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="129"/>
         <source>ID</source>
-        <translation type="unfinished">ID</translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="132"/>
         <source>publication date</source>
-        <translation type="unfinished">Veröffentlichungsdatum</translation>
+        <translation>Veröffentlichungsdatum</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="136"/>
@@ -115,27 +115,27 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="140"/>
         <source>title</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="151"/>
         <source>Sort order</source>
-        <translation type="unfinished">Reihenfolge</translation>
+        <translation>Reihenfolge</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="155"/>
         <source>descending</source>
-        <translation type="unfinished">absteigend</translation>
+        <translation>absteigend</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="159"/>
         <source>ascending</source>
-        <translation type="unfinished">aufsteigend</translation>
+        <translation>aufsteigend</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="170"/>
         <source>Feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Feed</translation>
     </message>
 </context>
 <context>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="92"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="94"/>
         <source>Remove subscription</source>
         <translation>Abonnement aufheben</translation>
     </message>
@@ -309,17 +309,12 @@
         <translation>Aktualisieren</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
-        <source>Sort Episodes</source>
-        <translation>Episoden sortiern</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="99"/>
         <source>Delete downloaded podcasts</source>
         <translation>Heruntergeladenen Podcast löschen</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="152"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="154"/>
         <source>Refreshing episodes...</source>
         <translation>Aktualisiere Folgen…</translation>
     </message>

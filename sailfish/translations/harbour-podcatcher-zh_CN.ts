@@ -95,7 +95,7 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="125"/>
         <source>Sort by</source>
-        <translation type="unfinished">分类方式</translation>
+        <translation>分类方式</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="129"/>
@@ -105,32 +105,32 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="132"/>
         <source>publication date</source>
-        <translation type="unfinished">出品日期</translation>
+        <translation>出品日期</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="136"/>
         <source>state</source>
-        <translation type="unfinished">国家</translation>
+        <translation>国家</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="140"/>
         <source>title</source>
-        <translation type="unfinished">标题</translation>
+        <translation>标题</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="151"/>
         <source>Sort order</source>
-        <translation type="unfinished">分类顺序</translation>
+        <translation>分类顺序</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="155"/>
         <source>descending</source>
-        <translation type="unfinished">升序</translation>
+        <translation>升序</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="159"/>
         <source>ascending</source>
-        <translation type="unfinished">降序</translation>
+        <translation>降序</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="170"/>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="92"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="94"/>
         <source>Remove subscription</source>
         <translation>移除订阅</translation>
     </message>
@@ -309,17 +309,12 @@
         <translation>刷新</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
-        <source>Sort Episodes</source>
-        <translation>分季</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="99"/>
         <source>Delete downloaded podcasts</source>
         <translation>删除下载的播客</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="152"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="154"/>
         <source>Refreshing episodes...</source>
         <translation>刷新全部剧集…</translation>
     </message>

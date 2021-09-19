@@ -95,7 +95,7 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="125"/>
         <source>Sort by</source>
-        <translation type="unfinished">Sortera efter</translation>
+        <translation>Sortera efter</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="129"/>
@@ -105,32 +105,32 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="132"/>
         <source>publication date</source>
-        <translation type="unfinished">publikationsdatum</translation>
+        <translation>publikationsdatum</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="136"/>
         <source>state</source>
-        <translation type="unfinished">status</translation>
+        <translation>status</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="140"/>
         <source>title</source>
-        <translation type="unfinished">titel</translation>
+        <translation>titel</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="151"/>
         <source>Sort order</source>
-        <translation type="unfinished">Sorteringsordning</translation>
+        <translation>Sorteringsordning</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="155"/>
         <source>descending</source>
-        <translation type="unfinished">sjunkande</translation>
+        <translation>sjunkande</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="159"/>
         <source>ascending</source>
-        <translation type="unfinished">stigande</translation>
+        <translation>stigande</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="170"/>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="92"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="94"/>
         <source>Remove subscription</source>
         <translation>Ta bort prenumeration</translation>
     </message>
@@ -309,17 +309,12 @@
         <translation>Uppdatera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
-        <source>Sort Episodes</source>
-        <translation>Sortera avsnitt</translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="99"/>
         <source>Delete downloaded podcasts</source>
         <translation>Ta bort nerladdade poddar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="152"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="154"/>
         <source>Refreshing episodes...</source>
         <translation>Uppdaterar avsnitt...</translation>
     </message>

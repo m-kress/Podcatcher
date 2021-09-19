@@ -95,7 +95,7 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="125"/>
         <source>Sort by</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="129"/>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="43"/>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="92"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="94"/>
         <source>Remove subscription</source>
         <translation>Eliminar suscripción</translation>
     </message>
@@ -309,17 +309,12 @@
         <translation>Actualizar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="81"/>
-        <source>Sort Episodes</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="97"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="99"/>
         <source>Delete downloaded podcasts</source>
         <translation>Borrar podcasts descargados</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodes.qml" line="152"/>
+        <location filename="../qml/pages/PodcastEpisodes.qml" line="154"/>
         <source>Refreshing episodes...</source>
         <translation>Actualizando episodios...</translation>
     </message>
