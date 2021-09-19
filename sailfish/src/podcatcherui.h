@@ -27,7 +27,7 @@
 #include "podcastmanager.h"
 #include "podcastchannelsmodel.h"
 #include "mediametadataextractor.h"
-#include "podcastplaylist.h"
+//#include "podcastplaylist.h"
 
 class PodcatcherUI : QObject
 {
@@ -84,7 +84,7 @@ private:
     PodcastChannelsModel *m_channelsModel;
     PodcastChapterModel *m_chapterModel;
     PodcastEpisodesModelFactory *modelFactory;
-    PodcastPlaylist* m_playlist;
+    //PodcastPlaylist* m_playlist;
 
     QMap<QString, QString> logoCache;
     QQuickView* view;

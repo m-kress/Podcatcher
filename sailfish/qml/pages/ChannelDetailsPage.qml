@@ -83,8 +83,9 @@ Page {
                     id: channelDescription
                     text: channelDescriptionText
                     anchors.left: channelLogo.right
-                    anchors.leftMargin: Theme.paddingLarge
-                    width: parent.width - channelLogo.width - Theme.paddingLarge -Theme.horizontalPageMargin
+                    anchors.leftMargin: Theme.paddingMedium
+                    anchors.rightMargin: Theme.horizontalPageMargin
+                    width: parent.width - channelLogo.width - Theme.paddingMedium -2*Theme.horizontalPageMargin
                     height: Text.paintedHeight
                     wrapMode: Text.WordWrap
                     font.pixelSize: Theme.fontSizeSmall

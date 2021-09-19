@@ -125,7 +125,7 @@ PodcatcherUI::PodcatcherUI()
         emit showInfoBanner("Jolla Mediaplayer not installed. Playback of the podcasts might not work.");
     }
 
-    m_playlist = new PodcastPlaylist(this);
+    //m_playlist = new PodcastPlaylist(this);
 
 }
 
@@ -165,6 +165,7 @@ void PodcatcherUI::onShowChannel(const QString& channelId)
         return;
     }
 
+    /*
     if (channel->description().length() > 270) {
         QString oldDesc = channel->description();
         oldDesc.truncate(270);
@@ -172,6 +173,7 @@ void PodcatcherUI::onShowChannel(const QString& channelId)
 
         channel->setDescription(newDesc);
     }
+    */
 
     view->rootContext()->setContextProperty("channel", channel);
 
@@ -275,7 +277,7 @@ void PodcatcherUI::onAddToPlayList(int channelId, int index)
 
     PodcastEpisode *episode = episodesModel->episode(index);
 
-    m_playlist->addEpisode(episode);
+    //m_playlist->addEpisode(episode);
 }
 
 void PodcatcherUI::onDownloadingPodcast(bool _isDownloading)
