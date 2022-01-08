@@ -78,62 +78,62 @@
 <context>
     <name>ChannelDetailsPage</name>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="103"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="104"/>
         <source>Download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="111"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="112"/>
         <source>Auto-download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="120"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="121"/>
         <source>Sortation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="125"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="126"/>
         <source>Sort by</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="129"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="130"/>
         <source>ID</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="132"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="133"/>
         <source>publication date</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="136"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="137"/>
         <source>state</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="140"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="141"/>
         <source>title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="151"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="152"/>
         <source>Sort order</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="155"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="156"/>
         <source>descending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="159"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="160"/>
         <source>ascending</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/ChannelDetailsPage.qml" line="170"/>
+        <location filename="../qml/pages/ChannelDetailsPage.qml" line="171"/>
         <source>Feed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -284,6 +284,14 @@
     </message>
 </context>
 <context>
+    <name>PodcastEpisode</name>
+    <message>
+        <location filename="../src/podcastepisode.cpp" line="238"/>
+        <source>SD card not available! Make sure SD card is mounted and decrypted!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PodcastEpisodes</name>
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="41"/>
@@ -414,8 +422,8 @@
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="743"/>
-        <source>Podcast episode download failed.</source>
-        <translation>Error al descargar episodio de podcast.</translation>
+        <source>Podcast episode download failed: </source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="1108"/>
@@ -446,22 +454,27 @@
         <translation>Recopilando información del canal...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="226"/>
+        <location filename="../src/podcatcherui.cpp" line="224"/>
+        <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/podcatcherui.cpp" line="233"/>
         <source>Podcast episode not found.</source>
         <translation>Episodio de podcast no encontrado.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="239"/>
+        <location filename="../src/podcatcherui.cpp" line="247"/>
         <source>Mediaplayer program not found!</source>
         <translation>¡Reproductor no encontrado!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="255"/>
+        <location filename="../src/podcatcherui.cpp" line="263"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>¡Lo siento! No es posible abrir el reproductor para este podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="449"/>
+        <location filename="../src/podcatcherui.cpp" line="457"/>
         <source>Unable to stream podcast.</source>
         <translation>No es posible transmitir podcast.</translation>
     </message>

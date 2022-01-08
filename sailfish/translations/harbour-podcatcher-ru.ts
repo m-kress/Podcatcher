@@ -233,6 +233,13 @@
     </message>
 </context>
 <context>
+    <name>PodcastEpisode</name>
+    <message>
+        <source>SD card not available! Make sure SD card is mounted and decrypted!</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>PodcastEpisodes</name>
     <message>
         <source>Remove subscription</source>
@@ -332,10 +339,6 @@
         <translation>Ошибка ленты обновлений. Невозможно загрузить выпуски &apos;%1&apos;.</translation>
     </message>
     <message>
-        <source>Podcast episode download failed.</source>
-        <translation>Загрузить выпуск не удалось.</translation>
-    </message>
-    <message>
         <source>gPodder.net authentication information required.</source>
         <translation>Требуется пароль для gPodder.net.</translation>
     </message>
@@ -354,6 +357,10 @@
     <message>
         <source>Unable to add subscription from %1 …</source>
         <translation>Невозможно добавить подписку от %1 …</translation>
+    </message>
+    <message>
+        <source>Podcast episode download failed: </source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -377,6 +384,10 @@
     <message>
         <source>Unable to stream podcast.</source>
         <translation>Воспроизведение из сети невозможно.</translation>
+    </message>
+    <message>
+        <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
