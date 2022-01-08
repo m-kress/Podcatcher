@@ -9,7 +9,7 @@ Name:       harbour-podcatcher
 # << macros
 
 Summary:    Your mobile podcast client for Sailfish OS
-Version:    1.9.13
+Version:    1.9.15
 Release:    1
 Group:      Qt/Qt
 License:    GPLV3

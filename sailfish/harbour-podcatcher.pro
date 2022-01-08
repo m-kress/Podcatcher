@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-podcatcher
 
-DEFINES += PODCATCHER_VERSION=1913
+DEFINES += PODCATCHER_VERSION=1915
 QT += sql xml concurrent
 
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -154,7 +154,7 @@ SOURCES += src/Podcatcher.cpp \
     src/podcastepisodesmodel.cpp \
     src/podcastepisodesmodelfactory.cpp \
     src/podcastmanager.cpp \
-    src/podcastplaylist.cpp \
+    #src/podcastplaylist.cpp \
     src/podcastrssparser.cpp \
     src/podcastrssparser2.cpp \
     src/podcastsqlmanager.cpp \
@@ -346,7 +346,7 @@ HEADERS += \
     src/podcastepisodesmodelfactory.h \
     src/podcastglobals.h \
     src/podcastmanager.h \
-    src/podcastplaylist.h \
+    #src/podcastplaylist.h \
     src/podcastrssparser.h \
     src/podcastrssparser2.h \
     src/podcastsqlmanager.h \
