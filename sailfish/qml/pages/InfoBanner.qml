@@ -34,8 +34,9 @@ DockedPanel {
     Rectangle{
         anchors.fill: parent
         color: Theme.highlightBackgroundColor
-        opacity: Theme.highlightBackgroundOpacity
+        opacity: 1
     }
+
     MouseArea{
         anchors.fill: parent
 
@@ -47,7 +48,7 @@ DockedPanel {
 
     Label{
         id: label
-        width:parent.width
+        width: parent.width
         height: Text.paintedHeight
         anchors.verticalCenter: parent.verticalCenter
         text: dockPanel.text
