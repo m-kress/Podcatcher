@@ -218,15 +218,21 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
     // If the file doens't exist, update the state in the DB
     // and do nothing more.
     QFile checkFile(file.toLocalFile());
-    if (!checkFile.exists()) {
-        qDebug() << "Original file " << file.toLocalFile() << " doesn't exist anymore.";
-        episode->setPlayFilename("");
-        episode->setState(PodcastEpisode::GetState);
-        episode->setLastPlayed(QDateTime());
-        episodesModel->refreshEpisode(episode);
 
-        emit showInfoBanner(tr("Podcast episode not found."));
-        return;
+    if (!checkFile.exists()) {
+        if (file.toLocalFile().startsWith("/media/sdcard")){
+            emit showInfoBanner(tr("Podcast episode not found.  Make sure SD card is mounted and decrypted!"));
+            return;
+        }else{
+            qDebug() << "Original file " << file.toLocalFile() << " doesn't exist anymore.";
+            episode->setPlayFilename("");
+            episode->setState(PodcastEpisode::GetState);
+            episode->setLastPlayed(QDateTime());
+            episodesModel->refreshEpisode(episode);
+
+            emit showInfoBanner(tr("Podcast episode not found."));
+            return;
+        }
     }
 
     episode->setLastPlayed(QDateTime::currentDateTime());

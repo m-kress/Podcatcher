@@ -38,6 +38,7 @@ PodcastEpisode::PodcastEpisode(QObject *parent) :
     m_playFilename = "";
     m_user = "";
     m_password = "";
+    m_downloadFile = nullptr;
 
     m_saveOnSDCOnf = new MGConfItem("/apps/ControlPanel/Podcatcher/saveOnSDCard", this);
 
@@ -228,10 +229,36 @@ void PodcastEpisode::downloadEpisode()
     request.setRawHeader("User-Agent", "Podcatcher Podcast client");
     //request.setRawHeader( "Accept" , "*/*" );
 
-    //NetworkAccessManager* qnam = new QNetworkAccessManager(parent());
-
     m_currentDownload = m_dlNetworkManager->get(request);
-    //m_currentDownload = qnam->get(request);
+
+    QString downloadPath;
+    downloadPath = getDownloadDir();
+
+    if (downloadPath == "!SD"){
+        m_errorMessage = tr("SD card not available! Make sure SD card is mounted and decrypted!");
+        emit podcastEpisodeDownloadFailed(this);
+        m_currentDownload->abort();
+        m_currentDownload->deleteLater();
+    }
+
+    QDir dirpath(downloadPath);
+    if (!dirpath.exists()) {
+        dirpath.mkpath(downloadPath);
+    }
+
+    qDebug() << "Saving download at " << downloadPath;
+
+    QString path =  m_currentDownload->url().path();
+    QString filename = QFileInfo(path).fileName();
+
+    if(m_downloadFile){
+        qWarning() << "Download file exits! Closing it.";
+        m_downloadFile->close();
+        m_downloadFile->deleteLater();
+    }
+
+    m_downloadFile = new QFile(downloadPath + filename);
+    m_downloadFile->open(QIODevice::WriteOnly);
 
     connect(m_currentDownload, SIGNAL(finished()),
             this, SLOT(onPodcastEpisodeDownloadCompleted()));
@@ -243,6 +270,9 @@ void PodcastEpisode::downloadEpisode()
 
     connect(m_currentDownload, SIGNAL(metaDataChanged()),
              this, SLOT(onMetaDataChanged()));
+
+    connect(m_currentDownload, SIGNAL(readyRead()),
+            this,SLOT(onDownloadReadyRead()));
 }
 
 void PodcastEpisode::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
@@ -251,6 +281,14 @@ void PodcastEpisode::onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal)
     m_downloadSize = bytesTotal;
     //qDebug() << "Download Progress in" <<title() << bytesReceived;
     emit episodeChanged();
+}
+
+void PodcastEpisode::onDownloadReadyRead()
+{
+    if (m_downloadFile){
+        m_downloadFile->write(m_currentDownload->readAll());
+    }
+    //qDebug() << "Write received bytes.";
 }
 
 void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
@@ -271,55 +309,24 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
     if (reply->error() != QNetworkReply::NoError) {
         qDebug() << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute);
         qWarning() << "Download of podcast was not succesfull: " << reply->errorString();
+        m_errorMessage = reply->errorString();
         reply->deleteLater();
         emit podcastEpisodeDownloadFailed(this);
         return;
     }
 
-    QString downloadPath;
-    //downloadPath = PODCATCHER_PODCAST_DLDIR;
+    m_downloadFile->write(reply->readAll());
+    m_downloadFile->close();
 
-    downloadPath = getDownloadDir();
-
-    QDir dirpath(downloadPath);
-    if (!dirpath.exists()) {
-        dirpath.mkpath(downloadPath);
-    }
-
-    qDebug() << "Saving download at " << downloadPath;
-
-    QString path = reply->url().path();
-    QString filename = QFileInfo(path).fileName();
-
-    QFile file(downloadPath + filename);
-    if (!file.open(QIODevice::WriteOnly)) {
-        qWarning() << "Could not open" << filename <<  "for writing:" << file.errorString();
-        return;
-    }
-
-//    try{
-//        file.write(reply->readAll());
-//    }
-//    catch(std::bad_alloc& ba){
-//        qDebug() << "File too large, write it piecewise";
-        std::vector<char> buffer(4096);
-        qint64 bytesRead;
-
-        while((bytesRead = reply->read(&buffer[0], buffer.size())) >0){
-            file.write(&buffer[0], bytesRead);
-        }
-//    }
-
-    //
-    file.close();
-
-    QFileInfo fileInfo(file);
+    QFileInfo fileInfo(*m_downloadFile);
     m_playFilename = fileInfo.absoluteFilePath();
 
     qDebug() << "Podcast downloaded: " << m_playFilename;
 
     emit podcastEpisodeDownloaded(this);
     reply->deleteLater();
+    m_downloadFile->deleteLater();
+    m_downloadFile = nullptr;
     m_dlNetworkManager = nullptr;
 }
 
@@ -380,6 +387,11 @@ void PodcastEpisode::cancelCurrentDownload()
         m_currentDownload->abort();
 
     }
+
+    if (m_downloadFile){
+        m_downloadFile->close();
+        m_downloadFile->deleteLater();
+    }
 }
 
 void PodcastEpisode::deleteDownload()
@@ -437,6 +449,11 @@ void PodcastEpisode::getAudioUrl()
     connect(reply, SIGNAL(metaDataChanged()),
             this,  SLOT(onAudioUrlMetadataChanged()));
 
+}
+
+QString PodcastEpisode::errorMessage() const
+{
+    return m_errorMessage;
 }
 
 void PodcastEpisode::onAudioUrlMetadataChanged()
@@ -528,8 +545,10 @@ QString PodcastEpisode::getDownloadDir()
         }
 
         if(sd.isEmpty()){ //no SD mounted
-            m_saveOnSDCOnf->set(false);
-            return PODCATCHER_PODCAST_DLDIR;
+            //m_saveOnSDCOnf->set(false);
+            qWarning() << "SD not mounted.";
+            return "!SD";
+            //return PODCATCHER_PODCAST_DLDIR;
         }
 
         path += sd+"/podcasts/";

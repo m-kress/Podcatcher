@@ -23,6 +23,7 @@
 #include <QDateTime>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
+#include <QFile>
 
 #include <MGConfItem>
 
@@ -90,6 +91,8 @@ public:
     QDateTime lastPlayed() const;
     bool hasBeenCanceled() const;
     void getAudioUrl();
+    QString errorMessage() const;
+
 
     void cancelCurrentDownload();
     void deleteDownload();
@@ -107,6 +110,7 @@ public slots:
 
 private slots:
     void onDownloadProgress(qint64 bytesReceived, qint64 bytesTotal);
+    void onDownloadReadyRead();
     void onPodcastEpisodeDownloadCompleted();
     void onAudioUrlMetadataChanged();
     void onDownloadError(QNetworkReply::NetworkError err);
@@ -140,6 +144,9 @@ private:
 
     QNetworkAccessManager *m_streamResolverManager{};
     int m_streamResolverTries{};
+
+    QFile* m_downloadFile;
+    QString m_errorMessage;
 
    MGConfItem *m_saveOnSDCOnf;
 };

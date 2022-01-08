@@ -740,7 +740,7 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
                this, SLOT(onPodcastEpisodeDownloadFailed(PodcastEpisode*)));
 
     if (isDownloading()) {
-        emit showInfoBanner(tr("Podcast episode download failed."));
+        emit showInfoBanner(tr("Podcast episode download failed: ")+episode->errorMessage());
     }
 
     //m_isDownloading = false;
