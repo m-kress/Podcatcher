@@ -182,10 +182,15 @@ bool PodcastRSSParser2::parseRSSImage(PodcastChannel *channel, QXmlStreamReader 
 
     bool itunes = xml.namespaceUri() == "http://www.itunes.com/dtds/podcast-1.0.dtd";
 
+    if (itunes){
+        auto attr = xml.attributes();
+        if (attr.hasAttribute("href")){
+            channel->setLogoUrl(attr.value("href").toString());
+        }
+    }
+
     while (xml.readNextStartElement()) {
-        if (xml.name() == QLatin1String("url") && !itunes){
-            channel->setLogoUrl(xml.readElementText());
-        }else if (itunes && xml.name() == QLatin1String("href") && channel->logoUrl().isEmpty()){ //prefer standard image
+        if (xml.name() == QLatin1String("url")){
             channel->setLogoUrl(xml.readElementText());
         }else
             xml.skipCurrentElement();
@@ -296,7 +301,7 @@ QList<PodcastEpisode *> *PodcastRSSParser2::episodesFromAtom(QXmlStreamReader &x
             episode->moveToThread(episodeParent->thread());
 
             QString desc = "";
-             QString title = "";
+            QString title = "";
 
             while(xml.readNextStartElement()){
                 if(xml.name() == "title"){
