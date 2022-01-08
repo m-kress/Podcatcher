@@ -157,7 +157,5 @@ Page {
 
     InfoBanner {
         id: uiInfoBanner
-        topMargin: 10
-        leftMargin: 10
     }
 }
