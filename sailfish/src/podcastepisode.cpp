@@ -255,6 +255,7 @@ void PodcastEpisode::downloadEpisode()
         qWarning() << "Download file exits! Closing it.";
         m_downloadFile->close();
         m_downloadFile->deleteLater();
+        m_downloadFile = nullptr;
     }
 
     m_downloadFile = new QFile(downloadPath + filename);
@@ -327,7 +328,6 @@ void PodcastEpisode::onPodcastEpisodeDownloadCompleted()
     reply->deleteLater();
     m_downloadFile->deleteLater();
     m_downloadFile = nullptr;
-    m_dlNetworkManager = nullptr;
 }
 
 void PodcastEpisode::setDownloadManager(QNetworkAccessManager *qnam)
@@ -391,6 +391,7 @@ void PodcastEpisode::cancelCurrentDownload()
     if (m_downloadFile){
         m_downloadFile->close();
         m_downloadFile->deleteLater();
+        m_downloadFile = nullptr;
     }
 }
 
