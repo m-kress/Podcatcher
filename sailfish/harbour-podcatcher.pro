@@ -12,7 +12,7 @@
 # The name of your application
 TARGET = harbour-podcatcher
 
-DEFINES += PODCATCHER_VERSION=1915
+DEFINES += PODCATCHER_VERSION=1916
 QT += sql xml concurrent
 
 CONFIG(release, debug|release):DEFINES += QT_NO_DEBUG_OUTPUT
@@ -181,7 +181,7 @@ TRANSLATIONS += translations/harbour-podcatcher-de.ts \
 
 
 DISTFILES += \
-    qml/MediaKeys.qml \
+    #qml/MediaKeys.qml \
     qml/Utils.js \
     qml/EmptyPage.qml \
     qml/PodcatcherInfoBanner.qml \

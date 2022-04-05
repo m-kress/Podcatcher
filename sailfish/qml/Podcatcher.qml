@@ -33,8 +33,11 @@ ApplicationWindow
     signal cancelQueue(int channelId, int index)
     signal deleteChannel(string channelId)
     signal allListened(string channelId)
+    signal allFinished(string channelId)
     signal deleteDownloaded(int channelId, int index)
     signal markAsUnplayed(int channelId, int index)
+    signal markAsFinished(int channelId, int index)
+    signal markAsUnFinished(int channelId, int index)
     signal startStreaming(int channelId, int index)
     signal autoDownloadChanged(int channelId, bool autoDownload)
     signal addToPlayList(int channelId, int index)
@@ -45,9 +48,10 @@ ApplicationWindow
     //allowedOrientations:Orientation.All
    // _defaultPageOrientations: Orientation.Portrait
 
+   /*
     MediaKeys{
 
-    }
+    }*/
 
     AudioPlayer{
         id: player
