@@ -66,6 +66,10 @@ void MediaMetaDataExtractor::inspect(QString url)
 
         m_podcast = QString::fromStdString(tag->album().to8Bit(true));
         emit podcastChanged(m_podcast);
+
+        m_artist = QString::fromStdString(tag->artist().to8Bit(true));
+        emit artistChanged(m_artist);
+
     }else{
         return;
     }
@@ -76,6 +80,7 @@ void MediaMetaDataExtractor::reset()
 {
     m_title = "";
     m_podcast = "";
+    m_artist = "";
 
     m_cover = QImage();
 
@@ -84,6 +89,7 @@ void MediaMetaDataExtractor::reset()
 
     emit titleChanged(m_title);
     emit podcastChanged(m_podcast);
+    emit artistChanged(m_artist);
 }
 
 void MediaMetaDataExtractor::inspectMP3(const QString& url)

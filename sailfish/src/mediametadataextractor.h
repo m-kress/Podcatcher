@@ -68,6 +68,7 @@ class MediaMetaDataExtractor : public QObject
 {
     Q_OBJECT
     QString m_title;
+    QString m_artist;
 
     QString m_podcast;
 
@@ -79,14 +80,13 @@ public:
     explicit MediaMetaDataExtractor(QObject *parent = nullptr);
 
     Q_INVOKABLE void inspect(QString url);
+    Q_PROPERTY(QString artist READ artist NOTIFY artistChanged)
     Q_PROPERTY(QString title READ title NOTIFY titleChanged)
     Q_PROPERTY(QString podcast READ podcast NOTIFY podcastChanged)
 
     CoverImageProvider imageProvider;
     QImage getCover();
     QList<PodcastChapter>* chapters();
-
-
 
 protected:
     void reset();
@@ -97,6 +97,12 @@ protected:
     void inspectOPUS(const QString &url);
 
     void parseXiphComments(TagLib::Ogg::XiphComment *tag);
+
+     const QString & artist() const
+    {
+        return m_artist;
+    }
+
 
     QString title() const
     {
@@ -116,6 +122,8 @@ signals:
     void podcastChanged(QString podcast);
 
     void chaptersChanged(QList<PodcastChapter> * chapters);
+
+    void artistChanged(QString artist);
 
 public slots:
 

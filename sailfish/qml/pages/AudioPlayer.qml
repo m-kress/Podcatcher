@@ -21,7 +21,8 @@ import QtMultimedia 5.6
 import Sailfish.Silica 1.0
 import  org.nemomobile.configuration 1.0
 
-import org.nemomobile.mpris 1.0
+//import org.nemomobile.mpris 1.0
+import Amber.Mpris 1.0
 
 Page {
     id: playerPage
@@ -111,7 +112,7 @@ Page {
         Label {
             id: titleLabel
             text: title
-            width: parent.width //- durationLabel.width
+            width: parent.width -2*Theme.horizontalPageMargin
             height: Text.paintedHeight
             anchors.horizontalCenter: parent.horizontalCenter
             wrapMode:Text.WrapAtWordBoundaryOrAnywhere
@@ -361,13 +362,31 @@ Page {
             cover.source = '';
             cover.source = 'image://coverArt/cover';
 
+
+            /*
             var infos = mpris.metadata;
             infos[Mpris.metadataToString(Mpris.Artist)] = [mediaMetaDataExtractor.artist]
             infos[Mpris.metadataToString(Mpris.Title)] = mediaMetaDataExtractor.title
-            mpris.metadata = infos;
+            mpris.metadata = infos;           
+            */
 
-            mpris.canSeek = audioPlayer.seekable
+//            var artist = "";
 
+//            if (audioPlayer.metaData.albumArtist !== undefined )
+//                artist = audioPlayer.metaData.albumArtist;
+//            else if (audioPlayer.metaData.contributingArtist !== undefined)
+//                artist = audioPlayer.metaData.contributingArtist;
+//            else if (audioPlayer.metaData.composer !== undefined)
+//                artist = audioPlayer.metaData.composer;
+
+//            console.log("AlbumArtist: "+audioPlayer.metaData.albumArtist);
+//            console.log("ContributingArtist: "+audioPlayer.metaData.contributingArtist);
+//            console.log("Composer: "+audioPlayer.metaData.composer);
+
+            mpris.metaData.title =  mediaMetaDataExtractor.title;
+            mpris.metaData.contributingArtist =mediaMetaDataExtractor.artist;
+            mpris.metaData.albumTitle = mediaMetaDataExtractor.podcast;
+            mpris.canSeek = audioPlayer.seekable;
         }
 
         onStatusChanged: {
@@ -408,7 +427,7 @@ Page {
         canSeek: false
         hasTrackList: false
         playbackStatus: Mpris.Paused
-        loopStatus: Mpris.None
+        loopStatus: Mpris.LoopNone//Mpris.None
         shuffle: false
         volume: 1.0
         onPauseRequested: {
@@ -441,11 +460,17 @@ Page {
 
         //metadata handling
         function updateMetaData(){
+            /*
             var infos = mpris.metadata;
 
             infos[Mpris.metadataToString(Mpris.Artist)] = [mediaMetaDataExtractor.artist]
             infos[Mpris.metadataToString(Mpris.Title)] = mediaMetaDataExtractor.title
             mpris.metadata = infos;
+            */
+
+            Mpris.metaData.albumArtist = mediaMetaDataExtractor.artist;
+            Mpris.metaData.title = mediaMetaDataExtractor.title;
+
         }
     }
 
