@@ -19,12 +19,12 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="88"/>
         <source>Player</source>
-        <translation type="unfinished"></translation>
+        <translation>Spelare</translation>
     </message>
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="267"/>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapitel</translation>
     </message>
 </context>
 <context>
@@ -80,17 +80,17 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="104"/>
         <source>Download</source>
-        <translation type="unfinished"></translation>
+        <translation>Ladda ner</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="112"/>
         <source>Auto-download</source>
-        <translation type="unfinished"></translation>
+        <translation>Automatisk nerladdning</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="121"/>
         <source>Sortation</source>
-        <translation type="unfinished"></translation>
+        <translation>Sortering</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="126"/>
@@ -100,7 +100,7 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="130"/>
         <source>ID</source>
-        <translation type="unfinished">ID</translation>
+        <translation>ID</translation>
     </message>
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="133"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../qml/pages/ChannelDetailsPage.qml" line="171"/>
         <source>Feed</source>
-        <translation type="unfinished"></translation>
+        <translation>Flöde</translation>
     </message>
 </context>
 <context>
@@ -288,7 +288,7 @@
     <message>
         <location filename="../src/podcastepisode.cpp" line="251"/>
         <source>SD card not available! Make sure SD card is mounted and decrypted!</source>
-        <translation type="unfinished"></translation>
+        <translation>Inget SD-kort tillgängligt! Tillse att SD-kortet är monterat och avkrypterat!</translation>
     </message>
 </context>
 <context>
@@ -314,7 +314,7 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="71"/>
         <source>Mark all espiodes as finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera alla avsnitt som slutförda</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodes.qml" line="78"/>
@@ -357,12 +357,12 @@
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="129"/>
         <source>Mark as finished</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera som avslutad</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="137"/>
         <source>Mark as unfinished</source>
-        <translation type="unfinished"></translation>
+        <translation>Markera som oavslutad</translation>
     </message>
     <message>
         <location filename="../qml/pages/PodcastEpisodesList.qml" line="145"/>
@@ -438,7 +438,7 @@
     <message>
         <location filename="../src/podcastmanager.cpp" line="743"/>
         <source>Podcast episode download failed: </source>
-        <translation type="unfinished"></translation>
+        <translation>Kunde inte ladda ner poddavsnitt: </translation>
     </message>
     <message>
         <location filename="../src/podcastmanager.cpp" line="1119"/>
@@ -471,7 +471,7 @@
     <message>
         <location filename="../src/podcatcherui.cpp" line="233"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
-        <translation type="unfinished"></translation>
+        <translation>Poddavsnittet hittades inte. Tillse att SD-kortet är monterat och avkrypterat!</translation>
     </message>
     <message>
         <location filename="../src/podcatcherui.cpp" line="242"/>
@@ -635,12 +635,12 @@
     <message>
         <location filename="../qml/pages/URLEditDialog.qml" line="7"/>
         <source>Edit feed URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Redigera flödes-URL</translation>
     </message>
     <message>
         <location filename="../qml/pages/URLEditDialog.qml" line="17"/>
         <source>feed URL</source>
-        <translation type="unfinished"></translation>
+        <translation>Flödes-URL</translation>
     </message>
 </context>
 </TS>
