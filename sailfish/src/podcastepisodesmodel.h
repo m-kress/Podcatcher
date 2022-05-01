@@ -38,7 +38,9 @@ public:
         TotalDownloadRole,
         AlreadyDownloaded,
         LastTimePlayedRole,
-        PublishedTimestamp
+        PublishedTimestamp,
+        FinishedRole,
+        NewRole
     };
 
     PodcastEpisodesModel(PodcastChannel& channel, QObject *parent = nullptr);
@@ -64,7 +66,8 @@ public:
 
     QList<PodcastEpisode *> episodes();
     QList<PodcastEpisode *> undownloadedEpisodes(int maxUndownloadedEpisodes);
-    QList<PodcastEpisode *> unplayedEpisodes();
+    QList<PodcastEpisode *> unplayedEpisodes();    
+    QList<PodcastEpisode *> unfinishedEpisodes();
 
     void cleanOldEpisodes(int keepNumEpisodes, bool keepUnplayed);
     void removeAll();

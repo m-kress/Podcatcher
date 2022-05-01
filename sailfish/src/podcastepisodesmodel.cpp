@@ -40,6 +40,8 @@ PodcastEpisodesModel::PodcastEpisodesModel(PodcastChannel &channel, QObject *par
     m_roles[AlreadyDownloaded] = "alreadyDownloadedSize";
     m_roles[LastTimePlayedRole] = "lastTimePlayed";
     m_roles[PublishedTimestamp] = "timestamp";
+    m_roles[FinishedRole] = "finished";
+    m_roles[NewRole] = "episodeNew";
     //setRoleNames(roles);
 
     m_sqlmanager = PodcastSQLManagerFactory::sqlmanager();
@@ -97,12 +99,16 @@ QVariant PodcastEpisodesModel::data(const QModelIndex &index, int role) const
         return episode->alreadyDownloaded();
 
     case LastTimePlayedRole:
-        if (episode->episodeState() == "played") {
+        //if (episode->episodeState() == "played") {
+        if (episode->lastPlayed().isValid()) {
             return QString(tr("Last played: %1")).arg(episode->lastPlayed().toString(tr("dd.MM.yyyy hh:mm")));
         } else  {
             return QString();
         }
-
+    case NewRole:
+        return episode->episodeNew();
+    case FinishedRole:
+        return episode->finished();
     default:
         return QVariant();
     }
@@ -376,6 +382,24 @@ QList<PodcastEpisode *> PodcastEpisodesModel::unplayedEpisodes()
 
     return episodes;
 }
+
+QList<PodcastEpisode *> PodcastEpisodesModel::unfinishedEpisodes()
+{
+    QList<PodcastEpisode *> episodes;
+
+    if (m_episodes.isEmpty()) {
+        return episodes;
+    }
+
+    for (auto episode : std::as_const(m_episodes)) {
+        if (!episode->finished()) {
+            episodes << episode;
+        }
+    }
+
+    return episodes;
+}
+
 
 QList<PodcastEpisode *> PodcastEpisodesModel::episodes()
 {

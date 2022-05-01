@@ -796,13 +796,24 @@ void PodcastManager::onPodcastEpisodeDownloadFailed(PodcastEpisode *episode)
 
 QString PodcastManager::redirectedRequest(QNetworkReply *reply)
 {
-    QVariant possibleRedirectUrl =
-            reply->attribute(QNetworkRequest::RedirectionTargetAttribute);
+     QUrl possibleRedirectUrl;
+     QUrl base = reply->url();
 
-    if (possibleRedirectUrl.toUrl().isValid()) {
-        QUrl redirectedUrl = QUrl::fromUserInput(possibleRedirectUrl.toString());
-        qDebug() << "We have been redirected. New URL is " << redirectedUrl;
-        return redirectedUrl.toString();
+    if (reply->attribute(QNetworkRequest::HttpStatusCodeAttribute) == 308){
+        QByteArray header = reply->rawHeader("location");
+          possibleRedirectUrl= base.resolved(QUrl(QString::fromUtf8(header)));
+    }else{
+        QString target = reply->attribute(QNetworkRequest::RedirectionTargetAttribute).toString();
+        if (target.length() >0)
+            possibleRedirectUrl = base.resolved(QUrl(target));
+    }
+
+    qDebug() << "Possible redirect URL: "<< possibleRedirectUrl;
+
+    if (possibleRedirectUrl.isValid()) {
+    //QUrl redirectedUrl = QUrl::fromUserInput(possibleRedirectUrl.toString());
+        qDebug() << "We have been redirected. New URL is " << possibleRedirectUrl;
+        return possibleRedirectUrl.toString();
     }
 
     return QString();

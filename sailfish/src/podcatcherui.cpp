@@ -94,11 +94,20 @@ PodcatcherUI::PodcatcherUI()
     connect(rootDeclarativeItem, SIGNAL(allListened(QString)),
             this, SLOT(onAllListened(QString)));
 
+    connect(rootDeclarativeItem, SIGNAL(allFinished(QString)),
+            this, SLOT(onAllFinished(QString)));
+
     connect(rootDeclarativeItem, SIGNAL(deleteDownloaded(int, int)),
             this, SLOT(onDeletePodcast(int, int)));
 
     connect(rootDeclarativeItem, SIGNAL(markAsUnplayed(int, int)),
             this, SLOT(onMarkAsUnplayed(int,int)));
+
+    connect(rootDeclarativeItem, SIGNAL(markAsFinished(int, int)),
+            this, SLOT(onMarkAsFinished(int,int)));
+
+    connect(rootDeclarativeItem, SIGNAL(markAsUnFinished(int, int)),
+            this, SLOT(onMarkAsUnFinished(int,int)));
 
     connect(rootDeclarativeItem, SIGNAL(startStreaming(int, int)),
             this, SLOT(onStartStreaming(int, int)));
@@ -374,6 +383,26 @@ void PodcatcherUI::onAllListened(const QString& channelId)
     m_channelsModel->refreshChannel(channelId.toInt());
 }
 
+void PodcatcherUI::onAllFinished(const QString &channelId)
+{
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId.toInt());
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    qDebug() << "Yep, mark all listened on channel: " << channelId;
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
+    QList<PodcastEpisode *> unfinished = episodesModel->unfinishedEpisodes();
+    foreach(PodcastEpisode *episode, unfinished) {
+        episode->setAsFinished();
+        episodesModel->refreshEpisode(episode);
+    }
+
+    m_channelsModel->refreshChannel(channelId.toInt());
+}
+
 void PodcatcherUI::onDeletePodcast(int channelId, int index)
 {
     qDebug() << "Deleting the locally downloaded podcast:" << channelId << index;
@@ -412,8 +441,39 @@ void PodcatcherUI::onMarkAsUnplayed(int channelId, int index)
 
     episode->setAsUnplayed();
     episodesModel->refreshEpisode(episode);
-    //m_channelsModel->refreshChannel(channelId);
 }
+
+void PodcatcherUI::onMarkAsFinished(int channelId, int index)
+{
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
+    PodcastEpisode *episode = episodesModel->episode(index);
+
+    episode->setAsFinished();
+    episodesModel->refreshEpisode(episode);
+}
+
+void PodcatcherUI::onMarkAsUnFinished(int channelId, int index)
+{
+    PodcastChannel * channel = m_channelsModel->podcastChannelById(channelId);
+    if (!channel){
+        qWarning() << "Could not get channel"  << channelId;
+        return;
+    }
+
+    PodcastEpisodesModel *episodesModel = modelFactory->episodesModel(*channel);
+    PodcastEpisode *episode = episodesModel->episode(index);
+
+    episode->setAsUnFinished();
+    episodesModel->refreshEpisode(episode);
+}
+
+
 
 void PodcatcherUI::deletePodcasts(int channelId)
 {

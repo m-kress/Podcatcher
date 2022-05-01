@@ -39,6 +39,8 @@ PodcastEpisode::PodcastEpisode(QObject *parent) :
     m_user = "";
     m_password = "";
     m_downloadFile = nullptr;
+    m_new = false;
+    m_finished = false;
 
     m_saveOnSDCOnf = new MGConfItem("/apps/ControlPanel/Podcatcher/saveOnSDCard", this);
 
@@ -140,7 +142,13 @@ QString PodcastEpisode::episodeState() const
         return QString("downloading");
     }
 
-    if (m_lastPlayed.isValid()) {
+    /*
+    if(m_finished){
+        return "finished";
+    }
+    */
+
+    if (m_lastPlayed.isValid() && !m_finished && !m_playFilename.isEmpty()) {
         return "played";
     }
 
@@ -164,6 +172,11 @@ QString PodcastEpisode::episodeState() const
     default:
         return QString("get");
     }
+}
+
+bool PodcastEpisode::finished() const
+{
+    return m_finished;
 }
 
 void PodcastEpisode::setPlayFilename(const QString &playFilename)
@@ -398,6 +411,7 @@ void PodcastEpisode::cancelCurrentDownload()
 void PodcastEpisode::deleteDownload()
 {
     if (m_playFilename.isEmpty()) {
+        setFinished(true);
         return;
     } else {
         qDebug() << "Deleting locally downloaded podcast:" << m_playFilename;
@@ -411,7 +425,8 @@ void PodcastEpisode::deleteDownload()
 
     cancelCurrentDownload();
     setPlayFilename("");
-    setLastPlayed(QDateTime());
+    //setLastPlayed(QDateTime());
+    setFinished(true);
     setState(PodcastEpisode::GetState);
     setHasBeenCanceled(true);             // TODO: This will denote to the UI not to download it again automatically. Better method name would be good.
 }
@@ -423,11 +438,56 @@ void PodcastEpisode::setAsPlayed()
 
 void PodcastEpisode::setAsUnplayed()
 {
+    setFinished(false);
     setLastPlayed(QDateTime());
     setState(EpisodeStates::DownloadedState);
 }
 
+void PodcastEpisode::setAsFinished()
+{
+    setFinished(true);
+//    setState(EpisodeStates::FinishedState);
+}
 
+
+void PodcastEpisode::setAsUnFinished()
+{
+    setFinished(false);
+//    setState(EpisodeStates::FinishedState);
+}
+
+void PodcastEpisode::setFinished(bool finished)
+{
+    if (!m_finished == finished){
+        m_finished = finished;
+        emit episodeChanged();
+    }
+}
+
+
+void PodcastEpisode::setPlayPosition(int playPosition){
+    if (m_playPosition != playPosition){
+        m_playPosition = playPosition;
+        emit playPositionChanged(playPosition);
+    }
+}
+
+void PodcastEpisode::setNew(bool episodeNew)
+{
+    if (episodeNew != m_new){
+        m_new = episodeNew;
+        emit episodeChanged();
+    }
+}
+
+int PodcastEpisode::playPosition() const{
+    return m_playPosition;
+}
+
+bool PodcastEpisode::episodeNew() const
+{
+    return m_new;
+}
 
 /*bool PodcastEpisode::isOnlyWebsiteUrl() const
 {

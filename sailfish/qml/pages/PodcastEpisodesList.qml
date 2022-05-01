@@ -105,10 +105,10 @@ Item {
                 }
 
                 menu: ContextMenu{
-                    visible: (episodeState == "downloaded" || episodeState == "played" || episodeState == "get")
+                    visible: (episodeState == "downloaded" || episodeState == "played" || episodeState == "get" || episodeState == "finished")
                     MenuItem {
                         text: qsTr("Delete downloaded podcast")
-                        visible: (episodeState == "downloaded" || episodeState == "played");
+                        visible: (episodeState == "downloaded" || episodeState == "played" || episodeState == "finished");
                         onClicked: {
                             episodeRemorse.execute(podcastItem,qsTr("Deleting"),
                                                    function(){
@@ -122,6 +122,22 @@ Item {
                         visible: episodeState == "played"
                         onClicked: {
                             appWindow.markAsUnplayed(channelId,index);
+                        }
+                    }
+
+                    MenuItem{
+                        text: qsTr("Mark as finished")
+                        visible: !finished
+                        onClicked: {
+                            appWindow.markAsFinished(channelId,index);
+                        }
+                    }
+
+                    MenuItem{
+                        text: qsTr("Mark as unfinished")
+                        visible: finished
+                        onClicked: {
+                            appWindow.markAsUnFinished(channelId,index);
                         }
                     }
 
@@ -173,6 +189,8 @@ Item {
                     color: podcastItem.highlighted ? Theme.highlightColor : Theme.primaryColor
                     font.family: Theme.fontFamilyHeading
                     font.pixelSize: Theme.fontSizeSmall
+                    font.bold:  episodeNew
+                    font.italic: finished
                     anchors{
                         left: parent.left
                         leftMargin: Theme.horizontalPageMargin
@@ -205,8 +223,10 @@ Item {
                     anchors{
                         top: episodeName.bottom
                         topMargin: Theme.paddingSmall
-                        left: parent.left
-                        leftMargin: Theme.horizontalPageMargin
+                        /*left: parent.left
+                        leftMargin: Theme.horizontalPageMargin*/
+                        right: playButton.left
+                        rightMargin: Theme.paddingSmall
                     }
                     font.pixelSize: Theme.fontSizeTiny
                     color: podcastItem.highlighted ? Theme.secondaryHighlightColor : Theme.secondaryColor
@@ -416,6 +436,14 @@ Item {
                             target: downloadBytesText
                             visible: true
                         }
+                        PropertyChanges {
+                            target: channelPublished
+                            visible: false
+                        }
+                        PropertyChanges {
+                            target: lastPlayed
+                            visible: false
+                        }
                     },
                     State {
                         name: "downloaded"
@@ -433,6 +461,10 @@ Item {
                         }
                         PropertyChanges {
                             target: channelPublished
+                            visible: true
+                        }
+                        PropertyChanges {
+                            target: lastPlayed
                             visible: true
                         }
                         PropertyChanges {
@@ -457,7 +489,7 @@ Item {
                         }
                         PropertyChanges {
                             target: channelPublished
-                            visible: false
+                            visible: true//false
                         }
                         PropertyChanges {
                             target: downloadButton

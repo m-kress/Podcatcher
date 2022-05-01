@@ -67,6 +67,12 @@ Page {
                 }
             }
 
+            MenuItem {
+                text: qsTr("Mark all espiodes as finished")
+                onClicked: {
+                    appWindow.allFinished(channel.channelId);
+                }
+            }
 
             MenuItem {
                 text: qsTr("Refresh")

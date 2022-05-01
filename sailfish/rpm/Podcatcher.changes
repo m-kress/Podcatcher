@@ -1,3 +1,6 @@
+***
+-Introduce concepts of finished and new episodes
+
 * Sat Jan 8 2022 Moritz Carmesin <carolus@carmesinus.de> 1.9.15
 - Write downloaded files during download
 - More careful handling of sd card storage

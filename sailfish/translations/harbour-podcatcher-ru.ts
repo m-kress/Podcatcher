@@ -16,7 +16,7 @@
     <name>AudioPlayer</name>
     <message>
         <source>Player</source>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Chapters</source>
@@ -265,6 +265,10 @@
         <source>Refreshing episodes...</source>
         <translation>Получение списка новых выпусков...</translation>
     </message>
+    <message>
+        <source>Mark all espiodes as finished</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PodcastEpisodesList</name>
@@ -299,6 +303,14 @@
     <message>
         <source>Mark as unplayed</source>
         <translation>Снять метку прослушанного</translation>
+    </message>
+    <message>
+        <source>Mark as finished</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mark as unfinished</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

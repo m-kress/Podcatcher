@@ -50,6 +50,7 @@ public:
     void updateChannelAutoDownloadToDB(bool autoDownloadOn);
     void checkAndCreateAutoDownload(bool autoDownloadOn);
     void checkAndCreateChannelSortation();
+    void checkAndCreateExtendedEpisodeState();
 
 signals:
 

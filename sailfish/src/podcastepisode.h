@@ -51,7 +51,9 @@ public:
         DownloadingState,
         DownloadedState,
         CanceledState,
-        PlayedState
+        PlayedState,
+        FinishedState,
+        NewState
     };
 
     explicit PodcastEpisode(QObject *parent = nullptr);
@@ -71,6 +73,9 @@ public:
     void setDownloadManager(QNetworkAccessManager *qnam);
     void setLastPlayed(const QDateTime &lastPlayed);
     void setHasBeenCanceled(bool canceled);
+    void setFinished(bool finished);
+    void setPlayPosition(int playPosition);
+    void setNew(bool episodeNew);
 
     void setCredentails(const QString& user, const  QString& password);
 
@@ -88,16 +93,21 @@ public:
     qint64 downloadSize() const;
     qint64 alreadyDownloaded();
     QString episodeState() const;
+    bool finished() const;
     QDateTime lastPlayed() const;
     bool hasBeenCanceled() const;
     void getAudioUrl();
     QString errorMessage() const;
+    int playPosition() const;
+    bool episodeNew() const;
 
 
     void cancelCurrentDownload();
     void deleteDownload();
     void setAsPlayed();
     void setAsUnplayed();
+    void setAsFinished();
+    void setAsUnFinished();
 
 signals:
     void episodeChanged();
@@ -105,6 +115,7 @@ signals:
     void podcastEpisodeDownloadFailed(PodcastEpisode *episode);
     void downloadedBytesUpdated(int bytes);
     void streamingUrlResolved(QString url, QString title);
+    void playPositionChanged(int playPosition);
 
 public slots:
 
@@ -135,6 +146,9 @@ private:
     qint64 m_downloadSize{};
     QDateTime m_lastPlayed;
     bool m_hasBeenCanceled;
+    bool m_finished;
+    int  m_playPosition;
+    bool m_new;
 
     QString m_user;
     QString m_password;

@@ -281,6 +281,7 @@ QList<PodcastEpisode *> *PodcastRSSParser2::episodesFromRSS(QXmlStreamReader& xm
             }else{
                 episode->setTitle(title);
                 episode->setDescription(desc);
+                episode->setNew(true);
                 episodes->append(episode);
             }
         }else
@@ -352,6 +353,7 @@ QList<PodcastEpisode *> *PodcastRSSParser2::episodesFromAtom(QXmlStreamReader &x
             }else{
                 episode->setTitle(title);
                 episode->setDescription(desc);
+                episode->setNew(true);
                 episodes->append(episode);
             }
 

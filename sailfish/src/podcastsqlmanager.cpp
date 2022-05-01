@@ -222,8 +222,8 @@ int PodcastSQLManager::podcastEpisodesToDB(QList<PodcastEpisode *> parsedEpisode
     m_connection.transaction();
 
     foreach(PodcastEpisode* episode, parsedEpisodes) {
-        q.prepare("INSERT INTO episodes (title, channelid, downloadLink, playLocation, description, published, duration, downloadSize, lastPlayed, hasBeenCanceled) VALUES "
-                  "(:title, :channelid, :downloadLink, :playLocation, :description, :published, :duration, :downloadSize, :lastPlayed, :hasBeenCanceled)");
+        q.prepare("INSERT INTO episodes (title, channelid, downloadLink, playLocation, description, published, duration, downloadSize, lastPlayed, hasBeenCanceled, finished, playPosition) VALUES "
+                  "(:title, :channelid, :downloadLink, :playLocation, :description, :published, :duration, :downloadSize, :lastPlayed, :hasBeenCanceled, :finished, :playPosition)");
         q.bindValue(":title", episode->title());
         q.bindValue(":channelid", channel_id);
         q.bindValue(":downloadLink", episode->downloadLink());
@@ -234,6 +234,8 @@ int PodcastSQLManager::podcastEpisodesToDB(QList<PodcastEpisode *> parsedEpisode
         q.bindValue(":downloadSize", episode->downloadSize());
         q.bindValue(":lastPlayed", episode->lastPlayed().isValid() ? episode->lastPlayed().toTime_t() : 0);  // NOTE: We save the seconds since EPOC for easier handling.
         q.bindValue(":hasBeenCanceled", episode->hasBeenCanceled());
+        q.bindValue(":finished", episode->finished());
+        q.bindValue(":playPosition", episode->playPosition());
 
         if (!q.exec()) {
             qDebug() << "Last query: " << q.lastQuery();
@@ -264,8 +266,8 @@ bool PodcastSQLManager::podcastEpisodeToDB(PodcastEpisode *episode, int channel_
     }
 
     QSqlQuery q(m_connection);
-    q.prepare("INSERT INTO episodes(title, channelid, downloadLink, playLocation, description, published, duration, downloadSize, lastPlayed, hasBeenCanceled) VALUES "
-              "(:title, :channelid, :downloadLink, :playLocation, :description, :published, :duration, :downloadSize, :lastPlayed, :hasBeenCanceled)");
+    q.prepare("INSERT INTO episodes(title, channelid, downloadLink, playLocation, description, published, duration, downloadSize, lastPlayed, hasBeenCanceled, finished, playPosition) VALUES "
+              "(:title, :channelid, :downloadLink, :playLocation, :description, :published, :duration, :downloadSize, :lastPlayed, :hasBeenCanceled, :finished, :playPosition)");
     q.bindValue(":title", episode->title());
     q.bindValue(":channelid", channel_id);
     q.bindValue(":downloadLink", episode->downloadLink());
@@ -274,6 +276,8 @@ bool PodcastSQLManager::podcastEpisodeToDB(PodcastEpisode *episode, int channel_
     q.bindValue(":published", episode->pubTime().toTime_t());  // NOTE: We save the seconds since EPOC for easier handling.
     q.bindValue(":duration", episode->duration());
     q.bindValue(":downloadSize", episode->downloadSize());
+    q.bindValue(":finished", episode->finished());
+    q.bindValue(":playPosition", episode->playPosition());
 
     QDateTime lastPlayed = episode->lastPlayed();
     if (lastPlayed.isValid()) {
@@ -307,7 +311,7 @@ QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(PodcastChannel* channel)
 
     qDebug() << "Returning Podcast episodes from DB for channel:" << channelId;
 
-    q.prepare("SELECT id, title, downloadLink, playLocation, description, published, duration, downloadSize, channelid, lastPlayed, hasBeenCanceled "
+    q.prepare("SELECT id, title, downloadLink, playLocation, description, published, duration, downloadSize, channelid, lastPlayed, hasBeenCanceled, finished, playPosition "
               "FROM episodes WHERE episodes.channelid = :chanId ORDER BY episodes.published DESC");
     q.bindValue(":chanId", channelId);
 
@@ -332,6 +336,8 @@ QList<PodcastEpisode *> PodcastSQLManager::episodesInDB(PodcastChannel* channel)
             episode->setLastPlayed(QDateTime::fromTime_t(q.value(9).toUInt()));
         }
         episode->setHasBeenCanceled(q.value(10).toBool());
+        episode->setFinished(q.value(11).toBool());
+        episode->setPlayPosition(q.value(12).toInt());
 
         // Since we requested channels for this channel, we might as well be sure the value is what we requested as parameter.
         episode->setChannel(channel);
@@ -416,7 +422,8 @@ void PodcastSQLManager::updatePodcastInDB(PodcastEpisode *episode)
     mutex.unlock();
 
     q.prepare("UPDATE episodes SET title=:title, downloadLink=:downloadLink, playLocation=:playLocation, description=:description, "
-              "published=:published, duration=:duration, downloadSize=:downloadSize, lastPlayed=:lastPlayed, hasBeenCanceled=:hasBeenCanceled "
+              "published=:published, duration=:duration, downloadSize=:downloadSize, lastPlayed=:lastPlayed, hasBeenCanceled=:hasBeenCanceled, "
+              "finished=:finished, playPosition=:playPosition "
               "WHERE id=:id");
     q.bindValue(":title", episode->title());
     q.bindValue(":downloadLink", episode->downloadLink());
@@ -428,6 +435,8 @@ void PodcastSQLManager::updatePodcastInDB(PodcastEpisode *episode)
     q.bindValue(":id", episode->dbid());
     q.bindValue(":lastPlayed", episode->lastPlayed().isValid() ? episode->lastPlayed().toTime_t() : 0);  // NOTE: We save the seconds since EPOC for easier handling.
     q.bindValue(":hasBeenCanceled", episode->hasBeenCanceled());
+    q.bindValue(":finished", episode->finished());
+    q.bindValue(":playPOsition",episode->playPosition());
 
     if (!q.exec()) {
         qDebug() << "Last query: " << q.lastQuery();
@@ -534,6 +543,8 @@ void PodcastSQLManager::createTables()
                                       "duration TEXT, "
                                       "downloadSize INTEGER, "
                                       "hasBeenCanceled BOOLEAN, "
+                                      "finished BOOLEAN, "
+                                      "playPosition INTEGER, "
                                       "FOREIGN KEY(channelid) REFERENCES channels(id))");
 
         if (!m_connection.commit()) {
@@ -543,9 +554,43 @@ void PodcastSQLManager::createTables()
         if (!q.isValid()) {
             qDebug() << q.lastError().text();
         }
+    }else{
+        checkAndCreateExtendedEpisodeState();
     }
 
 }
+
+void PodcastSQLManager::checkAndCreateExtendedEpisodeState()
+{
+    QSqlQuery q(m_connection);
+
+    if (!q.exec("SELECT finished FROM episodes")) {
+        qDebug() << "SQL: episodes does not contain 'finished'. Adding column.";
+
+        QSqlQuery q_create(m_connection);
+
+        // Column does not exist. Create it.
+        if (!q_create.exec("ALTER TABLE episodes ADD COLUMN finished BOOLEAN")) {
+            qDebug()   << "SQL error: " <<  q_create.lastError().text();
+            qWarning() << "SQL query:"  <<  q_create.lastQuery();
+        }
+    }
+
+    if (!q.exec("SELECT playPosition FROM episodes")) {
+        qDebug() << "SQL: episodes does not contain 'playPosition'. Adding column.";
+
+        QSqlQuery q_create(m_connection);
+
+        // Column does not exist. Create it.
+        if (!q_create.exec("ALTER TABLE episodes ADD COLUMN playPosition INTEGER")) {
+            qDebug()   << "SQL error: " <<  q_create.lastError().text();
+            qWarning() << "SQL query:"  <<  q_create.lastQuery();
+        }
+    }
+
+}
+
+
 
 void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
 {
@@ -584,7 +629,6 @@ void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)
             qWarning() << "SQL query:"  <<  q.lastQuery();
         }
     }
-
 
 }
 

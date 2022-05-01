@@ -70,8 +70,11 @@ private slots:
     void onCancelQueueing(int channelId, int index);
     void onDeleteChannel(const QString &channelId);
     void onAllListened(const QString &channelId);
+    void onAllFinished(const QString &channelId);
     void onDeletePodcast(int channelId, int index);
     void onMarkAsUnplayed(int channelId, int index);
+    void onMarkAsFinished(int channelId, int index);
+    void onMarkAsUnFinished(int channelId, int index);
     void onStartStreaming(int channelId, int index);
     void onStreamingUrlResolved(const QString &streamUrl, const QString &streamTitle);
     void onAutoDownloadChanged(int channelId, bool autoDownload);
