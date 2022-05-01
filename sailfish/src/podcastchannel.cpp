@@ -253,4 +253,5 @@ void PodcastChannel::trialSucceeded()
     m_url = m_trialURL;
     m_trialURL = "";
     emit urlChanged(m_url);
+    emit channelChanged();
 }
