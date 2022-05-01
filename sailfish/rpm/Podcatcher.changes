@@ -1,5 +1,6 @@
-***
--Introduce concepts of finished and new episodes
+* Sun May 1  Moritz Carmesin <carolus@carmesinus.de> 1.9.16
+- Introduce concepts of finished and new episodes
+- Fix saving changed feed URL
 
 * Sat Jan 8 2022 Moritz Carmesin <carolus@carmesinus.de> 1.9.15
 - Write downloaded files during download

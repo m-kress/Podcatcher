@@ -265,7 +265,7 @@ void PodcastEpisode::downloadEpisode()
     QString filename = QFileInfo(path).fileName();
 
     if(m_downloadFile){
-        qWarning() << "Download file exits! Closing it.";
+        qWarning() << "Download file exists! Closing it.";
         m_downloadFile->close();
         m_downloadFile->deleteLater();
         m_downloadFile = nullptr;
