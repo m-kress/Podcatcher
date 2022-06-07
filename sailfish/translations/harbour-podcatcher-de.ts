@@ -24,7 +24,7 @@
     <message>
         <location filename="../qml/pages/AudioPlayer.qml" line="285"/>
         <source>Chapters</source>
-        <translation type="unfinished"></translation>
+        <translation>Kapitel</translation>
     </message>
 </context>
 <context>
