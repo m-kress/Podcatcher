@@ -22,7 +22,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="267"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="285"/>
         <source>Chapters</source>
         <translation type="unfinished"></translation>
     </message>
@@ -149,7 +149,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="104"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="108"/>
         <source>Published: </source>
         <translation>发行:</translation>
     </message>
@@ -286,7 +286,7 @@
 <context>
     <name>PodcastEpisode</name>
     <message>
-        <location filename="../src/podcastepisode.cpp" line="251"/>
+        <location filename="../src/podcastepisode.cpp" line="253"/>
         <source>SD card not available! Make sure SD card is mounted and decrypted!</source>
         <translation type="unfinished"></translation>
     </message>
@@ -426,37 +426,37 @@
         <translation>播客订阅无效，无法添加订阅…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="522"/>
+        <location filename="../src/podcastmanager.cpp" line="523"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="555"/>
+        <location filename="../src/podcastmanager.cpp" line="556"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="743"/>
+        <location filename="../src/podcastmanager.cpp" line="744"/>
         <source>Podcast episode download failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1119"/>
+        <location filename="../src/podcastmanager.cpp" line="1120"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1150"/>
+        <location filename="../src/podcastmanager.cpp" line="1151"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1216"/>
+        <location filename="../src/podcastmanager.cpp" line="1217"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1220"/>
+        <location filename="../src/podcastmanager.cpp" line="1221"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅…</translation>
     </message>
@@ -464,32 +464,32 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="159"/>
+        <location filename="../src/podcatcherui.cpp" line="161"/>
         <source>Fetching channel information...</source>
         <translation>正在获取频道信息…</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="233"/>
+        <location filename="../src/podcatcherui.cpp" line="236"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="242"/>
+        <location filename="../src/podcatcherui.cpp" line="245"/>
         <source>Podcast episode not found.</source>
         <translation>没有找到播客剧集。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="256"/>
+        <location filename="../src/podcatcherui.cpp" line="259"/>
         <source>Mediaplayer program not found!</source>
         <translation>没有找到媒体播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="272"/>
+        <location filename="../src/podcatcherui.cpp" line="275"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>非常抱歉!无法为播客打开音频播放器。</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="517"/>
+        <location filename="../src/podcatcherui.cpp" line="520"/>
         <source>Unable to stream podcast.</source>
         <translation>无法加载播客。</translation>
     </message>

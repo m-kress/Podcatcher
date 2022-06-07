@@ -22,7 +22,7 @@
         <translation>Spelare</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AudioPlayer.qml" line="267"/>
+        <location filename="../qml/pages/AudioPlayer.qml" line="285"/>
         <source>Chapters</source>
         <translation>Kapitel</translation>
     </message>
@@ -149,7 +149,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="104"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="108"/>
         <source>Published: </source>
         <translation>Publicerad: </translation>
     </message>
@@ -286,7 +286,7 @@
 <context>
     <name>PodcastEpisode</name>
     <message>
-        <location filename="../src/podcastepisode.cpp" line="251"/>
+        <location filename="../src/podcastepisode.cpp" line="253"/>
         <source>SD card not available! Make sure SD card is mounted and decrypted!</source>
         <translation>Inget SD-kort tillgängligt! Tillse att SD-kortet är monterat och avkrypterat!</translation>
     </message>
@@ -426,37 +426,37 @@
         <translation>Poddflödet är inte giltigt. Kan inte lägga till prenumeration...</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="522"/>
+        <location filename="../src/podcastmanager.cpp" line="523"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kan inte uppdatera. Nätverksfel.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="555"/>
+        <location filename="../src/podcastmanager.cpp" line="556"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Poddflödet ogiltigt. Kan inte ladda ner avsnitt från &apos;%1&apos;.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="743"/>
+        <location filename="../src/podcastmanager.cpp" line="744"/>
         <source>Podcast episode download failed: </source>
         <translation>Kunde inte ladda ner poddavsnitt: </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1119"/>
+        <location filename="../src/podcastmanager.cpp" line="1120"/>
         <source>gPodder.net authentication information required.</source>
         <translation>Inloggningsuppgifter för gPodder.net krävs.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1150"/>
+        <location filename="../src/podcastmanager.cpp" line="1151"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>Inloggningsuppgifterna för gPodder.net, accepterades inte. Försök igen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1216"/>
+        <location filename="../src/podcastmanager.cpp" line="1217"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Inga prenumerationer från gPodder.net hittades</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1220"/>
+        <location filename="../src/podcastmanager.cpp" line="1221"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Hämtar prenumerationer från gPodder.net...</translation>
     </message>
@@ -464,32 +464,32 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="159"/>
+        <location filename="../src/podcatcherui.cpp" line="161"/>
         <source>Fetching channel information...</source>
         <translation>Hämtar kanalinformation...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="233"/>
+        <location filename="../src/podcatcherui.cpp" line="236"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
         <translation>Poddavsnittet hittades inte. Tillse att SD-kortet är monterat och avkrypterat!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="242"/>
+        <location filename="../src/podcatcherui.cpp" line="245"/>
         <source>Podcast episode not found.</source>
         <translation>Poddavsnittet kan inte hittas.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="256"/>
+        <location filename="../src/podcatcherui.cpp" line="259"/>
         <source>Mediaplayer program not found!</source>
         <translation>Mediaspelaren kunde inte hittas!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="272"/>
+        <location filename="../src/podcatcherui.cpp" line="275"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>Tyvärr! Kunde inte spela upp den här podden.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="517"/>
+        <location filename="../src/podcatcherui.cpp" line="520"/>
         <source>Unable to stream podcast.</source>
         <translation>Kan inte strömma podd.</translation>
     </message>
