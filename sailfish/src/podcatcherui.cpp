@@ -127,6 +127,8 @@ PodcatcherUI::PodcatcherUI()
             this, SLOT(onAutoDownloadChanged(int, bool)));
 
     view->show();
+
+    QString PODCATCHER_PATH =  QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
     qDebug() << "Paths:\n" << PODCATCHER_PATH <<"\n" << PODCATCHER_PODCAST_DLDIR;
 
     QFile jollaMediaPlayer("/usr/bin/jolla-mediaplayer");
@@ -163,6 +165,7 @@ bool PodcatcherUI::isDownloading()
 {
     return m_pManager.isDownloading();
 }
+
 
 void PodcatcherUI::onShowChannel(const QString& channelId)
 {

@@ -3,7 +3,7 @@
 
 #include <sailfishapp.h>
 #include "podcatcherui.h"
-
+#include "podcastglobals.h"
 
 #include <execinfo.h>
 #include <csignal>
@@ -23,6 +23,23 @@
   exit(1);
 }
 
+void migrateDBPath()
+{
+    QString oldDBPath = QString("%1/%2/%3").arg(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation))
+                                         .arg(PODCATCHER_WORKDIR_NAME).arg("podcatcher.sql");
+
+
+    QString newDBPath = QString("%1/%2").arg(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation)).arg("podcatcher.sql");
+
+    if((!QFileInfo(newDBPath).exists() && !QDir(newDBPath).exists()) &&
+            (QFileInfo(oldDBPath).exists() && !QDir(newDBPath).exists())) {
+        QFile::rename(oldDBPath, newDBPath);
+
+        qDebug() << "Migration from " << oldDBPath << "to" << newDBPath;
+
+    }
+}
+
 int main(int argc, char *argv[])
 {
     // SailfishApp::main() will display "qml/template.qml", if you need more
@@ -38,6 +55,8 @@ int main(int argc, char *argv[])
 
 
     QGuiApplication* app = SailfishApp::application(argc,argv);
+
+    migrateDBPath();
 
     auto* ui = new PodcatcherUI();
 

@@ -23,8 +23,10 @@
 
 //const QString PODCATCHER_WORKDIR_NAME(".podcatcher");
 const QString PODCATCHER_WORKDIR_NAME("harbour-podcatcher");
-const QString PODCATCHER_PATH = QString("%1/%2/").arg(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation))
+const QString PODCATCHER_PATH_OLD = QString("%1/%2/").arg(QStandardPaths::writableLocation(QStandardPaths::ConfigLocation))
                                           .arg(PODCATCHER_WORKDIR_NAME);
+// Is set too early: before sailfishapp sets directories
+//const QString PODCATCHER_PATH = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
 //const QString PODCATCHER_PODCAST_DLDIR = QString("%1/MyDocs/.sounds/podcasts/").arg(QStandardPaths::writableLocation(QStandardPaths::HomeLocation));
 const QString PODCATCHER_PODCAST_DLDIR = QString("%1/podcasts/").arg(QStandardPaths::writableLocation(QStandardPaths::MusicLocation));
 

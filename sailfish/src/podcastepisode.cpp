@@ -27,6 +27,8 @@
 #include "podcastepisode.h"
 #include "podcastmanager.h"
 
+#include <unistd.h>
+
 PodcastEpisode::PodcastEpisode(QObject *parent) :
     QObject(parent)
 {
@@ -247,7 +249,7 @@ void PodcastEpisode::downloadEpisode()
     QString downloadPath;
     downloadPath = getDownloadDir();
 
-    if (downloadPath == "!SD"){
+    if (downloadPath.isNull()){
         m_errorMessage = tr("SD card not available! Make sure SD card is mounted and decrypted!");
         emit podcastEpisodeDownloadFailed(this);
         m_currentDownload->abort();
@@ -283,7 +285,7 @@ void PodcastEpisode::downloadEpisode()
             this, SLOT(onDownloadError(QNetworkReply::NetworkError)));
 
     connect(m_currentDownload, SIGNAL(metaDataChanged()),
-             this, SLOT(onMetaDataChanged()));
+            this, SLOT(onMetaDataChanged()));
 
     connect(m_currentDownload, SIGNAL(readyRead()),
             this,SLOT(onDownloadReadyRead()));
@@ -446,14 +448,14 @@ void PodcastEpisode::setAsUnplayed()
 void PodcastEpisode::setAsFinished()
 {
     setFinished(true);
-//    setState(EpisodeStates::FinishedState);
+    //    setState(EpisodeStates::FinishedState);
 }
 
 
 void PodcastEpisode::setAsUnFinished()
 {
     setFinished(false);
-//    setState(EpisodeStates::FinishedState);
+    //    setState(EpisodeStates::FinishedState);
 }
 
 void PodcastEpisode::setFinished(bool finished)
@@ -591,31 +593,46 @@ QString PodcastEpisode::getDownloadDir()
     if(!m_saveOnSDCOnf->value().toBool())
         return PODCATCHER_PODCAST_DLDIR;
     else {
-        QString path = "/media/sdcard/";
-        QDir dir(path);
-        QStringList lst = dir.entryList(QDir::Dirs);
-
-        QString sd;
-
-        foreach (const QString& s, lst) {
-            if (s.startsWith("."))
-                continue;
-
-            sd = s;
-            break;
-        }
-
+        QString sd = getSDPath();
         if(sd.isEmpty()){ //no SD mounted
             //m_saveOnSDCOnf->set(false);
             qWarning() << "SD not mounted.";
-            return "!SD";
+            //return "!SD";
+            return QString();
             //return PODCATCHER_PODCAST_DLDIR;
         }
 
-        path += sd+"/podcasts/";
-
-        return path;
-
+       return sd+"/podcasts/";
     }
+}
+
+QString PodcastEpisode::getSDPath()
+{
+    QStringList paths;
+    char username[128];
+    getlogin_r(username,128);
+
+    paths << QString("/run/media/%1/").arg(username);
+    paths <<  "/media/sdcard/";
+
+    QString sd;
+
+    foreach (const QString& path, paths) {
+
+        QDir dir(path);
+        if (dir.exists()){
+            QStringList lst = dir.entryList(QDir::Dirs);
+
+            foreach (const QString& s, lst) {
+                if (s.startsWith("."))
+                    continue;
+
+                sd = QString("%1%2").arg(path).arg(s);
+                return sd;
+            }
+        }
+    }
+
+    return sd;
 }
 

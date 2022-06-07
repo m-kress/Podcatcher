@@ -44,9 +44,10 @@ PodcastSQLManager::PodcastSQLManager(QObject *parent) :
     QObject(parent)
 {
     QString databasePath;
-    databasePath = PODCATCHER_PATH;
+    //databasePath = PODCATCHER_PATH;
+    databasePath = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
 
-    // Create the database in user's homedir, subdir ".podcatcher/".
+    // Create the database in config dir
     QDir dirpath(databasePath);
     if (!dirpath.exists()) {
         dirpath.mkpath(databasePath);

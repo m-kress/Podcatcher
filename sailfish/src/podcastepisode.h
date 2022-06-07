@@ -130,6 +130,7 @@ private slots:
 private:
     bool isValidAudiofile(QNetworkReply *reply) const;
     QString getDownloadDir();
+    QString getSDPath();
 
     //bool isOnlyWebsiteUrl() const;
 
