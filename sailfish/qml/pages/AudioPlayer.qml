@@ -149,8 +149,10 @@ Page {
         }
 
         Row {
+            id: btnRow
             spacing: Theme.paddingSmall
             anchors.horizontalCenter: parent.horizontalCenter
+
 
             IconButton {
                 id: rewBtn
@@ -220,8 +222,24 @@ Page {
                 visible: chapterModel.count > 0;
             }
 
-
+//            IconButton{
+//                id: speedBtn
+//                icon.source: "image://theme/icon-m-timer?" + (pressed
+//                                                               ? Theme.highlightColor
+//                                                               : Theme.primaryColor)
+//                onClicked: {console.log(btnRow.implicitHeight);
+//                    console.log(btnRow.height);
+//                    console.log(buttonGroup.implicitHeight);
+//                     console.log(buttonGroup.height);
+//                    speedMenu.open(btnRow);}
+//            }
         }
+//        ContextMenu{
+//            id:speedMenu
+//            MenuItem{
+//                text: "normal (1)"
+//            }
+//        }
 
         Label {
             id: durationLabel
