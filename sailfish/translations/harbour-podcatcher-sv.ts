@@ -149,7 +149,7 @@
 <context>
     <name>EpisodeDescriptionPage</name>
     <message>
-        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="108"/>
+        <location filename="../qml/pages/EpisodeDescriptionPage.qml" line="104"/>
         <source>Published: </source>
         <translation>Publicerad: </translation>
     </message>

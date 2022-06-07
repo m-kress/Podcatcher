@@ -18,7 +18,6 @@ Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-podcatcher.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   qt5-qtdeclarative-import-xmllistmodel
-Requires:   qtmozembed-qt5
 Requires:   sailfish-components-webview-qt5
 Requires:   amber-qml-plugin-mpris
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.2

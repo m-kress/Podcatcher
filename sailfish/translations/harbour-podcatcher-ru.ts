@@ -70,7 +70,7 @@
     </message>
     <message>
         <source>Auto-download</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Загружать автоматически</translation>
     </message>
     <message>
         <source>Sortation</source>
@@ -268,10 +268,6 @@
     <message>
         <source>Mark all espiodes as finished</source>
         <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Auto-download</source>
-        <translation>Загружать автоматически</translation>
     </message>
 </context>
 <context>

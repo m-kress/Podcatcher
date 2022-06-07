@@ -33,7 +33,7 @@ Requires:
   - sailfishsilica-qt5 >= 0.10.9 
 #  - nemo-qml-plugin-configuration-qt5
   - qt5-qtdeclarative-import-xmllistmodel
-  - qtmozembed-qt5
+#  - qtmozembed-qt5
   - sailfish-components-webview-qt5
 #- sailfish-components-webview-qt5-popups
 #- sailfish-components-webview-qt5-pickers
