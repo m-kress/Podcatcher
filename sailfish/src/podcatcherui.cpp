@@ -131,10 +131,13 @@ PodcatcherUI::PodcatcherUI()
     QString PODCATCHER_PATH =  QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
     qDebug() << "Paths:\n" << PODCATCHER_PATH <<"\n" << PODCATCHER_PODCAST_DLDIR;
 
+    /* NOT COMPATIBLE WITH SAILJAIL
     QFile jollaMediaPlayer("/usr/bin/jolla-mediaplayer");
     if (m_mediaPlayerPath.isEmpty() && !jollaMediaPlayer.exists()){
         emit showInfoBanner("Jolla Mediaplayer not installed. Playback of the podcasts might not work.");
     }
+
+    */
 
     //m_playlist = new PodcastPlaylist(this);
 
@@ -232,7 +235,7 @@ void PodcatcherUI::onPlayPodcast(int channelId, int index)
     QFile checkFile(file.toLocalFile());
 
     if (!checkFile.exists()) {
-        if (file.toLocalFile().startsWith("/media/sdcard")){
+        if (file.toLocalFile().startsWith("/media/sdcard") || file.toLocalFile().startsWith("/run/media")){
             emit showInfoBanner(tr("Podcast episode not found.  Make sure SD card is mounted and decrypted!"));
             return;
         }else{

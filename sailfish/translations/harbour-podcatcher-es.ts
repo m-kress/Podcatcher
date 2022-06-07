@@ -464,32 +464,32 @@
 <context>
     <name>PodcatcherUI</name>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="161"/>
+        <location filename="../src/podcatcherui.cpp" line="164"/>
         <source>Fetching channel information...</source>
         <translation>Recopilando información del canal...</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="236"/>
+        <location filename="../src/podcatcherui.cpp" line="239"/>
         <source>Podcast episode not found.  Make sure SD card is mounted and decrypted!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="245"/>
+        <location filename="../src/podcatcherui.cpp" line="248"/>
         <source>Podcast episode not found.</source>
         <translation>Episodio de podcast no encontrado.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="259"/>
+        <location filename="../src/podcatcherui.cpp" line="262"/>
         <source>Mediaplayer program not found!</source>
         <translation>¡Reproductor no encontrado!</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="275"/>
+        <location filename="../src/podcatcherui.cpp" line="278"/>
         <source>I am sorry! Could not launch audio player for this podcast.</source>
         <translation>¡Lo siento! No es posible abrir el reproductor para este podcast.</translation>
     </message>
     <message>
-        <location filename="../src/podcatcherui.cpp" line="520"/>
+        <location filename="../src/podcatcherui.cpp" line="523"/>
         <source>Unable to stream podcast.</source>
         <translation>No es posible transmitir podcast.</translation>
     </message>
