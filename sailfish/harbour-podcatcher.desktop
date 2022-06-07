@@ -11,3 +11,8 @@ Name=Podcatcher
 # a different app name in German locale (de).
 Name[de]=Podcatcher
 
+
+[X-Sailjail]
+Permissions=Internet;Music;RemovableMedia;Audio
+OrganizationName=de.carmesinus
+ApplicationName=Podcatcher
