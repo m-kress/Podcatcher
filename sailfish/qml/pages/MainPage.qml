@@ -165,6 +165,7 @@ Page {
                         //width: parent.width - 2*Theme.horizontalPageMargin - Theme.paddingMedium - unplayedNumber.width
                         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                         color: listItem.highlighted ? Theme.highlightColor : Theme.primaryColor
+                        font.bold: hasNew
                     }
 
                     Label{

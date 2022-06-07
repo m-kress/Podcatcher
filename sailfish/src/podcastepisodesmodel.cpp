@@ -178,6 +178,7 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
         m_sqlmanager->podcastEpisodesToDB(newEpisodesToAdd,
                                           m_channel.channelDbId());
         m_latestEpisodeTimestamp = m_sqlmanager->latestEpisodeTimestampInDB(m_channel.channelDbId());
+        m_channel.setHasNew(true);
     } else {
         qDebug() << "No new episodes to be added to the DB.";
     }
@@ -186,7 +187,6 @@ void PodcastEpisodesModel::addEpisodes(const QList<PodcastEpisode *>& episodes)
     m_episodes = sortedEpisodes;
     sortEpisodes(m_episodes, m_channel.sortBy(), m_channel.sortDescending());
     endResetModel();
-
 }
 
 void PodcastEpisodesModel::delEpisode(PodcastEpisode *episode)

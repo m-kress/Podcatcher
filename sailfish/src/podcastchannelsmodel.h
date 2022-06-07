@@ -39,6 +39,7 @@ class PodcastChannelsModel : public QAbstractListModel
         AutoDownloadOnRole,
         SortByRole,
         SortDescendingRole,
+        HasNewRole,
     };
 
 public:

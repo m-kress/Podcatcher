@@ -30,6 +30,7 @@ PodcastChannel::PodcastChannel(QObject *parent) :
     m_sortDescending = true;
     m_sortBy = PUBLISHED;
     m_id = -1;
+    m_hasNew = false;
 }
 
 void PodcastChannel::setId(int id)
@@ -212,6 +213,7 @@ QString PodcastChannel::sortBy() const
     return "???";
 }
 
+
 void PodcastChannel::setSortBy(const QString& sortBy)
 {
 
@@ -253,5 +255,18 @@ void PodcastChannel::trialSucceeded()
     m_url = m_trialURL;
     m_trialURL = "";
     emit urlChanged(m_url);
+    emit channelChanged();
+}
+
+bool PodcastChannel::hasNew() const
+{
+    return m_hasNew;
+}
+
+void PodcastChannel::setHasNew(bool newHasNew)
+{
+    if (m_hasNew == newHasNew)
+        return;
+    m_hasNew = newHasNew;
     emit channelChanged();
 }

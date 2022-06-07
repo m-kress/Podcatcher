@@ -33,6 +33,7 @@ PodcastChannelsModel::PodcastChannelsModel(QObject *parent) :
     m_roles[AutoDownloadOnRole] = "autoDownloadOn";
     m_roles[SortByRole] = "sortBy";
     m_roles[SortDescendingRole] = "sortDescending";
+    m_roles[HasNewRole]="hasNew";
 
     DBHelper dbhelper;
     dbhelper.createAutoDownloadFieldChannels();
@@ -95,6 +96,9 @@ QVariant PodcastChannelsModel::data(const QModelIndex &index, int role) const
 
     case SortDescendingRole:
         return channel->sortDescending();
+
+    case HasNewRole:
+        return channel->hasNew();
     }
 
     return QVariant();
