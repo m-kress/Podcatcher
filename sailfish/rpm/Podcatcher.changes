@@ -1,3 +1,8 @@
+* Tue Jun 7 Moritz Carmesin <carolus@carmesinus.de> 1.9.17
+- Sailjail compliance
+- Improved handling of SD cards (mounted at /run/media)
+- Highlight channels with new epsiodes
+
 * Sun May 1  Moritz Carmesin <carolus@carmesinus.de> 1.9.16
 - Introduce concepts of finished and new episodes
 - Fix saving changed feed URL
