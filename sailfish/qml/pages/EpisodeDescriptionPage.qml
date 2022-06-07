@@ -113,12 +113,12 @@ Page {
                 width: parent.width
             }
 
-
             SilicaWebView {
                 id: episodeDescription
 
-                width: parent.width /* - 2*Theme.horizontalPageMargin*/
+                width: parent.width
                 height: parent.height - mainPageTitle.height -  podcastEpisodeRect.height - 3*Theme.paddingMedium - sep.height
+
 
 
                 onNavigationRequested: {
@@ -136,6 +136,7 @@ Page {
                 experimental.preferences.defaultFontSize: Theme.fontSizeSmall
                 experimental.preferences.standardFontFamily: Theme.fontFamily
                 experimental.preferences.javascriptEnabled: false
+
 
                 VerticalScrollDecorator{
                 }

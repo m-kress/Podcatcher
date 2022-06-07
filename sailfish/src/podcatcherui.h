@@ -97,8 +97,6 @@ private:
     QString m_mediaPlayerPath;
 
     bool isDownloading();
-
-
 };
 
 #endif // PODCATCHERUI_H
