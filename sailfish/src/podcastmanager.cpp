@@ -422,7 +422,7 @@ void PodcastManager::onPodcastChannelLogoCompleted() {
 
     QString  PODCATCHER_PATH = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
     //QString filename = PODCATCHER_PATH + localFilename + ".jpg";
-    QString filename = PODCATCHER_PATH + localFilename + ".png";
+    QString filename = PODCATCHER_PATH + "/" + localFilename + ".png";
     qDebug() << "Saving channel logo locally to: " << filename;
 
     if (channelLogo.isNull()) {
