@@ -43,6 +43,7 @@ public:
     Q_INVOKABLE QString versionString();
     Q_INVOKABLE void importFromGPodder(const QString &username, const QString &password);
     Q_INVOKABLE void changeFeedURLIfValid(int channelId, const QString& url);
+    Q_INVOKABLE bool isConnectedToWiFi();
 
     Q_PROPERTY(bool isDownloading READ isDownloading NOTIFY isDownloadingChanged)
 

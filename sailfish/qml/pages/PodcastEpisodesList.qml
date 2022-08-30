@@ -275,9 +275,20 @@ Item {
                     anchors.verticalCenter: parent.verticalCenter
                     visible: true
 
-                    onClicked: {
-                        appWindow.downloadPodcast(channelId, index);  // Channel id = which model to use, index = row in the model.
+                    onClicked:{
+                        if(ui.isConnectedToWiFi()){
+                            appWindow.downloadPodcast(channelId, index);  // Channel id = which model to use, index = row in the model.
+                        }else{
+                            episodeRemorse.execute(podcastItem,qsTr("Downloading over mobile data"),
+                                                   function(){
+                                                       console.log("Downloading over modible data "+ channelId + index);
+                                                      appWindow.downloadPodcast(channelId, index);  // Channel id = which model to use, index = row in the model.
+                                                   });
+                        }
                     }
+                    /* {
+
+                                        }*/
                 }
 
 
@@ -324,7 +335,7 @@ Item {
                     }
                 }
 
-/*
+                /*
                 IconButton {
                     id: playlistAddButton
                     icon.source: "image://theme/icon-m-add"

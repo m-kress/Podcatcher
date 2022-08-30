@@ -559,6 +559,11 @@ void PodcatcherUI::changeFeedURLIfValid(int channelId, const QString &url)
     m_pManager.refreshPodcastChannelEpisodes(channel, true, true);
 }
 
+bool PodcatcherUI::isConnectedToWiFi()
+{
+   return PodcastManager::isConnectedToWiFi();
+}
+
 
 
 bool PodcatcherUI::isLiteVersion()
