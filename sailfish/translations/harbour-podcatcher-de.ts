@@ -375,12 +375,17 @@
         <translation>In der Warteschlange</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="360"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="282"/>
+        <source>Downloading over mobile data</source>
+        <translation>Download über Mobilfunknetz</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="371"/>
         <source>No media</source>
         <translation>Keine Medien</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="560"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="571"/>
         <source>Unable to stream podcast.</source>
         <translation>Kann Podcast nicht streamen.</translation>
     </message>
@@ -406,57 +411,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="127"/>
+        <location filename="../src/podcastmanager.cpp" line="129"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>Kann %1 nicht abonnieren…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="136"/>
+        <location filename="../src/podcastmanager.cpp" line="138"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>&apos;%1&apos; ist schon abonniert.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="330"/>
+        <location filename="../src/podcastmanager.cpp" line="332"/>
         <source>No data received.</source>
         <translation>Keine Daten empfangen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="361"/>
+        <location filename="../src/podcastmanager.cpp" line="363"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>Ungültiger Podcastfeed: kann nicht abonniert werden.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="523"/>
+        <location filename="../src/podcastmanager.cpp" line="525"/>
         <source>Cannot refresh. Network error.</source>
         <translation>Kann nicht aktualisieren. Netzwerkfehler.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="556"/>
+        <location filename="../src/podcastmanager.cpp" line="558"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>Podcastfeed ungültig. Kann keine Folgen von &apos;%1&apos; herunterladen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="744"/>
+        <location filename="../src/podcastmanager.cpp" line="746"/>
         <source>Podcast episode download failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1120"/>
+        <location filename="../src/podcastmanager.cpp" line="1122"/>
         <source>gPodder.net authentication information required.</source>
         <translation>gPodder.net-Zugangsdaten benötigt.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1151"/>
+        <location filename="../src/podcastmanager.cpp" line="1153"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>gPodder.net-Zugansdaten nicht akzeptiert. Bitte erneut versuchen.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1217"/>
+        <location filename="../src/podcastmanager.cpp" line="1219"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>Keine Abonnements bei gPodder.net gefunden.</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1221"/>
+        <location filename="../src/podcastmanager.cpp" line="1223"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>Lade Abonnements von gPodder.net …</translation>
     </message>

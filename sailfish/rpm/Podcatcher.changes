@@ -1,3 +1,7 @@
+* Tue Aug 30 Moritz Carmesin <carolus@carmesinus.de> 1.9.18
+- Fix channel logo saving location
+- Show remorse dialog before downloading on mobile data
+
 * Tue Jun 7 Moritz Carmesin <carolus@carmesinus.de> 1.9.17
 - Sailjail compliance
 - Improved handling of SD cards (mounted at /run/media)

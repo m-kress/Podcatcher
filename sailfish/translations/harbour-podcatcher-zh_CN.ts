@@ -375,12 +375,17 @@
         <translation>排队</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="360"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="282"/>
+        <source>Downloading over mobile data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="371"/>
         <source>No media</source>
         <translation>无媒体</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PodcastEpisodesList.qml" line="560"/>
+        <location filename="../qml/pages/PodcastEpisodesList.qml" line="571"/>
         <source>Unable to stream podcast.</source>
         <translation>无法载入播客。</translation>
     </message>
@@ -406,57 +411,57 @@
 <context>
     <name>PodcastManager</name>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="127"/>
+        <location filename="../src/podcastmanager.cpp" line="129"/>
         <source>Unable to add subscription from %1 …</source>
         <translation>无法添加来自 %1 的订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="136"/>
+        <location filename="../src/podcastmanager.cpp" line="138"/>
         <source>Already subscribed to &apos;%1&apos;.</source>
         <translation>已订阅到 %1 </translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="330"/>
+        <location filename="../src/podcastmanager.cpp" line="332"/>
         <source>No data received.</source>
         <translation>无接受到的数据。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="361"/>
+        <location filename="../src/podcastmanager.cpp" line="363"/>
         <source>Podcast feed is not valid. Cannot add subscription...</source>
         <translation>播客订阅无效，无法添加订阅…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="523"/>
+        <location filename="../src/podcastmanager.cpp" line="525"/>
         <source>Cannot refresh. Network error.</source>
         <translation>网络错误，无法刷新…</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="556"/>
+        <location filename="../src/podcastmanager.cpp" line="558"/>
         <source>Podcast feed invalid. Cannot download episodes for &apos;%1&apos;.</source>
         <translation>播客订阅无法，无法下载 %1 剧集</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="744"/>
+        <location filename="../src/podcastmanager.cpp" line="746"/>
         <source>Podcast episode download failed: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1120"/>
+        <location filename="../src/podcastmanager.cpp" line="1122"/>
         <source>gPodder.net authentication information required.</source>
         <translation>要求授权 gPodder.net 信息</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1151"/>
+        <location filename="../src/podcastmanager.cpp" line="1153"/>
         <source>gPodder.net credentials not accepted. Try again.</source>
         <translation>无法接受 gPodder.net 凭证，请重试。</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1217"/>
+        <location filename="../src/podcastmanager.cpp" line="1219"/>
         <source>No subscriptions found from gPodder.net</source>
         <translation>没有从 gPodder.net 找到任何订阅</translation>
     </message>
     <message>
-        <location filename="../src/podcastmanager.cpp" line="1221"/>
+        <location filename="../src/podcastmanager.cpp" line="1223"/>
         <source>Getting subscriptions from gPodder.net...</source>
         <translation>正在从 gPodder.net 获取订阅…</translation>
     </message>

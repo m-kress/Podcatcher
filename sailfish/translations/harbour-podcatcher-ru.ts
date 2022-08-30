@@ -312,6 +312,10 @@
         <source>Mark as unfinished</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Downloading over mobile data</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>PodcastEpisodesModel</name>
