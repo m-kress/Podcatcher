@@ -591,6 +591,68 @@ void PodcastSQLManager::checkAndCreateExtendedEpisodeState()
 
 }
 
+void PodcastSQLManager::migrateChannelLogos()
+{
+    mutex.lock();
+    QSqlQuery q(m_connection);
+    mutex.unlock();
+
+    qDebug() << "Checking Podcast channel logos:";
+
+    q.prepare("SELECT id,  logo FROM channels");
+
+    if (!q.exec()) {
+        qWarning() << "SQL error:" << q.lastError();
+        qWarning() << "Last query: " << q.lastQuery();
+    }
+
+    QString newPath = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+
+    while (q.next()) {
+        int id =  q.value(0).toInt();
+        QString path;
+        QUrl url = q.value(1).toUrl();
+
+        path = url.toLocalFile();
+
+        if (path.isEmpty()){
+            path = q.value(1).toString();
+        }
+
+        qDebug() << id << path;
+
+        if (path.startsWith(newPath)){
+            qDebug() << "already migrated!";
+        }else if(path.startsWith(PODCATCHER_PATH_OLD)){
+            qDebug() << "old location, migrating…";
+            QString filename = url.fileName();
+            QString newLogoPath = QString("%1/%2").arg(newPath).arg(filename);
+            qDebug() << "Moving file from "<< path <<" to "<< newLogoPath;
+            QFile::rename(path, newLogoPath);
+            mutex.lock();
+            QSqlQuery q2(m_connection);
+            mutex.unlock();
+
+
+            q2.prepare("UPDATE channels SET logo=:logo WHERE id=:id");
+            q2.bindValue(":logo", newLogoPath);
+            q2.bindValue(":id", id);
+            if (!q2.exec()) {
+                qWarning() << "SQL error:" << q2.lastError();
+                qWarning() << "Last query: " << q2.lastQuery();
+            }else{
+                qDebug() << "Database updated!";
+            }
+
+        }else{
+            qWarning() << "unexpected path:"<<path;
+        }
+
+
+
+    }
+}
+
 
 
 void PodcastSQLManager::checkAndCreateAutoDownload(bool autoDownload)

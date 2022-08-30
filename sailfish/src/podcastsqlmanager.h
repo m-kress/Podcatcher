@@ -51,6 +51,7 @@ public:
     void checkAndCreateAutoDownload(bool autoDownloadOn);
     void checkAndCreateChannelSortation();
     void checkAndCreateExtendedEpisodeState();
+    void migrateChannelLogos();
 
 signals:
 

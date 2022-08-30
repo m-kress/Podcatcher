@@ -39,6 +39,9 @@ PodcastChannelsModel::PodcastChannelsModel(QObject *parent) :
     dbhelper.createAutoDownloadFieldChannels();
 
     m_sqlmanager = PodcastSQLManagerFactory::sqlmanager();
+
+    m_sqlmanager->migrateChannelLogos();
+
     foreach(PodcastChannel *channel, m_sqlmanager->channelsInDB()) {
         connect(channel, SIGNAL(channelChanged()),
                 this, SLOT(onChannelChanged()));
